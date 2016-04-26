@@ -1,0 +1,994 @@
+0x000855ac - d05f0214 - Store HP after damage
+ f1 = Current HP
+ f4 = Max HP
+  85578 - f30 - current hp
+  85578 - f31 - damage
+  14e220 - f4 = incoming damage, f1 = dmg mult
+----
+0x002cf2d4 - nop to stop turning
+0x002f4428 - nop to stop cam change
+----
+0x0051ad64 - Called when changing equipment
+----
+Load items:
+1bc8e8 - 41820154 - branch
+r27 - item ID
+r31 - ptr to item slot
+----
+Fix system software profile load
+0x001011f8 (RAM) - 0xf1af8 (SELF) - 60000000 -> 38600001
+----
+Allow creation of MP checkpoints
+RAM - 1A124
+SELF - 0AA24
+6000000 -> 38600001
+----
+Allow loading of MP checkpoints
+0x001A390 (RAM)
+0x000AC90 (SELF)
+6000000 -> 38600001
+----
+Fix MP, no NP/SAM
+0x00103B58 (RAM)
+0x000F4458 (SELF)
+ 4082001C (bne 0x00103B74) -> 48103B76 (ba 0x00103b74)
+
+0x00103BA4 (RAM)
+0x000F44A4 (SELF)
+ 41820038 (beq 0x00103bdc) -> 48103bde (ba 0x00103bdc)
+----
+
+RAM 0x10000 above ELF, 0xF700 above SELF
+003e8384 - Start of, run once per frame
+001befec - Sets weapon type when switching elements
+003e843c - nop, runs once per frame
+002b17b0 - Function, start movie named at 0x9945a4
+
+001d69d8 - 83da0004 -r8 = Item ID being loaded
+
+Instructions
+No cooldown Item Use
+001bc938 - 4182023c -> 4800023c
+
+Infinite Jump
+002596c8 - 90b71628 -> 60000000
+--------------
+9b544 - Load health
+----
+137310 - r3 = weapons pointers (32ad0248)
+----
+1013f0 - r5 = equipment profile path
+1011e8 - r29 = equipment profile path
+----
+
+0862b0 - Global speed multiplier
+0b4de0 - Constant x velocity modifier
+
+1e1c00 - Received damage multiplier
+
+636f78 - list of strings
+
+819ac0 - Pointer to checkpoint data
+819c9f - Active Element
+  - 4 = Lighting
+  - 5 = Fire
+  - 6 = Ice
+  - 7 = Soul
+
+819cdc - Red Orbs
+819d80 - Current WAD
+819e30 - HP display (MP)
+819e48 - Rage display
+
+81c9f0 - Variables?
+
+83cfe1 - Network Gate NP requirement for MP
+
+83d0d8 - UI status
+ - 9 = normal
+
+83d0e8 - 1 = load checkpoint?
+83d0f0 - 1 = save checkpoint
+
+83e760 - Start of SYSTEM SAVEDATA
+
+851a1a - 0101 = normal, 0000 = freeze
+
+857c60 - Pointers to loaded items
+
+87dbc4 - New-game profile inventory
+87efcc - BoC level
+
+
+883fd0 - SAM requirement for MP
+
+8a0c91 - 01 = Loading?
+8a0c92 - 01 = Select gives cinematic menu
+8a0c94 - 01 = In Pause menu
+8a0c96 - 01 = In Main menu
+8a0c97 - 01 = In powerup menu
+
+8a32f4 - Damage (Kratos takes damage if 0)
+8a32f8 - AI Damage (AI takes damage if 0)
+
+8a34b0 - Seconds Played?
+
+8a34cc - Inf Rage
+8a34d0 - Static Rage?
+
+904fa4 - Controller input, buttons
+904fb4 - L stick, LR value
+904fb8 - L stick, UD value
+904fe4 - R stick, LR value
+904fe8 - R stick, UD value
+
+9041b0 - String, part of PROFDATA
+
+938b14 - Items & costume pointers
+
+93991c - Pointer to near camdata
+939930 - Cam name?
+
+97d730 - Pointer to Kratos (3544fdc0)
+  +0x098 - Size multiplier
+  +0x130 - X velocity
+  +0x134 - Z velocity
+  +0x138 - Y velocity
+  +0x160 - ? momentum modifier
+  +0x180 - X pos
+  +0x184 - Height
+  +0x188 - Y pos
+  +0x1f4 - Speed multiplier 1
+  +0x1f8 - Speed multiplier 2
+  +0x1fc - Speed multiplier 3
+  +0x214 - Current HP
+  +0x218 - Max HP
+  +0x768 - Current petrification level
+  +0x76c - Petrification resistance
+  +0x79c - 
+  +0xcc8 - Current freeze level
+  +0xccc - Freeze resistance
+  +0x1278 - Pointer to statue?
+  +0x417c - Current magic
+  +0x9664 - Start of inventory
+
+978834 - 3952ef30
+97ae90 - 39539fc0
+  +0x098 - Size multiplier 
+  +0x1f4 - Speed multiplier 1
+  +0x1f8 - Speed multiplier 2
+  +0x1fc - Speed multiplier 3
+  +0x214 - HP
+
+996568 - If 0, continue movie
+
+997584 - Path of WAD to load data from
+997708 - wadldr
+
+30193ab0 - ?
+301b6d90 - C0ED007/Start of Checkpoint
++0x0cf0 = Ch01, 301b7a80, 00000324
++0x0f30 = Ch05 
++0x1170 = Ch15 
++0x0cf0 = Ch17, 301b7a80
+ ++0C = HP
+ ++10 = HP Regen
+ ++14 = Magic
+ ++18 = Magic Regen
+ ++1c = Item(?) bar
+ ++20 = Item(?) regen
+ ++24 = Rage
+ ++28 = Rage Regen
+ ++30 = Red Orbs
+ ++34 = Artifacts
+  - 01 = Statue Worker's Idol (Increased stun)
+  - 02 = AntiKythera Mechanism (HP Drain)
+ ++35 = Artifacts
+  - 01 = Prisoner's Oath Stone (Inf Rage)
+  - 02 = Circe's Vial (3x combo time)
+  - 04 = Oracle Seeker's Offering (10x red orbs)
+  - 08 = Aletheia's Charm (66% damage)
+  - 10 = Boat Captain's Idol (Inf Magic)
+  - 20 = Orkos' Cloak (HP Regen)
+  - 40 = StoneMason's Chisel (Reduced Cooldown)
+  - 80 = Archimedes' Treatise (Win QTEs)
+
+ ++038 = X co-ord
+ ++03C = Height
+ ++040 = Y co-rd
+ ++046-049 = Four 1 byte integers (7F), set facing direction
+ ++05e = Swimming
+  -50 = Swimming
+  -08 = Standing
+ ++0cc = 1byte, 1 = frozen
+ ++0d7 = 1st ItemID (00=blades)
+  +++4 = 1st Item level
+  +++5 = 1st Item enabled
+  +++6 = 1st Item selected
+  +++9 = 1st Item - Orbs spent (Int)
+ ++0e7 = 2nd ItemID
+ ++0f7 = 3rd ItemID
+...
+ ++2d7 = Inventory count
+ ++303 = Eyes
+ ++307 = Feathers
+ ++317 = Ammo count
+
+
++0x15b0 = Ch01 Offset, 301b8340, 0083d1'2c 04ff00'00
++0x15b0 = Ch04 offset, 301b8340
++0x15b0 = Ch06 offset, 301b8340
++0x15b0 = Ch08 offset, 301b8340
++0x15b0 = Ch09 offset, 301b8340
++0x15b0 = Ch13 offset, 301b8340
++0x15b0 = Ch17 offset, 301b8340
++0x15b0 = Ch18 offset, 301b8340
+ ++17 = Difficulty
+ ++1b = NG+ (controls artifacts and trophies)
+
+32a98250 - Camera variables
+32a98288 - Part of camera co-ordinates
+32a98630 - More camvars?  4 = move, 0 = stop
+32a989a0 - Pointer to active camera?
+
+32abdbb2 - Menu temp area
+
+===========================
+32ad0458 - Start of equipment
+
+ID = ID * 0x20
+    -- 2000 - level 1
+    -- 6000 - level 2
+    -- a000 - level 3
+    -- e000 - level 4
+    -- 1200 - level 5
+
+Level (4byte binary)
+0 = 0000 - Unselected
+1 = 2000 - 0010000000000000
+2 = 6000 - 0110000000000000
+3 = a000 - 1010000000000000
+4 = e000 - 1110000000000000
+5 = 1200 - 0001001000000000
+
+wwwwwwww xxxxyyyy zzzzzzzz
+
+w=Number of times selected?
+x=ID
+y=Level
+z = Copy of X/Y?
+
++0x000 - PrimaryWeapon
+  - 0000 - 0000 - Explosive
+  - 0a40 - 0052 - Spartan_SwordQ
+  - 0a60 - 0053 - Spartan_SwordR
+  - 0a80 - 0054 - Spartan_SwordS
+  - 0aa0 - 0055 - Spartan_SwordT
+  - 0ac0 - 0056 - Spartan_SwordA
+  - 0ae0 - 0057 - Spartan_SwordC
+  - 0b00 - 0058 - Spartan_SwordH
+  - 0b20 - 0059 - Spartan_SwordD
+  - 0b40 - 005a - Spartan_SwordE
+  - 0b60 - 005b - Spartan_SwordF
+     ...
+  - 0ca0 - 0065 - Spartan_SwordP
+  - 0cc0 - 0066 - Spartan_HammerQ
+     ...
+  - 0f00 - 0078 - Spartan_HammerI
+  - 0f20 - 0079 - Spartan_SpearQ
+     ...
+  - 1140 - 008a - Spartan_SpearN
+  - 1160 - 008b - Spartan_GauntletA
++0x00c - Magic
++0x018 - Rage
+  - 01a0 - 000d - RageModeMultiplayer
++0x024 - MagicFire
+  - 00a0 - 0005 - MagicFire
++0x030 - MagicElectric
+  - 0080 - 0004 - MagicElectric
++0x03c - MagicIce
+  - 00c0 - 0006 - MagicIce
++0x048 - MagicSoul
+  - 00e0 - 0007 - MagicSoul
++0x054 - RageFire
+  - 0120 - 0009 - RageModeFireGameStart
+  - 0140 - 000a - RageModeFire
++0x060 - RageElectric
+  - 0100 - 0008 - RageModeElectric
++0x06c - RageIce
+  - 0160 - 000b - RageModeIce
++0x078 - RageSoul
+  - 0180 - 000c - RageModeSoul
++0x084 - SecondaryWeapon
+  - 0040 - 0002 - SpartanRageBladesAres
+  - 01c0 - 000e - RageModeBase
+  - 0360 - 001b - Bare
+  - 0380 - 001c - SubClub
+  - 03a0 - 001d - SubClub10
+  - 03c0 - 001e - SubClub20
+  - 0400 - 0020 - SubShield
+  - 0420 - 0021 - SubShield10
+  - 0440 - 0022 - SubShield20
+  - 0480 - 0024 - SubSling
+  - 04a0 - 0025 - SubSling10
+  - 04c0 - 0026 - SubSling20
+  - 0500 - 0028 - SubSpear
+  - 0520 - 0029 - SubSpear10
+  - 0540 - 002a - SubSpear20
+  - 0580 - 002c - SubSword
+  - 05a0 - 002d - SubSword10
+  - 05c0 - 002e - SubSword20
+  - 06c0 - 0036 - GodModePowerUp
+  - 0700 - 0038 - HermesBoots
+  - 0720 - 0039 - HermesBootsPowerUp
+  - 0740 - 003a - SubPowerHelios
+  - 0760 - 003b - MedusaHead
+  - 1180 - 008c - HermesShoes
+  - 12c0 - 0096 - ZeusBolt
++0x090 - MPObjective
+  - 0600 - 0030 - SpartanMPVIP
+  - 0620 - 0031 - SpartanMPFlag
+  - 0640 - 0032 - SpartanMPFlagRed
+  - 06a0 - 0035 - SpartanMPTitanKill
++0x09c - TertiaryWeapon
+  - 0020 - 0001 - SpartanBlades
+  - 0060 - 0003 - SpartanBlades_Gaunt
++0x0a8 - WeaponPowerUp_01
++0x0b4 - WeaponPowerUp_02
++0x0c0 - AuraPowerUp_01
++0x0cc - ShadowDouble
+  - 1260 - 0093 - ShadowDouble
++0x0d8 - LifeCycle
+  - 1220 - 0091 - LifeCycle
++0x0e4 - Eyes
+  - 12a0 - 0095 - Eyes
++0x0f0 - PoseidonTrident
+  - 11c0 - 008e - PoseidonTrident
++0x0fc - AvatarWaist
+  - 07c0 - 003e - KratosWaistPristine
+  - 07e0 - 003f - KratosWaistTattered
+  - 0820 - 0041 - KratosWaistTatteredInk
+  - 0860 - 0043 - KratosWaistPristineInk
+  - 08a0 - 0045 - KratosWaistAres
+  - 08e0 - 0047 - KratosWaistFury
+  - 0920 - 0049 - KratosWaistHades
+  - 0960 - 004b - KratosWaistKraken
+  - 09a0 - 004d - KratosWaistSkorpius
+  - 09e0 - 004f - KratosWaistZeus
+  - 0a20 - 0051 - KratosWaistOlive
+  - 12e0 - 0097 - SpartanBareWaist
++0x108 - AvatarFeet
++0x114 - AvatarForearms
++0x120 - AvatarChest
+  - 0780 - 003c - KratosBodyWhite
+  - 07a0 - 003d - KratosBodyDirty
+  - 0800 - 0040 - KratosBodyDirtyInk
+  - 0840 - 0042 - KratosBodyWhiteInk
+  - 0880 - 0044 - KratosBodyAres
+  - 08c0 - 0046 - KratosBodyFury
+  - 0900 - 0048 - KratosBodyHades
+  - 0940 - 004a - KratosBodyKraken
+  - 0980 - 004c - KratosBodySkorpius
+  - 09c0 - 004e - KratosBodyZeus
+  - 0a00 - 0050 - KratosBodyOlive
+  - 1300 - 0098 - none_Chest
++0x12c - AvatarShoulder
++0x138 - AvatarHelmet
+  - 1320 - 0099 - none_Helmet
++0x144 - AvatarHead
++0x150 - Allegiance
++0x15c - GodItem
++0x168 - Perk_01
++0x174 - Perk_02
++0x180 - Personality
++0x18c - Tattoo
++0x198 - WeaponSpecial_Square
+  - 2580 - 012c - SpartanSwordSpecialAthenaDash
+  - 2660 - 0133 - SpartanSwordSpecialSpinAres
+  - 26a0 - 0135 - SpartanSwordSpecialSpinZeus
+  - 2740 - 013a - SpartanSwordSpecialBoltZeus
+  - 2800 - 0140 - SpartanSwordSpecialUpper
+  - 2840 - 0142 - SpartanSwordSpecialSlice
+  - 2920 - 0149 - SpartanSwordSpecialSuperDash
+  - 2da0 - 016d - SpartanHammerSpecialThorLeap
+  - 2dc0 - 016e - SpartanHammerSpecialHeliosBlast
+  - 3160 - 018b - SpartanSpearSpecialSweepDestiny
+  - 3560 - 01ab - SpartanSpearSpecialDoubleGrind
++0x1a4 - WeaponSpecial_Triangle
+  - 2820 - 0141 - SpartanSwordSpecialHeMan
+  - 2860 - 0143 - SpartanSwordSpecialSingleWave
+  - 28e0 - 0147 - SpartanSwordSpecialTriple
+  - 2960 - 014b - SpartanSwordSpecialOrionPowerUp
+  - 2980 - 014c - SpartanSwordSpecialFlip
+  - 29c0 - 014e - SpartanSwordUnderworldDash
+  - 2a80 - 0154 - SpartanSwordSpecialOrionAura
+  - 2bc0 - 015e - SpartanSwordSpecialSummonPoseidon
+  - 2be0 - 015f - SpartanHammerSpecialAOE
+  - 2de0 - 016f - SpartanHammerSpecialHeliosAOE
+  - 31a0 - 018d - SpartanSpearSpecialFlurry
+  - 32a0 - 0195 - SpartanSpearSpecialSlamShard
++0x1b0 - WeaponSpecial_Cross
+  - 2a20 - 0151 - SpartanSwordSpecialPosOrbCounter
++0x1bc - Effect_Buff
++0x1c8 - Effect_Buff_Heal
++0x1d4 - Effect_Buff_Shield
++0x1e0 - Effect_Buff_DamagePhy
++0x1ec - Effect_Buff_DamageMag
++0x1f8 - Effect_Buff_DefensePhy
++0x204 - Effect_Buff_DefenseMag
++0x210 - Effect_Buff_Stealth
++0x21c - Effect_Buff_Aura
++0x228 - Effect_Buff_Grow
++0x234 - Effect_Buff_Speed
++0x240 - Effect_Debuff
++0x24c - Effect_Debuff_Helios
++0x258 - Effect_Debuff_Drain
++0x264 - Effect_Debuff_Stoned
++0x270 - Unnamed
++0x27c - Unnamed
++0x288 - Unnamed
++0x294 - Unnamed
++0x2a0 - Unnamed
++0x2ac - Unnamed
++0x2b8 - Unnamed
++0x2c4 - Unnamed
++0x2d0 - Unnamed
++0x2dc - Unnamed
++0x2e8 - Unnamed
++0x2f4 - Unnamed
+  - 01e0 - 000f - RageModeFire_Active
+  - 0200 - 0010 - RageModeIce_Active
+  - 0220 - 0011 - RageModeElectric_Active
+  - 0240 - 0012 - RageModeSoul_Active
+  - 0260 - 0013 - RageModeFire_Threshold1
+  - 0280 - 0014 - RageModeIce_Threshold1
+  - 02a0 - 0015 - RageModeElectric_Threshold1
+  - 02c0 - 0016 - RageModeSoul_Threshold1
+  - 02e0 - 0017 - RageModeFire_Threshold2
+  - 0300 - 0018 - RageModeIce_Threshold2
+  - 0320 - 0019 - RageModeElectric_Threshold2
+  - 0340 - 001a - RageModeSoul_Threshold2
+  - 03e0 - 001f - SubClubBase
+  - 0460 - 0023 - SubShieldBase	
+  - 04e0 - 0027 - SubSlingBase
+  - 0560 - 002b - SubSpearBase
+  - 05e0 - 002f - SubSwordBase
+  - 0660 - 0033 - SpartanMPFlagSpecialSquare
+  - 0680 - 0034 - SpartanMPFlagSpecialTriangle
+  - 11a0 - 008d - GoldenFleece
+  - 11e0 - 008f - Health
+  - 1200 - 0090 - Magic
+  - 1240 - 0092 - LifecycleGlow
+  - 1280 - 0094 - XeShadowDestroy
+
+==========================
+
+32ad2907 - Subweapon ammo
+32ad290b - Subweapon ammo (Inf ammo if 07 > 0b)
+
+331fced0 - Near mention of freelook?
+
+3320375c - Electric Rage
+33203a0c - if < 8a34d0 then apply glow
+33216ab4 - Fire
+3321a87c - Fire Rage
+3321d9dc - Soul Rage
+33224638 - Shield
+33226484 - Soul
+3322bb90 - Ice
+3322e980 - MedusaHead
+3323d324 - Ice Rage
+3323d554 - Electric
+
+3324cc60 - Pointer to Max MP
+3324cc78 - Max MP with 3 extensions
+
+
+
+
+
+34001968 - UserControlCam?
+
+
+
+3442bc54 - [*hitMeter:currentHits]
+
+
+346fc074 - Menu text for Prisoner's Oath Stone
+
+
+
+3543d060 - Start of items array?
+
+35440d44 - 03030203 = Hammer active
+35440d4c - 02030303 = Shield active
+
+3544dc7c - Pointer to grabbed object?
+
+3544fdc0 - Start of Kratos
+
+  +0x098 - Size multiplier
+  +0x180 - X pos
+  +0x184 - Height
+  +0x188 - Y pos
+  +0x1f4 - Speed multiplier 1
+  +0x1f8 - Speed multiplier 2
+  +0x1fc - Speed multiplier 3
+  +0x200 - Swimming
+    - 01 = Standing
+    - 03 = Falling
+    - 08 = Surface Swimming
+    - 09 = Rising to Surface
+    - 0A = Swimming
+  +0x214 - Current HP
+  +0x218 - Max HP
+
+3544ff40 - Kratos x pos
+3544ff44 - Kratos z pos
+3544ff48 - Kratos y pos
+3544ffc3 - Swimming
+  - 01 = Standing
+  - 03 = Falling
+  - 08 = Surface Swimming
+  - 09 = Rising to Surface
+  - 0A = Swimming
+
+3544fef0 - x velocity
+3544fef4 - z velocity
+3544fef8 - y velocity
+
+3544ffd4 - Kratos current HP
+3544ffd8 - Kratos max HP
+
+3544f974 - Oath stone cooldown timer
+
+9:35 PM 2/16/2015
+
+354513eb - Jump counter
+35453c34 - Start of Kratos?
+35453c68 - If 1, disable R1 grab, near pickup
+35453f3c - Kratos current Magic
+35453f44 - Unused GoW3 item bar?
+35453f48 - Item(?) bar regen
+35453f54 - Unknown final float
+35453f5c - Artifacts
+  - 00010000 = Prisoner's Oath Stone (Inf Rage)
+  - 00020000 = Circe's Vial (3x combo time)
+  - 00040000 = Oracle Seeker's Offering (10x red orbs)
+  - 00080000 = Aletheia's Charm (66% damage)
+  - 00100000 = Boat Captain's Idol (Inf Magic)
+  - 00200000 = Orkos' Cloak (HP Regen)
+  - 00400000 = StoneMason's Chisel (Reduced Cooldown)
+  - 00800000 = Archimedes' Treatise (Win QTEs)
+  - 01000000 = Statue Worker's Idol (Increased stun)
+  - 02000000 = AntiKythera Mechanism (HP Drain)
+
+35453fec - Start of Kratos Inventory?
+35453ff4 - 1 byte, frozen kratos
+
+3544fdc0 - Start of Kratos
+
+35455f24 - Amulet cooldown timer
+35456080 - Eyes cooldown timer
+35455dac - ID of subweapon data
+
+35459424 - Loaded items - PrimaryWeapon (+0x4C to Magic)
+3545946c - PrimaryWeapon Pointer (+0x48)
+  - Pointer + 0x14 - Pointer
+  - Pointer + 0x2c - Name of loaded item
+35459470 - Loaded Items - Magic
+354595ec - Loaded Items - MagicSoul (+0x4C to RageFire)
+35459634 - MagicSoul Pointer (
+35459638 - Loaded Items - RageFire
+35503c34 - Cam details
+
+
+
+36e97e24 - ??? TakeDamage ???
+
+
+
+
+
+
+
+
+
+
+
+C0DE1111 blocks:
+008b2680 - BLOCK_FIOS
+30019000 - Root
+3006ac00 - Network Perm
+300bc000 - Telemetry
+300dc080 - VoiceChat
+3274fbc8 - WAD_R_Perm
+32abd048 - Text
+33e879b0 - PartMiniModel
+33fb8f20 - UI
+33fb8f68 - WAD_R_UI
+3411f5e0 - WAD_R_UI_SP
+346b8f90 - Lang
+346b8fd8 - WAD_R_Lang
+347c22f0 - Sound
+34e122f8 - FIOS
+34ef8ff0 - TOC_FIOS
+35200000 - Network Game
+35300000 - WAD_R_Hero00
+3550da20 - KratosBodySet(0)_GOSTRM
+35614220 - KratosSkirtSet(0)_GOSTRM
+36400000 - Upgrade
+36403720 - Eyes[0]
+36403768 - WAD_R_W_Eyes
+36450780 - Lifecycle[0]
+364507c8 - WAD_R_W_Lifecycle
+364917e0 - ShadowDouble[0]
+36491828 - WAD_R_W_ShadowDouble
+365c9c40 - MagicSoul[0]
+365c9c88 - WAD_R_W_MagicSoul
+366ba4a0 - MagicElectric[0]
+366ba4e8 - WAD_R_W_MagicElectric
+36711d00 - MagicIce[0]
+36711d48 - WAD_R_W_MagicIce
+367acd60 - MagicFire[0]
+367acda8 - WAD_R_W_MagicFire
+3680b5c0 - RageSoul[0]
+3680b608 - WAD_R_W_RageModeSoul
+368ade20 - RageElectric[0]
+368ade68 - WAD_R_W_RageModeElectric
+36909e80 - RageIce[0]
+36909ec8 - WAD_R_W_RageModeIce
+369a5ae0 - RageFire[0]
+369a5b28 - WAD_R_W_RageModeFire
+369f2740 - SecondaryWeapon[0]
+369f2788 - WAD_R_W_   xxxx
+36b197a0 - PrimaryWeapon[0]
+36b197e8 - WAD_R_W_Explosive
+
+Varies:
+36100000 - WAD_R_ProphetRip00 / WAD_FuryBAS
+36d00000 - WAD_CynRetBAS
+36f00000 - WAD_Cyn510
+37400000 - WAD_R_ParasiteHeca02
+37600000 - WAD_Heca075AI
+37b00000 - WAD_Heca100
+38c00000 - WAD_CynMidDay
+39500000 - WAD_Heca100AI
+39900000 - WAD_R_Megaera03
+39c00000 - WAD_Heca200
+3b100000 - WAD_R_Prisoner00
+3b300000 - WAD_R_Megaera01
+
+a=level
+b=enabled (1=yes)
+c=selected (1=yes)
+x=item id
+y=orbs spent
+000000xx 0000000a 0b0c0000 yyyyyyyy
+
+WeaponID 
+00 - Blades of Chaos
+04 - Lightning of Zeus
+05 - Fire of Ares
+06 - Ice of Poseidon
+07 - Soul of Hades
+
+ELEMENTID
+08 - Lightning
+09 - RageModeFireGameStart
+0A - Fire
+0B - Ice
+0C - Soul
+
+00 - Explosive
+01 - SpartanBlades (causes glow)
+02 - SpartanRageBladesAres
+03 - SpartanBlades_Gaunt (causes glow)
+04 - MagicElectric
+05 - MagicFire
+06 - MagicIce
+07 - MagicSoul
+08 - RageModeElectric
+09 - RageModeFireGameStart
+0A - RageModeFire
+0B - RageModeIce
+0C - RageModeSoul
+0D - RageModeMultiplayer
+0E - RageModeBase
+0F - RageModeFire_Active
+10 - RageModeIce_Active
+11 - RageModeElectric_Active
+12 - RageModeSoul_Active
+13 - RageModeFire_Threshold1
+14 - RageModeIce_Threshold1
+15 - RageModeElectric_Threshold1
+16 - RageModeSoul_Threshold1
+17 - RageModeFire_Threshold2
+18 - RageModeIce_Threshold2
+19 - RageModeElectric_Threshold2
+1A - RageModeSoul_Threshold2
+1B = Bare Fists
+1C = SubClub
+1D = SubClub10
+1E = SubClub20
+1F = SubClubBase
+20 = SubShield
+21 = SubShield10
+22 = SubShield20
+23 = SubShieldBase
+24 = SubSling
+25 = SubSling10
+26 = SubSling20
+27 = SubSlingBase
+28 = SubSpear
+29 = SubSpear10
+2A = SubSpear20
+2B = SubSpearBase
+2C = SubSword
+2D = SubSword10
+2E = SubSword20
+2F = SubSwordBase
+30 = SpartanMPVIP MP Objective
+31 = SpartanMPFlag MP Objective
+32 = SpartanMPFlagRed  MP Objective
+33 = SpartanMPFlagSpecialSquare
+34 = SpartanMPFlagSpecialTriangle
+35 = SpartanMPTitanKill
+36 = GodModePowerUp
+37 = ZeusMagic (R_W_ZEUSMAGIC.WAD doesn't exist)
+38 = HermesBoots
+39 = HermesBootsPowerUp
+3A = HeliosHead
+3B = MedusaHead
+3C - KratosBodyWhite
+3D - KratosBodyDirty
+3E - KratosWaistPristine
+3F - KratosWaistTattered
+40 - KratosBodyDirtyInk
+41 - KratosWaistTatteredInk
+42 - KratosBodyWhiteInk
+43 - KratosWaistWhiteInk
+44 - KratosBodyAres
+45 - KratosWaistAres
+46 - KratosBodyFury
+47 - KratosWaistFury
+48 - KratosBodyHades
+49 - KratosWaistHades
+4A - KratosBodyKraken
+4B - KratosWaistKraken
+4C - KratosBodySkorpius
+4D - KratosWaistSkorpius
+4E - KratosBodyZeus
+4F - KratosWaistZeus
+50 - KratosBodyOlive
+51 - KratosWaistOlive
+52 = SpartanSwordQ
+53 = SpartanSwordR
+54 = SpartanSwordS
+55 = SpartanSwordT
+56 = SpartanSwordA
+57 = SpartanSwordC
+58 = SpartanSwordH
+59 = SpartanSwordD
+5A = SpartanSwordE
+5B = SpartanSwordF
+5C = SpartanSwordB
+5D = SpartanSwordG
+5E = SpartanSwordI
+5F = SpartanSwordJ
+60 = SpartanSwordK
+61 = SpartanSwordL
+62 = SpartanSwordM
+63 = SpartanSwordN
+64 = SpartanSwordO
+65 = SpartanSwordP
+66 = SpartanHammerQ
+67 = SpartanHammerR
+68 = SpartanHammerS
+69 = SpartanHammerB
+6A = SpartanHammerC
+6B = SpartanHammerD
+6C = SpartanHammerE
+6D = SpartanHammerA
+6E = SpartanHammerF
+6F = SpartanHammerG
+70 = SpartanHammerH
+71 = SpartanHammerO
+72 = SpartanHammerJ
+73 = SpartanHammerK
+74 = SpartanHammerL
+75 = SpartanHammerM
+76 = SpartanHammerN
+77 = SpartanHammerP
+78 = SpartanHammerI
+79 = SpartanSpearQ
+7A = SpartanSpearR
+7B = SpartanSpearA
+7C = SpartanSpearB
+7D = SpartanSpearC
+7E = SpartanSpearD
+7F = SpartanSpearE
+80 = SpartanSpearF
+81 = SpartanSpearG
+82 = SpartanSpearH
+83 = SpartanSpearI
+84 = SpartanSpearJ
+85 = SpartanSpearK
+86 = SpartanSpearL
+87 = SpartanSpearM
+88 = SpartanSpearP
+89 = SpartanSpearO
+8A = SpartanSpearN
+8B = SpartanGauntletA
+8C = HermesShoes
+8D = GoldenFleece
+8E = Poseidon's Trident
+8F = Health
+90 = Magic
+91 = Lifecycle
+92 = LifeCycleGlow
+93 = ShadowDouble
+94 = XeShadowDestroy
+95 = Eyes
+96 = ZeusBolt
+97 = (Crash)
+99 = SpartanBareHelmet (Crash)
+
+Iffy:
+98 = SpartanBlades
+9D = SpartanGladiatorMageWaist
+F1 = SpartanHeadWhite (?)
+F7 = Personality01_Crazed, Perk_Taunt, Perk_DeathStreak
+117 = GodAbilityAresBurstHeal
+12C = SpartanSwordSpecialAthenaDash - WeaponSpecial_Square
+14C = SpartanSwordSpecialFlip - WeaponSpecial_Triangle
+1E5 = MagicAresMine
+1F5 = Allegiance_Ares
+1Fd = ?
+
+
+SubWepID
+1B - Fists
+1C - Hammer data
+1F - Hammer UI
+20 - Shield data
+23 - Shield UI
+25 - Sling data
+27 - Sling UI
+28 - Spear data
+2B - Spear UI
+2C - Sword data
+2F - Sword UI
+
+BodyID
+3C - KratosBodyWhite
+3D - KratosBodyDirty
+40 - KratosBodyDirty
+42 - KratosBodyWhite
+44 - KratosBodyAres
+46 - KratosBodyFury
+48 - KratosBodyHades
+4A - KratosBodyKraken
+4C - KratosBodySkorpius
+4E - KratosBodyZeus
+50 - KratosBodyOlive
+
+WaistID
+3E - KratosWaistPristine 
+3F - KratosWaistTattered
+41 - KratosWaistTattered
+43 - KratosWaistWhite
+45 - KratosWaistAres
+47 - KratosWaistFury
+49 - KratosWaistHades
+4B - KratosWaistKraken
+4D - KratosWaistSkorpius
+4F - KratosWaistZeus
+51 - KratosWaistOlive
+
+8E - Poseidon's Trident
+91 - Amulet of Uroborus
+92 - Blue Glow for Amulet Tut
+93 - Oath Stone of Orko
+95 - Eyes of Truth
+
+Ammo = invcountloc + 0x40
+
+
+
+System Savedata:
+----------------
++0x17 - Difficulties Beaten
+  - 1 = Easy
+  - 2 = Normal
+  - 4 = Hard
+  - 8 = Very Hard
++0x1A - Artifacts
+  - 01 = Statue Worker's Idol (Increased stun)
+  - 02 = AntiKythera Mechanism (HP Drain)
+  - 04 = ????
++0x1B - Artifacts
+  - 01 = Prisoner's Oath Stone (Inf Rage)
+  - 02 = Circe's Vial (3x combo time)
+  - 04 = Oracle Seeker's Offering (10x red orbs)
+  - 08 = Aletheia's Charm (66% damage)
+  - 10 = Boat Captain's Idol (Inf Magic)
+  - 20 = Orkos' Cloak (HP Regen)
+  - 40 = StoneMason's Chisel (Reduced Cooldown)
+  - 80 = Archimedes' Treatise (Win QTEs)
++0x1C - Game Text
+  - 1 = English
+  - 2 = French
+  - 3 = Portugese
+  - 4 = Spanish
++0x1D - Speech Text
+  - 1 = English
+  - 2 = French
+  - 3 = Portugese
+  - 4 = Spanish
++0x1E - Music Volume (0-255)
++0x1F - Speech Volume (0-255)
++0x20 - SFX Volume (0-255)
++0x21 - Cinematic Volume (0-255)
++0x22 - Sound Mode
+  - 0 = Stereo
+  - 1 = Headphones
+  - 2 = Dolby Pro Logic II
++0x23 - Brightness (0-100)
++0x24 - Screen Scale (0-100)
++0x25 - Screen Location X (0-100)
++0x26 - Screen Location y (0-100)
++0x27 - Tutorial Display
+  - 02 = On
++0x28 - Show Subtitles
+
+----
+MP Profiles:
+Ares - 01
+52 - SpartanSwordQ -1
+1e5 - MagicAresMine -0
+1 - SpartanBlades - 1
+9d - SpartanGladiatorMageWaist - 1
+98 - SpartanBareChest - 1
+99 - SpartanBareHelmet - 1
+f1 - SpartanHeadWhite - 1
+1f5 - Allegiance_Ares - 1
+117 - GodAbilityAresBurstHeal - 0   (22e0)
+f7 - Personality01_Crazed - 1
+
+Hades - 02
+66
+1e9
+01
+9d
+98
+99
+f1
+1f6
+11c
+f8
+
+Poseidon - 04
+79
+1f1
+1
+9d
+98
+99
+f1
+1f7
+10f
+fa
+
+Zeus - 08
+52
+1ee
+01
+9d
+98
+99
+f1
+1f8
+113
+fe
+

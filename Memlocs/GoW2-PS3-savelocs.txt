@@ -1,0 +1,114 @@
+MASTER.BIN
+04 - Checksum Base
+08-0b - Secs Played
+0e - Difficulty
+0f - Bonus Play
+
+A2 - Treasures
+  01 - Collect 20 Cyclops Eyes
+A3 - Treasures
+  01 - Easy
+  02 - Normal
+  04 - Hard
+  08 - Very Hard
+  10 - ???
+  20 - ??
+  40 - God Ranking in Challenge Mode
+  80 - Titan Ranking in Challenge Mode
+  
+
+DATA0x.BIN
+0007 - Costume
+0008-1b - Wad #1
+001d-30- Wad #2
+
+0076 - X Pos
+007a - Height
+007e - Y Pos
+
+0090 - Swimming
+.
+009b - Unlocked
+  01 - Blade of Olympus
+  02 - ?
+  04 - Urn of Gaia
+  08 - Urn of the Gorgons
+  10 - Urn of Olympus
+  20 - Urn of Prometheus
+  40 - Urn of the Fates
+  80 - Urn of Poseidon
+009c - Unlocked
+  01 - ? - Is Something....
+  02 - Rage of the Titans
+  04 - Amulet of the Fates
+  08 - ?
+  10 - ?
+  20 - SoD
+  40 - Hammer
+  80 - Head of Euryale
+009d - Unlocked
+  01 - PRage
+  02 - CRage
+  04 - TBane
+  08 - ? - Is Something.....
+  10 - Golden Fleece
+  20 - AQuake
+  40 - Icarus Wings
+  80 - ? - Is something.....
+
+00a2 - Health
+00a6 - Magic
+00aa - Item Bar
+00ae - Rage
+00b2 - Magic Regen
+00b6 - Red Orbs
+
+00cc - Health Extensions
+00cd - Magic Extensions
+00ce - Item Extensions
+00cf - Blades Level
+
+00d1 - AQ Level
+00d2 - CR Level
+00d3 - PR Level
+00d4 - TB Level
+00d5 - SoD Level
+00d6 - BH Level
+00d7 - EH Level
+00d8 - BoO Level
+00d9 - Last Selected Magic
+  01 - PR
+  02 - CR
+  03 - TB
+  06 - AQ
+  10 - EH
+00da - Active Subweapon
+  0e - SoD
+  0f - BH
+  11 - BoO
+
+00db - 0 Forced Subwep equipped, 1 Blades Equipped
+00dc - Gorgon Eyes
+00dd - Phoenix Feathers
+
+00e2 - Cyclops Eyes
+
+00ed - Costume
+
+00f6 - Camera
+010e - CamWad
+
+083e - Time Played
+0842 - Frozen for cutscene
+0843 - Difficulty
+0844 - Infinite Health
+0845 - Urn of Olympus (Infinite Magic)
+0846 - Urn of Prometheus (Infinite Rage)
+0847 - Urn of the Gorgons (Weapons Petrify Enemies)
+0848 - Urn of Poseidon (Poseidon's Rage)
+0849 - Urn of Gaia (10x red orbs)
+084a - Urn of the Fates (Extend Combo Time)
+
+084c - Bonus Play
+
+0895 - Times Saved

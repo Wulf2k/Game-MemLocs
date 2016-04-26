@@ -1,0 +1,68 @@
+
+
+929f8 - 2f830000 - cmpwi cr7,r3,0x0
+
+929f8 - 484bf4a2 - ba 4bf4a0
+------------
+4bf4a0 - 3e203154 - lis r17, 0x3154
+4bf4a4 - 62310b20 - ori r17,r17,0x0b20
+4bf4a8 - c0f10000 - lfs f7, 0x0(r17)
+4bf4ac - fce0381e - fctiwz f7,f7
+4bf4b0 - 3dc00057 - lis r14, 0x0057
+4bf4b4 - 61ce7628 - ori r14,r14,0x7628
+4bf4b8 - 7ce077ae - stfiwx f7,0,r14
+------------------R3 = Save
+------------------Begin controller detect, 0x0082256b, R3 = 00000400 = Save
+4bf4bc - 3dc00082 - lis r14,0x0082
+4bf4c0 - 61ce256e - ori r14,256e
+4bf4c4 - 89ce0000 - lbz r14,0x0(r14)
+4bf4c8 - 71ce0004 - andi r14,r14,0x4
+4bf4cc - 69ce0005 - xori r14,r14,0x5
+4bf4d0 - 2f8e0002 - cmpwi cr7,r14,0x2
+4bf4d4 - 409c0008 - bge cr7,0x004bf4dc
+------------------If R3 Pressed
+4bf4d8 - 480933a2 - ba 000933a0
+------------------Else 
+------------------Begin controller detect, 0x0082256b, L3 = 00020000 = Swim Toggle
+4bf4dc - 3dc00082 - lis r14,0x0082
+4bf4e0 - 61ce256e - ori r14,256e
+4bf4e4 - 89ce0000 - lbz r14,0x0(r14)
+4bf4e8 - 71ce0002 - andi r14,r14,0x2
+4bf4ec - 69ce0003 - xori r14,r14,0x3
+4bf4f0 - 3e2030a1 - lis r17,30a1
+4bf4f4 - 6231e4a8 - ori r17,r17,e4a8
+4bf4f8 - 2f8e0002 - cmpwi cr7,r14,0x2
+4bf4fc - 409c0010 - bge cr7,0x0047a91c
+------------------If L3 Pressed
+4bf500 - 39e00001 - li r15,0x1
+4bf504 - 99f10000 - stb r15,0x0(r17)
+4bf508 - 48000030 - ba 0x0047a948
+------------------Else L3 not pressed
+4bf50c - 89f10000 - lbz r15,0x0(r17)
+4bf510 - 2f8f0000 - cmpwi cr7,r15,0x0
+4bf514 - 419e0024 - beq cr7,0x004bf538
+   ------------------If L3 not pressed and var = 1
+4bf518 - 39e00000 - li r15,0x0
+4bf51c - 99f10000 - stb r15,0x0(r17)
+4bf520 - 3e203154 - lis r17,3154
+4bf524 - 6231441a - ori r17,r17,441a
+4bf528 - 89d10000 - lbz r14,0x0(r17)
+4bf52c - 71ce0002 - andi r14,r14,0x2
+4bf530 - 69ce0002 - xori r14,r14,0x2
+4bf534 - 99d10000 - stb r14,0x0(r17)
+   ------------------If L3 not pressed and var = 0
+   ------------------Clean Up
+---------------------------
+4bf538 - 39c00000 - li r14, 0
+4bf53c - 39e00000 - li r15, 0
+4bf540 - 3a000000 - li r16, 0
+4bf544 - 3a200000 - li r17, 0
+4bf548 - 2f830000 - cmpwi cr7,r3,0x0
+4bf54c - 480929fe - ba 0x000929fc
+
+
+
+0x00577614 - Health 
+0x00577628 - Red Orbs
+0x0082256c - Controller value
+0x3154441a - Swimming

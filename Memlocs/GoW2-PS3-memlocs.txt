@@ -1,0 +1,160 @@
+GoW2-memlocs
+Live Data:
+53a084 - Camera Angle?
+53a758 - HUD visible?
+
+5761f4 - TOC pointer (307e2ac8)
+
+576758 - 01 = Stop everything.
+
+576768 - Playtime
+
+576773 - Urn of Olympus (Infinite Magic)
+576777 - Urn of Prometheus (Infinite Rage)
+57677b - Urn of the Gorgons (Weapons Petrify Enemies)
+57677f - Urn of Poseidon (Poseidon's Rage)
+576783 - Urn of Gaia (10x red orbs)
+576787 - Urn of the Fates (Extend Combo Time)
+
+57678b - ??
+57678f - Bonus Play
+
+57760d - Unlocked Spells
+  01 - Blade of Olympus
+  02 - ?
+  04 - Urn of Gaia
+  08 - Urn of the Gorgons
+  10 - Urn of Olympus
+  20 - Urn of Prometheus
+  40 - Urn of the Fates
+  80 - Urn of Poseidon
+57760e - Unlocked Spells
+  01 - ?
+  02 - Rage of the Titans
+  04 - Amulet of the Fates
+  08 - ?
+  10 - ?
+  20 - SoD
+  40 - Hammer
+  80 - Head of Euryale
+57760f - Unlocked Spells
+  01 - PRage
+  02 - CRage
+  04 - TBane
+  08 - ?
+  10 - Golden Fleece
+  20 - AQuake
+  40 - Icarus Wings
+  80 - ?
+
+  
+577618 - Magic Remaining
+577620 - Rage Remaining
+577624 - Magic Regen
+57762a - Red Orbs
+
+577646 - TB Level
+
+577de8 - UI State
+577e2f - 1 = Controller Removed
+577e57 - 1 = Challenge Select Menu
+577e5f - 1 = Arena of the Fates
+577e6c - 1 = Screen turns white
+
+
+57815b - Treasures (OR'd with 57830b)
+57830b - Treasures (OR'd with 57815b)
+
+307fef18 - Various menu status
+
+31540b1a - Swimming
+31540b20 - Kratos HP
+
+31544410 - Kratos Size
+31544414 - Kratos Speed
+3154441a - Swimming
+
+31544420 - Health Remaining
+31544430 - Health Regen
+
+31545170 - Health Remaining
+
+37f79708 - Controller input?
+
+
+Checkpoint Data:
+581095 - Unlocked Spells
+581096 - Unlocked Spells
+581097 - Unlocked Spells
+
+581846 - Infinite Health
+58184e - Bonus Play
+
+581920 - Checksum modifier
+581927 - Costume
+581928 - Wad #1
+58193d - Wad #2
+
+581996 - X Pos
+58199a - Z Pos
+58199e - Y Pos
+
+5819b0 - Swimming
+5819bb - Urns Unlocked
+5819bc - Weapons Unlocked
+5819bd - Spells Unlocked
+
+5819c2 - Health Remaining
+5819c6 - Magic Remaining
+5819ca - Amulet?
+5819ce - Rage?
+5819d2 - Magic Regen
+5819d6 - Red Orbs
+5819ec - Health Extensions
+5819ed - Magic Extensions
+5819ee - Amulet Extensions
+5819ef - Blades Level
+
+5819f1 - AQ Level
+5819f2 - CR Level
+5819f3 - PR Level
+5819f4 - TB Level
+5819f5 - SoD Level
+5819f6 - BH Level
+5819f7 - EH Level
+5819f8 - BoO Level
+5819f9 - Last Selected Magic
+5819fa - Active Subweapon
+5819fb - 0 Forced Subwep Equipped
+5819fc - Gorgon Eyes
+5819fd - Phoenix Feathers
+
+581a02 - Cyclops Eye
+
+582162 - Kratos Frozen
+582163 - Difficulty
+
+
+58b923 - Save Point name?
+
+82256c - Controller?
+
+
+307e2ac8 - TOC start
+ +0x0c8 - MTemplate_Opacity
+ +0x208 - SpecialLevel
+ +0x20c - Urns Available
+ +0x210 - Cheat (Undetermined effect)
+ +0x214 - Demo
+ +0x21c - EnableButtons (In menu)
+ +0x2a0 - FreeCombat_InfiniteHealth
+ +0x2a4 - FreeCombat_InfiniteMagic
+
+Code Modification:
+Inf Jumps
+99dd0 - 9008016c
+99e00 - 90080168
+99fec - 901e0168
+a1430 - 80090000
+a3dec - 83c90000
+a3fac - 911d016c

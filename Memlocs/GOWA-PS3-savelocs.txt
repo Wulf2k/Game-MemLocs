@@ -1,0 +1,120 @@
+System
+-----
+17 - Difficulties Beaten
+  - 1 = Easy
+  - 2 = Normal
+  - 4 = Hard
+  - 8 = Very Hard
+1A - Artifacts
+  - 01 = Statue Worker's Idol (Increased stun)
+  - 02 = AntiKythera Mechanism (HP Drain)
+  - 04 = ????
+1B - Artifacts
+  - 01 = Prisoner's Oath Stone (Inf Rage)
+  - 02 = Circe's Vial (3x combo time)
+  - 04 = Oracle Seeker's Offering (10x red orbs)
+  - 08 = Aletheia's Charm (66% damage)
+  - 10 = Boat Captain's Idol (Inf Magic)
+  - 20 = Orkos' Cloak (HP Regen)
+  - 40 = StoneMason's Chisel (Reduced Cooldown)
+  - 80 = Archimedes' Treatise (Win QTEs)
+1C - Game Text
+  - 1 = English
+  - 2 = French
+  - 3 = Portugese
+  - 4 = Spanish
+1D - Speech Text
+  - 1 = English
+  - 2 = French
+  - 3 = Portugese
+  - 4 = Spanish
+1E - Music Volume (0-255)
+1F - Speech Volume (0-255)
+20 - SFX Volume (0-255)
+21 - Cinematic Volume (0-255)
+22 - Sound Mode
+  - 0 = Stereo
+  - 1 = Headphones
+  - 2 = Dolby Pro Logic II
+23 - Brightness (0-100)
+24 - Screen Scale (0-100)
+25 - Screen Location X (0-100)
+26 - Screen Location y (0-100)
+27 - Tutorial Display
+  - 02 = On
+28 - Show Subtitles
+
+
+Profdata
+----
+
+00000324 - Start, search for value
+
++0C = Current HP (Float Value)
++14 = Current Magic (Float Value)
++18 = ? Unknown Float ?
++24 = Current Rage
+
++30 = Red Orbs  (Float Value)
++34 = Artifacts?
++35 = Artifacts?
++38 = X co-ord
++3C = Height
++40 = Y co-rd
++61 = Swimming (50 = Yes, 8 = No)
++DB = Blades Level
++E3 = Orbs spent on Blades
++E7 - (Next inventory item)
+
++EB = Lightning of Zeus Level
++EC = Lightning of Zeus Unlocked
++F3 = Orbs spent on Lightning
++FB = Fire of Ares Level
++FC = Fire of Ares Unlocked
++10C = Ice of Poseidon Unlocked
++11C = Soul of Hades Unlocked
++112 = Lightning Red Orbs Spent
++2D7 = Item count?
+
+
+
+
+
+
+2C04FF00 - 2nd offset
++14 = Difficulty
++18 = NG+
+
+
+
+0BOC
+4Lightning
+5Fire
+6Ice
+7Soul
+A?
+B?
+C?
+B?
+4E?
+4F?
+
+01 01 00 00 00 00 00 00 00 00 00 04 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 05 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 06 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 07 00 00 00 00 01 01 00 00 00 00 00 00 00 00 00 08 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 0A 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 0B 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 0C 00 00 00 00 01 01 00 00 00 00 00 00 00 00 00 20 00 00 00 00 01 01 00 00 00 00 00 00 00 00 00 23 00 00 00 00 01 01 00 00 00 00 00 00 00 00 00 40 00 00 00 00 01 01 00 00 00 00 00 00 00 00 00 41 00 00 00 00 01 01 00 00 00 00 00 00 00 00 00 8E 00 00 00 00 01 01 00 00 00 00 00 00 00 00 00 91 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 93 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 95 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 93 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 95 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+
+
+3d09e30 - Kratos Health
+
+5b09cdd - Kratos Red Orbs - derived,dec
+5b09e30 - Kratos Health - derived,Float
+
+994ffb4 - Kratos Speed - Float
+994ffd4 - Kratos Health - Float
+
+9953f04 - start of checkpoint?
+
+5b6dd28 - Kratos Red Orbs - Float
+d56dd28 - Kratos Red Orbs
+
+
+f146300 - Creature HP
