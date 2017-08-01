@@ -9,199 +9,649 @@
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>55</ID>
-          <Description>"Menus"</Description>
+          <ID>124</ID>
+          <Description>"Debug Flags"</Description>
           <Options moHideChildren="1"/>
           <LastState Value="" Activated="1" RealAddress="00000000"/>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
-              <ID>21</ID>
-              <Description>"General Dialog"</Description>
+              <ID>129</ID>
+              <Description>"All No Arrow Consume"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>DARKSOULS.exe+F784E6</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>135</ID>
+              <Description>"All No Attack"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>DARKSOULS.exe+F784EC</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>133</ID>
+              <Description>"All No Damage"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x13784ea</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>132</ID>
+              <Description>"All No Dead"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>DARKSOULS.exe+F784E9</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>134</ID>
+              <Description>"All No Hit"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>DARKSOULS.exe+F784EB</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>128</ID>
+              <Description>"All No MP Consume"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>DARKSOULS.exe+F784E5</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>123</ID>
+              <Description>"All No Magic Qty Consume"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x1376EE7</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>136</ID>
+              <Description>"All No Move"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>DARKSOULS.exe+F784ED</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>127</ID>
+              <Description>"All No Stamina Consume"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x13784E4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>137</ID>
+              <Description>"All No Update AI"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>DARKSOULS.exe+F784EE</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>126</ID>
+              <Description>"Player Exterminate"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x13784D3</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>130</ID>
+              <Description>"Player Hide"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>DARKSOULS.exe+F784E7</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>125</ID>
+              <Description>"Player No Dead"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x13784D2</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>131</ID>
+              <Description>"Player Silence"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>DARKSOULS.exe+F784E8</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>85</ID>
+          <Description>"Display"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>86</ID>
+              <Description>"Blurry #1"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x1378520</Address>
+              <Offsets>
+                <Offset>23c</Offset>
+                <Offset>10</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>87</ID>
+              <Description>"Blurry #2"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x1378520</Address>
+              <Offsets>
+                <Offset>23e</Offset>
+                <Offset>10</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>140</ID>
+              <Description>"Display Height"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x1378524</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>139</ID>
+              <Description>"Display Larger Compass"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x1378525</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>94</ID>
+              <Description>"Display Override"</Description>
               <Options moHideChildren="1"/>
               <LastState Value="" RealAddress="00000000"/>
-              <ShowAsSigned>1</ShowAsSigned>
               <GroupHeader>1</GroupHeader>
               <CheatEntries>
                 <CheatEntry>
-                  <ID>22</ID>
-                  <Description>"UI_MainID"</Description>
-                  <LastState Value="0" RealAddress="012E33E0"/>
-                  <ShowAsSigned>1</ShowAsSigned>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>0x12e33e0</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>23</ID>
-                  <Description>"UI_Button0ID"</Description>
-                  <LastState Value="0" RealAddress="012E33E4"/>
-                  <ShowAsSigned>1</ShowAsSigned>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>0x12e33e4</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>24</ID>
-                  <Description>"UI_Button1ID"</Description>
-                  <LastState Value="0" RealAddress="012E33E8"/>
-                  <ShowAsSigned>1</ShowAsSigned>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>0x12e33e8</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>25</ID>
-                  <Description>"UI_DlgType"</Description>
-                  <LastState Value="0" RealAddress="012E33EC"/>
-                  <ShowAsSigned>1</ShowAsSigned>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>0x12e33ec</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>26</ID>
-                  <Description>"UI_IsUseEventMsgCate"</Description>
-                  <LastState Value="0" RealAddress="012E33F0"/>
-                  <ShowAsSigned>1</ShowAsSigned>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>0x12e33f0</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>27</ID>
-                  <Description>"???"</Description>
-                  <LastState Value="0" RealAddress="012E33F4"/>
-                  <ShowAsSigned>1</ShowAsSigned>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>0x12e33f4</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>28</ID>
-                  <Description>"Result_ButtonID"</Description>
-                  <LastState Value="-1" RealAddress="012E33F8"/>
-                  <ShowAsSigned>1</ShowAsSigned>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>0x12e33f8</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>29</ID>
-                  <Description>"Scene_General Flag"</Description>
-                  <LastState Value="0" RealAddress="0F7A01F0"/>
-                  <ShowAsSigned>1</ShowAsSigned>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>0x13786d0</Address>
+                  <ID>96</ID>
+                  <Description>"Brightness B"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>0x1378520</Address>
                   <Offsets>
-                    <Offset>60</Offset>
+                    <Offset>278</Offset>
+                    <Offset>10</Offset>
                   </Offsets>
                 </CheatEntry>
                 <CheatEntry>
-                  <ID>30</ID>
-                  <Description>"Result"</Description>
-                  <LastState Value="0" RealAddress="0F7A0344"/>
-                  <ShowAsSigned>1</ShowAsSigned>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>0x13786d0</Address>
+                  <ID>97</ID>
+                  <Description>"Brightness G"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>0x1378520</Address>
                   <Offsets>
-                    <Offset>1B4</Offset>
+                    <Offset>274</Offset>
+                    <Offset>10</Offset>
                   </Offsets>
                 </CheatEntry>
                 <CheatEntry>
-                  <ID>31</ID>
-                  <Description>"0x814 - Gen ID"</Description>
-                  <LastState Value="-1" RealAddress="0F7A09A4"/>
-                  <ShowAsSigned>1</ShowAsSigned>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>0x13786d0</Address>
+                  <ID>95</ID>
+                  <Description>"Brightness R"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>0x1378520</Address>
                   <Offsets>
-                    <Offset>814</Offset>
+                    <Offset>270</Offset>
+                    <Offset>10</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>101</ID>
+                  <Description>"Contrast B"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>0x1378520</Address>
+                  <Offsets>
+                    <Offset>288</Offset>
+                    <Offset>10</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>102</ID>
+                  <Description>"Contrast G"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>0x1378520</Address>
+                  <Offsets>
+                    <Offset>284</Offset>
+                    <Offset>10</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>99</ID>
+                  <Description>"Contrast R"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>0x1378520</Address>
+                  <Offsets>
+                    <Offset>280</Offset>
+                    <Offset>10</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>103</ID>
+                  <Description>"Enable"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>0x1378520</Address>
+                  <Offsets>
+                    <Offset>26D</Offset>
+                    <Offset>10</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>100</ID>
+                  <Description>"Hue"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>0x1378520</Address>
+                  <Offsets>
+                    <Offset>28C</Offset>
+                    <Offset>10</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>98</ID>
+                  <Description>"Saturation"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>0x1378520</Address>
+                  <Offsets>
+                    <Offset>27C</Offset>
+                    <Offset>10</Offset>
                   </Offsets>
                 </CheatEntry>
               </CheatEntries>
             </CheatEntry>
             <CheatEntry>
-              <ID>32</ID>
-              <Description>"Talk Dialog"</Description>
+              <ID>138</ID>
+              <Description>"Display Smaller Compass"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x137851B</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>90</ID>
+              <Description>"Draw Bounding Boxes"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x1378520</Address>
+              <Offsets>
+                <Offset>241</Offset>
+                <Offset>10</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>142</ID>
+              <Description>"Draw Creatures"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>12df242</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>141</ID>
+              <Description>"Draw Map"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>12defeb</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>93</ID>
+              <Description>"Draw Shadows"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x1378520</Address>
+              <Offsets>
+                <Offset>246</Offset>
+                <Offset>10</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>91</ID>
+              <Description>"Draw Sprites"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x1378520</Address>
+              <Offsets>
+                <Offset>242</Offset>
+                <Offset>10</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>89</ID>
+              <Description>"Draw Textures"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x1378520</Address>
+              <Offsets>
+                <Offset>240</Offset>
+                <Offset>10</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88</ID>
+              <Description>"Draw Trees"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x1378520</Address>
+              <Offsets>
+                <Offset>23F</Offset>
+                <Offset>10</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>92</ID>
+              <Description>"Draw VFX"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x1378520</Address>
+              <Offsets>
+                <Offset>245</Offset>
+                <Offset>10</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>143</ID>
+              <Description>"Draw VFX"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>12df243</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>56</ID>
+          <Description>"Game state"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>84</ID>
+              <Description>"Debug flags"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>81</ID>
+                  <Description>"IsAutoMapWarpMode"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>0x13784A0</Address>
+                  <Offsets>
+                    <Offset>c37</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>82</ID>
+                  <Description>"IsChrNpcWanderTest"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>0x13784A0</Address>
+                  <Offsets>
+                    <Offset>c38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>83</ID>
+                  <Description>"IsDbgChrAllDead"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>0x13784A0</Address>
+                  <Offsets>
+                    <Offset>c39</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>70</ID>
+                  <Description>"IsDisableAllAreaEne"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>0x13784A0</Address>
+                  <Offsets>
+                    <Offset>c2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>71</ID>
+                  <Description>"IsDisableAllAreaEvent"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>0x13784A0</Address>
+                  <Offsets>
+                    <Offset>c2d</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>76</ID>
+                  <Description>"IsDisableAllAreaHiHit"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>0x13784A0</Address>
+                  <Offsets>
+                    <Offset>c32</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>77</ID>
+                  <Description>"IsDisableAllAreaLoHit"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>0x13784A0</Address>
+                  <Offsets>
+                    <Offset>c33</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>72</ID>
+                  <Description>"IsDisableAllAreaMap"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>0x13784A0</Address>
+                  <Offsets>
+                    <Offset>c2E</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>73</ID>
+                  <Description>"IsDisableAllAreaObj"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>0x13784A0</Address>
+                  <Offsets>
+                    <Offset>c2f</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>78</ID>
+                  <Description>"IsDisableAllAreaSFX"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>0x13784A0</Address>
+                  <Offsets>
+                    <Offset>c34</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>79</ID>
+                  <Description>"IsDisableAllAreaSound"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>0x13784A0</Address>
+                  <Offsets>
+                    <Offset>c35</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>74</ID>
+                  <Description>"IsEnableAllAreaObj"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>0x13784A0</Address>
+                  <Offsets>
+                    <Offset>c30</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>75</ID>
+                  <Description>"IsEnableAllAreaObjBreak"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>0x13784A0</Address>
+                  <Offsets>
+                    <Offset>c31</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>80</ID>
+                  <Description>"IsObjBreakRecordMode"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>0x13784A0</Address>
+                  <Offsets>
+                    <Offset>c36</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>58</ID>
+              <Description>"Bonfire ID"</Description>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0x13784A0</Address>
+              <Offsets>
+                <Offset>B04</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>62</ID>
+              <Description>"IsFpsDisconnection"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x13784A0</Address>
+              <Offsets>
+                <Offset>B4C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>64</ID>
+              <Description>"IsTitleStart"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x13784A0</Address>
+              <Offsets>
+                <Offset>B4E</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>69</ID>
+              <Description>"Last Solid Facing"</Description>
+              <VariableType>Float</VariableType>
+              <Address>0x13784A0</Address>
+              <Offsets>
+                <Offset>b7C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>66</ID>
+              <Description>"Last Solid xPos"</Description>
+              <VariableType>Float</VariableType>
+              <Address>0x13784A0</Address>
+              <Offsets>
+                <Offset>b70</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>68</ID>
+              <Description>"Last Solid yPos"</Description>
+              <VariableType>Float</VariableType>
+              <Address>0x13784A0</Address>
+              <Offsets>
+                <Offset>b74</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>67</ID>
+              <Description>"Last Solid zPos"</Description>
+              <VariableType>Float</VariableType>
+              <Address>0x13784A0</Address>
+              <Offsets>
+                <Offset>b78</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>57</ID>
+              <Description>"Save Slot"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0x13784A0</Address>
+              <Offsets>
+                <Offset>A70</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>61</ID>
+              <Description>"Saving Enabled"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0x13784A0</Address>
+              <Offsets>
+                <Offset>B40</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>59</ID>
+              <Description>"Tutorial begin"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x13784A0</Address>
+              <Offsets>
+                <Offset>b0c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>60</ID>
+              <Description>"bRequestToEnding"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x13784A0</Address>
+              <Offsets>
+                <Offset>b18</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>144</ID>
+              <Description>"Tendencies"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>145</ID>
+                  <Description>"Character Black/White"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>0x1378700</Address>
+                  <Offsets>
+                    <Offset>8</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>146</ID>
+                  <Description>"Character Left/Right"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>0x1378700</Address>
+                  <Offsets>
+                    <Offset>c</Offset>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>148</ID>
+          <Description>"Player"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>147</ID>
+              <Description>"Player Controller Pointer"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0x137D644</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>54</Offset>
+                <Offset>28</Offset>
+                <Offset>3c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>149</ID>
+              <Description>"Character Name"</Description>
+              <VariableType>String</VariableType>
+              <Length>10</Length>
+              <Unicode>1</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>1378700</Address>
+              <Offsets>
+                <Offset>a0</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>55</ID>
+          <Description>"Menus"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>37</ID>
+              <Description>"Briefing"</Description>
               <Options moHideChildren="1"/>
               <LastState Value="" Activated="1" RealAddress="00000000"/>
               <ShowAsSigned>1</ShowAsSigned>
               <GroupHeader>1</GroupHeader>
               <CheatEntries>
                 <CheatEntry>
-                  <ID>33</ID>
-                  <Description>"Status"</Description>
-                  <LastState Value="0" RealAddress="0F7A01D0"/>
-                  <ShowAsSigned>1</ShowAsSigned>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>0x13786d0</Address>
-                  <Offsets>
-                    <Offset>40</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>34</ID>
-                  <Description>"0x7F4 - Talk ID"</Description>
-                  <LastState Value="-1" RealAddress="0F7A0984"/>
-                  <ShowAsSigned>1</ShowAsSigned>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>0x13786d0</Address>
-                  <Offsets>
-                    <Offset>7F4</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>35</ID>
-                  <Description>"0x7F8"</Description>
-                  <LastState Value="0" RealAddress="0F7A0988"/>
-                  <ShowAsSigned>1</ShowAsSigned>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>0x13786d0</Address>
-                  <Offsets>
-                    <Offset>7F8</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>36</ID>
-                  <Description>"0x800 - Shop Msg ID"</Description>
-                  <LastState Value="-1" RealAddress="0F7A0990"/>
-                  <ShowAsSigned>1</ShowAsSigned>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>0x13786d0</Address>
-                  <Offsets>
-                    <Offset>800</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>40</ID>
-                  <Description>"Last Talk ID"</Description>
-                  <LastState Value="-1" RealAddress="0F7A0C98"/>
-                  <ShowAsSigned>1</ShowAsSigned>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>0x13786d0</Address>
-                  <Offsets>
-                    <Offset>B08</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>111</ID>
-                  <Description>"Now Talking ID"</Description>
-                  <LastState Value="-1" RealAddress="04C472B0"/>
-                  <ShowAsSigned>1</ShowAsSigned>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>0x137D7C8</Address>
-                  <Offsets>
-                    <Offset>790</Offset>
-                  </Offsets>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>37</ID>
-              <Description>"Briefing"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <ShowAsSigned>1</ShowAsSigned>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
                   <ID>38</ID>
                   <Description>"0XFD8 - Briefing ID"</Description>
-                  <LastState Value="-1" RealAddress="0F7A1168"/>
                   <ShowAsSigned>1</ShowAsSigned>
                   <VariableType>4 Bytes</VariableType>
                   <Address>0x13786d0</Address>
@@ -212,12 +662,137 @@
                 <CheatEntry>
                   <ID>39</ID>
                   <Description>"0xFDC - Can Close"</Description>
-                  <LastState Value="1" RealAddress="0F7A116C"/>
                   <ShowAsSigned>1</ShowAsSigned>
                   <VariableType>4 Bytes</VariableType>
                   <Address>0x13786d0</Address>
                   <Offsets>
                     <Offset>FDC</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>21</ID>
+              <Description>"General Dialog"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <ShowAsSigned>1</ShowAsSigned>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>31</ID>
+                  <Description>"0x814 - Gen ID"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>0x13786d0</Address>
+                  <Offsets>
+                    <Offset>814</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>27</ID>
+                  <Description>"???"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>0x12e33f4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>30</ID>
+                  <Description>"Result"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>0x13786d0</Address>
+                  <Offsets>
+                    <Offset>1B4</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>28</ID>
+                  <Description>"Result_ButtonID"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>0x12e33f8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>29</ID>
+                  <Description>"Scene_General Flag"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>0x13786d0</Address>
+                  <Offsets>
+                    <Offset>60</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>23</ID>
+                  <Description>"UI_Button0ID"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>0x12e33e4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>24</ID>
+                  <Description>"UI_Button1ID"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>0x12e33e8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>25</ID>
+                  <Description>"UI_DlgType"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>0x12e33ec</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>26</ID>
+                  <Description>"UI_IsUseEventMsgCate"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>0x12e33f0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>22</ID>
+                  <Description>"UI_MainID"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>0x12e33e0</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>43</ID>
+              <Description>"KeyGuide"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>47</ID>
+                  <Description>"ID"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>13786D0</Address>
+                  <Offsets>
+                    <Offset>158</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>48</ID>
+                  <Description>"X pos"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>1378640</Address>
+                  <Offsets>
+                    <Offset>78</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>49</ID>
+                  <Description>"Y pos"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>1378640</Address>
+                  <Offsets>
+                    <Offset>7c</Offset>
                   </Offsets>
                 </CheatEntry>
               </CheatEntries>
@@ -232,7 +807,6 @@
                 <CheatEntry>
                   <ID>44</ID>
                   <Description>"ID"</Description>
-                  <LastState Value="-1" RealAddress="0F7A02E4"/>
                   <ShowAsSigned>1</ShowAsSigned>
                   <VariableType>4 Bytes</VariableType>
                   <Address>13786D0</Address>
@@ -243,7 +817,6 @@
                 <CheatEntry>
                   <ID>45</ID>
                   <Description>"X pos"</Description>
-                  <LastState Value="181" RealAddress="0F879758"/>
                   <VariableType>Float</VariableType>
                   <Address>1378388</Address>
                   <Offsets>
@@ -253,49 +826,8 @@
                 <CheatEntry>
                   <ID>46</ID>
                   <Description>"Y pos"</Description>
-                  <LastState Value="91" RealAddress="0F87975C"/>
                   <VariableType>Float</VariableType>
                   <Address>1378388</Address>
-                  <Offsets>
-                    <Offset>7c</Offset>
-                  </Offsets>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>43</ID>
-              <Description>"KeyGuide"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>47</ID>
-                  <Description>"ID"</Description>
-                  <LastState Value="-1" RealAddress="0F7A02E8"/>
-                  <ShowAsSigned>1</ShowAsSigned>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>13786D0</Address>
-                  <Offsets>
-                    <Offset>158</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>48</ID>
-                  <Description>"X pos"</Description>
-                  <LastState Value="99" RealAddress="0F879658"/>
-                  <VariableType>Float</VariableType>
-                  <Address>1378640</Address>
-                  <Offsets>
-                    <Offset>78</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>49</ID>
-                  <Description>"Y pos"</Description>
-                  <LastState Value="639" RealAddress="0F87965C"/>
-                  <VariableType>Float</VariableType>
-                  <Address>1378640</Address>
                   <Offsets>
                     <Offset>7c</Offset>
                   </Offsets>
@@ -312,7 +844,6 @@
                 <CheatEntry>
                   <ID>51</ID>
                   <Description>"Draw Layout on Cursor"</Description>
-                  <LastState Value="0" RealAddress="0F7A01A8"/>
                   <VariableType>Byte</VariableType>
                   <Address>13786D0</Address>
                   <Offsets>
@@ -322,7 +853,6 @@
                 <CheatEntry>
                   <ID>52</ID>
                   <Description>"Draw Layout only Last"</Description>
-                  <LastState Value="0" RealAddress="0F7A01A9"/>
                   <VariableType>Byte</VariableType>
                   <Address>13786D0</Address>
                   <Offsets>
@@ -332,7 +862,6 @@
                 <CheatEntry>
                   <ID>53</ID>
                   <Description>"Draw Layout Disp Pos"</Description>
-                  <LastState Value="0" RealAddress="0F7A01AA"/>
                   <VariableType>Byte</VariableType>
                   <Address>13786D0</Address>
                   <Offsets>
@@ -342,11 +871,80 @@
                 <CheatEntry>
                   <ID>54</ID>
                   <Description>"Draw Layout only Registed"</Description>
-                  <LastState Value="0" RealAddress="0F7A01AB"/>
                   <VariableType>Byte</VariableType>
                   <Address>13786D0</Address>
                   <Offsets>
                     <Offset>1b</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>32</ID>
+              <Description>"Talk Dialog"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <ShowAsSigned>1</ShowAsSigned>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>34</ID>
+                  <Description>"0x7F4 - Talk ID"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>0x13786d0</Address>
+                  <Offsets>
+                    <Offset>7F4</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>35</ID>
+                  <Description>"0x7F8"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>0x13786d0</Address>
+                  <Offsets>
+                    <Offset>7F8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>36</ID>
+                  <Description>"0x800 - Shop Msg ID"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>0x13786d0</Address>
+                  <Offsets>
+                    <Offset>800</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>40</ID>
+                  <Description>"Last Talk ID"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>0x13786d0</Address>
+                  <Offsets>
+                    <Offset>B08</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>111</ID>
+                  <Description>"Now Talking ID"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>0x137D7C8</Address>
+                  <Offsets>
+                    <Offset>790</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>33</ID>
+                  <Description>"Status"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>0x13786d0</Address>
+                  <Offsets>
+                    <Offset>40</Offset>
                   </Offsets>
                 </CheatEntry>
               </CheatEntries>
@@ -368,7 +966,6 @@
                     <CheatEntry>
                       <ID>106</ID>
                       <Description>"Name"</Description>
-                      <LastState RealAddress="011D06CC"/>
                       <VariableType>String</VariableType>
                       <Length>10</Length>
                       <Unicode>1</Unicode>
@@ -382,7 +979,6 @@
                     <CheatEntry>
                       <ID>105</ID>
                       <Description>"Number"</Description>
-                      <LastState RealAddress="011D06DC"/>
                       <VariableType>String</VariableType>
                       <Length>10</Length>
                       <Unicode>1</Unicode>
@@ -405,7 +1001,6 @@
                     <CheatEntry>
                       <ID>109</ID>
                       <Description>"Name"</Description>
-                      <LastState RealAddress="011D06CC"/>
                       <VariableType>String</VariableType>
                       <Length>10</Length>
                       <Unicode>1</Unicode>
@@ -419,7 +1014,6 @@
                     <CheatEntry>
                       <ID>110</ID>
                       <Description>"Number"</Description>
-                      <LastState RealAddress="011D06C4"/>
                       <VariableType>String</VariableType>
                       <Length>10</Length>
                       <Unicode>1</Unicode>
@@ -437,97 +1031,33 @@
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
-          <ID>56</ID>
-          <Description>"Game state"</Description>
+          <ID>112</ID>
+          <Description>"Multiplayer"</Description>
           <Options moHideChildren="1"/>
           <LastState Value="" RealAddress="00000000"/>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
-              <ID>61</ID>
-              <Description>"Saving Enabled"</Description>
-              <LastState Value="1" RealAddress="039049A0"/>
-              <VariableType>4 Bytes</VariableType>
-              <Address>0x13784A0</Address>
-              <Offsets>
-                <Offset>B40</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>57</ID>
-              <Description>"Save Slot"</Description>
-              <LastState Value="1" RealAddress="039048D0"/>
-              <VariableType>4 Bytes</VariableType>
-              <Address>0x13784A0</Address>
-              <Offsets>
-                <Offset>A70</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>58</ID>
-              <Description>"Bonfire ID"</Description>
-              <LastState Value="1012962" RealAddress="03904964"/>
-              <ShowAsSigned>1</ShowAsSigned>
-              <VariableType>4 Bytes</VariableType>
-              <Address>0x13784A0</Address>
-              <Offsets>
-                <Offset>B04</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>59</ID>
-              <Description>"Tutorial begin"</Description>
-              <LastState Value="0" RealAddress="0390496C"/>
+              <ID>114</ID>
+              <Description>"Area #"</Description>
               <VariableType>Byte</VariableType>
-              <Address>0x13784A0</Address>
+              <Address>0x137E204</Address>
               <Offsets>
-                <Offset>b0c</Offset>
+                <Offset>a12</Offset>
               </Offsets>
             </CheatEntry>
             <CheatEntry>
-              <ID>60</ID>
-              <Description>"bRequestToEnding"</Description>
-              <LastState Value="0" RealAddress="03904978"/>
+              <ID>115</ID>
+              <Description>"World #"</Description>
               <VariableType>Byte</VariableType>
-              <Address>0x13784A0</Address>
+              <Address>0x137E204</Address>
               <Offsets>
-                <Offset>b18</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>62</ID>
-              <Description>"IsFpsDisconnection"</Description>
-              <LastState Value="0" RealAddress="039049AC"/>
-              <VariableType>Byte</VariableType>
-              <Address>0x13784A0</Address>
-              <Offsets>
-                <Offset>B4C</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>63</ID>
-              <Description>"IsOnlineMode"</Description>
-              <LastState Value="0" RealAddress="039049AD"/>
-              <VariableType>Byte</VariableType>
-              <Address>0x13784A0</Address>
-              <Offsets>
-                <Offset>B4D</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>64</ID>
-              <Description>"IsTitleStart"</Description>
-              <LastState Value="1" RealAddress="039049AE"/>
-              <VariableType>Byte</VariableType>
-              <Address>0x13784A0</Address>
-              <Offsets>
-                <Offset>B4E</Offset>
+                <Offset>a13</Offset>
               </Offsets>
             </CheatEntry>
             <CheatEntry>
               <ID>65</ID>
               <Description>"Invasion Type"</Description>
-              <LastState Value="0" RealAddress="03904A44"/>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
               <Address>0x13784A0</Address>
@@ -536,402 +1066,125 @@
               </Offsets>
             </CheatEntry>
             <CheatEntry>
-              <ID>66</ID>
-              <Description>"Last Solid xPos"</Description>
-              <LastState Value="0.1842848808" RealAddress="039049D0"/>
-              <VariableType>Float</VariableType>
+              <ID>122</ID>
+              <Description>"MP Channel"</Description>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>0x137E204</Address>
+              <Offsets>
+                <Offset>b69</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>121</ID>
+              <Description>"MP Enabled"</Description>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>0x137E204</Address>
+              <Offsets>
+                <Offset>b68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>63</ID>
+              <Description>"IsOnlineMode"</Description>
+              <VariableType>Byte</VariableType>
               <Address>0x13784A0</Address>
               <Offsets>
-                <Offset>b70</Offset>
+                <Offset>B4D</Offset>
               </Offsets>
             </CheatEntry>
             <CheatEntry>
-              <ID>68</ID>
-              <Description>"Last Solid yPos"</Description>
-              <LastState Value="-10.01986694" RealAddress="039049D4"/>
+              <ID>151</ID>
+              <Description>"Lock Session"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>0x137D82C</Address>
+              <Offsets>
+                <Offset>1c2</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>150</ID>
+              <Description>"Max MP Nodes"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>137f838</Address>
+              <Offsets>
+                <Offset>70</Offset>
+                <Offset>38</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>120</ID>
+              <Description>"Current MP Nodes"</Description>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>0x137E204</Address>
+              <Offsets>
+                <Offset>Ae0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>116</ID>
+              <Description>"MP Zone"</Description>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0x137E204</Address>
+              <Offsets>
+                <Offset>a14</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>117</ID>
+              <Description>"Self X pos"</Description>
+              <ShowAsSigned>1</ShowAsSigned>
               <VariableType>Float</VariableType>
-              <Address>0x13784A0</Address>
+              <Address>0x137E204</Address>
               <Offsets>
-                <Offset>b74</Offset>
+                <Offset>A18</Offset>
               </Offsets>
             </CheatEntry>
             <CheatEntry>
-              <ID>67</ID>
-              <Description>"Last Solid zPos"</Description>
-              <LastState Value="-59.02682114" RealAddress="039049D8"/>
+              <ID>118</ID>
+              <Description>"Self Y pos"</Description>
+              <ShowAsSigned>1</ShowAsSigned>
               <VariableType>Float</VariableType>
-              <Address>0x13784A0</Address>
+              <Address>0x137E204</Address>
               <Offsets>
-                <Offset>b78</Offset>
+                <Offset>A1c</Offset>
               </Offsets>
             </CheatEntry>
             <CheatEntry>
-              <ID>69</ID>
-              <Description>"Last Solid Facing"</Description>
-              <LastState Value="1" RealAddress="039049DC"/>
+              <ID>119</ID>
+              <Description>"Self Z pos"</Description>
+              <ShowAsSigned>1</ShowAsSigned>
               <VariableType>Float</VariableType>
-              <Address>0x13784A0</Address>
+              <Address>0x137E204</Address>
               <Offsets>
-                <Offset>b7C</Offset>
+                <Offset>A20</Offset>
               </Offsets>
             </CheatEntry>
             <CheatEntry>
-              <ID>84</ID>
-              <Description>"Debug flags"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>70</ID>
-                  <Description>"IsDisableAllAreaEne"</Description>
-                  <LastState Value="0" RealAddress="03904A8C"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>0x13784A0</Address>
-                  <Offsets>
-                    <Offset>c2c</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>71</ID>
-                  <Description>"IsDisableAllAreaEvent"</Description>
-                  <LastState Value="0" RealAddress="03904A8D"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>0x13784A0</Address>
-                  <Offsets>
-                    <Offset>c2d</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>72</ID>
-                  <Description>"IsDisableAllAreaMap"</Description>
-                  <LastState Value="0" RealAddress="03904A8E"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>0x13784A0</Address>
-                  <Offsets>
-                    <Offset>c2E</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>73</ID>
-                  <Description>"IsDisableAllAreaObj"</Description>
-                  <LastState Value="0" RealAddress="03904A8F"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>0x13784A0</Address>
-                  <Offsets>
-                    <Offset>c2f</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>74</ID>
-                  <Description>"IsEnableAllAreaObj"</Description>
-                  <LastState Value="0" RealAddress="03904A90"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>0x13784A0</Address>
-                  <Offsets>
-                    <Offset>c30</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>75</ID>
-                  <Description>"IsEnableAllAreaObjBreak"</Description>
-                  <LastState Value="0" RealAddress="03904A91"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>0x13784A0</Address>
-                  <Offsets>
-                    <Offset>c31</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>76</ID>
-                  <Description>"IsDisableAllAreaHiHit"</Description>
-                  <LastState Value="0" RealAddress="03904A92"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>0x13784A0</Address>
-                  <Offsets>
-                    <Offset>c32</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>77</ID>
-                  <Description>"IsDisableAllAreaLoHit"</Description>
-                  <LastState Value="0" RealAddress="03904A93"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>0x13784A0</Address>
-                  <Offsets>
-                    <Offset>c33</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>78</ID>
-                  <Description>"IsDisableAllAreaSFX"</Description>
-                  <LastState Value="0" RealAddress="03904A94"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>0x13784A0</Address>
-                  <Offsets>
-                    <Offset>c34</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>79</ID>
-                  <Description>"IsDisableAllAreaSound"</Description>
-                  <LastState Value="0" RealAddress="03904A95"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>0x13784A0</Address>
-                  <Offsets>
-                    <Offset>c35</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>80</ID>
-                  <Description>"IsObjBreakRecordMode"</Description>
-                  <LastState Value="0" RealAddress="03904A96"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>0x13784A0</Address>
-                  <Offsets>
-                    <Offset>c36</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>81</ID>
-                  <Description>"IsAutoMapWarpMode"</Description>
-                  <LastState Value="0" RealAddress="03904A97"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>0x13784A0</Address>
-                  <Offsets>
-                    <Offset>c37</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>82</ID>
-                  <Description>"IsChrNpcWanderTest"</Description>
-                  <LastState Value="0" RealAddress="03904A98"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>0x13784A0</Address>
-                  <Offsets>
-                    <Offset>c38</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>83</ID>
-                  <Description>"IsDbgChrAllDead"</Description>
-                  <LastState Value="0" RealAddress="03904A99"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>0x13784A0</Address>
-                  <Offsets>
-                    <Offset>c39</Offset>
-                  </Offsets>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>85</ID>
-          <Description>"Display"</Description>
-          <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
-          <GroupHeader>1</GroupHeader>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>86</ID>
-              <Description>"Blurry #1"</Description>
-              <LastState Value="1" RealAddress="0534134C"/>
-              <VariableType>Byte</VariableType>
-              <Address>0x1378520</Address>
+              <ID>113</ID>
+              <Description>"Steam ID"</Description>
+              <VariableType>String</VariableType>
+              <Length>16</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>0x137E204</Address>
               <Offsets>
-                <Offset>23c</Offset>
-                <Offset>10</Offset>
+                <Offset>a00</Offset>
               </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>87</ID>
-              <Description>"Blurry #2"</Description>
-              <LastState Value="1" RealAddress="0534134E"/>
-              <VariableType>Byte</VariableType>
-              <Address>0x1378520</Address>
-              <Offsets>
-                <Offset>23e</Offset>
-                <Offset>10</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>88</ID>
-              <Description>"Draw Trees"</Description>
-              <LastState Value="1" RealAddress="0534134F"/>
-              <VariableType>Byte</VariableType>
-              <Address>0x1378520</Address>
-              <Offsets>
-                <Offset>23F</Offset>
-                <Offset>10</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>89</ID>
-              <Description>"Draw Textures"</Description>
-              <LastState Value="1" RealAddress="05341350"/>
-              <VariableType>Byte</VariableType>
-              <Address>0x1378520</Address>
-              <Offsets>
-                <Offset>240</Offset>
-                <Offset>10</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>90</ID>
-              <Description>"Draw Bounding Boxes"</Description>
-              <LastState Value="0" RealAddress="05341351"/>
-              <VariableType>Byte</VariableType>
-              <Address>0x1378520</Address>
-              <Offsets>
-                <Offset>241</Offset>
-                <Offset>10</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>91</ID>
-              <Description>"Draw Sprites"</Description>
-              <LastState Value="1" RealAddress="05341352"/>
-              <VariableType>Byte</VariableType>
-              <Address>0x1378520</Address>
-              <Offsets>
-                <Offset>242</Offset>
-                <Offset>10</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>92</ID>
-              <Description>"Draw VFX"</Description>
-              <LastState Value="1" RealAddress="05341355"/>
-              <VariableType>Byte</VariableType>
-              <Address>0x1378520</Address>
-              <Offsets>
-                <Offset>245</Offset>
-                <Offset>10</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>93</ID>
-              <Description>"Draw Shadows"</Description>
-              <LastState Value="1" RealAddress="05341356"/>
-              <VariableType>Byte</VariableType>
-              <Address>0x1378520</Address>
-              <Offsets>
-                <Offset>246</Offset>
-                <Offset>10</Offset>
-              </Offsets>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>94</ID>
-              <Description>"Display Override"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>103</ID>
-                  <Description>"Enable"</Description>
-                  <LastState Value="0" RealAddress="0534137D"/>
-                  <VariableType>Byte</VariableType>
-                  <Address>0x1378520</Address>
-                  <Offsets>
-                    <Offset>26D</Offset>
-                    <Offset>10</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>95</ID>
-                  <Description>"Brightness R"</Description>
-                  <LastState Value="1" RealAddress="05341380"/>
-                  <VariableType>Float</VariableType>
-                  <Address>0x1378520</Address>
-                  <Offsets>
-                    <Offset>270</Offset>
-                    <Offset>10</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>97</ID>
-                  <Description>"Brightness G"</Description>
-                  <LastState Value="1" RealAddress="05341384"/>
-                  <VariableType>Float</VariableType>
-                  <Address>0x1378520</Address>
-                  <Offsets>
-                    <Offset>274</Offset>
-                    <Offset>10</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>96</ID>
-                  <Description>"Brightness B"</Description>
-                  <LastState Value="1" RealAddress="05341388"/>
-                  <VariableType>Float</VariableType>
-                  <Address>0x1378520</Address>
-                  <Offsets>
-                    <Offset>278</Offset>
-                    <Offset>10</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>98</ID>
-                  <Description>"Saturation"</Description>
-                  <LastState Value="1" RealAddress="0534138C"/>
-                  <VariableType>Float</VariableType>
-                  <Address>0x1378520</Address>
-                  <Offsets>
-                    <Offset>27C</Offset>
-                    <Offset>10</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>99</ID>
-                  <Description>"Contrast R"</Description>
-                  <LastState Value="1" RealAddress="05341390"/>
-                  <VariableType>Float</VariableType>
-                  <Address>0x1378520</Address>
-                  <Offsets>
-                    <Offset>280</Offset>
-                    <Offset>10</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>102</ID>
-                  <Description>"Contrast G"</Description>
-                  <LastState Value="1" RealAddress="05341394"/>
-                  <VariableType>Float</VariableType>
-                  <Address>0x1378520</Address>
-                  <Offsets>
-                    <Offset>284</Offset>
-                    <Offset>10</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>101</ID>
-                  <Description>"Contrast B"</Description>
-                  <LastState Value="1" RealAddress="05341398"/>
-                  <VariableType>Float</VariableType>
-                  <Address>0x1378520</Address>
-                  <Offsets>
-                    <Offset>288</Offset>
-                    <Offset>10</Offset>
-                  </Offsets>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>100</ID>
-                  <Description>"Hue"</Description>
-                  <LastState Value="0" RealAddress="0534139C"/>
-                  <VariableType>Float</VariableType>
-                  <Address>0x1378520</Address>
-                  <Offsets>
-                    <Offset>28C</Offset>
-                    <Offset>10</Offset>
-                  </Offsets>
-                </CheatEntry>
-              </CheatEntries>
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>152</ID>
+      <Description>"Entity Controller"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -1089,6 +1342,578 @@
         <Byte>90</Byte>
         <Byte>1C</Byte>
         <Byte>0B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov ecx,[esi+00000A7C]</Description>
+      <Address>00BF1BC7</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>7F1BC7</ModuleNameOffset>
+      <Before>
+        <Byte>96</Byte>
+        <Byte>88</Byte>
+        <Byte>0A</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>8B</Byte>
+        <Byte>8E</Byte>
+        <Byte>7C</Byte>
+        <Byte>0A</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>89</Byte>
+        <Byte>86</Byte>
+        <Byte>10</Byte>
+        <Byte>0A</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov [edi+18],FFFFFFFF</Description>
+      <Address>00D5BFAF</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>95BFAF</ModuleNameOffset>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>77</Byte>
+        <Byte>18</Byte>
+        <Byte>32</Byte>
+        <Byte>DB</Byte>
+      </Before>
+      <Actual>
+        <Byte>C7</Byte>
+        <Byte>47</Byte>
+        <Byte>18</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Actual>
+      <After>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+        <Byte>0F</Byte>
+        <Byte>84</Byte>
+        <Byte>93</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov [edi+18],ecx</Description>
+      <Address>00D5BFD9</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>95BFD9</ModuleNameOffset>
+      <Before>
+        <Byte>F7</Byte>
+        <Byte>E9</Byte>
+        <Byte>C1</Byte>
+        <Byte>FA</Byte>
+        <Byte>02</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>4F</Byte>
+        <Byte>18</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>CA</Byte>
+        <Byte>C1</Byte>
+        <Byte>E9</Byte>
+        <Byte>1F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov [edi+00000284],eax</Description>
+      <Address>00E6E697</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>A6E697</ModuleNameOffset>
+      <Before>
+        <Byte>E8</Byte>
+        <Byte>89</Byte>
+        <Byte>80</Byte>
+        <Byte>F6</Byte>
+        <Byte>FF</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>87</Byte>
+        <Byte>84</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F6</Byte>
+        <Byte>43</Byte>
+        <Byte>3F</Byte>
+        <Byte>01</Byte>
+        <Byte>74</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov [edi+00000284],FFFFFFFE</Description>
+      <Address>00E6E6DF</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>A6E6DF</ModuleNameOffset>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>84</Byte>
+        <Byte>C0</Byte>
+        <Byte>7E</Byte>
+        <Byte>13</Byte>
+      </Before>
+      <Actual>
+        <Byte>C7</Byte>
+        <Byte>87</Byte>
+        <Byte>84</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>FE</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Actual>
+      <After>
+        <Byte>EB</Byte>
+        <Byte>07</Byte>
+        <Byte>C6</Byte>
+        <Byte>87</Byte>
+        <Byte>89</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of movq [esi+10],xmm0</Description>
+      <Address>00E26931</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>A26931</ModuleNameOffset>
+      <Before>
+        <Byte>08</Byte>
+        <Byte>53</Byte>
+        <Byte>56</Byte>
+        <Byte>8B</Byte>
+        <Byte>F1</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>0F</Byte>
+        <Byte>D6</Byte>
+        <Byte>46</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>7E</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of movq [ecx+10],xmm0</Description>
+      <Address>00474364</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>74364</ModuleNameOffset>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>7E</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>0F</Byte>
+        <Byte>D6</Byte>
+        <Byte>41</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>7E</Byte>
+        <Byte>40</Byte>
+        <Byte>08</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of movq [ebx+10],xmm0</Description>
+      <Address>00E25483</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>A25483</ModuleNameOffset>
+      <Before>
+        <Byte>0F</Byte>
+        <Byte>7E</Byte>
+        <Byte>4C</Byte>
+        <Byte>24</Byte>
+        <Byte>40</Byte>
+      </Before>
+      <Actual>
+        <Byte>66</Byte>
+        <Byte>0F</Byte>
+        <Byte>D6</Byte>
+        <Byte>43</Byte>
+        <Byte>10</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>7E</Byte>
+        <Byte>83</Byte>
+        <Byte>58</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov [esi+000001E8],FFFFFFFF</Description>
+      <Address>00E269F5</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>A269F5</ModuleNameOffset>
+      <Before>
+        <Byte>9E</Byte>
+        <Byte>E4</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>C7</Byte>
+        <Byte>86</Byte>
+        <Byte>E8</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Actual>
+      <After>
+        <Byte>E8</Byte>
+        <Byte>5C</Byte>
+        <Byte>7E</Byte>
+        <Byte>C9</Byte>
+        <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov [edx+000001E8],FFFFFFFF</Description>
+      <Address>00E22F40</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>A22F40</ModuleNameOffset>
+      <Before>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+        <Byte>CC</Byte>
+      </Before>
+      <Actual>
+        <Byte>C7</Byte>
+        <Byte>82</Byte>
+        <Byte>E8</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Actual>
+      <After>
+        <Byte>80</Byte>
+        <Byte>3D</Byte>
+        <Byte>EC</Byte>
+        <Byte>84</Byte>
+        <Byte>37</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov [edx+000001E8],ecx</Description>
+      <Address>00E22F79</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>A22F79</ModuleNameOffset>
+      <Before>
+        <Byte>88</Byte>
+        <Byte>08</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>8A</Byte>
+        <Byte>E8</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C3</Byte>
+        <Byte>8B</Byte>
+        <Byte>89</Byte>
+        <Byte>30</Byte>
+        <Byte>02</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov byte ptr [ecx+000000A0],01</Description>
+      <Address>010140E2</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>C140E2</ModuleNameOffset>
+      <Before>
+        <Byte>81</Byte>
+        <Byte>04</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>C6</Byte>
+        <Byte>81</Byte>
+        <Byte>A0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>01</Byte>
+      </Actual>
+      <After>
+        <Byte>33</Byte>
+        <Byte>F6</Byte>
+        <Byte>8B</Byte>
+        <Byte>43</Byte>
+        <Byte>04</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov [edi+0000009C],ecx</Description>
+      <Address>00CF0108</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>8F0108</ModuleNameOffset>
+      <Before>
+        <Byte>A1</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>8F</Byte>
+        <Byte>9C</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>EB</Byte>
+        <Byte>1C</Byte>
+        <Byte>C6</Byte>
+        <Byte>87</Byte>
+        <Byte>A1</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov [edi+0000009C],FFFFFFFF</Description>
+      <Address>00CF0117</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>8F0117</ModuleNameOffset>
+      <Before>
+        <Byte>A1</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>C7</Byte>
+        <Byte>87</Byte>
+        <Byte>9C</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+        <Byte>FF</Byte>
+      </Actual>
+      <After>
+        <Byte>84</Byte>
+        <Byte>D2</Byte>
+        <Byte>74</Byte>
+        <Byte>07</Byte>
+        <Byte>C6</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov [eax+0000009C],ecx</Description>
+      <Address>00CDABB3</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>8DABB3</ModuleNameOffset>
+      <Before>
+        <Byte>98</Byte>
+        <Byte>A1</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>88</Byte>
+        <Byte>9C</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>88</Byte>
+        <Byte>98</Byte>
+        <Byte>A2</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov [edi+0000009C],ecx</Description>
+      <Address>00CF00D9</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>8F00D9</ModuleNameOffset>
+      <Before>
+        <Byte>A1</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>8F</Byte>
+        <Byte>9C</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>EB</Byte>
+        <Byte>44</Byte>
+        <Byte>84</Byte>
+        <Byte>D2</Byte>
+        <Byte>74</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov [edi+00000204],ebx</Description>
+      <Address>00CF0137</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>8F0137</ModuleNameOffset>
+      <Before>
+        <Byte>55</Byte>
+        <Byte>08</Byte>
+        <Byte>83</Byte>
+        <Byte>CB</Byte>
+        <Byte>FF</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>9F</Byte>
+        <Byte>04</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>47</Byte>
+        <Byte>44</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov [ecx+00000204],eax</Description>
+      <Address>010140DC</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>C140DC</ModuleNameOffset>
+      <Before>
+        <Byte>4B</Byte>
+        <Byte>04</Byte>
+        <Byte>83</Byte>
+        <Byte>C4</Byte>
+        <Byte>0C</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>81</Byte>
+        <Byte>04</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov [eax+00000204],ecx</Description>
+      <Address>00CDABBF</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>8DABBF</ModuleNameOffset>
+      <Before>
+        <Byte>98</Byte>
+        <Byte>A2</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>88</Byte>
+        <Byte>04</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>88</Byte>
+        <Byte>98</Byte>
+        <Byte>70</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov [ecx+00000204],eax</Description>
+      <Address>01014228</Address>
+      <ModuleName>DARKSOULS.exe</ModuleName>
+      <ModuleNameOffset>C14228</ModuleNameOffset>
+      <Before>
+        <Byte>4B</Byte>
+        <Byte>04</Byte>
+        <Byte>83</Byte>
+        <Byte>C4</Byte>
+        <Byte>0C</Byte>
+      </Before>
+      <Actual>
+        <Byte>89</Byte>
+        <Byte>81</Byte>
+        <Byte>04</Byte>
+        <Byte>02</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>C6</Byte>
+        <Byte>81</Byte>
+        <Byte>A0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
