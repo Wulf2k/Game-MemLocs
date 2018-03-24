@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="26">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Time remaining"</Description>
+      <LastState Value="125" RealAddress="8046B6C8"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Byte Big Endian</CustomType>
+      <Address>8046B6C8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"target of 2nd hp display"</Description>
+      <LastState Value="0" RealAddress="804A1134"/>
+      <VariableType>Byte</VariableType>
+      <Address>804A1134</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Timer Active"</Description>
+      <LastState Value="0" RealAddress="8046B6A5"/>
+      <VariableType>Byte</VariableType>
+      <Address>8046B6A5</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"P1 char id"</Description>
+      <LastState Value="1" RealAddress="803F0E0A"/>
+      <VariableType>Byte</VariableType>
+      <Address>803F0E0A</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"P1 color id"</Description>
+      <LastState Value="0" RealAddress="803F0E09"/>
+      <VariableType>Byte</VariableType>
+      <Address>803F0E09</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"Match end boolean"</Description>
+      <LastState Value="0" RealAddress="8046B6A6"/>
+      <VariableType>Byte</VariableType>
+      <Address>8046B6A6</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"Match state flag?"</Description>
+      <LastState Value="3" RealAddress="8046B6A0"/>
+      <VariableType>Byte</VariableType>
+      <Address>8046B6A0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"P3 HP"</Description>
+      <LastState Value="0" RealAddress="804A119A"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Byte Big Endian</CustomType>
+      <Address>804A119A</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"Camera y angle"</Description>
+      <LastState Value="207.6252899" RealAddress="80452C80"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>Float Big Endian</CustomType>
+      <Address>80452C80</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"Camera x angle"</Description>
+      <LastState Value="-120.1698761" RealAddress="80452C7C"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>Float Big Endian</CustomType>
+      <Address>80452C7C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>11</ID>
+      <Description>"P1 x pos"</Description>
+      <LastState Value="-140.4996948" RealAddress="80E4B990"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>Float Big Endian</CustomType>
+      <Address>80E4B990</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"p1 height"</Description>
+      <LastState Value="164.5877075" RealAddress="80E4B994"/>
+      <VariableType>Custom</VariableType>
+      <CustomType>Float Big Endian</CustomType>
+      <Address>80E4B994</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

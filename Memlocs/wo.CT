@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="26">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"xPos"</Description>
+      <LastState Value="15223.37598" RealAddress="2EAB14F0"/>
+      <VariableType>Float</VariableType>
+      <Address>"OpenAL64.dll"+0005C308</Address>
+      <Offsets>
+        <Offset>C0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"yPos"</Description>
+      <LastState Value="5106.922363" RealAddress="2EAB14F8"/>
+      <VariableType>Float</VariableType>
+      <Address>"OpenAL64.dll"+0005C308</Address>
+      <Offsets>
+        <Offset>C8</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Height"</Description>
+      <LastState Value="11.64513588" RealAddress="2EAB14F4"/>
+      <VariableType>Float</VariableType>
+      <Address>"OpenAL64.dll"+0005C308</Address>
+      <Offsets>
+        <Offset>C4</Offset>
+      </Offsets>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <Comments>Info about this table:
+</Comments>
+</CheatTable>
