@@ -2,9 +2,37 @@
 <CheatTable CheatEngineTableVersion="26">
   <CheatEntries>
     <CheatEntry>
+      <ID>4</ID>
+      <Description>"xTile"</Description>
+      <LastState Value="3799" RealAddress="6C38B79C0"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>jfxwebkit.dll+022c3c78</Address>
+      <Offsets>
+        <Offset>35c8</Offset>
+        <Offset>1124</Offset>
+        <Offset>1b0</Offset>
+        <Offset>5e8</Offset>
+        <Offset>13ac</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"yTile"</Description>
+      <LastState Value="1281" RealAddress="6C38B79C4"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>jfxwebkit.dll+022c3c78</Address>
+      <Offsets>
+        <Offset>35cc</Offset>
+        <Offset>1124</Offset>
+        <Offset>1b0</Offset>
+        <Offset>5e8</Offset>
+        <Offset>13ac</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
       <ID>0</ID>
       <Description>"xPos"</Description>
-      <LastState Value="15223.37598" RealAddress="2EAB14F0"/>
+      <LastState Value="15198.60645" RealAddress="26EF14F0"/>
       <VariableType>Float</VariableType>
       <Address>"OpenAL64.dll"+0005C308</Address>
       <Offsets>
@@ -14,7 +42,7 @@
     <CheatEntry>
       <ID>1</ID>
       <Description>"yPos"</Description>
-      <LastState Value="5106.922363" RealAddress="2EAB14F8"/>
+      <LastState Value="5125.986328" RealAddress="26EF14F8"/>
       <VariableType>Float</VariableType>
       <Address>"OpenAL64.dll"+0005C308</Address>
       <Offsets>
@@ -24,11 +52,33 @@
     <CheatEntry>
       <ID>2</ID>
       <Description>"Height"</Description>
-      <LastState Value="11.64513588" RealAddress="2EAB14F4"/>
+      <LastState Value="1.532357812" RealAddress="26EF14F4"/>
       <VariableType>Float</VariableType>
       <Address>"OpenAL64.dll"+0005C308</Address>
       <Offsets>
         <Offset>C4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Facing"</Description>
+      <LastState Value="-10382.79102" RealAddress="26EF1560"/>
+      <VariableType>Float</VariableType>
+      <Address>"OpenAL64.dll"+0005C308</Address>
+      <Offsets>
+        <Offset>130</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"pointerscan result"</Description>
+      <LastState Value="0" RealAddress="0073640D"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"jfxwebkit.dll"+01C8191C</Address>
+      <Offsets>
+        <Offset>1AC</Offset>
+        <Offset>3E8</Offset>
+        <Offset>298</Offset>
       </Offsets>
     </CheatEntry>
   </CheatEntries>
