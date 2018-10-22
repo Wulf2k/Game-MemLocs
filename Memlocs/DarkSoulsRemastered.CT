@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="26">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Chardata1"</Description>
+      <LastState Value="0000000141319A08" RealAddress="0E51FF40"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>8 Bytes</VariableType>
+      <Address>141D01FC0</Address>
+      <Offsets>
+        <Offset>0</Offset>
+        <Offset>68</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Chardata2"</Description>
+      <LastState Value="00000001413D13C0" RealAddress="0D238570"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141D146E0</Address>
+      <Offsets>
+        <Offset>0</Offset>
+        <Offset>10</Offset>
+      </Offsets>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
