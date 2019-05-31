@@ -4018,12 +4018,24 @@ ff1a9183:TestNet
       <GroupHeader>1</GroupHeader>
     </CheatEntry>
     <CheatEntry>
-      <ID>519</ID>
+      <ID>524</ID>
       <Description>"No description"</Description>
-      <ShowAsHex>1</ShowAsHex>
-      <VariableType>Array of byte</VariableType>
-      <ByteLength>10</ByteLength>
-      <Address>1402A8850</Address>
+      <VariableType>String</VariableType>
+      <Length>7</Length>
+      <Unicode>1</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>DarkSoulsRemastered.exe+13B1B78</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>525</ID>
+      <Description>"No description"</Description>
+      <VariableType>String</VariableType>
+      <Length>7</Length>
+      <Unicode>1</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>0B1DDDA8</Address>
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>
