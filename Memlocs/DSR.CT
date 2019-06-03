@@ -571,6 +571,104 @@
                         </CheatEntry>
                       </CheatEntries>
                     </CheatEntry>
+                    <CheatEntry>
+                      <ID>526</ID>
+                      <Description>"Step"</Description>
+                      <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">00000001:STEP_NO_BootDelay
+00000002:STEP_NO_InitMenu
+00000003:STEP_NO_AttentionDlg
+00000004:STEP_NO_Logo
+00000005:STEP_NO_LogoWait
+00000006:STEP_NO_AdvertiseMovie
+00000007:STEP_NO_AdvertiseMovieWait
+00000008:STEP_NO_InitMenuData
+00000009:STEP_NO_InitEventData
+0000000A:STEP_NO_TitleMovie
+0000000B:STEP_NO_TitlePressStartWait
+0000000C:STEP_NO_SystemSetup
+0000000D:STEP_NO_LatestDataCheck
+0000000E:STEP_NO_LatestDataCheckWait
+0000000F:STEP_HddSizeCheck_SaveData
+00000010:STEP_HddSizeCheck_SaveDataWait
+00000011:STEP_HddSizeCheck_FreeHddSize
+00000012:STEP_HddSizeCheck_Fail
+00000013:STEP_HddSizeCheck_FailWait
+00000014:STEP_NO_LoadSaveData
+00000015:STEP_NO_LoadSaveDataWait
+00000016:STEP_NO_SaveDataVersionErr
+00000017:STEP_NO_SaveDataVersionErrWait
+00000018:STEP_NO_ShutdownPowerDetection
+00000019:STEP_NO_ShutdownPowerDetectionWait
+0000001A:STEP_NO_ConfirmSaveDataReCreate
+0000001B:STEP_NO_ConfirmSaveDataReCreateWait
+0000001C:STEP_NO_HDDCapacityCheck
+0000001D:STEP_NO_HDDCapacityCheckWait
+0000001E:STEP_NO_MakeOptionData
+0000001F:STEP_NO_MakeOptionDataWait
+00000020:STEP_NO_MakeProfileData
+00000021:STEP_NO_MakeProfileDataWait
+00000022:STEP_NO_MakeSaveDataFailed
+00000023:STEP_NO_DataInvalid
+00000024:STEP_NO_CheckRestores
+00000025:STEP_NO_CheckRestoresWait
+00000026:STEP_NO_RestoresData
+00000027:STEP_NO_SaveRestoresData
+00000028:STEP_NO_SaveRestoresDataWait
+00000029:STEP_NO_RestoresFailed
+0000002A:STEP_NO_CheckRestoresAgain
+0000002B:STEP_NO_SystemSetupDone
+0000002C:STEP_NO_DisplayPrivacyPolicyDlg
+0000002D:STEP_NO_DisplayPrivacyPolicyDlgWait
+0000002E:STEP_NO_PlayModeCheck
+0000002F:STEP_NO_NetworkCheck
+00000030:STEP_NO_NetworkCheckWait
+00000031:STEP_NO_UseOfServerCheck
+00000032:STEP_NO_UseOfServerCheckWait
+00000033:STEP_NO_LoginProcess
+00000034:STEP_NO_LoginProcessWait
+00000035:STEP_NO_LoginProcessFailed
+00000036:STEP_NO_LoginProcessFailedWait
+00000037:STEP_NO_LoginProcessFailedBannedWait
+00000038:STEP_NO_LogOutProcess
+00000039:STEP_NO_LogOutProcessWait
+0000003A:STEP_NO_OnlineModeSetup
+0000003B:STEP_NO_OnlineModeSetupWait
+0000003C:STEP_NO_OptionDataUpdate
+0000003D:STEP_NO_OptionDataUpdateWait
+0000003E:STEP_NO_OptionDataUpdateError
+0000003F:STEP_NO_OptionDataUpdateErrorWait
+00000040:STEP_NO_OfflineMode
+00000041:STEP_NO_OfflineModeWait
+00000042:STEP_NO_Title
+00000043:STEP_NO_ChildStepWait
+00000044:STEP_NO_PlayGame
+00000045:STEP_NO_GameStepWait
+00000046:STEP_NO_EndFlow
+00000047:STEP_NO_EndFlowWait
+00000048:STEP_NO_Finish
+00000049:STEP_NO_ReturnToMenu
+0000004A:STEP_NO_ReturnToMenuWait
+0000004B:STEP_NO_QuitGame
+0000004C:STEP_NO_QuitGameWait
+0000004D:STEP_NO_ReturnToMenuPressStartState
+0000004E:STEP_NO_ReturnToMenuPressStartStateWait
+0000004F:STEP_NO_BootFail
+00000050:STEP_NO_BootFailWait
+00000051:STEP_NO_LanCutFlow
+00000052:STEP_NO_LanCutFlowWait
+00000053:STEP_NO_Null
+</DropDownList>
+                      <ShowAsHex>1</ShowAsHex>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>141c04e28</Address>
+                      <Offsets>
+                        <Offset>10</Offset>
+                        <Offset>20</Offset>
+                        <Offset>58</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
                   </CheatEntries>
                 </CheatEntry>
               </CheatEntries>
