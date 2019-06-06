@@ -2,6 +2,63 @@
 <CheatTable CheatEngineTableVersion="28">
   <CheatEntries>
     <CheatEntry>
+      <ID>527</ID>
+      <Description>"DebugFlags"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>528</ID>
+          <Description>"bDrawMap"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Byte</VariableType>
+          <Address>141ac6e90</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>529</ID>
+          <Description>"bDrawObjects"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Byte</VariableType>
+          <Address>141ac6e91</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>530</ID>
+          <Description>"bDrawChrs"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Byte</VariableType>
+          <Address>141ac6e92</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>531</ID>
+          <Description>"bDrawSfx"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Byte</VariableType>
+          <Address>141ac6e93</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>532</ID>
+          <Description>"bDrawRemo"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Byte</VariableType>
+          <Address>141ac6e94</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>533</ID>
+          <Description>"bPlayerNoDead"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Byte</VariableType>
+          <Address>141d151c9</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>534</ID>
+          <Description>"bPlayerHide"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Byte</VariableType>
+          <Address>141d151cf</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
       <ID>10</ID>
       <Description>"ActPntManImp"</Description>
       <ShowAsHex>1</ShowAsHex>
@@ -4124,16 +4181,6 @@ ff1a9183:TestNet
       <CodePage>0</CodePage>
       <ZeroTerminate>1</ZeroTerminate>
       <Address>DarkSoulsRemastered.exe+13B1B78</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>525</ID>
-      <Description>"No description"</Description>
-      <VariableType>String</VariableType>
-      <Length>7</Length>
-      <Unicode>1</Unicode>
-      <CodePage>0</CodePage>
-      <ZeroTerminate>1</ZeroTerminate>
-      <Address>0B1DDDA8</Address>
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>
