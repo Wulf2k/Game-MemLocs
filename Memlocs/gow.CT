@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="26">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"Options"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" Activated="1" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>6</ID>
+          <Description>"Wide Screen"</Description>
+          <LastState Value="0" RealAddress="2076D8A4"/>
+          <VariableType>Byte</VariableType>
+          <Address>2076D8A4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>7</ID>
+          <Description>"Progressive Scan"</Description>
+          <LastState Value="0" RealAddress="2076D8A8"/>
+          <VariableType>Byte</VariableType>
+          <Address>2076D8A8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"Soften"</Description>
+          <LastState Value="1" RealAddress="2076D8AC"/>
+          <VariableType>Byte</VariableType>
+          <Address>2076D8AC</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>3</ID>
+          <Description>"Music Volume"</Description>
+          <LastState Value="10" RealAddress="2076D898"/>
+          <VariableType>Byte</VariableType>
+          <Address>2076D898</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"SFX Volume"</Description>
+          <LastState Value="10" RealAddress="2076D89C"/>
+          <VariableType>Byte</VariableType>
+          <Address>2076D89C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>8</ID>
+          <Description>"Sound Mode"</Description>
+          <LastState Value="2" RealAddress="2076D8B0"/>
+          <VariableType>Byte</VariableType>
+          <Address>2076D8B0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>2</ID>
+          <Description>"Vibration"</Description>
+          <LastState Value="00" Activated="1" RealAddress="202A11C0"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Byte</VariableType>
+          <Address>202A11C0</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"HP"</Description>
+      <LastState Value="100" Activated="1" RealAddress="20795978"/>
+      <VariableType>Float</VariableType>
+      <Address>20795978</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"Freeze FX?"</Description>
+      <LastState Value="0" RealAddress="2029C0B8"/>
+      <VariableType>Byte</VariableType>
+      <Address>2029C0B8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>11</ID>
+      <Description>"Freeze AI?"</Description>
+      <LastState Value="0" RealAddress="205780D4"/>
+      <VariableType>Byte</VariableType>
+      <Address>205780D4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"GameState?"</Description>
+      <LastState Value="0" RealAddress="2029E561"/>
+      <VariableType>Byte</VariableType>
+      <Address>2029E561</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>13</ID>
+      <Description>"Current Menu Item"</Description>
+      <LastState Value="0" RealAddress="20781090"/>
+      <VariableType>Byte</VariableType>
+      <Address>20781090</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
