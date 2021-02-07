@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="34">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"LastSpellId"</Description>
+      <LastState Value="4122A50B" RealAddress="00AB5B64"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00AB5B64</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"LastObjectType"</Description>
+      <LastState Value="000014F6" RealAddress="00AB33EC"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00AB33EC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"LastObjectId"</Description>
+      <LastState Value="4122A50B" RealAddress="00AB33F0"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00AB33F0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"LastTargetId"</Description>
+      <LastState Value="410FB72B" RealAddress="00AB33FC"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00AB33FC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"LastTargetType"</Description>
+      <LastState Value="2" RealAddress="00AB3404"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00AB3404</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"LastTargetXTile"</Description>
+      <LastState Value="842" RealAddress="00AB358C"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>00AB358C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"LastTargetYTile"</Description>
+      <LastState Value="2009" RealAddress="00AB358E"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>00AB358E</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"ChatLength"</Description>
+      <LastState Value="6" RealAddress="6FC95DD8"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00AB8414</Address>
+      <Offsets>
+        <Offset>8</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"ChatText"</Description>
+      <LastState RealAddress="6FC95DDC"/>
+      <VariableType>String</VariableType>
+      <Length>50</Length>
+      <Unicode>1</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>00AB8414</Address>
+      <Offsets>
+        <Offset>c</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"XRes - 1152"</Description>
+      <LastState Value="1152" RealAddress="00569E14"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00569E14</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
