@@ -1,0 +1,274 @@
+$procname = "DeSmuME_0.9.11_x64"
+
+Function RBytes
+{
+	Param (
+		$addr,
+		$sizetoread
+	)
+	[Byte[]] $buff = New-Object Byte[]($sizetoread)
+	$read = $rpm::ReadProcessMemory($proc,$addr,$buff,$buff.length,$null);
+	$buff
+}
+
+Function RAsciiStr
+{   
+	Param (
+        $addr
+    )
+	([System.Text.Encoding]::ASCII.GetString($(RBytes $addr 30))).Split([char]0)[0]
+}
+Function RInt16
+{   
+	Param (
+        $addr
+    )
+	[bitconverter]::ToInt16($(RBytes $addr 2),0)
+}
+Function RInt32
+{   
+	Param (
+        $addr
+    )
+	$sizetoread = 4
+	[Byte[]] $buff = New-Object Byte[]($sizetoread)
+	$read = $rpm::ReadProcessMemory($proc,$addr,$buff,$buff.length,$null);
+	[bitconverter]::ToInt32($(RBytes $addr 4),0)
+}
+Function RUInt8
+{   
+	Param (
+        $addr
+    )
+	RBytes $addr 1
+}
+Function RUInt16
+{   
+	Param (
+        $addr
+    )
+	[bitconverter]::ToUInt16($(RBytes $addr 2),0)
+}
+Function RUInt32
+{   
+	Param (
+        $addr
+    )
+	$sizetoread = 4
+	[Byte[]] $buff = New-Object Byte[]($sizetoread)
+	$read = $rpm::ReadProcessMemory($proc,$addr,$buff,$buff.length,$null);
+	[bitconverter]::ToUInt32($(RBytes $addr 4),0)
+}
+$signature = @"
+[DllImport("kernel32.dll")] public static extern IntPtr OpenProcess(
+    uint h,bool b ,uint p);
+[DllImport("kernel32.dll")] public static extern bool ReadProcessMemory(
+    IntPtr hp,IntPtr Base,[Out]Byte[] buff,int Size,[Out]int bread);
+"@
+
+$rpm = Add-Type -MemberDefinition $signature -Name rpm -PassThru
+$access = 0x001F0FFF
+$procid = (get-Process $procname).ID
+$proc = $rpm::OpenProcess($access, $false, $procid)
+
+
+
+
+
+
+[UInt32]$global:seed = 0
+
+Function Decrypt
+{
+	Param (
+		$addr,
+		$sizetoread
+	)
+	[Byte[]] $buff = New-Object Byte[]($sizetoread)
+	$read = $rpm::ReadProcessMemory($proc,$addr,$buff,$buff.length,$null);
+	
+	For ($i=0; $i -le $buff.length - 2; $i = $i + 2) {
+		$global:seed = (((0x41c64e6dL * $global:seed) + 0x6073L) -band 0xffffffffL)
+		$buff[$i] = ($buff[$i] -bxor (($global:seed -shr 16) -band 0xffL))
+		$buff[$i + 1] = ($buff[$i + 1] -bxor [byte](($global:seed -shr 24) -band 0xffL))
+    }
+	$buff
+}
+
+$saveloc = 0x14568f4a8
+[UInt32]$pv = RUInt32 $saveloc
+[UInt16]$chksum = RUInt16 ($saveloc + 6)
+[UInt32]$global:seed = $chksum
+[UInt32]$shuf = [UInt32]((($pv -band 0x3e000) -shr 0xd) % 24)
+
+
+
+[UInt32]$global:seed = $chksum
+switch ($shuf){
+	0 { 
+		$ba = Decrypt ($saveloc + 0x8) 0x20
+		$bb = Decrypt ($saveloc + 0x28) 0x20
+		$bc = Decrypt ($saveloc + 0x48) 0x20
+		$bd = Decrypt ($saveloc + 0x68) 0x20
+	}
+	1 { 
+		$ba = Decrypt ($saveloc + 0x8) 0x20
+		$bb = Decrypt ($saveloc + 0x28) 0x20
+		$bd = Decrypt ($saveloc + 0x48) 0x20
+		$bc = Decrypt ($saveloc + 0x68) 0x20
+	}
+	2 { 
+		$ba = Decrypt ($saveloc + 0x8) 0x20
+		$bc = Decrypt ($saveloc + 0x28) 0x20
+		$bb = Decrypt ($saveloc + 0x48) 0x20
+		$bd = Decrypt ($saveloc + 0x68) 0x20
+	}
+	3 { 
+		$ba = Decrypt ($saveloc + 0x8) 0x20
+		$bd = Decrypt ($saveloc + 0x28) 0x20
+		$bb = Decrypt ($saveloc + 0x48) 0x20
+		$bc = Decrypt ($saveloc + 0x68) 0x20
+	}
+	4 { 
+		$ba = Decrypt ($saveloc + 0x8) 0x20
+		$bc = Decrypt ($saveloc + 0x28) 0x20
+		$bd = Decrypt ($saveloc + 0x48) 0x20
+		$bb = Decrypt ($saveloc + 0x68) 0x20
+	}
+	5 { 
+		$ba = Decrypt ($saveloc + 0x8) 0x20
+		$bd = Decrypt ($saveloc + 0x28) 0x20
+		$bc = Decrypt ($saveloc + 0x48) 0x20
+		$bb = Decrypt ($saveloc + 0x68) 0x20
+	}
+	6 { 
+		$bb = Decrypt ($saveloc + 0x8) 0x20
+		$ba = Decrypt ($saveloc + 0x28) 0x20
+		$bc = Decrypt ($saveloc + 0x48) 0x20
+		$bd = Decrypt ($saveloc + 0x68) 0x20
+	}
+	7 { 
+		$bb = Decrypt ($saveloc + 0x8) 0x20
+		$ba = Decrypt ($saveloc + 0x28) 0x20
+		$bd = Decrypt ($saveloc + 0x48) 0x20
+		$bc = Decrypt ($saveloc + 0x68) 0x20
+	}
+	8 { 
+		$bc = Decrypt ($saveloc + 0x8) 0x20
+		$ba = Decrypt ($saveloc + 0x28) 0x20
+		$bb = Decrypt ($saveloc + 0x48) 0x20
+		$bd = Decrypt ($saveloc + 0x68) 0x20
+	}
+	9 { 
+		$bd = Decrypt ($saveloc + 0x8) 0x20
+		$ba = Decrypt ($saveloc + 0x28) 0x20
+		$bb = Decrypt ($saveloc + 0x48) 0x20
+		$bc = Decrypt ($saveloc + 0x68) 0x20
+	}
+	10 { 
+		$bc = Decrypt ($saveloc + 0x8) 0x20
+		$ba = Decrypt ($saveloc + 0x28) 0x20
+		$bd = Decrypt ($saveloc + 0x48) 0x20
+		$bb = Decrypt ($saveloc + 0x68) 0x20
+	}
+	11 { 
+		$bd = Decrypt ($saveloc + 0x8) 0x20
+		$ba = Decrypt ($saveloc + 0x28) 0x20
+		$bc = Decrypt ($saveloc + 0x48) 0x20
+		$bb = Decrypt ($saveloc + 0x68) 0x20
+	}
+	12 { 
+		$bb = Decrypt ($saveloc + 0x8) 0x20
+		$bc = Decrypt ($saveloc + 0x28) 0x20
+		$ba = Decrypt ($saveloc + 0x48) 0x20
+		$bd = Decrypt ($saveloc + 0x68) 0x20
+	}
+	13 { 
+		$bb = Decrypt ($saveloc + 0x8) 0x20
+		$bd = Decrypt ($saveloc + 0x28) 0x20
+		$ba = Decrypt ($saveloc + 0x48) 0x20
+		$bc = Decrypt ($saveloc + 0x68) 0x20
+	}
+	14 { 
+		$bc = Decrypt ($saveloc + 0x8) 0x20
+		$bb = Decrypt ($saveloc + 0x28) 0x20
+		$ba = Decrypt ($saveloc + 0x48) 0x20
+		$bd = Decrypt ($saveloc + 0x68) 0x20
+	}
+	15 { 
+		$bd = Decrypt ($saveloc + 0x8) 0x20
+		$bb = Decrypt ($saveloc + 0x28) 0x20
+		$ba = Decrypt ($saveloc + 0x48) 0x20
+		$bc = Decrypt ($saveloc + 0x68) 0x20
+	}
+	16 { 
+		$bc = Decrypt ($saveloc + 0x8) 0x20
+		$bd = Decrypt ($saveloc + 0x28) 0x20
+		$ba = Decrypt ($saveloc + 0x48) 0x20
+		$bb = Decrypt ($saveloc + 0x68) 0x20
+	}
+	17 { 
+		$bd = Decrypt ($saveloc + 0x8) 0x20
+		$bc = Decrypt ($saveloc + 0x28) 0x20
+		$ba = Decrypt ($saveloc + 0x48) 0x20
+		$bb = Decrypt ($saveloc + 0x68) 0x20
+	}
+	18 { 
+		$bb = Decrypt ($saveloc + 0x8) 0x20
+		$bc = Decrypt ($saveloc + 0x28) 0x20
+		$bd = Decrypt ($saveloc + 0x48) 0x20
+		$ba = Decrypt ($saveloc + 0x68) 0x20
+	}
+	19 { 
+		$bb = Decrypt ($saveloc + 0x8) 0x20
+		$bd = Decrypt ($saveloc + 0x28) 0x20
+		$bc = Decrypt ($saveloc + 0x48) 0x20
+		$ba = Decrypt ($saveloc + 0x68) 0x20
+	}
+	20 { 
+		$bc = Decrypt ($saveloc + 0x8) 0x20
+		$bb = Decrypt ($saveloc + 0x28) 0x20
+		$bd = Decrypt ($saveloc + 0x48) 0x20
+		$ba = Decrypt ($saveloc + 0x68) 0x20
+	}
+	21 { 
+		$bd = Decrypt ($saveloc + 0x8) 0x20
+		$bb = Decrypt ($saveloc + 0x28) 0x20
+		$bc = Decrypt ($saveloc + 0x48) 0x20
+		$ba = Decrypt ($saveloc + 0x68) 0x20
+	}
+	22 { 
+		$bc = Decrypt ($saveloc + 0x8) 0x20
+		$bd = Decrypt ($saveloc + 0x28) 0x20
+		$bb = Decrypt ($saveloc + 0x48) 0x20
+		$ba = Decrypt ($saveloc + 0x68) 0x20
+	}
+	23 { 
+		$bd = Decrypt ($saveloc + 0x8) 0x20
+		$bc = Decrypt ($saveloc + 0x28) 0x20
+		$bb = Decrypt ($saveloc + 0x48) 0x20
+		$ba = Decrypt ($saveloc + 0x68) 0x20
+	}
+}
+
+$pokedexid = [bitconverter]::ToUInt16($ba,0)
+$helditem = [bitconverter]::ToUInt16($ba,2)
+$otid = [bitconverter]::ToUInt16($ba,4)
+$otsecid = [bitconverter]::ToUInt16($ba,6)
+$xp = [bitconverter]::ToUInt32($ba,0x8)
+$friendship = $ba[0xa]
+$ability = $ba[0xb]
+
+$hpe = $ba[0x10]
+
+$global:seed = $pv
+$bs = Decrypt ($saveloc + 0x88) 0x64
+
+$level = $bs[0x4]
+$currhp = [bitconverter]::ToUInt16($bs,6)
+$maxhp = [bitconverter]::ToUInt16($bs,8)
+$atk = [bitconverter]::ToUInt16($bs,0xa)
+$def = [bitconverter]::ToUInt16($bs,0xc)
+$spd = [bitconverter]::ToUInt16($bs,0xe)
+$satk = [bitconverter]::ToUInt16($bs,0xc)
+$sdef = [bitconverter]::ToUInt16($bs,0xe)
