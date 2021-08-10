@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="34">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Gold"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Darkest.exe+1c20ab0</Address>
+      <Offsets>
+        <Offset>0</Offset>
+        <Offset>20</Offset>
+        <Offset>154</Offset>
+        <Offset>ce4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Busts"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Darkest.exe+1c20ab0</Address>
+      <Offsets>
+        <Offset>48</Offset>
+        <Offset>20</Offset>
+        <Offset>154</Offset>
+        <Offset>ce4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"Portraits"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Darkest.exe+1c20ab0</Address>
+      <Offsets>
+        <Offset>90</Offset>
+        <Offset>20</Offset>
+        <Offset>154</Offset>
+        <Offset>ce4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"Deeds"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Darkest.exe+1c20ab0</Address>
+      <Offsets>
+        <Offset>d8</Offset>
+        <Offset>20</Offset>
+        <Offset>154</Offset>
+        <Offset>ce4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Crests"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Darkest.exe+1c20ab0</Address>
+      <Offsets>
+        <Offset>120</Offset>
+        <Offset>20</Offset>
+        <Offset>154</Offset>
+        <Offset>ce4</Offset>
+      </Offsets>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
