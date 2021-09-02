@@ -4,7 +4,7 @@
     <CheatEntry>
       <ID>0</ID>
       <Description>"Cam xPos"</Description>
-      <LastState Value="-24.30890083" RealAddress="7FF7A84F57D4"/>
+      <LastState Value="-28.09210014" RealAddress="7FF71D8557D4"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>Dishonored2_x64ShippingRetail.exe+51f57d4</Address>
@@ -12,7 +12,7 @@
     <CheatEntry>
       <ID>1</ID>
       <Description>"Cam yPos"</Description>
-      <LastState Value="29.11149979" RealAddress="7FF7A84F57D8"/>
+      <LastState Value="-153.9620056" RealAddress="7FF71D8557D8"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>Dishonored2_x64ShippingRetail.exe+51f57d8</Address>
@@ -20,7 +20,7 @@
     <CheatEntry>
       <ID>2</ID>
       <Description>"Cam zPos"</Description>
-      <LastState Value="20.37855911" RealAddress="7FF7A84F57DC"/>
+      <LastState Value="67.4525528" RealAddress="7FF71D8557DC"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>Dishonored2_x64ShippingRetail.exe+51f57dc</Address>
@@ -28,7 +28,7 @@
     <CheatEntry>
       <ID>11</ID>
       <Description>"Player xPos"</Description>
-      <LastState Value="-24.30890083" RealAddress="1D2DA83FA28"/>
+      <LastState Value="-28.09210014" RealAddress="23217481978"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>"Dishonored2_x64ShippingRetail.exe"+048A3318</Address>
@@ -41,7 +41,7 @@
     <CheatEntry>
       <ID>13</ID>
       <Description>"Player yPos"</Description>
-      <LastState Value="29.11149979" RealAddress="1D2DA83FA2C"/>
+      <LastState Value="-153.9620056" RealAddress="2321748197C"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>"Dishonored2_x64ShippingRetail.exe"+048A3318</Address>
@@ -54,7 +54,7 @@
     <CheatEntry>
       <ID>12</ID>
       <Description>"Player zPos"</Description>
-      <LastState Value="20.00390053" RealAddress="1D2DA83FA30"/>
+      <LastState Value="66.4036026" RealAddress="23217481980"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>"Dishonored2_x64ShippingRetail.exe"+048A3318</Address>
@@ -67,7 +67,7 @@
     <CheatEntry>
       <ID>3</ID>
       <Description>"isLoading"</Description>
-      <LastState Value="0" RealAddress="7FF7A7D685A8"/>
+      <LastState Value="1" RealAddress="7FF71D0C85A8"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Byte</VariableType>
       <Address>Dishonored2_x64ShippingRetail.exe+4A685A8</Address>
@@ -75,7 +75,7 @@
     <CheatEntry>
       <ID>4</ID>
       <Description>"levelName"</Description>
-      <LastState RealAddress="7FF7A8B41040"/>
+      <LastState RealAddress="7FF71DEA1040"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>String</VariableType>
       <Length>60</Length>
@@ -87,7 +87,7 @@
     <CheatEntry>
       <ID>5</ID>
       <Description>"fadeValue"</Description>
-      <LastState Value="1" RealAddress="1D284FBA434"/>
+      <LastState Value="0" RealAddress="231E48F7434"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>"Dishonored2_x64ShippingRetail.exe"+061C7B50</Address>
@@ -100,7 +100,6 @@
     <CheatEntry>
       <ID>6</ID>
       <Description>"canInteract"</Description>
-      <LastState Value="81" RealAddress="1D31BEAF3C0"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
       <Address>"Dishonored2_x64ShippingRetail.exe"+04A10448</Address>
@@ -131,14 +130,14 @@
     <CheatEntry>
       <ID>9</ID>
       <Description>"Kills"</Description>
-      <LastState Value="0" RealAddress="7FF7A79EEBB8"/>
+      <LastState Value="0" RealAddress="7FF71CD4EBB8"/>
       <VariableType>4 Bytes</VariableType>
       <Address>Dishonored2_x64ShippingRetail.exe+46EEBB8</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>10</ID>
       <Description>"Chaos Score"</Description>
-      <LastState Value="0" RealAddress="1D2DB1527C4"/>
+      <LastState Value="0" RealAddress="23217D8BFC4"/>
       <ShowAsSigned>1</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
       <Address>"Dishonored2_x64ShippingRetail.exe"+048A3318</Address>
@@ -150,209 +149,175 @@
         <Offset>10</Offset>
       </Offsets>
     </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"cVars"</Description>
+      <Options moManualExpandCollapse="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>32</ID>
+          <Description>"in_controlInactiveWindow"</Description>
+          <LastState Value="0" RealAddress="7FF71D0C3A78"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+4a63a78</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>29</ID>
+          <Description>"com_drawThreadSpeeds"</Description>
+          <LastState Value="0" RealAddress="7FF71D0CA0F8"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+4a6a0f8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>31</ID>
+          <Description>"com_newLoadScreen"</Description>
+          <LastState Value="0" RealAddress="7FF71D0CABE8"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+4a6abe8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>17</ID>
+          <Description>"com_allowConsole"</Description>
+          <LastState Value="0" RealAddress="7FF71D0CB8A8"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+4a6b8a8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>30</ID>
+          <Description>"com_drawPresentables"</Description>
+          <LastState Value="0" RealAddress="7FF71D6DB5E8"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+507b5e8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>27</ID>
+          <Description>"com_debugHUD"</Description>
+          <LastState Value="0" RealAddress="7FF71D813778"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+51b3778</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>18</ID>
+          <Description>"win_consoleVisibility"</Description>
+          <LastState Value="1" RealAddress="7FF71DE9BE38"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+583be38</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>34</ID>
+          <Description>"cas_debug"</Description>
+          <LastState Value="0" RealAddress="7FF71DEB5A28"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+5855a28</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>33</ID>
+          <Description>"win_outputDebugString"</Description>
+          <LastState Value="1" RealAddress="7FF71DE9BFB8"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+583bfb8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>16</ID>
+          <Description>"win_pauseOnFocusLoss"</Description>
+          <LastState Value="1" RealAddress="7FF71DEA03A8"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+58403a8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>25</ID>
+          <Description>"ark_debugAiCharactersLinearVelocity"</Description>
+          <LastState Value="0" RealAddress="7FF71E030198"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+59d0198</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>28</ID>
+          <Description>"ark_debugPhysicsBoundingRadiuses"</Description>
+          <LastState Value="0" RealAddress="7FF71E030B98"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+59d0b98</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>26</ID>
+          <Description>"ark_darkVisionSoundDrawDebug"</Description>
+          <LastState Value="0" RealAddress="7FF71E818158"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+61b8158</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>24</ID>
+          <Description>"ai_debugCam"</Description>
+          <LastState Value="0" RealAddress="7FF71E8409E8"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+61e09e8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>20</ID>
+          <Description>"pm_jumpheight"</Description>
+          <LastState Value="0.8125" RealAddress="7FF71E84116C"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+61e116c</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>23</ID>
+          <Description>"pm_stepsize"</Description>
+          <LastState Value="0.25" RealAddress="7FF71E8411EC"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+61e11ec</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>21</ID>
+          <Description>"pm_thirdPerson"</Description>
+          <LastState Value="0" RealAddress="7FF71E842468"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+61e2468</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>22</ID>
+          <Description>"pm_thirdPersonHeight"</Description>
+          <LastState Value="0" RealAddress="7FF71E84226C"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+61e226c</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>15</ID>
+          <Description>"ark_fieldOfView"</Description>
+          <LastState Value="79" RealAddress="7FF71E843D9C"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+61E3D9c</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>19</ID>
+          <Description>"player_debugShake"</Description>
+          <LastState Value="0" RealAddress="7FF71E843E18"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Dishonored2_x64ShippingRetail.exe+61e3e18</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
   </CheatEntries>
-  <CheatCodes>
-    <CodeEntry Color="20000000">
-      <Description>Change of mov [rdx+00609828],rsi</Description>
-      <AddressString>Dishonored2_x64ShippingRetail.exe+AE2FB8</AddressString>
-      <Before>
-        <Byte>82</Byte>
-        <Byte>14</Byte>
-        <Byte>98</Byte>
-        <Byte>60</Byte>
-        <Byte>00</Byte>
-      </Before>
-      <Actual>
-        <Byte>48</Byte>
-        <Byte>89</Byte>
-        <Byte>B2</Byte>
-        <Byte>28</Byte>
-        <Byte>98</Byte>
-        <Byte>60</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>48</Byte>
-        <Byte>8B</Byte>
-        <Byte>44</Byte>
-        <Byte>24</Byte>
-        <Byte>60</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry Color="20000000">
-      <Description>Change of movups [rdx+00609814],xmm0</Description>
-      <AddressString>Dishonored2_x64ShippingRetail.exe+AE2FB1</AddressString>
-      <Before>
-        <Byte>00</Byte>
-        <Byte>0F</Byte>
-        <Byte>10</Byte>
-        <Byte>45</Byte>
-        <Byte>00</Byte>
-      </Before>
-      <Actual>
-        <Byte>0F</Byte>
-        <Byte>11</Byte>
-        <Byte>82</Byte>
-        <Byte>14</Byte>
-        <Byte>98</Byte>
-        <Byte>60</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>90</Byte>
-        <Byte>90</Byte>
-        <Byte>90</Byte>
-        <Byte>90</Byte>
-        <Byte>90</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry Color="20000000">
-      <Description>Change of movups [rbx],xmm0</Description>
-      <AddressString>Dishonored2_x64ShippingRetail.exe+E1195E</AddressString>
-      <Before>
-        <Byte>C4</Byte>
-        <Byte>0F</Byte>
-        <Byte>C6</Byte>
-        <Byte>C0</Byte>
-        <Byte>39</Byte>
-      </Before>
-      <Actual>
-        <Byte>0F</Byte>
-        <Byte>11</Byte>
-        <Byte>03</Byte>
-      </Actual>
-      <After>
-        <Byte>0F</Byte>
-        <Byte>28</Byte>
-        <Byte>C1</Byte>
-        <Byte>F3</Byte>
-        <Byte>0F</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry Color="20000000">
-      <Description>Change of movss [rbx+0C],xmm1</Description>
-      <AddressString>Dishonored2_x64ShippingRetail.exe+E11976</AddressString>
-      <Before>
-        <Byte>30</Byte>
-        <Byte>F3</Byte>
-        <Byte>0F</Byte>
-        <Byte>5C</Byte>
-        <Byte>C8</Byte>
-      </Before>
-      <Actual>
-        <Byte>F3</Byte>
-        <Byte>0F</Byte>
-        <Byte>11</Byte>
-        <Byte>4B</Byte>
-        <Byte>0C</Byte>
-      </Actual>
-      <After>
-        <Byte>48</Byte>
-        <Byte>83</Byte>
-        <Byte>C4</Byte>
-        <Byte>50</Byte>
-        <Byte>5B</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry Color="80000008">
-      <Description>Change of mov [Dishonored2_x64ShippingRetail.exe+59E4680],al</Description>
-      <AddressString>Dishonored2_x64ShippingRetail.exe+11CBC6F</AddressString>
-      <Before>
-        <Byte>E8</Byte>
-        <Byte>71</Byte>
-        <Byte>35</Byte>
-        <Byte>E5</Byte>
-        <Byte>FE</Byte>
-      </Before>
-      <Actual>
-        <Byte>88</Byte>
-        <Byte>05</Byte>
-        <Byte>0B</Byte>
-        <Byte>8A</Byte>
-        <Byte>81</Byte>
-        <Byte>04</Byte>
-      </Actual>
-      <After>
-        <Byte>8B</Byte>
-        <Byte>4C</Byte>
-        <Byte>24</Byte>
-        <Byte>48</Byte>
-        <Byte>81</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry Color="80000008">
-      <Description>Change of mov [rbx+0000008C],eax</Description>
-      <AddressString>Dishonored2_x64ShippingRetail.exe+11867AE</AddressString>
-      <Before>
-        <Byte>33</Byte>
-        <Byte>C0</Byte>
-        <Byte>48</Byte>
-        <Byte>8B</Byte>
-        <Byte>CF</Byte>
-      </Before>
-      <Actual>
-        <Byte>89</Byte>
-        <Byte>83</Byte>
-        <Byte>8C</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-        <Byte>00</Byte>
-      </Actual>
-      <After>
-        <Byte>48</Byte>
-        <Byte>8B</Byte>
-        <Byte>15</Byte>
-        <Byte>95</Byte>
-        <Byte>06</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry Color="80000008">
-      <Description>Change of mov [r9+08],ecx</Description>
-      <AddressString>Dishonored2_x64ShippingRetail.exe+AB4ED1</AddressString>
-      <Before>
-        <Byte>FF</Byte>
-        <Byte>FF</Byte>
-        <Byte>00</Byte>
-        <Byte>33</Byte>
-        <Byte>CB</Byte>
-      </Before>
-      <Actual>
-        <Byte>41</Byte>
-        <Byte>89</Byte>
-        <Byte>49</Byte>
-        <Byte>08</Byte>
-      </Actual>
-      <After>
-        <Byte>81</Byte>
-        <Byte>E1</Byte>
-        <Byte>FF</Byte>
-        <Byte>FF</Byte>
-        <Byte>FF</Byte>
-      </After>
-    </CodeEntry>
-    <CodeEntry Color="80000008">
-      <Description>Change of mov [rbx+08],ecx</Description>
-      <AddressString>Dishonored2_x64ShippingRetail.exe+AB296E</AddressString>
-      <Before>
-        <Byte>FF</Byte>
-        <Byte>FF</Byte>
-        <Byte>00</Byte>
-        <Byte>33</Byte>
-        <Byte>C8</Byte>
-      </Before>
-      <Actual>
-        <Byte>89</Byte>
-        <Byte>4B</Byte>
-        <Byte>08</Byte>
-      </Actual>
-      <After>
-        <Byte>48</Byte>
-        <Byte>8D</Byte>
-        <Byte>4B</Byte>
-        <Byte>50</Byte>
-        <Byte>48</Byte>
-      </After>
-    </CodeEntry>
-  </CheatCodes>
   <UserdefinedSymbols/>
 </CheatTable>
