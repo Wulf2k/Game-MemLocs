@@ -1,0 +1,107 @@
+$ErrorActionPreference= 'silentlycontinue'
+$procname = "SuperMeatBoy"
+
+[console]::CursorVisible = $false
+
+$Host.UI.RawUI.BackgroundColor = 'Black'
+$Host.UI.RawUI.ForegroundColor = 'Green'
+
+Function RBytes
+{
+	Param (
+		$addr,
+		$sizetoread
+	)
+	[Byte[]] $buff = New-Object Byte[]($sizetoread)
+	$read = $rpm::ReadProcessMemory($proc,$addr,$buff,$buff.length,$null);
+	$buff
+}
+
+Function RAsciiStr
+{   
+	Param (
+        $addr
+    )
+	([System.Text.Encoding]::ASCII.GetString($(RBytes $addr 30))).Split([char]0)[0]
+}
+Function RInt16
+{   
+	Param (
+        $addr
+    )
+	[bitconverter]::ToInt16($(RBytes $addr 2),0)
+}
+Function RInt32
+{   
+	Param (
+        $addr
+    )
+	$sizetoread = 4
+	[Byte[]] $buff = New-Object Byte[]($sizetoread)
+	$read = $rpm::ReadProcessMemory($proc,$addr,$buff,$buff.length,$null);
+	[bitconverter]::ToInt32($(RBytes $addr 4),0)
+}
+Function RUInt8
+{   
+	Param (
+        $addr
+    )
+	RBytes $addr 1
+}
+Function RUInt16
+{   
+	Param (
+        $addr
+    )
+	[bitconverter]::ToUInt16($(RBytes $addr 2),0)
+}
+Function RUInt32
+{   
+	Param (
+        $addr
+    )
+	$sizetoread = 4
+	[Byte[]] $buff = New-Object Byte[]($sizetoread)
+	$read = $rpm::ReadProcessMemory($proc,$addr,$buff,$buff.length,$null);
+	[bitconverter]::ToUInt32($(RBytes $addr 4),0)
+}
+$signature = @"
+[DllImport("kernel32.dll")] public static extern IntPtr OpenProcess(
+    uint h,bool b ,uint p);
+[DllImport("kernel32.dll")] public static extern bool ReadProcessMemory(
+    IntPtr hp,IntPtr Base,[Out]Byte[] buff,int Size,[Out]int bread);
+"@
+
+$rpm = Add-Type -MemberDefinition $signature -Name rpm -PassThru
+$access = 0x001F0FFF
+
+
+cls
+
+do {
+	$ba = (get-Process $procname).MainModule.BaseAddress
+	$procid = (get-Process $procname).ID
+	$proc = $rpm::OpenProcess($access, $false, $procid)
+
+	#125
+	#$deathloc = (RUInt32 ($ba + 0x30a380)) + 0x38AC
+	
+	#og
+	$deathloc = (RUInt32 ($ba + 0x2d55ac)) + 0x1c8c
+	$deaths = RInt32 $deathloc
+	
+	
+	$startdate = [datetime] "2021/11/14 14:58:00"
+	$enddate = get-date
+	$playtime = NEW-TIMESPAN -start $startdate -end ($enddate.ToShortDateString() + " " + $enddate.ToLongTimeString())
+
+
+
+	
+	[Console]::SetCursorPosition(0,0)
+	"Total playtime:  " + $playtime.Days.ToString() + "d " + $playtime.Hours.ToString().PadLeft(2, '0') + ":" + $playtime.Minutes.ToString().PadLeft(2, '0') + ":" + $playtime.Seconds.ToString().PadLeft(2, '0') + "                           "
+	"Deaths: $deaths                         "
+	
+	sleep 1
+}
+while ($true)
