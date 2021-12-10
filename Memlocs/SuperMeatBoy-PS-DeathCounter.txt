@@ -65,6 +65,16 @@ Function RUInt32
 	$read = $rpm::ReadProcessMemory($proc,$addr,$buff,$buff.length,$null);
 	[bitconverter]::ToUInt32($(RBytes $addr 4),0)
 }
+Function RSingle
+{   
+	Param (
+        $addr
+    )
+	$sizetoread = 4
+	[Byte[]] $buff = New-Object Byte[]($sizetoread)
+	$read = $rpm::ReadProcessMemory($proc,$addr,$buff,$buff.length,$null);
+	[bitconverter]::ToSingle($(RBytes $addr 4),0)
+}
 $signature = @"
 [DllImport("kernel32.dll")] public static extern IntPtr OpenProcess(
     uint h,bool b ,uint p);
@@ -95,13 +105,14 @@ do {
 	$enddate = get-date
 	$playtime = NEW-TIMESPAN -start $startdate -end ($enddate.ToShortDateString() + " " + $enddate.ToLongTimeString())
 
-
+	$delta = RSingle ($ba + 0x2d6e88)
 
 	
 	[Console]::SetCursorPosition(0,0)
 	"Total playtime:  " + $playtime.Days.ToString() + "d " + $playtime.Hours.ToString().PadLeft(2, '0') + ":" + $playtime.Minutes.ToString().PadLeft(2, '0') + ":" + $playtime.Seconds.ToString().PadLeft(2, '0') + "                           "
 	"Deaths: $deaths                         "
+	"Frametime: $delta                       "
 	
-	sleep 1
+	sleep 0.1
 }
 while ($true)
