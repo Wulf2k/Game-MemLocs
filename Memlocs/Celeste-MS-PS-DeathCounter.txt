@@ -1,0 +1,134 @@
+#$ErrorActionPreference= 'silentlycontinue'
+$procname = "Celeste"
+
+[console]::CursorVisible = $false
+
+$Host.UI.RawUI.BackgroundColor = 'Black'
+$Host.UI.RawUI.ForegroundColor = 'Green'
+
+Function RBytes
+{
+	Param (
+		$addr,
+		$sizetoread
+	)
+	[Byte[]] $buff = New-Object Byte[]($sizetoread)
+	$read = $rpm::ReadProcessMemory($proc,$addr,$buff,$buff.length,$null);
+	$buff
+}
+
+Function RAsciiStr
+{   
+	Param (
+        $addr
+    )
+	([System.Text.Encoding]::ASCII.GetString($(RBytes $addr 30))).Split([char]0)[0]
+}
+Function RInt16
+{   
+	Param (
+        $addr
+    )
+	[bitconverter]::ToInt16($(RBytes $addr 2),0)
+}
+Function RInt32
+{   
+	Param (
+        $addr
+    )
+	$sizetoread = 4
+	[Byte[]] $buff = New-Object Byte[]($sizetoread)
+	$read = $rpm::ReadProcessMemory($proc,$addr,$buff,$buff.length,$null);
+	[bitconverter]::ToInt32($(RBytes $addr 4),0)
+}
+Function RInt64
+{   
+	Param (
+        $addr
+    )
+	$sizetoread = 8
+	[Byte[]] $buff = New-Object Byte[]($sizetoread)
+	$read = $rpm::ReadProcessMemory($proc,$addr,$buff,$buff.length,$null);
+	[bitconverter]::ToInt64($(RBytes $addr 8),0)
+}
+Function RUInt8
+{   
+	Param (
+        $addr
+    )
+	RBytes $addr 1
+}
+Function RUInt16
+{   
+	Param (
+        $addr
+    )
+	[bitconverter]::ToUInt16($(RBytes $addr 2),0)
+}
+Function RUInt32
+{   
+	Param (
+        $addr
+    )
+	$sizetoread = 4
+	[Byte[]] $buff = New-Object Byte[]($sizetoread)
+	$read = $rpm::ReadProcessMemory($proc,$addr,$buff,$buff.length,$null);
+	[bitconverter]::ToUInt32($(RBytes $addr 4),0)
+}
+Function RUInt64
+{   
+	Param (
+        $addr
+    )
+	$sizetoread = 8
+	[Byte[]] $buff = New-Object Byte[]($sizetoread)
+	$read = $rpm::ReadProcessMemory($proc,$addr,$buff,$buff.length,$null);
+	[bitconverter]::ToUInt64($(RBytes $addr 8),0)
+}
+Function RSingle
+{   
+	Param (
+        $addr
+    )
+	$sizetoread = 4
+	[Byte[]] $buff = New-Object Byte[]($sizetoread)
+	$read = $rpm::ReadProcessMemory($proc,$addr,$buff,$buff.length,$null);
+	[bitconverter]::ToSingle($(RBytes $addr 4),0)
+}
+$signature = @"
+[DllImport("kernel32.dll")] public static extern IntPtr OpenProcess(
+    uint h,bool b ,uint p);
+[DllImport("kernel32.dll")] public static extern bool ReadProcessMemory(
+    IntPtr hp,IntPtr Base,[Out]Byte[] buff,int Size,[Out]int bread);
+"@
+
+$rpm = Add-Type -MemberDefinition $signature -Name rpm -PassThru
+$access = 0x001F0FFF
+
+
+cls
+
+do {
+	#$ba = (get-Process $procname).MainModule.BaseAddress
+	$procid = (get-Process $procname).ID
+	$proc = $rpm::OpenProcess($access, $false, $procid)
+	
+	foreach ($mod in (get-Process $procname).Modules) {
+	  if ($mod.ModuleName -eq "Celeste.dll") {
+			$ba = $mod.BaseAddress
+		}
+	}
+
+
+	$deathloc = [IntPtr]((RInt64 ($ba.ToInt64() + 0x75bb88)) + 0x54)
+	$deaths = RInt32 $deathloc
+
+
+	
+	[Console]::SetCursorPosition(0,0)
+	"Deaths: $deaths                         "
+
+	
+	sleep 1
+}
+while ($true)
