@@ -4,7 +4,7 @@
     <CheatEntry>
       <ID>0</ID>
       <Description>"Deaths"</Description>
-      <LastState Value="19925" RealAddress="031A59C4"/>
+      <LastState Value="0" RealAddress="010F59B4"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
       <Address>SuperMeatBoy.exe+0x2d55ac</Address>
@@ -15,7 +15,7 @@
     <CheatEntry>
       <ID>1</ID>
       <Description>"deltaTime?"</Description>
-      <LastState Value="0.01700000092" RealAddress="031A5B7C"/>
+      <LastState Value="0.01700000092" RealAddress="010F138C"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>SuperMeatBoy.exe+0x2d6f9c</Address>
@@ -26,7 +26,7 @@
     <CheatEntry>
       <ID>2</ID>
       <Description>"Frame Count?"</Description>
-      <LastState Value="7153" RealAddress="00576FA4"/>
+      <LastState Value="8098" RealAddress="00576FA4"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
       <Address>00576FA4</Address>
@@ -42,10 +42,18 @@
     <CheatEntry>
       <ID>4</ID>
       <Description>"GetTime"</Description>
-      <LastState Value="241982362" RealAddress="00576FB8"/>
+      <LastState Value="263262351" RealAddress="00576FB8"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
       <Address>00576FB8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"Display HUD"</Description>
+      <LastState Value="1" RealAddress="00456640"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>supermeatboy.exe+0x1b6640</Address>
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>
