@@ -1,4 +1,4 @@
-#$ErrorActionPreference= 'silentlycontinue'
+$ErrorActionPreference= 'silentlycontinue'
 $procname = "Celeste"
 
 [console]::CursorVisible = $false
