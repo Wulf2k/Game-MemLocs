@@ -14,7 +14,7 @@
     </CheatEntry>
     <CheatEntry>
       <ID>8</ID>
-      <Description>"IsDeathAllowed"</Description>
+      <Description>"!IsDeathAllowed"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Byte</VariableType>
       <Address>GoW.exe+2741c5a</Address>
@@ -122,7 +122,7 @@
     </CheatEntry>
     <CheatEntry>
       <ID>15</ID>
-      <Description>"(old)Photo Mode Activate"</Description>
+      <Description>"(broken)Photo Mode Activate"</Description>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 alloc(code, 0x1000)
@@ -130,7 +130,7 @@ CreateThread(code)
 
 code:
 pushfq
-call GoW.exe+5A31C0
+call GoW.exe+4848c0
 popfq
 ret
 
