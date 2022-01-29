@@ -1,0 +1,134 @@
+#$ErrorActionPreference= 'silentlycontinue'
+
+
+[console]::CursorVisible = $false
+
+$Host.UI.RawUI.BackgroundColor = 'Black'
+$Host.UI.RawUI.ForegroundColor = 'Green'
+
+
+$mmf = [System.IO.MemoryMappedFiles.MemoryMappedFile]::CreateOrOpen("JKTP", 0x1000)
+$mmfa = $mmf.CreateViewAccessor()
+
+
+
+
+
+cls
+
+do {
+	
+	
+	$jumps = $mmfa.ReadInt32(0x10)
+	$falls = $mmfa.ReadInt32(0x20)
+	$ticks = $mmfa.ReadInt32(0x30)
+	
+	$seconds = ([string][Math]::Floor((($ticks % 3600) / 60))).PadLeft(2,'0')
+	$minutes = ([string][Math]::Floor((($ticks % 216000) / 3600))).PadLeft(2,'0')
+	$hours = ([string][Math]::Floor((($ticks % 5184000) / 216000))).PadLeft(2,'0')
+	$days = [string][Math]::Floor(($ticks / 5184000))
+	
+	$x = $mmfa.ReadSingle(0x40)
+	$y = $mmfa.ReadSingle(0x50)
+	$screen = $mmfa.ReadInt32(0x60)
+	
+	[Console]::SetCursorPosition(0,0)
+	"Jumps:  $jumps                   "
+	"Falls:  $falls                   "
+	"Time played:  " + $days + "d " + $hours + ":" + $minutes + ":" + $seconds + "                   "
+	"Screen:  $screen                 "
+	"Pos:  $x, $y                     "
+	sleep 0.5
+}
+while ($true)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<#
+
+Uses the following modification to the game:
+
+In JumpKing.Player
+public int m_last_screen;
+
+
+----
+
+
+
+using System;
+using System.IO.MemoryMappedFiles;
+using BehaviorTree;
+using EntityComponent;
+using JumpKing.Controller;
+using JumpKing.GameManager;
+using JumpKing.GameManager.MultiEnding;
+using JumpKing.GameManager.TitleScreen;
+using JumpKing.Level;
+using JumpKing.MiscSystems;
+using JumpKing.MiscSystems.Achievements;
+using JumpKing.PauseMenu;
+using JumpKing.Player;
+using Microsoft.Xna.Framework;
+using TimerCallback;
+
+namespace JumpKing
+{
+	// Token: 0x02000020 RID: 32
+	public partial class JumpGame
+	{
+		// Token: 0x060000A7 RID: 167
+		public void Update(GameTime gameTime)
+		{
+			float p_delta = 0.0166666675f;
+			this.m_controller_manager.Update();
+			this.m_behavior_tree.Run(p_delta);
+			if (PauseManager.instance == null || !PauseManager.instance.IsPaused)
+			{
+				LevelManager.Update(p_delta);
+				this.m_entity_manager.Update(p_delta);
+				WeatherManager.instance.Update(p_delta);
+				JumpGame._screen_shake_manager.Update(p_delta);
+			}
+			long offset = 0L;
+			long size = 4096L;
+			using (MemoryMappedFile memoryMappedFile = MemoryMappedFile.CreateOrOpen("JKTP", 4096L))
+			{
+				using (MemoryMappedViewAccessor memoryMappedViewAccessor = memoryMappedFile.CreateViewAccessor(offset, size))
+				{
+					memoryMappedViewAccessor.Write(16L, AchievementManager.instance.GetAllTimeStats().jumps);
+					memoryMappedViewAccessor.Write(32L, AchievementManager.instance.GetAllTimeStats().falls);
+					memoryMappedViewAccessor.Write(48L, AchievementManager.instance.GetAllTimeStats()._ticks);
+					if (GameLoop.m_player != null)
+					{
+						BodyComp component = GameLoop.m_player.GetComponent<BodyComp>();
+						memoryMappedViewAccessor.Write(64L, component.position.X);
+						memoryMappedViewAccessor.Write(80L, component.position.Y);
+						memoryMappedViewAccessor.Write(96L, component.m_last_screen);
+					}
+				}
+			}
+		}
+	}
+}
+
+
+#>

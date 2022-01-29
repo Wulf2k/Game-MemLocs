@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="34">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>11</ID>
+      <Description>"Log"</Description>
+      <LastState RealAddress="7FF75C418880"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>256</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>[GoW.exe+4e435a0]+3100+[[GoW.exe+4e435a0]+b104]*100</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"Take No Damage"</Description>
+      <LastState Value="1" RealAddress="7FF75D93FC5A"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>GoW.exe+273fc5a</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"Difficulty"</Description>
+      <LastState Value="3" RealAddress="7FF75C267094"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>GoW.exe+1067094</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"GamePause"</Description>
+      <LastState Value="0" RealAddress="7FF75C3ABBE4"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>GoW.exe+11abbe4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"XP"</Description>
+      <LastState Value="76" RealAddress="7FF35C48FF78"/>
+      <ShowAsSigned>1</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"GoW.exe"+01393420</Address>
+      <Offsets>
+        <Offset>30</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"HS"</Description>
+      <LastState Value="1704" RealAddress="7FF35C490138"/>
+      <ShowAsSigned>1</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"GoW.exe"+01393420</Address>
+      <Offsets>
+        <Offset>1F0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"goPlayer"</Description>
+      <LastState Value="00007FF75BFFEBA0" RealAddress="7FF3516218D0"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>GoW.exe+2255238</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"Kratos_goSoldier"</Description>
+      <LastState Value="00007FF75BFFFBA8" RealAddress="7FF3515A9520"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>GoW.exe+2255238</Address>
+      <Offsets>
+        <Offset>0</Offset>
+        <Offset>8</Offset>
+      </Offsets>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"Size"</Description>
+          <LastState Value="1" RealAddress="7FF3515A95C8"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>GoW.exe+2255238</Address>
+          <Offsets>
+            <Offset>a8</Offset>
+            <Offset>8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>6</ID>
+          <Description>"Current HP"</Description>
+          <LastState Value="100" RealAddress="7FF3515A98A8"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>GoW.exe+2255238</Address>
+          <Offsets>
+            <Offset>388</Offset>
+            <Offset>8</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"Atreus_goGameObject"</Description>
+      <LastState Value="00007FF75BFF0938" RealAddress="7FF349F44DF0"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>GoW.exe+11abc00</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>13</ID>
+          <Description>"Size"</Description>
+          <LastState Value="1" RealAddress="7FF349A892E8"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>GoW.exe+11abc00</Address>
+          <Offsets>
+            <Offset>a8</Offset>
+            <Offset>220</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>14</ID>
+          <Description>"Current HP"</Description>
+          <LastState Value="100" RealAddress="7FF349A895C8"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>GoW.exe+11abc00</Address>
+          <Offsets>
+            <Offset>388</Offset>
+            <Offset>220</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"-------------"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>15</ID>
+      <Description>"Photo Mode Activate"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+alloc(code, 0x1000)
+CreateThread(code)
+
+code:
+pushfq
+call GoW.exe+5A31C0
+popfq
+ret
+
+[DISABLE]
+dealloc(code)
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"Photo Mode Deactivate"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+alloc(code, 0x1000)
+CreateThread(code)
+
+code:
+pushfq
+call GoW.exe+5A31A0
+popfq
+ret
+
+[DISABLE]
+dealloc(code)
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
