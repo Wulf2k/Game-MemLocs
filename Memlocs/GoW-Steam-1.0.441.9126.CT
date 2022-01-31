@@ -78,6 +78,17 @@
             <Offset>8</Offset>
           </Offsets>
         </CheatEntry>
+        <CheatEntry>
+          <ID>17</ID>
+          <Description>"Rage"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>GoW.exe+2257238</Address>
+          <Offsets>
+            <Offset>3e8</Offset>
+            <Offset>8</Offset>
+          </Offsets>
+        </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
@@ -113,6 +124,17 @@
             <Offset>220</Offset>
           </Offsets>
         </CheatEntry>
+        <CheatEntry>
+          <ID>18</ID>
+          <Description>"Rage"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>GoW.exe+11adc00</Address>
+          <Offsets>
+            <Offset>3e8</Offset>
+            <Offset>220</Offset>
+          </Offsets>
+        </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
@@ -122,16 +144,62 @@
     </CheatEntry>
     <CheatEntry>
       <ID>15</ID>
-      <Description>"(broken)Photo Mode Activate"</Description>
+      <Description>"EVT_COMPASS_TOGGLE_CHEAT"</Description>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 alloc(code, 0x1000)
 CreateThread(code)
 
 code:
-pushfq
-call GoW.exe+4848c0
-popfq
+sub rsp, 0x28
+
+mov rcx, GoW.exe+76BE70
+mov rcx, [rcx]
+call GoW.exe+76BE70
+
+add rsp, 0x28
+ret
+
+[DISABLE]
+dealloc(code)
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"SetDifficulty"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+alloc(code, 0x1000)
+CreateThread(code)
+
+code:
+sub rsp, 0x28
+
+mov rcx, 0
+call GoW.exe+6cc490
+
+add rsp, 0x28
+ret
+
+[DISABLE]
+dealloc(code)
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>19</ID>
+      <Description>"test"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+alloc(code, 0x1000)
+CreateThread(code)
+
+code:
+sub rsp, 0x28
+
+mov rcx, 0
+call GoW.exe+6cb630
+
+add rsp, 0x28
 ret
 
 [DISABLE]
