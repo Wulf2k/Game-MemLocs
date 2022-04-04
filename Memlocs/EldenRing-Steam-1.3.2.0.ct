@@ -2,25 +2,199 @@
 <CheatTable CheatEngineTableVersion="42">
   <CheatEntries>
     <CheatEntry>
+      <ID>23</ID>
+      <Description>"ASM"</Description>
+      <Options moHideChildren="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>24</ID>
+          <Description>"Redirect HavokOut to DbgOut"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+alloc( hvk_OutputDebugString_hook, 0x1000 )
+registersymbol( hvk_OutputDebugString_hook )
+
+hvk_OutputDebugString_hook:
+push rcx
+sub rsp,100
+mov rcx,rdx
+call kernel32.OutputDebugStringA
+add rsp,100
+pop rcx
+push rbx
+sub rsp,20
+mov rbx,rcx
+mov rcx,[rcx+18]
+call eldenring.exe+163b440
+jmp far "eldenring.exe"+163b102
+
+
+"eldenring.exe"+163b0f0:
+jmp far hvk_OutputDebugString_hook
+
+
+[DISABLE]
+dealloc(hvk_OutputDebugString_hook)
+unregistersymbol( hvk_OutputDebugString_hook )
+
+"eldenring.exe"+163b0f0:
+nop
+push rbx
+sub rsp,20
+mov rbx,rcx
+mov rcx,[rcx+18]
+call "eldenring.exe"+163b440
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"[Init]"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+
+autoAssemble([[
+aobscanmodule(Finder,eldenring.exe,48 83 3d ???????? 00 48 89 ac 24)
+registersymbol(Finder)
+]])
+local addr = getAddress("Finder")
+addr = addr + readInteger(addr + 3) + 8
+unregisterSymbol("Finder")
+registerSymbol("ActPntManImp", addr, true)
+
+autoAssemble([[
+aobscanmodule(Finder,eldenring.exe,48 8b 0d ???????? 33 db f3 44)
+registersymbol(Finder)
+]])
+local addr = getAddress("Finder")
+addr = addr + readInteger(addr + 3) + 7
+unregisterSymbol("Finder")
+registerSymbol("CSCameraImp", addr, true)
+
+autoAssemble([[
+aobscanmodule(Finder,eldenring.exe,48 8b 0d ???????? 48 85 c9 74 1c bf 01 00 00 00)
+registersymbol(Finder)
+]])
+local addr = getAddress("Finder")
+addr = addr + readInteger(addr + 3) + 7
+unregisterSymbol("Finder")
+registerSymbol("CSEventManImp", addr, true)
+
+autoAssemble([[
+aobscanmodule(Finder,eldenring.exe,48 8b 05 ???????? 0f b6 80 8b 0b 00 00 c3)
+registersymbol(Finder)
+]])
+local addr = getAddress("Finder")
+addr = addr + readInteger(addr + 3) + 7
+unregisterSymbol("Finder")
+registerSymbol("GameMan", addr, true)
+
+
+
+
+autoAssemble([[
+aobscanmodule(Finder,eldenring.exe,48 8B 05 ???????? 48 85 C0 74 0F 48 39 88 ???????? 75 06 89 B1 5C030000 0F28 05 ???????? 4C 8D 45 E7)
+registersymbol(Finder)
+]])
+local addr = getAddress("Finder")
+addr = addr + readInteger(addr + 3) + 7
+unregisterSymbol("Finder")
+registerSymbol("WorldChrManImp", addr, true)
+
+
+
+
+[DISABLE]
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>15</ID>
+          <Description>"ActPntManImp"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>ActPntManImp</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>17</ID>
+          <Description>"CSCameraImp"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>CSCameraImp</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>18</ID>
+          <Description>"CSEventManImp"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>CSEventManImp</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>19</ID>
+          <Description>"GameMan"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>GameMan</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>16</ID>
+          <Description>"WorldChrManImp"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>WorldChrManImp</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
       <ID>4</ID>
       <Description>"DebugFlags"</Description>
       <Options moHideChildren="1"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>7</ID>
-          <Description>"Set C3 to fix DbgDrawCrashes"</Description>
+          <ID>10</ID>
+          <Description>"DbgCrashFix, Set to C3"</Description>
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Byte</VariableType>
-          <Address>eldenring.exe+25EAD70</Address>
+          <Address>eldenring.exe+25ead50</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>13</ID>
+          <Description>"Game.IsEnableSummonHorse"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>eldenring.exe+3a5e5f6</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>3</ID>
-          <Description>"Player NoDead"</Description>
+          <Description>"GameData.PlayerNoDead"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Byte</VariableType>
           <Address>eldenring.exe+3c65050</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>21</ID>
+          <Description>"GameData.PlayerHorseNoDead"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>eldenring.exe+3c65051</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>22</ID>
+          <Description>"GameData.PlayerExterminate"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>eldenring.exe+3c65052</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>2</ID>
@@ -28,6 +202,13 @@
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Byte</VariableType>
           <Address>eldenring.exe+3c65058</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>11</ID>
+          <Description>"Game.Debug.IsAllChrDeactivate"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>eldenring.exe+3c65064</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>9</ID>
@@ -65,6 +246,20 @@
           <Address>eldenring.exe+3c6b7b0</Address>
         </CheatEntry>
         <CheatEntry>
+          <ID>12</ID>
+          <Description>"Game.Debug.IsEnableDbgDash"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>eldenring.exe+4486944</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>20</ID>
+          <Description>"Menu.IsEnableOnlineMode"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>eldenring.exe+448696c</Address>
+        </CheatEntry>
+        <CheatEntry>
           <ID>5</ID>
           <Description>"Draw Stagger Bar"</Description>
           <ShowAsSigned>0</ShowAsSigned>
@@ -72,6 +267,124 @@
           <Address>eldenring.exe+3c65048</Address>
           <Offsets>
             <Offset>69</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>25</ID>
+      <Description>"Player"</Description>
+      <Options moHideChildren="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>26</ID>
+          <Description>"PlayerIns"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>WorldChrManImp</Address>
+          <Offsets>
+            <Offset>18468</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>28</ID>
+          <Description>"x"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>WorldChrManImp</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>68</Offset>
+            <Offset>190</Offset>
+            <Offset>18468</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>38</ID>
+          <Description>"y"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>WorldChrManImp</Address>
+          <Offsets>
+            <Offset>74</Offset>
+            <Offset>68</Offset>
+            <Offset>190</Offset>
+            <Offset>18468</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>37</ID>
+          <Description>"z"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>WorldChrManImp</Address>
+          <Offsets>
+            <Offset>78</Offset>
+            <Offset>68</Offset>
+            <Offset>190</Offset>
+            <Offset>18468</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>31</ID>
+          <Description>"ChrCtrl"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>WorldChrManImp</Address>
+          <Offsets>
+            <Offset>58</Offset>
+            <Offset>18468</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>33</ID>
+          <Description>"warp"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>WorldChrManImp</Address>
+          <Offsets>
+            <Offset>fc</Offset>
+            <Offset>58</Offset>
+            <Offset>18468</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>39</ID>
+          <Description>"warpx"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>WorldChrManImp</Address>
+          <Offsets>
+            <Offset>100</Offset>
+            <Offset>58</Offset>
+            <Offset>18468</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41</ID>
+          <Description>"warpy"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>WorldChrManImp</Address>
+          <Offsets>
+            <Offset>104</Offset>
+            <Offset>58</Offset>
+            <Offset>18468</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>40</ID>
+          <Description>"warpz"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>WorldChrManImp</Address>
+          <Offsets>
+            <Offset>108</Offset>
+            <Offset>58</Offset>
+            <Offset>18468</Offset>
           </Offsets>
         </CheatEntry>
       </CheatEntries>
