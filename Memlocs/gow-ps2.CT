@@ -365,6 +365,21 @@ db 21 20 c0 00 21 28 e0 00 21 30 00 01 21 38 20 01 32 28 0a 08
 db 90 ff bd 27 48 00 a7 ff 50 00 a8 ff 58 00 a9 ff 60 00 aa ff
 </AssemblerScript>
         </CheatEntry>
+        <CheatEntry>
+          <ID>423</ID>
+          <Description>"Restore DBG Output (Needs ELF Launch)"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>fullAccess(0x20241420,0x14)
+
+[ENABLE]
+241420:
+db 21 20 c0 00 21 28 e0 00 21 30 00 01 21 38 20 01 32 28 0a 08
+
+[DISABLE]
+241420:
+db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
+</AssemblerScript>
+        </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
@@ -451,6 +466,21 @@ db 90 ff bd 27 48 00 a7 ff 50 00 a8 ff 58 00 a9 ff 60 00 aa ff
           <Offsets>
             <Offset>820</Offset>
           </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>418</ID>
+      <Description>"Global -&gt;"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>420</ID>
+          <Description>"Global::sm_bWorldIdle"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>29ccb4</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
@@ -593,6 +623,34 @@ db 90 ff bd 27 48 00 a7 ff 50 00 a8 ff 58 00 a9 ff 60 00 aa ff
       <CheatEntries>
         <CheatEntry>
           <ID>353</ID>
+          <Description>"xPos"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>302cc0+0x30</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>415</ID>
+          <Description>"yPos"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>302cc0+0x34</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>416</ID>
+          <Description>"zPos"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>302cc0+0x38</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>414</ID>
+          <Description>"Hp"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>00302CC0 + 0x58</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>422</ID>
           <Description>"currMp"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
@@ -2685,32 +2743,6 @@ db 90 ff bd 27 48 00 a7 ff 50 00 a8 ff 58 00 a9 ff 60 00 aa ff
           <Address>336eb8 + 0x13</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>411</ID>
-          <Description>"Playtime"</Description>
-          <VariableType>Float</VariableType>
-          <Address>0336F22</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>24</ID>
-          <Description>"WAD1"</Description>
-          <VariableType>String</VariableType>
-          <Length>8</Length>
-          <Unicode>0</Unicode>
-          <CodePage>0</CodePage>
-          <ZeroTerminate>1</ZeroTerminate>
-          <Address>0336EC0</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>25</ID>
-          <Description>"WAD2"</Description>
-          <VariableType>String</VariableType>
-          <Length>8</Length>
-          <Unicode>0</Unicode>
-          <CodePage>0</CodePage>
-          <ZeroTerminate>1</ZeroTerminate>
-          <Address>0336ECB</Address>
-        </CheatEntry>
-        <CheatEntry>
           <ID>26</ID>
           <Description>"xPos"</Description>
           <VariableType>Float</VariableType>
@@ -2727,6 +2759,12 @@ db 90 ff bd 27 48 00 a7 ff 50 00 a8 ff 58 00 a9 ff 60 00 aa ff
           <Description>"zPos"</Description>
           <VariableType>Float</VariableType>
           <Address>336F0E</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>411</ID>
+          <Description>"Playtime"</Description>
+          <VariableType>Float</VariableType>
+          <Address>0336F22</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>30</ID>
@@ -2802,12 +2840,89 @@ db 90 ff bd 27 48 00 a7 ff 50 00 a8 ff 58 00 a9 ff 60 00 aa ff
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>351</ID>
+      <ID>421</ID>
+      <Description>"svrRoot -&gt;"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>134</ID>
+          <Description>"svrRoot::m_bPaused"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032EC50</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>419</ID>
       <Description>"------------"</Description>
       <GroupHeader>1</GroupHeader>
     </CheatEntry>
     <CheatEntry>
-      <ID>337</ID>
+      <ID>379</ID>
+      <Description>"Warp -&gt;"</Description>
+      <Options moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>397</ID>
+          <Description>"doWarp"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0029CAFC</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>359</ID>
+          <Description>"warpWadsReady"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0029CAB4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>357</ID>
+          <Description>"warpPlayerReady"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0029CAB8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>355</ID>
+          <Description>"gFirstLevel"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>10</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>2b8010</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>360</ID>
+          <Description>"pLevelWadSlot1"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>10</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>[00335280]</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>361</ID>
+          <Description>"pLevelWadSlot2"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>10</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>[00335284]</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>417</ID>
       <Description>"CamXRotSpeed"</Description>
       <VariableType>Float</VariableType>
       <Address>0029E290</Address>
@@ -2834,6 +2949,13 @@ db 90 ff bd 27 48 00 a7 ff 50 00 a8 ff 58 00 a9 ff 60 00 aa ff
           <Address>002FD9c0</Address>
         </CheatEntry>
         <CheatEntry>
+          <ID>142</ID>
+          <Description>"Pad1_padType"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>002FD9C0 + 8</Address>
+        </CheatEntry>
+        <CheatEntry>
           <ID>335</ID>
           <Description>"Pad1_ButtonsPressed"</Description>
           <ShowAsHex>1</ShowAsHex>
@@ -2851,15 +2973,17 @@ db 90 ff bd 27 48 00 a7 ff 50 00 a8 ff 58 00 a9 ff 60 00 aa ff
           <ID>339</ID>
           <Description>"Pad1_CheatCode"</Description>
           <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
-          <Address>002FD9f0</Address>
+          <Address>002FD9c0 + 30</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>340</ID>
           <Description>"Pad1_CheatSuccess"</Description>
           <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
-          <Address>002FD9f4</Address>
+          <Address>002FD9c0 + 34</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>155</ID>
@@ -3340,68 +3464,6 @@ db 90 ff bd 27 48 00 a7 ff 50 00 a8 ff 58 00 a9 ff 60 00 aa ff
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>379</ID>
-      <Description>"Warp -&gt;"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
-      <GroupHeader>1</GroupHeader>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>397</ID>
-          <Description>"doWarp"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>0029CAFC</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>359</ID>
-          <Description>"warpWadsReady"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>0029CAB4</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>357</ID>
-          <Description>"warpPlayerReady"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>0029CAB8</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>355</ID>
-          <Description>"gFirstLevel"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>String</VariableType>
-          <Length>10</Length>
-          <Unicode>0</Unicode>
-          <CodePage>0</CodePage>
-          <ZeroTerminate>1</ZeroTerminate>
-          <Address>2b8010</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>360</ID>
-          <Description>"pLevelWadSlot1"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>String</VariableType>
-          <Length>10</Length>
-          <Unicode>0</Unicode>
-          <CodePage>0</CodePage>
-          <ZeroTerminate>1</ZeroTerminate>
-          <Address>[00335280]</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>361</ID>
-          <Description>"pLevelWadSlot2"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>String</VariableType>
-          <Length>10</Length>
-          <Unicode>0</Unicode>
-          <CodePage>0</CodePage>
-          <ZeroTerminate>1</ZeroTerminate>
-          <Address>[00335284]</Address>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
       <ID>400</ID>
       <Description>"------------"</Description>
       <GroupHeader>1</GroupHeader>
@@ -3449,28 +3511,10 @@ db 90 ff bd 27 48 00 a7 ff 50 00 a8 ff 58 00 a9 ff 60 00 aa ff
       <Address>0029C0B8</Address>
     </CheatEntry>
     <CheatEntry>
-      <ID>141</ID>
-      <Description>"Hide HUD / Passive AI"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>0029CCB4</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>142</ID>
-      <Description>"Controller Connected"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>002FD9C8</Address>
-    </CheatEntry>
-    <CheatEntry>
       <ID>137</ID>
       <Description>"Cam Offset"</Description>
       <VariableType>Float</VariableType>
       <Address>00303040</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>134</ID>
-      <Description>"bIsMenuOpen"</Description>
-      <VariableType>4 Bytes</VariableType>
-      <Address>0032EC50</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>125</ID>
