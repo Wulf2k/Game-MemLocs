@@ -19,6 +19,19 @@
           <Address>780830</Address>
         </CheatEntry>
         <CheatEntry>
+          <ID>427</ID>
+          <Description>"Trigger Save1"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0029CAE8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>424</ID>
+          <Description>"Global::sm_bWorldIdle"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>29ccb4</Address>
+        </CheatEntry>
+        <CheatEntry>
           <ID>401</ID>
           <Description>"Freecam Style"</Description>
           <DropDownList DisplayValueAsItem="1">0:Fixed
@@ -78,9 +91,9 @@ ATHN06B:wad
 ATHN06C:wad
 ATHN07:wad
 ATHN07B:wad
-ATHN08A:wad
-ATHN08B:wad
-ATHN08C:wad
+ATHN08A:Ares 1
+ATHN08B:Kratos Family
+ATHN08C:Ares 2
 ATRET01A:wad
 ATRET01B:wad
 ATRET01C:wad
@@ -352,6 +365,21 @@ db 00 00 62 8c
         </CheatEntry>
         <CheatEntry>
           <ID>405</ID>
+          <Description>"Permit ELF CD Bypass"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>fullAccess(0x2017bcbc,0x14)
+
+[ENABLE]
+17bcbc:
+db 00 00 00 00
+
+[DISABLE]
+17bcbc:
+db 24 00 20 12
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>428</ID>
           <Description>"Restore Entity::Info Output (Needs ELF Launch)"</Description>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>fullAccess(0x20244960,0x14)
@@ -486,130 +514,144 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
     </CheatEntry>
     <CheatEntry>
       <ID>5</ID>
-      <Description>"goPlayer::sm_pPlayer -&gt;"</Description>
+      <Description>"goPlayer -&gt;"</Description>
       <Options moAllowManualCollapseAndExpand="1"/>
       <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
       <Address>29cd58</Address>
       <Offsets>
         <Offset>0</Offset>
-        <Offset>0</Offset>
       </Offsets>
       <CheatEntries>
         <CheatEntry>
-          <ID>92</ID>
-          <Description>"HorizontalFacing"</Description>
-          <VariableType>Float</VariableType>
-          <Address>29cd58</Address>
-          <Offsets>
-            <Offset>70</Offset>
-            <Offset>0</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>93</ID>
-          <Description>"VerticalFacing"</Description>
-          <VariableType>Float</VariableType>
-          <Address>29cd58</Address>
-          <Offsets>
-            <Offset>78</Offset>
-            <Offset>0</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>86</ID>
-          <Description>"Size"</Description>
-          <VariableType>Float</VariableType>
-          <Address>29cd58</Address>
-          <Offsets>
-            <Offset>168</Offset>
-            <Offset>0</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>87</ID>
-          <Description>"SpeedMult"</Description>
-          <VariableType>Float</VariableType>
-          <Address>29cd58</Address>
-          <Offsets>
-            <Offset>16c</Offset>
-            <Offset>0</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>1</ID>
-          <Description>"SwimState"</Description>
-          <VariableType>Byte</VariableType>
-          <Address>29cd58</Address>
-          <Offsets>
-            <Offset>175</Offset>
-            <Offset>0</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>89</ID>
-          <Description>"CurrHp"</Description>
-          <VariableType>Float</VariableType>
-          <Address>29cd58</Address>
-          <Offsets>
-            <Offset>178</Offset>
-            <Offset>0</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>85</ID>
-          <Description>"MaxHp"</Description>
-          <VariableType>Float</VariableType>
-          <Address>29cd58</Address>
-          <Offsets>
-            <Offset>17c</Offset>
-            <Offset>0</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>88</ID>
-          <Description>"CurrHpRegen"</Description>
-          <VariableType>Float</VariableType>
-          <Address>29cd58</Address>
-          <Offsets>
-            <Offset>184</Offset>
-            <Offset>0</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>90</ID>
-          <Description>"visuals"</Description>
-          <VariableType>String</VariableType>
-          <Length>32</Length>
-          <Unicode>0</Unicode>
-          <CodePage>0</CodePage>
-          <ZeroTerminate>1</ZeroTerminate>
+          <ID>429</ID>
+          <Description>"goPlayer::goSoldier"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>4 Bytes</VariableType>
           <Address>29cd58</Address>
           <Offsets>
             <Offset>0</Offset>
-            <Offset>234</Offset>
             <Offset>0</Offset>
           </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>336</ID>
-          <Description>"CurrPetrifyRes"</Description>
-          <VariableType>Float</VariableType>
-          <Address>29cd58</Address>
-          <Offsets>
-            <Offset>288</Offset>
-            <Offset>0</Offset>
-          </Offsets>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>91</ID>
-          <Description>"MaxPetrifyRes"</Description>
-          <VariableType>Float</VariableType>
-          <Address>29cd58</Address>
-          <Offsets>
-            <Offset>28c</Offset>
-            <Offset>0</Offset>
-          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>430</ID>
+              <Description>"HorizontalFacing"</Description>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>70</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>431</ID>
+              <Description>"VerticalFacing"</Description>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>78</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>432</ID>
+              <Description>"Size"</Description>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>168</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>433</ID>
+              <Description>"SpeedMult"</Description>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>16c</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>434</ID>
+              <Description>"SwimState"</Description>
+              <VariableType>Byte</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>175</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>435</ID>
+              <Description>"CurrHp"</Description>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>436</ID>
+              <Description>"MaxHp"</Description>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>17c</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>437</ID>
+              <Description>"CurrHpRegen"</Description>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>184</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>438</ID>
+              <Description>"visuals"</Description>
+              <VariableType>String</VariableType>
+              <Length>32</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>234</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>439</ID>
+              <Description>"CurrPetrifyRes"</Description>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>288</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>440</ID>
+              <Description>"MaxPetrifyRes"</Description>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>28c</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
@@ -2560,6 +2602,20 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
         </CheatEntry>
         <CheatEntry>
           <ID>143</ID>
+          <Description>"GameState::discRemoved"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0029E564</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>426</ID>
+          <Description>"GameState::discWrong"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0029E568</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>425</ID>
           <Description>"GameState::padRemoved"</Description>
           <VariableType>4 Bytes</VariableType>
           <Address>0029E56C</Address>
@@ -2602,6 +2658,7 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
         <CheatEntry>
           <ID>384</ID>
           <Description>"GameWadLoader::permWadContext"</Description>
+          <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>29cc58</Address>
