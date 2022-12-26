@@ -4,7 +4,7 @@
     <CheatEntry>
       <ID>98</ID>
       <Description>"Quick -&gt;"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
@@ -143,13 +143,13 @@ PAND03GG:wad
 PAND03H:wad
 PAND03I:wad
 PAND03J:wad
-PAND04AA:wad
+PAND04AA:Works
 PAND04C:wad
 PAND04D:wad
 PAND04E:wad
 PAND04EE:wad
 PAND04F:wad
-PAND04G:wad
+PAND04G:Crash
 PAND04H:wad
 PAND04IB:wad
 PAND04J:wad
@@ -330,7 +330,7 @@ SEWR02:wad
     <CheatEntry>
       <ID>326</ID>
       <Description>"Code Changes -&gt;"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
@@ -416,9 +416,374 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
       <GroupHeader>1</GroupHeader>
     </CheatEntry>
     <CheatEntry>
+      <ID>442</ID>
+      <Description>"Enemies -&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>459</ID>
+          <Description>"HP -&gt;"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>461</ID>
+              <Description>"#1 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>462</ID>
+              <Description>"#2 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*2+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>463</ID>
+              <Description>"#3 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*3+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>464</ID>
+              <Description>"#4 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*4+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>465</ID>
+              <Description>"#5 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*5+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>466</ID>
+              <Description>"#6 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*6+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>467</ID>
+              <Description>"#7 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*7+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>468</ID>
+              <Description>"#8 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*8+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>469</ID>
+              <Description>"#9 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*9+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>470</ID>
+              <Description>"#10 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*a+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>471</ID>
+              <Description>"#11 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*b+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>472</ID>
+              <Description>"#12 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*c+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>473</ID>
+              <Description>"#13 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*d+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>474</ID>
+              <Description>"#14 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*e+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>475</ID>
+              <Description>"#15 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*f+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>476</ID>
+              <Description>"#16 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*10+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>477</ID>
+              <Description>"#17 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*11+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>460</ID>
+          <Description>"------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>443</ID>
+          <Description>"#1 currHP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360+178</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>444</ID>
+          <Description>"#1 maxHP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360+17c</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>445</ID>
+          <Description>"#1 currPetr"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360+288</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>449</ID>
+          <Description>"------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>446</ID>
+          <Description>"#2 currHP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*2+178</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>447</ID>
+          <Description>"#2 maxHP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*2+17c</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>448</ID>
+          <Description>"#2 currPetr"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*2+288</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>450</ID>
+          <Description>"------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>451</ID>
+          <Description>"#3 currHP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*3+178</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>452</ID>
+          <Description>"#3 maxHP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*3+17c</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>453</ID>
+          <Description>"#3 currPetr"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*3+288</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>454</ID>
+          <Description>"------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>455</ID>
+          <Description>"#4 currHP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*4+178</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>456</ID>
+          <Description>"#4 maxHP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*4+17c</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>457</ID>
+          <Description>"#4 currPetr"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*4+288</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>458</ID>
+          <Description>"------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>441</ID>
+      <Description>"------------"</Description>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
       <ID>117</ID>
       <Description>"camera::Script::gCamera -&gt;"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
       <VariableType>4 Bytes</VariableType>
       <Address>29e2a4</Address>
       <Offsets>
@@ -500,22 +865,29 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
     <CheatEntry>
       <ID>418</ID>
       <Description>"Global -&gt;"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
           <ID>420</ID>
-          <Description>"Global::sm_bWorldIdle"</Description>
+          <Description>"WorldIdle"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>29ccb4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>482</ID>
+          <Description>"Gravity"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>335e98</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
       <ID>5</ID>
       <Description>"goPlayer -&gt;"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
       <ShowAsHex>1</ShowAsHex>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
@@ -526,7 +898,7 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
       <CheatEntries>
         <CheatEntry>
           <ID>429</ID>
-          <Description>"goPlayer::goSoldier"</Description>
+          <Description>"goSoldier"</Description>
           <Options moAllowManualCollapseAndExpand="1"/>
           <ShowAsHex>1</ShowAsHex>
           <VariableType>4 Bytes</VariableType>
@@ -537,7 +909,7 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
           </Offsets>
           <CheatEntries>
             <CheatEntry>
-              <ID>430</ID>
+              <ID>484</ID>
               <Description>"HorizontalFacing"</Description>
               <VariableType>Float</VariableType>
               <Address>29cd58</Address>
@@ -553,6 +925,39 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
               <Address>29cd58</Address>
               <Offsets>
                 <Offset>78</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>430</ID>
+              <Description>"xPos"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>80</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>485</ID>
+              <Description>"yPos"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>84</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>486</ID>
+              <Description>"zPos"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>88</Offset>
                 <Offset>0</Offset>
               </Offsets>
             </CheatEntry>
@@ -579,6 +984,7 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
             <CheatEntry>
               <ID>434</ID>
               <Description>"SwimState"</Description>
+              <ShowAsHex>1</ShowAsHex>
               <VariableType>Byte</VariableType>
               <Address>29cd58</Address>
               <Offsets>
@@ -613,6 +1019,18 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
               <Address>29cd58</Address>
               <Offsets>
                 <Offset>184</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>481</ID>
+              <Description>"Grabbed"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>188</Offset>
                 <Offset>0</Offset>
               </Offsets>
             </CheatEntry>
@@ -658,7 +1076,7 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
     <CheatEntry>
       <ID>334</ID>
       <Description>"goPlayer::state -&gt;"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
       <ShowAsHex>1</ShowAsHex>
       <VariableType>4 Bytes</VariableType>
       <Address>00302CC0</Address>
@@ -697,6 +1115,13 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>00302CC0 + 0x5c</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>483</ID>
+          <Description>"currRage"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>00302CC0 + 0x60</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>378</ID>
@@ -823,7 +1248,7 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
     <CheatEntry>
       <ID>34</ID>
       <Description>"flashInterface -&gt;"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
       <ShowAsHex>1</ShowAsHex>
       <VariableType>4 Bytes</VariableType>
       <Address>29cb94</Address>
@@ -2591,7 +3016,7 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
     <CheatEntry>
       <ID>396</ID>
       <Description>"GameState -&gt;"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
@@ -2652,7 +3077,7 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
     <CheatEntry>
       <ID>383</ID>
       <Description>"GameWadLoader -&gt;"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
@@ -2720,7 +3145,7 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
     <CheatEntry>
       <ID>135</ID>
       <Description>"SaveGame::checkBuf -&gt;"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
       <ShowAsHex>1</ShowAsHex>
       <VariableType>4 Bytes</VariableType>
       <Address>00336eb8</Address>
@@ -2836,6 +3261,13 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
           <Address>0336F53</Address>
         </CheatEntry>
         <CheatEntry>
+          <ID>480</ID>
+          <Description>"WorldIdle"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>336ebc + 41a</Address>
+        </CheatEntry>
+        <CheatEntry>
           <ID>31</ID>
           <Description>"Checksum"</Description>
           <ShowAsHex>1</ShowAsHex>
@@ -2848,7 +3280,7 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
     <CheatEntry>
       <ID>390</ID>
       <Description>"SaveGame::SaveGlobalData -&gt;"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
       <ShowAsHex>1</ShowAsHex>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
@@ -2899,7 +3331,7 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
     <CheatEntry>
       <ID>421</ID>
       <Description>"svrRoot -&gt;"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
@@ -2917,9 +3349,14 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
       <GroupHeader>1</GroupHeader>
     </CheatEntry>
     <CheatEntry>
+      <ID>478</ID>
+      <Description>"------------"</Description>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
       <ID>379</ID>
       <Description>"Warp -&gt;"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
@@ -2993,7 +3430,7 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
     <CheatEntry>
       <ID>145</ID>
       <Description>"Input -&gt;"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
       <ShowAsHex>1</ShowAsHex>
       <VariableType>4 Bytes</VariableType>
       <Address>002FD9c0</Address>
@@ -3168,7 +3605,7 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
     <CheatEntry>
       <ID>320</ID>
       <Description>"Family Object -&gt;"</Description>
-      <Options moAllowManualCollapseAndExpand="1"/>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
       <ShowAsHex>1</ShowAsHex>
       <VariableType>4 Bytes</VariableType>
       <Address>00796C40</Address>
@@ -3620,6 +4057,13 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
       <ID>358</ID>
       <Description>"------------"</Description>
       <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>479</ID>
+      <Description>"Level Vars"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>002FFDB8</Address>
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>
