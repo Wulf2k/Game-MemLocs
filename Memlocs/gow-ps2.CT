@@ -614,6 +614,138 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
                 <Offset>0</Offset>
               </Offsets>
             </CheatEntry>
+            <CheatEntry>
+              <ID>487</ID>
+              <Description>"#18 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*12+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>488</ID>
+              <Description>"#19 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*13+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>489</ID>
+              <Description>"#20 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*14+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>490</ID>
+              <Description>"#21 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*15+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>491</ID>
+              <Description>"#22 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*16+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>492</ID>
+              <Description>"#23 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*17+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>493</ID>
+              <Description>"#24 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*18+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>494</ID>
+              <Description>"#25 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*19+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>495</ID>
+              <Description>"#26 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*1a+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>496</ID>
+              <Description>"#27 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*1b+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>497</ID>
+              <Description>"#28 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*1c+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>498</ID>
+              <Description>"#29 currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>360*1d+178</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
@@ -1104,6 +1236,13 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
         </CheatEntry>
         <CheatEntry>
           <ID>414</ID>
+          <Description>"Deaths"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>00302CC0 + 0x48</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>504</ID>
           <Description>"Hp"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
@@ -4064,6 +4203,609 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
       <Address>002FFDB8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>499</ID>
+      <Description>"Tweaks -&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>3028e0</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>500</ID>
+          <Description>"HP Level 1 Max"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>3028e0 + 0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>501</ID>
+          <Description>"HP Level 5 Max"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>3028e0 + 10</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>502</ID>
+          <Description>"MP Level 0 Max"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>3028e0 + 14</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>503</ID>
+          <Description>"MP Level 5 Max"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>3028e0 + 28</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>559</ID>
+          <Description>"Weapon L0 -&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>3028e0 + 60 + 50 * 0</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>560</ID>
+              <Description>"TrailTintR"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 60 + 50 * 0 + 0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>563</ID>
+              <Description>"TrailTintG"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 60 + 50 * 0 + 4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>564</ID>
+              <Description>"TrailTintB"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 60 + 50 * 0 + 8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>565</ID>
+              <Description>"TrailTintA"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 60 + 50 * 0 + c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>572</ID>
+              <Description>"DmgMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 60 + 50 * 0 + 30</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>579</ID>
+              <Description>"AllowGodMode"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>3028e0 + 60 + 50 * 0 + 34</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>573</ID>
+              <Description>"AllowGodModeInfMagic"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>3028e0 + 60 + 50 * 0 + 38</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>582</ID>
+              <Description>"GodModeMeterDrain"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 60 + 50 * 0 + 3c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>575</ID>
+              <Description>"GodModeDmgMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 60 + 50 * 0 + 40</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>576</ID>
+              <Description>"GodModeEnmyDmgMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 60 + 50 * 0 + 44</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>566</ID>
+          <Description>"Weapon L5 -&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>3028e0 + 60 + 50 * 5</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>567</ID>
+              <Description>"TrailTintR"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 60 + 50 * 6 + 0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>568</ID>
+              <Description>"TrailTintG"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 60 + 50 * 5 + 4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>569</ID>
+              <Description>"TrailTintB"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 60 + 50 * 5 + 8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>570</ID>
+              <Description>"TrailTintA"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 60 + 50 * 5 + c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>580</ID>
+              <Description>"DmgMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 60 + 50 * 5 + 30</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>574</ID>
+              <Description>"AllowGodMode"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>3028e0 + 60 + 50 * 5 + 34</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>571</ID>
+              <Description>"AllowGodModeInfMagic"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>3028e0 + 60 + 50 * 5 + 38</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>581</ID>
+              <Description>"GodModeMeterDrain"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 60 + 50 * 5 + 3c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>577</ID>
+              <Description>"GodModeDmgMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 60 + 50 * 5 + 40</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>578</ID>
+              <Description>"GodModeEnmyDmgMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 60 + 50 * 5 + 44</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>505</ID>
+          <Description>"Costume 0 -&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>3028e0 + 240 +20 * 0</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>506</ID>
+              <Description>"DamageMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 0 + 0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>513</ID>
+              <Description>"AIDamageMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 0 + 4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>512</ID>
+              <Description>"Infinite Magic"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>3028e0 + 240 +20 * 0 + 8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>511</ID>
+              <Description>"HealthOrbMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 0 + c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>510</ID>
+              <Description>"MagicOrbMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 0 + 10</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>509</ID>
+              <Description>"WeaponOrbMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 0 + 14</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>508</ID>
+              <Description>"WeaponLength"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 0 + 18</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>507</ID>
+              <Description>"GodModeWeaponLength"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 0 + 1c</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>514</ID>
+          <Description>"Costume 1 (Chef) -&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>3028e0 + 240 +20 * 1</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>515</ID>
+              <Description>"DamageMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 1 + 0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>516</ID>
+              <Description>"AIDamageMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 1 + 4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>517</ID>
+              <Description>"Infinite Magic"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>3028e0 + 240 +20 * 1 + 8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>518</ID>
+              <Description>"HealthOrbMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 1 + c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>519</ID>
+              <Description>"MagicOrbMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 1 + 10</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>520</ID>
+              <Description>"WeaponOrbMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 1 + 14</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>521</ID>
+              <Description>"WeaponLength"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 1 + 18</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>522</ID>
+              <Description>"GodModeWeaponLength"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 1 + 1c</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>523</ID>
+          <Description>"Costume 2 (Bubbles) -&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>3028e0 + 240 +20 * 2</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>524</ID>
+              <Description>"DamageMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 2 + 0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>525</ID>
+              <Description>"AIDamageMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 2 + 4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>526</ID>
+              <Description>"Infinite Magic"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>3028e0 + 240 +20 * 2 + 8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>527</ID>
+              <Description>"HealthOrbMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 2 + c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>528</ID>
+              <Description>"MagicOrbMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 2 + 10</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>529</ID>
+              <Description>"WeaponOrbMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 2 + 14</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>530</ID>
+              <Description>"WeaponLength"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 2 + 18</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>531</ID>
+              <Description>"GodModeWeaponLength"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 2 + 1c</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>532</ID>
+          <Description>"Costume 3 (Tycoonius) -&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>3028e0 + 240 +20 * 3</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>533</ID>
+              <Description>"DamageMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 3 + 0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>534</ID>
+              <Description>"AIDamageMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 3 + 4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>535</ID>
+              <Description>"Infinite Magic"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>3028e0 + 240 +20 * 3 + 8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>536</ID>
+              <Description>"HealthOrbMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 3 + c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>537</ID>
+              <Description>"MagicOrbMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 3 + 10</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>538</ID>
+              <Description>"WeaponOrbMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 3 + 14</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>539</ID>
+              <Description>"WeaponLength"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 3 + 18</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>540</ID>
+              <Description>"GodModeWeaponLength"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 3 + 1c</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>541</ID>
+          <Description>"Costume 4 (Dairy) -&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>3028e0 + 240 +20 * 4</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>542</ID>
+              <Description>"DamageMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 4 + 0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>543</ID>
+              <Description>"AIDamageMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 4 + 4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>544</ID>
+              <Description>"Infinite Magic"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>3028e0 + 240 +20 * 4 + 8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>545</ID>
+              <Description>"HealthOrbMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 4 + c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>546</ID>
+              <Description>"MagicOrbMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 4 + 10</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>547</ID>
+              <Description>"WeaponOrbMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 4 + 14</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>548</ID>
+              <Description>"WeaponLength"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 4 + 18</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>549</ID>
+              <Description>"GodModeWeaponLength"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 4 + 1c</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>550</ID>
+          <Description>"Costume 5 (Ares) -&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>3028e0 + 240 +20 * 5</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>551</ID>
+              <Description>"DamageMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 5 + 0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>552</ID>
+              <Description>"AIDamageMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 5 + 4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>553</ID>
+              <Description>"Infinite Magic"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>3028e0 + 240 +20 * 5 + 8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>554</ID>
+              <Description>"HealthOrbMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 5 + c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>555</ID>
+              <Description>"MagicOrbMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 5 + 10</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>556</ID>
+              <Description>"WeaponOrbMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 5 + 14</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>557</ID>
+              <Description>"WeaponLength"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 5 + 18</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>558</ID>
+              <Description>"GodModeWeaponLength"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>3028e0 + 240 +20 * 5 + 1c</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>
