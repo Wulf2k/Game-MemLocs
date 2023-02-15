@@ -41,6 +41,7 @@
 4:Freeze
 5:Ballista
 </DropDownList>
+          <ShowAsHex>1</ShowAsHex>
           <VariableType>2 Bytes</VariableType>
           <Address>29e2a4</Address>
           <Offsets>
@@ -111,12 +112,12 @@ HDES01G:wad
 OLYMP01:wad
 OLYMP02:Olympus
 OLYMP04:Character Graveyard
-PAND00A:wad
+PAND00A:Pandora's Temple
 PAND00B:wad
 PAND00C:wad
 PAND00D:wad
 PAND00E:wad
-PAND01A:wad
+PAND01A:(Crash)
 PAND01B:wad
 PAND01BB:wad
 PAND01C:wad
