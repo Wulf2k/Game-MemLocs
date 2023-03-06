@@ -1,0 +1,134 @@
+D:\emus\ps3\dev_hdd0\home\00000001\savedata
+BCUS98111-AUTOSAVE
+BCUS98111-USERDATA
+
+52b2dc
++4c	Red Orbs
+
+
+SAVEDATA
++00046	UInt16	Offset to SND_
+
++0004F	Byte	Camera Style related (?)
+
++00058	0x10	RCM_ Cam Name
++00168	0x10	CAM Name
++001A0	0x20	WAD Name
+
+[0x46]
++00048	UInt32	Msg offset?
+
++0007C	Float	xPos
++00080	Float	yPos
++00084	Float	zPos
+
++000A0	Byte	Unlocks
+	00000001	Aphrodite's Garter
+	00000010	Hephaestus' Ring
+	00000100	Hera's Chalice
+	00001000	Zeus' Eagle
+	00010000	Daedalus' Schematics
++000A1	Byte	Unlocks
+	00000001	Nemesis Whip
+	00000010	Blades of Athena
+	00000100	Claws of Hades
+	00001000	Hades Helm
+	00010000	Helios' Shield
+	00100000	Hermes' Coin
+	01000000	Hercules' Shoulder Guard
+	10000000	Poseidon's Conch Shell
++000A2	Byte	Unlocks
+	00000010	Blade of Olympus (Rage)
+	00000100	Boots of Hermes
+	00001000	Poseidon's Trident
+	00010000	Blade of Olympus
+	10000000	Nemean Cestus
++000A3	Byte	Unlocks
+	00000001	Bow of Apollo
+	00000100	Head of Helios
+	00001000	Boreas Icestorm
+	00010000	Golden Fleece
+	00100000	Icarus Wings
+	
++000A8	Float	Health
++000AC	Float	Magic
++000B0	Float	Item
++000B4	Float	Rage
++000B8	Float	Health Regen
++000BC	Float	Magic Regen
++000C0	Float	Item Regen
+
++000C4	Float	Red Orbs
+
++000DA	Byte	Health Extensions (0-4)
++000DB	Byte	Magic Extensions (0-5)
++000DC	Byte	Item Extension (0-5)
++000DD	Byte	Bow of Apollo Level (0-1)
++000DE	Byte	Boots of Hermes Level (0-1)
++000DF	Byte	Head of Helios Level (0-1)
++000E0	Byte	Nemean Cestus Level (0-4)
++000E1	Byte	Nemesis Whip Level (0-4)
++000E2	Byte	Blades Level (0-5)
++000E3	Byte	Claws of Hades Level (0-4)
+
++000E6	Byte	Selected Weapon
+
++000E9	Byte	Gorgon Eyes
++000EA	Byte	Phoenix Feathers
++000EB	Byte	Minotaur Horns
+
++0048A	Byte	Difficulty
++0048B	Byte	Costume
+	0	Kratos
+	1	Fear Kratos
+	2	Apollo
+	3	Morpheus Armor
+	4	Phantom of Chaos
+	5	Forgotten Warrior
+	6	Dominus
+	7	Deimos
+	8	Kratos
+
+
++004F4	Int32	Red Orbs Collected
+
+
+
+----------------
+USERDATA\SAVEDATA
++0x06	Byte	Unlocks
+	00000001	Challenge #5 Beaten
+	00000010	Challenge #6 Beaten
+	00000100	Challenge #7 Beaten
++0x07	Byte	Unlocks
+	00000001	Easy Beaten
+	00000010	Normal Beaten
+	00000100	Hard Beaten
+	00001000	Very Hard Beaten
+	00010000	Challenge #1 Beaten
+	00100000	Challenge #2 Beaten
+	01000000	Challenge #3 Beaten
+	10000000	Challenge #4 Beaten
++0x0E	Byte	Music Volume (0-100)
++0x0F	Byte	Speech Volume (0-100)
++0x10	Byte	SFX Volume (0-100)
++0x11	Byte	Cinematics Volume (0-100)
++0x12	Byte	Sound Mode
+	0	Stereo
+	1	Headphones
+	2	Dolby Pro Logic II
++0x13	Byte	Brightness (0-100)
++0x14	Byte	Screen Scale (0-100)
++0x15	Byte	Screen Location X (0-100)
++0x16	Byte	Screen Location Y (0-100)
++0x17	Byte	Tutorial Display (0/1/3)
++0x18	Byte	Subtitles
++0x1A	Byte	Invert Flight Controls
++0x1B	Byte	Invert Free Camera
+
++0x1D	Byte	Costume
+	0	Kratos
+	1	Fear Kratos
+
+--------------
+Cheat Code - 10054010
