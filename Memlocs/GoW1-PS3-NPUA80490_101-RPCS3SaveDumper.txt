@@ -139,6 +139,9 @@ $currtime = 0
 
 do {
 	$currtime = [Math]::Floor([decimal](RSingle 0x30055f54a))
+	if ($currtime -lt $prevtime) {
+		$currtime = $prevtime
+	}
 	if ($prevtime -lt $currtime) {
 		$prevtime = $currtime
 		
