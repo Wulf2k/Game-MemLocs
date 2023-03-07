@@ -1,0 +1,162 @@
+$savepath = 'D:\temp\gow\GoW1-Saves\'
+
+
+$procname = "rpcs3"
+$bigendian = $true
+
+
+[console]::CursorVisible = $false
+$Host.UI.RawUI.BackgroundColor = 'Black'
+$Host.UI.RawUI.ForegroundColor = 'Green'
+
+Function RBytes
+{
+	Param (
+		$addr,
+		$sizetoread
+	)
+	[Byte[]] $buff = New-Object Byte[]($sizetoread)
+	$read = $rpm::ReadProcessMemory($proc,$addr,$buff,$buff.length,$null);
+	$buff
+}
+
+Function RAsciiStr
+{   
+	Param (
+        $addr
+    )
+	([System.Text.Encoding]::ASCII.GetString($(RBytes $addr 30))).Split([char]0)[0]
+}
+Function RInt16
+{   
+	Param (
+        $addr
+    )
+	$buff = RBytes $addr 2
+	if ($bigendian -eq $true) {
+		[Array]::Reverse($buff)
+	}
+	[bitconverter]::ToInt16($buff,0)
+}
+Function RInt32
+{   
+	Param (
+        $addr
+    )
+	$buff = RBytes $addr 4
+	if ($bigendian -eq $true) {
+		[Array]::Reverse($buff)
+	}
+	[bitconverter]::ToInt32($buff,0)
+}
+Function RInt64
+{   
+	Param (
+        $addr
+    )
+	$buff = RBytes $addr 8
+	if ($bigendian -eq $true) {
+		[Array]::Reverse($buff)
+	}
+	[bitconverter]::ToInt64($buff,0)
+}
+Function RUInt8
+{   
+	Param (
+        $addr
+    )
+	RBytes $addr 1
+}
+Function RUInt16
+{   
+	Param (
+        $addr
+    )
+	$buff = RBytes $addr 2
+	if ($bigendian -eq $true) {
+		[Array]::Reverse($buff)
+	}
+	[bitconverter]::ToUInt16($buff,0)
+}
+Function RUInt32
+{   
+	Param (
+        $addr
+    )
+	$buff = RBytes $addr 4
+	if ($bigendian -eq $true) {
+		[Array]::Reverse($buff)
+	}
+	[bitconverter]::ToUInt32($buff,0)
+}
+Function RUInt64
+{   
+	Param (
+        $addr
+    )
+	$buff = RBytes $addr 8
+	if ($bigendian -eq $true) {
+		[Array]::Reverse($buff)
+	}
+	[bitconverter]::ToUInt64($buff,0)
+}
+Function RSingle
+{   
+	Param (
+        $addr
+    )
+	$buff = RBytes $addr 4
+	if ($bigendian -eq $true) {
+		[Array]::Reverse($buff)
+	}
+	[bitconverter]::ToSingle($buff,0)
+}
+$signature = @"
+[DllImport("kernel32.dll")] public static extern IntPtr OpenProcess(
+    uint h,bool b ,uint p);
+[DllImport("kernel32.dll")] public static extern bool ReadProcessMemory(
+    IntPtr hp,IntPtr Base,[Out]Byte[] buff,int Size,[Out]int bread);
+"@
+
+$rpm = Add-Type -MemberDefinition $signature -Name rpm -PassThru
+$access = 0x001F0FFF
+
+$ba = (get-Process $procname).MainModule.BaseAddress
+$procid = (get-Process $procname).ID
+$proc = $rpm::OpenProcess($access, $false, $procid)
+
+
+
+
+
+
+
+$prevtime = 0
+$currtime = 0
+[String]$path = ""
+[String]$wad1 = ""
+[String]$wad2 = ""
+
+do {
+	$currtime = [Math]::Floor([decimal](RSingle 0x30055f54a))
+	if ($prevtime -lt $currtime) {
+		$prevtime = $currtime
+		
+		$wad1 = RAsciiStr 0x30055f4e8
+		$wad2 = RAsciiStr 0x30055f4f3
+		
+		$path = $prevtime
+		$path = $path.PadLeft(6, '0')
+		$path = $savepath + $path + "_" + $wad1 + "_" + $wad2
+		
+		$ba = RBytes 0x30055f4e0 0x14000
+		[io.file]::WriteAllBytes($path, $ba)
+	}
+
+	cls
+	"Checkpoint playtime (s): " + $currtime
+	"WAD 1:                   " + $wad1
+	"WAD 2:                   " + $wad2
+	sleep 1
+}
+while ($true)
