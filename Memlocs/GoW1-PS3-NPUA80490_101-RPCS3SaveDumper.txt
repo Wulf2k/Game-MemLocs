@@ -131,35 +131,35 @@ $proc = $rpm::OpenProcess($access, $false, $procid)
 
 
 
-$prevtime = 0
-$currtime = 0
+$prevcam = ""
+$currcam = ""
+$wad = ""
 [String]$path = ""
-[String]$wad1 = ""
-[String]$wad2 = ""
+
+
+$cpoffset = 0
 
 do {
-	$currtime = [Math]::Floor([decimal](RSingle 0x30055f54a))
-	if ($currtime -lt $prevtime) {
-		$currtime = $prevtime
-	}
-	if ($prevtime -lt $currtime) {
-		$prevtime = $currtime
+	$cpoffset = RInt32 0x3004fd268
+	$cpoffset = $cpoffset + 0x300000000
+	$currcam = RAsciiStr ($cpoffset + 0xae)
+	$wad = RAsciiStr ($cpoffset + 0xc6)
 		
-		$wad1 = RAsciiStr 0x30055f4e8
-		$wad2 = RAsciiStr 0x30055f4f3
+	if ($prevcam -ne $currcam) {
+		$prevcam = $currcam
 		
-		$path = $prevtime
-		$path = $path.PadLeft(6, '0')
-		$path = $savepath + $path + "_" + $wad1 + "_" + $wad2
+
 		
-		$ba = RBytes 0x30055f4e0 0x14000
+		$path = Get-Date -Format "yyyyddMMHHmmss"
+		$path = $savepath + $path + "_" + $wad + "_" + $currcam
+		
+		$ba = RBytes $cpoffset 0x24000
 		[io.file]::WriteAllBytes($path, $ba)
 	}
 
 	cls
-	"Checkpoint playtime (s): " + $currtime
-	"WAD 1:                   " + $wad1
-	"WAD 2:                   " + $wad2
+	"currCAM: " + $currcam
+	"currWAD: " + $wad
 	sleep 1
 }
 while ($true)
