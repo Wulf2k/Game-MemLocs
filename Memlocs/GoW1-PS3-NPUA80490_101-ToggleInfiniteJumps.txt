@@ -1,0 +1,59 @@
+
+
+
+$path = "D:\Emus\PS3\dev_hdd0\game\NPUA80490\USRDIR\EBOOT.BIN"
+
+
+
+$ba = [System.IO.File]::ReadAllBytes($path)
+#----------------------------------------------------------------------------------
+Function RUInt32
+{   
+	Param (
+        $addr
+    )
+	[bitconverter]::ToUInt32($ba,$addr)
+}
+#----------------------------------------------------------------------------------
+Function WBytes
+{
+	Param (
+		$addr,
+		$wb
+	)
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+#----------------------------------------------------------------------------------
+
+
+[byte[]] $oldcode = 0x80, 0x03, 0x02, 0xc0
+[byte[]] $newcode = 0x4e, 0x80, 0x00, 0x20
+
+if ((RUInt32 0) -ne 0x00454353) {
+	"No match, BIN still encrypted?"
+} else {
+	"First 4 bytes match"
+	
+	if ((RUint32 (0x080b08 - 0xF700)) -eq [UInt32]"0xc0020380") {
+		"Original bytes found, patching in infinite jumps."
+		WBytes (0x080b08 -0xF700) $newcode
+		[System.IO.File]::WriteAllBytes($path, $ba)
+		"Bytes written successfully"
+		""
+		pause
+	} else {
+		if ((RUint32 (0x080b08 - 0xF700)) -eq 0x2000804e) {
+			"Patched bytes found, restoring double jump."
+			WBytes (0x080b08 -0xF700) $oldcode
+			[System.IO.File]::WriteAllBytes($path, $ba)
+			"Bytes written successfully"
+			""
+			pause
+		} else {
+			"Unrecognized bytes found hook at location, no changes made."
+			"Has EBOOT.BIN been resigned as NONDRM?"
+			""
+			pause
+		}
+	}	
+}
