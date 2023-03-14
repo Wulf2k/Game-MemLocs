@@ -60,6 +60,15 @@
         </CheatEntry>
         <CheatEntry>
           <ID>4</ID>
+          <Description>"cpOffset value"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>2 Bytes Big Endian</CustomType>
+          <Address>300E9C30+0x46</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>56</ID>
           <Description>"Unk Msg Offset?"</Description>
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
@@ -427,7 +436,7 @@
   <UserdefinedSymbols>
     <SymbolEntry>
       <Name>cpOffset</Name>
-      <Address>0x230</Address>
+      <Address>0x120</Address>
     </SymbolEntry>
   </UserdefinedSymbols>
 </CheatTable>
