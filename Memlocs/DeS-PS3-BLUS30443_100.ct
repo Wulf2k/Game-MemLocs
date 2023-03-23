@@ -2,22 +2,477 @@
 <CheatTable CheatEngineTableVersion="42">
   <CheatEntries>
     <CheatEntry>
-      <ID>0</ID>
-      <Description>"Game Stats --&gt;"</Description>
+      <ID>24</ID>
+      <Description>"FileMan --&gt;"</Description>
       <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
       <ShowAsHex>1</ShowAsHex>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Custom</VariableType>
       <CustomType>4 Bytes Big Endian</CustomType>
-      <Address>301E7660</Address>
+      <Address>01b49bc0</Address>
       <CheatEntries>
         <CheatEntry>
-          <ID>1</ID>
-          <Description>"Clear Count"</Description>
+          <ID>25</ID>
+          <Description>"FileMan_vt"</Description>
+          <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
           <CustomType>4 Bytes Big Endian</CustomType>
-          <Address>301E7660+34</Address>
+          <Address>301CE460</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>66</ID>
+          <Description>"LoadNum-Normal[Default]"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>301CE460+0x7c</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>67</ID>
+          <Description>"DbgDispNowLoading"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>301CE460+0xcd</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>64</ID>
+      <Description>"GameMan --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Bytes Big Endian</CustomType>
+      <Address>01b3c81c</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>65</ID>
+          <Description>"GameMan_vt"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>301E2F90+0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>68</ID>
+          <Description>"Tutorial_begin"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>301E2F90+0xa95</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>69</ID>
+          <Description>"IsDisableAllAreaEne"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>301E2F90+0xb78</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>38</ID>
+      <Description>"GameDataMan --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Bytes Big Endian</CustomType>
+      <Address>01b4ef9c</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>39</ID>
+          <Description>"GameDataMan_vt"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>301E7660+0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>70</ID>
+          <Description>"pPlayerGameData"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>301E7660+8</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>43</ID>
+              <Description>"PlayerGameData --&gt;"</Description>
+              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Bytes Big Endian</CustomType>
+              <Address>301e8020</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>75</ID>
+                  <Description>"Stats --&gt;"</Description>
+                  <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>44</ID>
+                      <Description>"Vitality"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Custom</VariableType>
+                      <CustomType>4 Bytes Big Endian</CustomType>
+                      <Address>301e8020+0x3c</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>46</ID>
+                      <Description>"Intelligence"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Custom</VariableType>
+                      <CustomType>4 Bytes Big Endian</CustomType>
+                      <Address>301e8020+0x44</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>47</ID>
+                      <Description>"Endurance"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Custom</VariableType>
+                      <CustomType>4 Bytes Big Endian</CustomType>
+                      <Address>301e8020+0x4c</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>48</ID>
+                      <Description>"Strength"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Custom</VariableType>
+                      <CustomType>4 Bytes Big Endian</CustomType>
+                      <Address>301e8020+0x54</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>49</ID>
+                      <Description>"Dexterity"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Custom</VariableType>
+                      <CustomType>4 Bytes Big Endian</CustomType>
+                      <Address>301e8020+0x5c</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>50</ID>
+                      <Description>"Magic"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Custom</VariableType>
+                      <CustomType>4 Bytes Big Endian</CustomType>
+                      <Address>301e8020+0x64</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>51</ID>
+                      <Description>"Faith"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Custom</VariableType>
+                      <CustomType>4 Bytes Big Endian</CustomType>
+                      <Address>301e8020+0x6c</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>52</ID>
+                      <Description>"Luck"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Custom</VariableType>
+                      <CustomType>4 Bytes Big Endian</CustomType>
+                      <Address>301e8020+0x74</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>73</ID>
+                      <Description>"Souls"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Custom</VariableType>
+                      <CustomType>4 Bytes Big Endian</CustomType>
+                      <Address>301e8020+0x78</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>53</ID>
+                      <Description>"Soul Memory"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Custom</VariableType>
+                      <CustomType>4 Bytes Big Endian</CustomType>
+                      <Address>301e8020+0x84</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>54</ID>
+                      <Description>"Name"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>String</VariableType>
+                      <Length>10</Length>
+                      <Unicode>1</Unicode>
+                      <CodePage>0</CodePage>
+                      <ZeroTerminate>1</ZeroTerminate>
+                      <Address>301e8020+0x90 +1</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>55</ID>
+                      <Description>"Gender"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Byte</VariableType>
+                      <Address>301e8020+0xb2</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>74</ID>
+                      <Description>"Class"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Custom</VariableType>
+                      <CustomType>2 Bytes Big Endian</CustomType>
+                      <Address>301e8020+0xb6</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>76</ID>
+                  <Description>"Equipment --&gt;"</Description>
+                  <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>77</ID>
+                      <Description>"Left Hand, Primary"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Custom</VariableType>
+                      <CustomType>4 Bytes Big Endian</CustomType>
+                      <Address>301e8020+0x1a8</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>78</ID>
+                      <Description>"Right Hand, Secondary"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Custom</VariableType>
+                      <CustomType>4 Bytes Big Endian</CustomType>
+                      <Address>301e8020+0x1b4</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>79</ID>
+                      <Description>"Helmet"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Custom</VariableType>
+                      <CustomType>4 Bytes Big Endian</CustomType>
+                      <Address>301e8020+0x1c0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>80</ID>
+                      <Description>"Chest"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Custom</VariableType>
+                      <CustomType>4 Bytes Big Endian</CustomType>
+                      <Address>301e8020+0x1c4</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>81</ID>
+                      <Description>"Gauntlets"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Custom</VariableType>
+                      <CustomType>4 Bytes Big Endian</CustomType>
+                      <Address>301e8020+0x1c8</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>82</ID>
+                      <Description>"Leggings"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Custom</VariableType>
+                      <CustomType>4 Bytes Big Endian</CustomType>
+                      <Address>301e8020+0x1cc</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>83</ID>
+                      <Description>"Ring 1"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Custom</VariableType>
+                      <CustomType>4 Bytes Big Endian</CustomType>
+                      <Address>301e8020+0x1d4</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>84</ID>
+                      <Description>"Ring 2"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Custom</VariableType>
+                      <CustomType>4 Bytes Big Endian</CustomType>
+                      <Address>301e8020+0x1d8</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>85</ID>
+                  <Description>"pInventory"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Custom</VariableType>
+                  <CustomType>4 Bytes Big Endian</CustomType>
+                  <Address>301e8020+0x204</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>86</ID>
+                  <Description>"Hair Colour, R"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Custom</VariableType>
+                  <CustomType>Float Big Endian</CustomType>
+                  <Address>301e8020+0x3e0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>88</ID>
+                  <Description>"Hair Colour, G"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Custom</VariableType>
+                  <CustomType>Float Big Endian</CustomType>
+                  <Address>301e8020+0x3e4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>87</ID>
+                  <Description>"Hair Colour, B"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Custom</VariableType>
+                  <CustomType>Float Big Endian</CustomType>
+                  <Address>301e8020+0x3e8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>89</ID>
+                  <Description>"Hair Colour, A"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Custom</VariableType>
+                  <CustomType>Float Big Endian</CustomType>
+                  <Address>301e8020+0x3ec</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>90</ID>
+                  <Description>"Start of Facial Data"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Custom</VariableType>
+                  <CustomType>4 Bytes Big Endian</CustomType>
+                  <Address>301e8020+0x3f0</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>71</ID>
+          <Description>"pTendencies"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>301E7660+0x24</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>40</ID>
+          <Description>"pOptions"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>301E7660+0x28</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>4</ID>
+              <Description>"Options --&gt;"</Description>
+              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Bytes Big Endian</CustomType>
+              <Address>3020BB00</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>5</ID>
+                  <Description>"Camera Speed"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Custom</VariableType>
+                  <CustomType>4 Bytes Big Endian</CustomType>
+                  <Address>3020BB00+8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>6</ID>
+                  <Description>"Vibration"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Custom</VariableType>
+                  <CustomType>4 Bytes Big Endian</CustomType>
+                  <Address>3020BB00+c</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>7</ID>
+                  <Description>"Brightness"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Custom</VariableType>
+                  <CustomType>4 Bytes Big Endian</CustomType>
+                  <Address>3020BB00+10</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>8</ID>
+                  <Description>"Music Vol"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Custom</VariableType>
+                  <CustomType>4 Bytes Big Endian</CustomType>
+                  <Address>3020BB00+18</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9</ID>
+                  <Description>"Sound Effects Vol"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Custom</VariableType>
+                  <CustomType>4 Bytes Big Endian</CustomType>
+                  <Address>3020BB00+1c</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>10</ID>
+                  <Description>"Voice Vol"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Custom</VariableType>
+                  <CustomType>4 Bytes Big Endian</CustomType>
+                  <Address>3020BB00+20</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>11</ID>
+                  <Description>"Show Blood"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Custom</VariableType>
+                  <CustomType>4 Bytes Big Endian</CustomType>
+                  <Address>3020BB00+24</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>12</ID>
+                  <Description>"Display Subtitles"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Byte</VariableType>
+                  <Address>3020BB00+28</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>13</ID>
+                  <Description>"Display HUD"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Byte</VariableType>
+                  <Address>3020BB00+29</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>14</ID>
+                  <Description>"Camera Left/Right"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Byte</VariableType>
+                  <Address>3020BB00+2a</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>15</ID>
+                  <Description>"Camera Up/Down"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Byte</VariableType>
+                  <Address>3020BB00+2b</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>72</ID>
+          <Description>"ClearCount"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>301E7660+0x34</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>2</ID>
@@ -28,108 +483,348 @@
           <Address>301E7660+54</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>3</ID>
-          <Description>"Time Played (ms)"</Description>
+          <ID>41</ID>
+          <Description>"Playtime (ms)"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
           <CustomType>4 Bytes Big Endian</CustomType>
-          <Address>301E7660+5c</Address>
+          <Address>301E7660+0x5c</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>4</ID>
-      <Description>"Options --&gt;"</Description>
+      <ID>56</ID>
+      <Description>"HgMan --&gt;"</Description>
       <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
       <ShowAsHex>1</ShowAsHex>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Custom</VariableType>
       <CustomType>4 Bytes Big Endian</CustomType>
-      <Address>3020BB00</Address>
+      <Address>01ad6298</Address>
       <CheatEntries>
         <CheatEntry>
-          <ID>5</ID>
-          <Description>"Camera Speed"</Description>
+          <ID>57</ID>
+          <Description>"HgMan_vt"</Description>
+          <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
           <CustomType>4 Bytes Big Endian</CustomType>
-          <Address>3020BB00+8</Address>
+          <Address>30138430+0</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>6</ID>
-          <Description>"Vibration"</Description>
+          <ID>58</ID>
+          <Description>"FlipSrcGammaR"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
-          <CustomType>4 Bytes Big Endian</CustomType>
-          <Address>3020BB00+c</Address>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>30138430+0x6cc</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>7</ID>
-          <Description>"Brightness"</Description>
+          <ID>59</ID>
+          <Description>"FlipSrcGammaG"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
-          <CustomType>4 Bytes Big Endian</CustomType>
-          <Address>3020BB00+10</Address>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>30138430+0x6d0</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>8</ID>
-          <Description>"Music Vol"</Description>
+          <ID>60</ID>
+          <Description>"FlipSrcGammaB"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
-          <CustomType>4 Bytes Big Endian</CustomType>
-          <Address>3020BB00+18</Address>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>30138430+0x6d4</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>9</ID>
-          <Description>"Sound Effects Vol"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Custom</VariableType>
-          <CustomType>4 Bytes Big Endian</CustomType>
-          <Address>3020BB00+1c</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>10</ID>
-          <Description>"Voice Vol"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Custom</VariableType>
-          <CustomType>4 Bytes Big Endian</CustomType>
-          <Address>3020BB00+20</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>11</ID>
-          <Description>"Show Blood"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Custom</VariableType>
-          <CustomType>4 Bytes Big Endian</CustomType>
-          <Address>3020BB00+24</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>12</ID>
-          <Description>"Display Subtitles"</Description>
+          <ID>61</ID>
+          <Description>"GammaTest"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Byte</VariableType>
-          <Address>3020BB00+28</Address>
+          <Address>30138430+0x6e4</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>26</ID>
+      <Description>"MenuMan --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Bytes Big Endian</CustomType>
+      <Address>01b4b114</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>27</ID>
+          <Description>"MenuMan_vt"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>386000A0</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>13</ID>
-          <Description>"Display HUD"</Description>
+          <ID>31</ID>
+          <Description>"CampMenu State"</Description>
           <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Byte</VariableType>
-          <Address>3020BB00+29</Address>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>386000A0+0x34</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>14</ID>
-          <Description>"Camera Left/Right"</Description>
+          <ID>32</ID>
+          <Description>"GenDialog State"</Description>
           <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Byte</VariableType>
-          <Address>3020BB00+2a</Address>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>386000A0+0x58</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>15</ID>
-          <Description>"Camera Up/Down"</Description>
+          <ID>30</ID>
+          <Description>"MenuXIdx"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>386000A0+0x140</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>28</ID>
+          <Description>"MenuTextIdx"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>386000A0+0x150</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>29</ID>
+          <Description>"MenuBrake"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>386000A0+0x2bc</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>34</ID>
+          <Description>"BossGauge1 --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>386000A0+0xd74</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>35</ID>
+              <Description>"NameID"</Description>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Bytes Big Endian</CustomType>
+              <Address>386000A0+0xd74+0</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>36</ID>
+          <Description>"BossGauge2 --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>386000A0+0xd74 + 0x14</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>37</ID>
+              <Description>"NameID"</Description>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Bytes Big Endian</CustomType>
+              <Address>386000A0+0xd74 + 0x14 + 0</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>62</ID>
+      <Description>"NetworkProperties --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Bytes Big Endian</CustomType>
+      <Address>01b36c08</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>63</ID>
+          <Description>"NetworkProperties_vt"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>30100110</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>33</ID>
+      <Description>"--------"</Description>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>42</ID>
+      <Description>"--------"</Description>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"playerChardata1 --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Bytes Big Endian</CustomType>
+      <Address>1b4a36c</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"vt"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>3272fe00+0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>3</ID>
+          <Description>"Disable Event Backread State"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Byte</VariableType>
-          <Address>3020BB00+2b</Address>
+          <Address>3272fe00+14</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>103</ID>
+          <Description>"ptr4"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>3272fe00+20</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104</ID>
+          <Description>"pEntityController"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>3272fe00+24</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>102</ID>
+          <Description>"ModelName"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>5</Length>
+          <Unicode>1</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>3272fe00+31</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>91</ID>
+          <Description>"NpcParamID"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>3272fe00+5c</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>92</ID>
+          <Description>"ChrType"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>3272fe00+68</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>93</ID>
+          <Description>"TeamType"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>3272fe00+6c</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>94</ID>
+          <Description>"ID"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>3272fe00+70</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>95</ID>
+          <Description>"Global Opacity"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>3272fe00+35c</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>96</ID>
+          <Description>"Personal Opacity"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>3272fe00+360</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>97</ID>
+          <Description>"CurrHP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>3272fe00+3c4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>98</ID>
+          <Description>"ptr2"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>3272fe00+49c</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>105</ID>
+          <Description>"pCtrl"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>3272fe00+4a0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>99</ID>
+          <Description>"xPos"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>3272fe00+1310</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>101</ID>
+          <Description>"yPos"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>3272fe00+1314</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>100</ID>
+          <Description>"zPos"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>3272fe00+1318</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
@@ -144,9 +839,8 @@
     </CheatEntry>
     <CheatEntry>
       <ID>17</ID>
-      <Description>"Left Hand, Equipped"</Description>
-      <ShowAsHex>1</ShowAsHex>
-      <ShowAsSigned>0</ShowAsSigned>
+      <Description>"Left Hand 1, Equipped"</Description>
+      <ShowAsSigned>1</ShowAsSigned>
       <VariableType>Custom</VariableType>
       <CustomType>4 Bytes Big Endian</CustomType>
       <Address>301E81C8</Address>
@@ -154,8 +848,7 @@
     <CheatEntry>
       <ID>18</ID>
       <Description>"Bolt, Equipped"</Description>
-      <ShowAsHex>1</ShowAsHex>
-      <ShowAsSigned>0</ShowAsSigned>
+      <ShowAsSigned>1</ShowAsSigned>
       <VariableType>Custom</VariableType>
       <CustomType>4 Bytes Big Endian</CustomType>
       <Address>301E81DC</Address>
@@ -163,8 +856,7 @@
     <CheatEntry>
       <ID>19</ID>
       <Description>"Chest, Equipped"</Description>
-      <ShowAsHex>1</ShowAsHex>
-      <ShowAsSigned>0</ShowAsSigned>
+      <ShowAsSigned>1</ShowAsSigned>
       <VariableType>Custom</VariableType>
       <CustomType>4 Bytes Big Endian</CustomType>
       <Address>301E81E4</Address>
@@ -176,6 +868,22 @@
       <VariableType>Custom</VariableType>
       <CustomType>Float Big Endian</CustomType>
       <Address>301E2F90+b20</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>23</ID>
+      <Description>"yPos"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>Float Big Endian</CustomType>
+      <Address>301E2F90+b24</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>22</ID>
+      <Description>"zPos"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>Float Big Endian</CustomType>
+      <Address>301E2F90+b28</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>21</ID>

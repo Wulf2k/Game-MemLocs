@@ -111,11 +111,27 @@ Function RSingle
 	}
 	[bitconverter]::ToSingle($buff,0)
 }
+
+Function WBytes
+{
+	Param (
+		$addr,
+		$wb
+	)
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+	
+	$rpm::WriteProcessMemory($proc,$addr,$buff,$buff.length,$null);
+}
+
+
+
 $signature = @"
 [DllImport("kernel32.dll")] public static extern IntPtr OpenProcess(
     uint h,bool b ,uint p);
 [DllImport("kernel32.dll")] public static extern bool ReadProcessMemory(
     IntPtr hp,IntPtr Base,[Out]Byte[] buff,int Size,[Out]int bread);
+[DllImport("kernel32.dll")] public static extern bool WriteProcessMemory(
+    IntPtr hp,IntPtr Base,[In]Byte[] buff,int Size,[Out]int bwrite);
 "@
 
 $rpm = Add-Type -MemberDefinition $signature -Name rpm -PassThru
