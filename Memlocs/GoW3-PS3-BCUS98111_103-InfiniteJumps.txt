@@ -1,0 +1,99 @@
+
+
+
+$path = "D:\Emus\PS3\dev_hdd0\game\BCUS98111\USRDIR\EBOOT.BIN"
+
+
+
+
+$ba = [System.IO.File]::ReadAllBytes($path)
+#----------------------------------------------------------------------------------
+Function RBytes
+{
+	Param (
+		$addr,
+		$len
+	)
+	$rb = [byte[]]::new($len)
+	[System.Buffer]::BlockCopy($ba, $addr, $rb, 0, $len)
+	$rb
+}
+#----------------------------------------------------------------------------------
+Function RUInt32
+{   
+	Param (
+        $addr
+    )
+	[bitconverter]::ToUInt32($ba,$addr)
+}
+#----------------------------------------------------------------------------------
+Function WBytes
+{
+	Param (
+		$addr,
+		$wb
+	)
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+#----------------------------------------------------------------------------------
+Function XorBytes
+{
+	Param (
+		[byte[]] $b1,
+		[byte[]] $b2
+	)
+	$xb = [byte[]]::new($b1.count)
+	for($i=0; $i -lt $b1.count ; $i++)
+	{
+		$xb[$i] = $b1[$i] -bxor $b2[$i]
+	}
+	$xb
+}
+#----------------------------------------------------------------------------------
+function ArrEq($a, $b) {
+  -not (compare $a $b -syncwindow 0)
+}
+#----------------------------------------------------------------------------------
+
+
+cls
+
+[byte[]] $oldcode = 0x90, 0x1b, 0x04, 0x3c
+[byte[]] $newcode = 0x60, 0x00, 0x00, 0x00
+[byte[]] $xorcode = 0xf0, 0x1b, 0x04, 0x3c
+#[System.BitConverter]::ToString($newcode);
+
+
+$codeloc = 0xccb94 - 0xF700
+
+if ((RUInt32 0) -ne 0x00454353) {
+	"No match, BIN still encrypted?"
+} else {
+	"First 4 bytes match"
+	
+	$currcode = RBytes $codeloc 4
+	
+	if ((ArrEq $currcode $oldcode) -or (ArrEq $currcode $newcode))
+	{
+		if (ArrEq $currcode $oldcode) {
+			"Patching in infinite jumps"
+		}
+		if (ArrEq $currcode $newcode) {
+			"Restoring limited jumps"
+		}
+		
+		[byte[]] $xb = XorBytes $currcode $xorcode
+
+		WBytes $codeloc $xb
+		[System.IO.File]::WriteAllBytes($path, $ba)
+		"Bytes written successfully"
+		""
+		pause
+		
+	} else {
+		"Bytes mismatch at code location"
+		"No changes made"
+		""
+		pause
+	}
+}
