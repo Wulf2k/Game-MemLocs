@@ -762,6 +762,33 @@
         </CheatEntry>
         <CheatEntry>
           <ID>132</ID>
+          <Description>"pDialogMainText"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>386000A0+0x820</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>151</ID>
+          <Description>"pDialogLText"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>386000A0+0x824</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>150</ID>
+          <Description>"pDialogRText"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>386000A0+0x828</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>149</ID>
           <Description>"GenDialogNumeric"</Description>
           <ShowAsSigned>1</ShowAsSigned>
           <VariableType>Custom</VariableType>
@@ -816,7 +843,23 @@
           <Description>"TalkOrSubtitle"</Description>
           <ShowAsSigned>1</ShowAsSigned>
           <VariableType>Byte</VariableType>
-          <Address>386000A0+0xad1</Address>
+          <Address>386000A0+0xad2</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>147</ID>
+          <Description>"Text Effect Slot 1"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>386000A0+0xcac</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>148</ID>
+          <Description>"Text Effect Visible Time"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>386000A0+0xcd0</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>34</ID>
@@ -973,7 +1016,7 @@
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
           <CustomType>4 Bytes Big Endian</CustomType>
-          <Address>3272fe00+68</Address>
+          <Address>327301d0+68</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>93</ID>
@@ -1074,6 +1117,14 @@
       <VariableType>Custom</VariableType>
       <CustomType>4 Bytes Big Endian</CustomType>
       <Address>301E81C8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>152</ID>
+      <Description>"Right Hand 1, Equipped"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Bytes Big Endian</CustomType>
+      <Address>301E81Cc</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>18</ID>

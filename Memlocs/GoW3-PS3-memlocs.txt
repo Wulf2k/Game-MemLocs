@@ -87,7 +87,22 @@ Instructions:
 568160 - Current WAD
 568180 - Beginning of data copied to checkpoint
 
-5689b8 - Start of preferences save
+5689c8 - Start of preferences save
++0x6
+	00000001	Challenge 5
+	00000010	Challenge 6
+	00000100	Challenge 7
++0x7
+	00000001	Easy
+	00000010	Normal
+	00000100	Hard
+	00001000	Very Hard
+	00010000	Challenge 1
+	00100000	Challenge 2
+	01000000	Challenge 3
+	10000000	Challenge 4
+
+
 
 568df0 - pointer to checkpoint?
 568df8 - pointer to camdata?
@@ -159,6 +174,7 @@ Instructions:
 325c5434 - Cam x pos
 325c5438 - Cam y pos
 
+322C2D60 - freecam zoom
 325c6150 - Cam vars? - main?
 325c6780 - Cam Pointer?
 
@@ -166,7 +182,7 @@ Instructions:
 
 (34c85270)
 (3967a030)
-567964 pointer's pointer - Kratos Start
+567974 pointer's pointer - Kratos Start
  
 +0x0090 - x Pos
 +0x0094 - Z pos

@@ -1,0 +1,78 @@
+//------------------------------------------------
+//--- 010 Editor v9.0.1 Binary Template
+//
+//      File: 
+//   Authors: 
+//   Version: 
+//   Purpose: 
+//  Category: 
+// File Mask: 
+//  ID Bytes: 
+//   History: 
+//------------------------------------------------
+
+BigEndian();
+
+//------------------------------------------------
+
+
+
+typedef struct {
+	char Wad1[0xa];
+	byte Wad1Active;
+	char Wad2[0xa];
+	byte Wad2Active;
+} wadState <bgcolor=cRed>;
+
+typedef struct {
+	char unk1[0x30];
+	float KratosPos[4];
+	uint KratosStance <format=hex>;
+	char unk2[0x4c];
+} playerState <bgcolor=cLtRed>;
+
+typedef struct {
+	char CamName[0x18];
+	char CamWad[0x18];
+	char unk[0x90];
+} cameraState <bgcolor=cLtBlue>;
+
+typedef struct {
+	char unk[0xec];
+} musicState <bgcolor=cLtGreen>;
+
+typedef struct {
+	char unk[0x1c4];
+} entityState <bgcolor=cLtGray>;
+
+typedef struct {
+	byte WorldIdle;
+    byte MusicVolume;
+    byte SoundVolume;
+    byte Vibration;
+    byte WideScreen;
+    byte DeFlicker;
+    byte SoundMode;
+    byte PowerUp_FirstTime;
+    byte Costume_Choice;
+    byte Difficulty;
+    byte EndGame;
+} globalState <bgcolor=cPurple>;
+
+typedef struct {
+    float EntityTimeInSeconds;
+    int EntityWarpWadSlot;
+    int EntityWarpPlayerReady;
+    int WadInfoNWads;
+} wadInfo <bgcolor=cBlue>;
+
+uint cafebad1 <format=hex>; //0x0
+uint Costume; //0x4
+wadState wads;  //0x8
+playerState player; //0x1e
+cameraState camera; //0xae
+musicState music; //0x16e
+entityState entity; //0x25a
+globalState global; //0x41e
+wadInfo wad; //0x429
+FSeek(0x13ffc);	uint checksum <format=hex>; //0x13ffc

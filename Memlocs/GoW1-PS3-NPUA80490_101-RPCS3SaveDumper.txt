@@ -153,7 +153,7 @@ do {
 		$path = Get-Date -Format "yyyyddMMHHmmss"
 		$path = $savepath + $path + "_" + $wad + "_" + $currcam
 		
-		$ba = RBytes $cpoffset 0x24000
+		$ba = RBytes $cpoffset 0x14000
 		[io.file]::WriteAllBytes($path, $ba)
 	}
 

@@ -1,46 +1,33 @@
 $path = "D:\Emus\PS3\dev_hdd0\game\NPUA80490\USRDIR\EBOOT.BIN"
 $ba = [System.IO.File]::ReadAllBytes($path)
 
-#----------------------------------------------------------------------------------
+$bigendian = $true
+
+##########################################
 Function RBytes
 {
 	Param (
 		$addr,
-		$sizetoread
+		$len
 	)
-	[Byte[]] $buff = New-Object Byte[]($sizetoread)
-	[System.Buffer]::BlockCopy($ba, $addr, $buff, 0, $sizetoread)
-	$buff
+	[byte[]] $rb = [byte[]]::new($len)
+	[System.Buffer]::BlockCopy($ba, $addr, $rb, $0, $rb.Length)
+	$rb
 }
-Function RInt32
-{   
-	Param (
-        $addr
-    )
-	[bitconverter]::ToInt32($ba,$addr)
-}
-Function RInt64
-{   
-	Param (
-        $addr
-    )
-	[bitconverter]::ToInt64($ba,$addr)
-}
-Function RSingle
-{   
-	Param (
-        $addr
-    )
-	[bitconverter]::ToSingle($ba,$addr)
-}
+##########################################
 Function RUInt32
 {   
 	Param (
         $addr
     )
-	[bitconverter]::ToUInt32($ba,$addr)
+	[byte[]] $rb = [byte[]]::new(4)
+	[System.Buffer]::BlockCopy($ba, $addr, $rb, 0, 4)
+	if ($bigendian) {
+		[Array]::Reverse($rb)
+	}
+	[bitconverter]::ToUInt32($rb,0)
 }
-#----------------------------------------------------------------------------------
+##########################################
 Function WBytes
 {
 	Param (
@@ -49,4 +36,77 @@ Function WBytes
 	)
 	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
 }
-#----------------------------------------------------------------------------------
+##########################################
+Function WInt32
+{
+	Param (
+		$addr,
+		[Int32]$val
+	)
+	$wb = [bitconverter]::GetBytes($val)
+	if ($bigendian) {
+		[Array]::Reverse($wb)
+	}
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+##########################################
+Function WSingle
+{
+	Param (
+		$addr,
+		[float]$val
+	)
+	$wb = [bitconverter]::GetBytes($val)
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+##########################################
+Function WStrA
+{
+	Param (
+		$addr,
+		$str
+	)
+	$wb = [System.Text.Encoding]::UTF8.GetBytes($str)
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+##########################################
+Function WStrU
+{
+	Param (
+		$addr,
+		$str
+	)
+	$i = 0
+	foreach ($char in $str) {
+		$wb = [System.Text.Encoding]::Unicode.GetBytes($char)
+		if ($bigendian) {
+			[Array]::Reverse($wb)
+		}
+		[System.Buffer]::BlockCopy($wb, 0, $ba, $addr + $i * $wb.length, $wb.Length)
+	}
+}
+##########################################
+Function WUInt32
+{
+	Param (
+		$addr,
+		$val
+	)
+	$wb = [bitconverter]::GetBytes($val)
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+##########################################
+Function XorBytes
+{
+	Param (
+		[byte[]] $b1,
+		[byte[]] $b2
+	)
+	[byte[]] $b3 = [byte[]]::new($b1.count)
+	for($i=0; $i -lt $b1.count ; $i++)
+	{
+		$b3[$i] = $b1[$i] -bxor $b2[$i]
+	}
+	$b3
+}
+##########################################

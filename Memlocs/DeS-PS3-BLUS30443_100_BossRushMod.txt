@@ -22,13 +22,43 @@ Function WBytes
 	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
 }
 ##########################################
+Function WStrA
+{
+	Param (
+		$addr,
+		$str
+	)
+	$wb = [System.Text.Encoding]::UTF8.GetBytes($str)
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+##########################################
+Function WStrU
+{
+	Param (
+		$addr,
+		$str
+	)
+	$wb = [System.Text.Encoding]::Unicode.GetBytes($str)
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+##########################################
+Function WUInt32
+{
+	Param (
+		$addr,
+		$val
+	)
+	$wb = [bitconverter]::GetBytes($val)
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+##########################################
 Function XorBytes
 {
 	Param (
 		[byte[]] $b1,
 		[byte[]] $b2
 	)
-	[byte[]] $b3 = $b1;
+	[byte[]] $b3 = [byte[]]::new($b1.count)
 	for($i=0; $i -lt $b1.count ; $i++)
 	{
 		$b3[$i] = $b1[$i] -bxor $b2[$i]
@@ -78,6 +108,15 @@ cls
 
 
 
+
+
+$diffTextLoc = 0x16f1d51 - 0xF700
+$diffText = "Choose your difficulty"
+$diffTextOrig = [byte[]]::new($diffText.Length * 2) 
+
+$ayeTextLoc = 0x16f1d91 - 0xF700
+$ayeText = "Aye"
+$ayeTextOrig = [byte[]]::new($ayeText.Length * 2) 
 
 
 
@@ -197,6 +236,9 @@ if ($size -eq 9602848) {
 		WBytes $srdmLoc $srdmHook
 		WBytes $SValLoc $SValCode
 		
+		WStrU $diffTextLoc $diffText
+		WStrU $ayeTextLoc $ayeText
+		
 		[System.IO.File]::WriteAllBytes($path, $ba)
 		"Bytes written successfully"
 		""
@@ -230,6 +272,9 @@ if ($size -eq 9602848) {
 			WBytes $srdmOrigNameALoc $srdmOrigNameA
 			WBytes $srdmLoc $srdmOrig
 			WBytes $SValLoc $SValOrig
+			
+			WBytes $diffTextLoc $diffTextOrig
+			WBytes $ayeTextLoc $ayeTextOrig
 			
 			[System.IO.File]::WriteAllBytes($path, $ba)
 			"Bytes written successfully"
@@ -363,6 +408,8 @@ if ($size -eq 9602848) {
 	m2501B0	Starting platform
 	m9999B0 Skybox
 
+	m9040b2 square model
+	h1020B2	Square collision
 
 	o2180	gate
 	o2190	burning door

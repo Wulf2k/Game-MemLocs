@@ -2,226 +2,6 @@
 <CheatTable CheatEngineTableVersion="42">
   <CheatEntries>
     <CheatEntry>
-      <ID>7</ID>
-      <Description>"Trigger Save"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Custom</VariableType>
-      <CustomType>4 Bytes Big Endian</CustomType>
-      <Address>0x547fc0 + 0x4174</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>9</ID>
-      <Description>"goSoldier --&gt;"</Description>
-      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-      <ShowAsHex>1</ShowAsHex>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Custom</VariableType>
-      <CustomType>4 Bytes Big Endian</CustomType>
-      <Address>30A46C70</Address>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>8</ID>
-          <Description>"Size"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Custom</VariableType>
-          <CustomType>Float Big Endian</CustomType>
-          <Address>30a46c70+0x154</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>11</ID>
-          <Description>"Speed"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Custom</VariableType>
-          <CustomType>Float Big Endian</CustomType>
-          <Address>30a46c70+0x158</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>10</ID>
-          <Description>"HP"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Custom</VariableType>
-          <CustomType>Float Big Endian</CustomType>
-          <Address>30a46c70+0x164</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>31</ID>
-          <Description>"CurrPetrifyResist"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Custom</VariableType>
-          <CustomType>Float Big Endian</CustomType>
-          <Address>30a46c70+0x270</Address>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>18</ID>
-      <Description>"Gravity"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Custom</VariableType>
-      <CustomType>Float Big Endian</CustomType>
-      <Address>0054C878</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>0</ID>
-      <Description>"Checkpoint --&gt;"</Description>
-      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-      <ShowAsHex>1</ShowAsHex>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Custom</VariableType>
-      <CustomType>4 Bytes Big Endian</CustomType>
-      <Address>4fd268</Address>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>12</ID>
-          <Description>"CAFEBAD1"</Description>
-          <ShowAsHex>1</ShowAsHex>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Custom</VariableType>
-          <CustomType>4 Bytes Big Endian</CustomType>
-          <Address>0055F4E0</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>13</ID>
-          <Description>"Costume"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Byte</VariableType>
-          <Address>0055F4E0+7</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>1</ID>
-          <Description>"WAD1"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>String</VariableType>
-          <Length>8</Length>
-          <Unicode>0</Unicode>
-          <CodePage>0</CodePage>
-          <ZeroTerminate>1</ZeroTerminate>
-          <Address>0055F4E0+8</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>2</ID>
-          <Description>"WAD2"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>String</VariableType>
-          <Length>8</Length>
-          <Unicode>0</Unicode>
-          <CodePage>0</CodePage>
-          <ZeroTerminate>1</ZeroTerminate>
-          <Address>0055F4E0+0x13</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>3</ID>
-          <Description>"xPos"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Custom</VariableType>
-          <CustomType>Float Big Endian</CustomType>
-          <Address>55f4e0+0x4e</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>16</ID>
-          <Description>"yPos"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Custom</VariableType>
-          <CustomType>Float Big Endian</CustomType>
-          <Address>55f4e0+0x52</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>15</ID>
-          <Description>"zPos"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Custom</VariableType>
-          <CustomType>Float Big Endian</CustomType>
-          <Address>55f4e0+0x56</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>17</ID>
-          <Description>"Stance"</Description>
-          <ShowAsHex>1</ShowAsHex>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Custom</VariableType>
-          <CustomType>4 Bytes Big Endian</CustomType>
-          <Address>55f4e0+0x60</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>14</ID>
-          <Description>"Playtime"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Custom</VariableType>
-          <CustomType>Float Big Endian</CustomType>
-          <Address>55f4e0+0x6a</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>6</ID>
-          <Description>"Health"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Custom</VariableType>
-          <CustomType>Float Big Endian</CustomType>
-          <Address>55f4e0+0x76</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>4</ID>
-          <Description>"Magic"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Custom</VariableType>
-          <CustomType>Float Big Endian</CustomType>
-          <Address>55f4e0+0x7a</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>5</ID>
-          <Description>"Rage"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Custom</VariableType>
-          <CustomType>Float Big Endian</CustomType>
-          <Address>55f4e0+0x7e</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>29</ID>
-          <Description>"Magic Regen"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Custom</VariableType>
-          <CustomType>Float Big Endian</CustomType>
-          <Address>55f4e0+0x82</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>30</ID>
-          <Description>"Red Orbs"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Custom</VariableType>
-          <CustomType>2 Bytes Big Endian</CustomType>
-          <Address>55f4e0+0x86</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>34</ID>
-          <Description>"CurrCAM"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>String</VariableType>
-          <Length>16</Length>
-          <Unicode>0</Unicode>
-          <CodePage>0</CodePage>
-          <ZeroTerminate>1</ZeroTerminate>
-          <Address>0055F4E0+AE</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>35</ID>
-          <Description>"CamWAD"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>String</VariableType>
-          <Length>16</Length>
-          <Unicode>0</Unicode>
-          <CodePage>0</CodePage>
-          <ZeroTerminate>1</ZeroTerminate>
-          <Address>0055F4E0+c6</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>32</ID>
-          <Description>"Difficulty"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Byte</VariableType>
-          <Address>55f4e0+0x427</Address>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
       <ID>19</ID>
       <Description>"Tweaks --&gt;"</Description>
       <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
@@ -309,6 +89,879 @@
       <CustomType>Float Big Endian</CustomType>
       <Address>0050E9B4</Address>
     </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"Trigger Save"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Bytes Big Endian</CustomType>
+      <Address>0x547fc0 + 0x4174</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>18</ID>
+      <Description>"Gravity"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>Float Big Endian</CustomType>
+      <Address>0054C878</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>86</ID>
+      <Description>"flashInterface --&gt;"</Description>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+local fi = string.format('%02X%02X%02X%02X', readBytes(0x54c3b0, 4))
+registerSymbol("flashInterface", fi)
+{$asm}
+[DISABLE]
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>87</ID>
+          <Description>"vt"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>flashInterface + 0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88</ID>
+          <Description>"HealthMeter_Value"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>flashInterface + 14</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>94</ID>
+          <Description>"MagicMeter_Value"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>flashInterface + 18</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>95</ID>
+          <Description>"CoolMeter_Value"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>flashInterface + 34</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>96</ID>
+          <Description>"HealthMeter_Level"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>flashInterface + 54</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>97</ID>
+          <Description>"MagicMeter_Level"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>flashInterface + 58</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>89</ID>
+          <Description>"EndGame"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>flashInterface + 1b8</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>40</ID>
+      <Description>"goPlayer --&gt;"</Description>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+local gp = string.format('%02X%02X%02X%02X', readBytes(0x54d9b8, 4))
+registerSymbol("goPlayer", gp)
+{$asm}
+[DISABLE]
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>41</ID>
+          <Description>"vt"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>goPlayer</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>42</ID>
+          <Description>"goSoldier --&gt;"</Description>
+          <Options moHideChildren="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$lua}
+local gp = string.format('%02X%02X%02X%02X', readBytes(0x54d9b8, 4))
+registerSymbol("goPlayer", gp)
+
+local gs = string.format('%02X%02X%02X%02X', readBytes(tonumber("0x"..gp) + 4, 4))
+registerSymbol("kratos", gs)
+{$asm}
+[DISABLE]
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>43</ID>
+              <Description>"vt"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Bytes Big Endian</CustomType>
+              <Address>kratos</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>8</ID>
+              <Description>"xPos"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>Float Big Endian</CustomType>
+              <Address>kratos+0x78</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>67</ID>
+              <Description>"yPos"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>Float Big Endian</CustomType>
+              <Address>kratos+0x7c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>66</ID>
+              <Description>"zPos"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>Float Big Endian</CustomType>
+              <Address>kratos+0x80</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>65</ID>
+              <Description>"Size"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>Float Big Endian</CustomType>
+              <Address>kratos+0x154</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>11</ID>
+              <Description>"Speed"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>Float Big Endian</CustomType>
+              <Address>kratos+0x158</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>10</ID>
+              <Description>"Stance"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Bytes Big Endian</CustomType>
+              <Address>kratos+0x160</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>106</ID>
+              <Description>"HP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>Float Big Endian</CustomType>
+              <Address>kratos+0x164</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>31</ID>
+              <Description>"CurrPetrifyResist"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>Float Big Endian</CustomType>
+              <Address>kratos+0x270</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>68</ID>
+              <Description>"pGO"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Bytes Big Endian</CustomType>
+              <Address>kratos+0x2fc</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>84</ID>
+      <Description>"CamData --&gt;"</Description>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+local cd = string.format('%02X%02X%02X%02X', readBytes(0x54ce2c, 4))
+registerSymbol("camdata", cd)
+{$asm}
+[DISABLE]
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>37</ID>
+          <Description>"camdata"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>camdata+0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>38</ID>
+          <Description>"fixed"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>camdata+3</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>39</ID>
+          <Description>"ctrlType"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>camdata+5</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>85</ID>
+          <Description>"camname"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>16</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>camdata+7a8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>93</ID>
+          <Description>"camname"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>16</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>camdata+7c0</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>44</ID>
+      <Description>"Checkpoint --&gt;"</Description>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+local cp = string.format('%02X%02X%02X%02X', readBytes(0x4fd268, 4))
+registerSymbol("checkpoint", cp)
+{$asm}
+[DISABLE]
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>12</ID>
+          <Description>"CAFEBAD1"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>checkpoint</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>13</ID>
+          <Description>"Costume"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>checkpoint+7</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"WAD1"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>8</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>checkpoint+8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>45</ID>
+          <Description>"WAD1 Active"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>checkpoint+12</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>2</ID>
+          <Description>"WAD2"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>8</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>checkpoint+0x13</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>46</ID>
+          <Description>"WAD2 Active"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>checkpoint+1d</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>3</ID>
+          <Description>"xPos"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>checkpoint+0x4e</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>16</ID>
+          <Description>"yPos"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>checkpoint+0x52</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>15</ID>
+          <Description>"zPos"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>checkpoint+0x56</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>17</ID>
+          <Description>"Stance"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>checkpoint+0x5e</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>14</ID>
+          <Description>"Playtime"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>checkpoint+0x6a</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>6</ID>
+          <Description>"Health"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>checkpoint+0x76</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"Magic"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>checkpoint+0x7a</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"Rage"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>checkpoint+0x7e</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>29</ID>
+          <Description>"Magic Regen"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>checkpoint+0x82</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>30</ID>
+          <Description>"Red Orbs"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>2 Bytes Big Endian</CustomType>
+          <Address>checkpoint+0x86</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>90</ID>
+          <Description>"Thunderbolt_Level"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>checkpoint+0x98</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>91</ID>
+          <Description>"Blades_Level"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>checkpoint+0x9b</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>92</ID>
+          <Description>"HealthShard_Count"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>checkpoint+0x9d</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>47</ID>
+          <Description>"Poseidon's Trident"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Binary</VariableType>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+          <ShowAsBinary>0</ShowAsBinary>
+          <Address>checkpoint + A0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>48</ID>
+          <Description>"Muse Key"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Binary</VariableType>
+          <BitStart>5</BitStart>
+          <BitLength>1</BitLength>
+          <ShowAsBinary>0</ShowAsBinary>
+          <Address>checkpoint + A0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>34</ID>
+          <Description>"CurrCAM"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>16</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>checkpoint+AE</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>35</ID>
+          <Description>"CamWAD"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>16</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>checkpoint+c6</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>32</ID>
+          <Description>"WorldIdle"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>checkpoint+0x41e</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>83</ID>
+          <Description>"Music Vol"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>checkpoint+0x41f</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>82</ID>
+          <Description>"Full Screen"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>checkpoint+0x422</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>49</ID>
+          <Description>"Difficulty"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>checkpoint+0x427</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>50</ID>
+      <Description>"state --&gt;"</Description>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>51</ID>
+          <Description>"start"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>54d390</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>129</ID>
+          <Description>"Lightning_Level"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>54d390 + 0x40C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>130</ID>
+          <Description>"BerserkBlade_Level"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>54d390 + 0x410</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>131</ID>
+          <Description>"Blades_Level"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>54d390 + 0x411</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>128</ID>
+          <Description>"Gorgon Eyes"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>54d390 + 0x413</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>107</ID>
+      <Description>"Enemies --&gt;"</Description>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>108</ID>
+          <Description>"Ene 01"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * 0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>109</ID>
+          <Description>"Ene 02"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * 1</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>110</ID>
+          <Description>"Ene 03"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * 2</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>111</ID>
+          <Description>"Ene 04"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * 3</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>112</ID>
+          <Description>"Ene 05"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * 4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>113</ID>
+          <Description>"Ene 06"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * 5</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>114</ID>
+          <Description>"Ene 07"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * 6</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>115</ID>
+          <Description>"Ene 08"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * 7</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>116</ID>
+          <Description>"Ene 09"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * 8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>117</ID>
+          <Description>"Ene 10"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * 9</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>118</ID>
+          <Description>"Ene 11"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * a</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>119</ID>
+          <Description>"Ene 12"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * b</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>120</ID>
+          <Description>"Ene 13"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * c</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>121</ID>
+          <Description>"Ene 14"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * d</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>122</ID>
+          <Description>"Ene 15"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * e</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>123</ID>
+          <Description>"Ene 16"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * f</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>124</ID>
+          <Description>"Ene 17"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * 10</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>125</ID>
+          <Description>"Ene 18"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * 11</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>126</ID>
+          <Description>"Ene 19"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * 12</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>127</ID>
+          <Description>"Ene 20"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>kratos + 0x164 + 0xd00 + 0x340 * 13</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>69</ID>
+      <Description>"--------"</Description>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104</ID>
+      <Description>"CheatSuccess"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Bytes Big Endian</CustomType>
+      <Address>006E3588</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>132</ID>
+      <Description>"GameState__Pause"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Bytes Big Endian</CustomType>
+      <Address>0054DD00</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>105</ID>
+      <Description>"--------"</Description>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>70</ID>
+      <Description>"WAD1"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>8</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>checkpoint+8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>71</ID>
+      <Description>"WAD1 Active"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>checkpoint+12</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>72</ID>
+      <Description>"WAD2"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>8</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>checkpoint+0x13</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>73</ID>
+      <Description>"WAD2 Active"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>checkpoint+1d</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>78</ID>
+      <Description>"CurrCAM"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>16</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>checkpoint+AE</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>79</ID>
+      <Description>"CamWAD"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>16</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>checkpoint+c6</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>74</ID>
+      <Description>"xPos"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>Float Big Endian</CustomType>
+      <Address>checkpoint+0x4e</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>75</ID>
+      <Description>"yPos"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>Float Big Endian</CustomType>
+      <Address>checkpoint+0x52</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>76</ID>
+      <Description>"zPos"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>Float Big Endian</CustomType>
+      <Address>checkpoint+0x56</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>77</ID>
+      <Description>"Stance"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Bytes Big Endian</CustomType>
+      <Address>checkpoint+0x5e</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>80</ID>
+      <Description>"WorldIdle"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>checkpoint+0x41e</Address>
+    </CheatEntry>
   </CheatEntries>
-  <UserdefinedSymbols/>
+  <UserdefinedSymbols>
+    <SymbolEntry>
+      <Name>checkpoint</Name>
+      <Address>0055F4E0</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>camdata</Name>
+      <Address>31D116A0</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>kratos</Name>
+      <Address>30A46C70</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>flashInterface</Name>
+      <Address>30A1EA08</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>goPlayer</Name>
+      <Address>31D0F264</Address>
+    </SymbolEntry>
+  </UserdefinedSymbols>
 </CheatTable>

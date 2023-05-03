@@ -30,33 +30,33 @@
       <GroupHeader>1</GroupHeader>
     </CheatEntry>
     <CheatEntry>
-      <ID>3</ID>
+      <ID>122</ID>
       <Description>"Checkpoint --&gt;"</Description>
-      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-      <ShowAsHex>1</ShowAsHex>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Custom</VariableType>
-      <CustomType>4 Bytes Big Endian</CustomType>
-      <Address>00568E00</Address>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+local cp = string.format('%02X%02X%02X%02X', readBytes(0x568e00, 4))
+registerSymbol("checkpoint", cp)
+
+
+local tmp = tonumber("0x"..cp)
+tmp = tmp + 0x46
+local cpo = string.format('%02X%02X', readBytes(tmp, 2))
+print(cpo)
+registerSymbol("cpOffset", cpo)
+{$asm}
+[DISABLE]
+</AssemblerScript>
       <CheatEntries>
         <CheatEntry>
-          <ID>2</ID>
-          <Description>"Checkpoint Start"</Description>
+          <ID>123</ID>
+          <Description>"C0ED0004"</Description>
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
           <CustomType>4 Bytes Big Endian</CustomType>
-          <Address>300E9C30</Address>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>22</ID>
-              <Description>"cpOffset (cp+0x46)"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Custom</VariableType>
-              <CustomType>4 Bytes Big Endian</CustomType>
-              <Address>cpOffset</Address>
-            </CheatEntry>
-          </CheatEntries>
+          <Address>checkpoint</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>4</ID>
@@ -65,7 +65,31 @@
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
           <CustomType>2 Bytes Big Endian</CustomType>
-          <Address>300E9C30+0x46</Address>
+          <Address>checkpoint+0x46</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>115</ID>
+          <Description>"CamDist"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>checkpoint+0x120</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>116</ID>
+          <Description>"CamUnk"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>checkpoint+0x124</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>117</ID>
+          <Description>"CamVertAngle"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>checkpoint+0x128</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>56</ID>
@@ -74,7 +98,7 @@
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
           <CustomType>4 Bytes Big Endian</CustomType>
-          <Address>300E9C30+cpOffset+0x48</Address>
+          <Address>checkpoint+cpOffset+0x48</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>30</ID>
@@ -82,7 +106,7 @@
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
           <CustomType>Float Big Endian</CustomType>
-          <Address>300E9C30+cpOffset+0x7c</Address>
+          <Address>checkpoint+cpOffset+0x7c</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>29</ID>
@@ -90,7 +114,7 @@
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
           <CustomType>Float Big Endian</CustomType>
-          <Address>300E9C30+cpOffset+0x80</Address>
+          <Address>checkpoint+cpOffset+0x80</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>28</ID>
@@ -98,25 +122,23 @@
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
           <CustomType>Float Big Endian</CustomType>
-          <Address>300E9C30+cpOffset+0x84</Address>
+          <Address>checkpoint+cpOffset+0x84</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>62</ID>
           <Description>"SwimmingAndStanding"</Description>
-          <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
           <CustomType>4 Bytes Big Endian</CustomType>
-          <Address>300E9C30+cpOffset+0x94</Address>
+          <Address>checkpoint+cpOffset+0x94</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>27</ID>
           <Description>"Unlocks"</Description>
-          <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
           <CustomType>4 Bytes Big Endian</CustomType>
-          <Address>300E9C30+cpOffset+0xa0</Address>
+          <Address>checkpoint+cpOffset+0xa0</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>19</ID>
@@ -314,7 +336,7 @@
           <Description>"Infinite Item"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Byte</VariableType>
-          <Address>300E9C30+cpOffset+0x494</Address>
+          <Address>300E9C30+cpOffset+0x496</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>37</ID>
@@ -343,13 +365,242 @@
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>41</ID>
+      <ID>69</ID>
+      <Description>"Userdata --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Bytes Big Endian</CustomType>
+      <Address>005689C8</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>70</ID>
+          <Description>"Challenge 5"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Binary</VariableType>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+          <ShowAsBinary>0</ShowAsBinary>
+          <Address>005689C8+0x6</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>85</ID>
+          <Description>"Challenge 6"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Binary</VariableType>
+          <BitStart>1</BitStart>
+          <BitLength>1</BitLength>
+          <ShowAsBinary>0</ShowAsBinary>
+          <Address>005689C8+0x6</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>86</ID>
+          <Description>"Challenge 7"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Binary</VariableType>
+          <BitStart>2</BitStart>
+          <BitLength>1</BitLength>
+          <ShowAsBinary>0</ShowAsBinary>
+          <Address>005689C8+0x6</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88</ID>
+          <Description>"Easy"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Binary</VariableType>
+          <BitStart>0</BitStart>
+          <BitLength>1</BitLength>
+          <ShowAsBinary>0</ShowAsBinary>
+          <Address>005689C8+0x7</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>89</ID>
+          <Description>"Normal"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Binary</VariableType>
+          <BitStart>1</BitStart>
+          <BitLength>1</BitLength>
+          <ShowAsBinary>0</ShowAsBinary>
+          <Address>005689C8+0x7</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>90</ID>
+          <Description>"Hard"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Binary</VariableType>
+          <BitStart>2</BitStart>
+          <BitLength>1</BitLength>
+          <ShowAsBinary>0</ShowAsBinary>
+          <Address>005689C8+0x7</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>92</ID>
+          <Description>"Very Hard"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Binary</VariableType>
+          <BitStart>3</BitStart>
+          <BitLength>1</BitLength>
+          <ShowAsBinary>0</ShowAsBinary>
+          <Address>005689C8+0x7</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>87</ID>
+          <Description>"Challenge 1"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Binary</VariableType>
+          <BitStart>4</BitStart>
+          <BitLength>1</BitLength>
+          <ShowAsBinary>0</ShowAsBinary>
+          <Address>005689C8+0x7</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>93</ID>
+          <Description>"Challenge 2"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Binary</VariableType>
+          <BitStart>5</BitStart>
+          <BitLength>1</BitLength>
+          <ShowAsBinary>0</ShowAsBinary>
+          <Address>005689C8+0x7</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>94</ID>
+          <Description>"Challenge 3"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Binary</VariableType>
+          <BitStart>6</BitStart>
+          <BitLength>1</BitLength>
+          <ShowAsBinary>0</ShowAsBinary>
+          <Address>005689C8+0x7</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>95</ID>
+          <Description>"Challenge 4"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Binary</VariableType>
+          <BitStart>7</BitStart>
+          <BitLength>1</BitLength>
+          <ShowAsBinary>0</ShowAsBinary>
+          <Address>005689C8+0x7</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>84</ID>
+          <Description>"Music Vol"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>005689C8+0xe</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>76</ID>
+          <Description>"Speech Vol"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>005689C8+0xf</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>75</ID>
+          <Description>"SFX Vol"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>005689C8+0x10</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>77</ID>
+          <Description>"Cinematic Vol"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>005689C8+0x11</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>78</ID>
+          <Description>"Sound Mode"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>005689C8+0x12</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>79</ID>
+          <Description>"Brightness"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>005689C8+0x13</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>80</ID>
+          <Description>"Screen Scale"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>005689C8+0x14</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>81</ID>
+          <Description>"Screen Location X"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>005689C8+0x15</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>82</ID>
+          <Description>"Screen Location y"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>005689C8+0x16</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>74</ID>
+          <Description>"Tutorial Display"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>005689C8+0x17</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>73</ID>
+          <Description>"Show Subtitles"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>005689C8+0x18</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>72</ID>
+          <Description>"Inverted Flight Controls"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>005689C8+0x1a</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>71</ID>
+          <Description>"Inverted Free Camera"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>005689C8+0x1b</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>83</ID>
+          <Description>"Default Costume"</Description>
+          <DropDownList>0:Kratos
+1:Fear Kratos
+2:Apollo
+3:Morpheus
+4:Phantom of Chaos
+5:Forgotten Warrior
+6:Dominus
+7:Deimos
+</DropDownList>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>005689C8+0x1d</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>63</ID>
       <Description>"Stats --&gt;"</Description>
       <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>46</ID>
+          <ID>64</ID>
           <Description>"Deaths"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
@@ -357,7 +608,7 @@
           <Address>005690F0</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>43</ID>
+          <ID>65</ID>
           <Description>"Max Combo"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
@@ -365,7 +616,7 @@
           <Address>0056911c</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>42</ID>
+          <ID>66</ID>
           <Description>"Kills"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
@@ -373,7 +624,7 @@
           <Address>569130</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>44</ID>
+          <ID>67</ID>
           <Description>"Brutal Kills"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
@@ -381,7 +632,7 @@
           <Address>00569134</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>45</ID>
+          <ID>68</ID>
           <Description>"Mini Game Wins"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
@@ -449,6 +700,47 @@
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
+      <ID>96</ID>
+      <Description>"CamData --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Bytes Big Endian</CustomType>
+      <Address>00567430</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>97</ID>
+          <Description>"ResetCam"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>325c6150+00</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>98</ID>
+          <Description>"CamType"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>325c6150+02</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>99</ID>
+          <Description>"CamType2"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>325c6150+03</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>110</ID>
+          <Description>"Freecam Zoom"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>Float Big Endian</CustomType>
+          <Address>322C2D70</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
       <ID>55</ID>
       <Description>"Freeze"</Description>
       <ShowAsSigned>0</ShowAsSigned>
@@ -463,17 +755,181 @@
       <Address>00640BEC</Address>
     </CheatEntry>
     <CheatEntry>
-      <ID>61</ID>
-      <Description>"No description"</Description>
+      <ID>120</ID>
+      <Description>"goPlayer --&gt;"</Description>
+      <Options moHideChildren="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+local gp = string.format('%02X%02X%02X%02X', readBytes(0x567974, 4))
+registerSymbol("goPlayer", gp)
+
+local gs = tonumber("0x"..gp) + 4
+local k = string.format('%02X%02X%02X%02X', readBytes(gs, 4))
+registerSymbol("kratos", k)
+{$asm}
+[DISABLE]
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>100</ID>
+          <Description>"vt"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>goPlayer</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>119</ID>
+          <Description>"goSoldier --&gt;"</Description>
+          <Options moHideChildren="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$lua}
+local gp = string.format('%02X%02X%02X%02X', readBytes(0x567974, 4))
+registerSymbol("goPlayer", gp)
+
+local gs = tonumber("0x"..gp) + 4
+local k = string.format('%02X%02X%02X%02X', readBytes(gs, 4))
+registerSymbol("kratos", k)
+{$asm}
+[DISABLE]
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>121</ID>
+              <Description>"vt"</Description>
+              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Bytes Big Endian</CustomType>
+              <Address>kratos</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>102</ID>
+              <Description>"xPos"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>Float Big Endian</CustomType>
+              <Address>kratos+0x90</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104</ID>
+              <Description>"yPos"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>Float Big Endian</CustomType>
+              <Address>kratos+0x94</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>103</ID>
+              <Description>"zPos"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>Float Big Endian</CustomType>
+              <Address>kratos+0x98</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>109</ID>
+              <Description>"HpRegen"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>Float Big Endian</CustomType>
+              <Address>kratos+0x1e0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>108</ID>
+              <Description>"CurrHp"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>Float Big Endian</CustomType>
+              <Address>kratos+0x1bc</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>107</ID>
+              <Description>"SwimmingAndStanding"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>4 Bytes Big Endian</CustomType>
+              <Address>kratos+0x1b0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>106</ID>
+              <Description>"Speed"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>Float Big Endian</CustomType>
+              <Address>kratos+0x1ac</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>105</ID>
+              <Description>"Size"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Custom</VariableType>
+              <CustomType>Float Big Endian</CustomType>
+              <Address>kratos+0x1a8</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>111</ID>
+      <Description>"----------"</Description>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>112</ID>
+      <Description>"Save Trigger"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Bytes Big Endian</CustomType>
+      <Address>396936e8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>113</ID>
+      <Description>"SaveDist"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Custom</VariableType>
       <CustomType>Float Big Endian</CustomType>
-      <Address>39694C70</Address>
+      <Address>39694b14 </Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>114</ID>
+      <Description>"WadLoadName"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>32</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>00647B28</Address>
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols>
     <SymbolEntry>
+      <Name>goPlayer</Name>
+      <Address>35694AC0</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>kratos</Name>
+      <Address>35693260</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>checkpoint</Name>
+      <Address>300E9C30</Address>
+    </SymbolEntry>
+    <SymbolEntry>
       <Name>cpOffset</Name>
-      <Address>0x120</Address>
+      <Address>0120</Address>
     </SymbolEntry>
   </UserdefinedSymbols>
+  <LuaScript>local goSoldier = string.format('%02X%02X%02X%02X', readBytes(0x567974, 4))
+print(goSoldier)
+registerSymbol("goSoldier", goSoldier)
+</LuaScript>
 </CheatTable>

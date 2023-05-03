@@ -1,0 +1,106 @@
+//------------------------------------------------
+//--- 010 Editor v9.0.1 Binary Template
+//
+//      File: 
+//   Authors: 
+//   Version: 
+//   Purpose: 
+//  Category: 
+// File Mask: 
+//  ID Bytes: 
+//   History: 
+//------------------------------------------------
+
+BigEndian();
+
+//------------------------------------------------
+typedef struct {
+	short size <format=hex>;
+	char sec[size];
+} sec <bgcolor=cLtRed>;
+
+typedef struct {
+	char data[0x1c];
+} u2;
+typedef struct {
+	char data[0xc];
+} u3;
+
+typedef struct {
+	char CamName[0x38];
+	char CamWad[0x38];
+	char unk[0xA0];
+} cameraState;
+typedef struct {
+    short secSize <format=hex>;
+    uint unk1;
+    uint camcount;
+    uint unk2[2];
+    cameraState cams[camcount];
+} camdata <bgcolor=cLtBlue>;
+
+typedef struct {
+    int playerStateSize <format=hex>;
+	char unk1[0x30];
+	float KratosPos[4];
+    uint unk2[2];	
+    uint KratosStance <format=hex>;
+	char unk3[0x64];
+} playerState <bgcolor=cLtRed>;
+
+typedef struct {
+    short musicStateSize <format=hex>;
+	char unk[musicStateSize];
+} musicState <bgcolor=cLtGreen>;
+
+typedef struct {
+    uint unk[4];
+    uint wadNum;
+    uint unk2[3];
+    uint dataSize;
+    char wadName[0x14];
+    char data[dataSize];
+} wadInfoEntry;
+typedef struct {
+    char unk[0x3e];
+    char name[0x14];
+    char unk2[0xe];
+} rWadInfoEntry;
+typedef struct {
+    uint wadCount;
+    wadInfoEntry wad[wadCount] <optimize=false>;
+    uint rWadCount;
+    uint unk[3];
+    rWadInfoEntry rWad[rWadCount];
+} wadInfo;
+
+
+uint coed <format=hex>;
+
+sec sec1;
+camdata camera;
+playerState player;
+musicState music;
+
+sec sec2;
+sec def <bgcolor=cAqua>;
+sec sec3;
+sec sec4 <bgcolor=cAqua>;
+sec sec5;
+sec sec6 <bgcolor=cAqua>;
+sec sec7;
+sec sec8 <bgcolor=cAqua>;
+sec sec9;
+
+uint unk1cnt <format=hex>;
+uint unk2cnt <format=hex>;
+
+short unk1[unk1cnt];
+u2 unk[unk2cnt];
+char unk3[0x10];
+
+uint unk4cnt <format=hex>;
+u3 unk4[unk4cnt];
+
+float playtime <bgcolor=cGreen>;
+wadInfo wadinfo <bgcolor=cRed>;
