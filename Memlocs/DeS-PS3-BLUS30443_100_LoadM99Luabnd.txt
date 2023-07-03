@@ -1,0 +1,136 @@
+$path = "D:\Emus\PS3\dev_hdd0\game\NPUB30910\USRDIR\EBOOT.BIN"
+$size = (Get-Item $path).length
+
+$ba = [System.IO.File]::ReadAllBytes($path)
+##########################################
+Function RBytes
+{
+	Param (
+		$addr,
+		$size
+	)
+	[byte[]] $rb = [byte[]]::new(4)
+	[System.Buffer]::BlockCopy($ba, $addr, $rb, 0, $rb.Length)
+	$rb
+}
+##########################################
+Function RUInt32
+{   
+	Param (
+        $addr
+    )
+	[bitconverter]::ToUInt32($ba,$addr)
+}
+
+##########################################
+Function WBytes
+{
+	Param (
+		$addr,
+		$wb
+	)
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+##########################################
+Function WStrA
+{
+	Param (
+		$addr,
+		$str
+	)
+	$wb = [System.Text.Encoding]::UTF8.GetBytes($str)
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+##########################################
+Function WStrU
+{
+	Param (
+		$addr,
+		$str
+	)
+	$wb = [System.Text.Encoding]::Unicode.GetBytes($str)
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+##########################################
+Function WUInt32
+{
+	Param (
+		$addr,
+		$val
+	)
+	$wb = [bitconverter]::GetBytes($val)
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+##########################################
+Function XorBytes
+{
+	Param (
+		[byte[]] $b1,
+		[byte[]] $b2
+	)
+	[byte[]] $b3 = [byte[]]::new($b1.count)
+	for($i=0; $i -lt $b1.count ; $i++)
+	{
+		$b3[$i] = $b1[$i] -bxor $b2[$i]
+	}
+	$b3
+}
+##########################################
+Function AreArraysEqual($a1, $a2) {
+    if ($a1 -isnot [array] -or $a2 -isnot [array]) {
+      throw "Both inputs must be an array"
+    }
+    if ($a1.Rank -ne $a2.Rank) {
+      return $false 
+    }
+    if ([System.Object]::ReferenceEquals($a1, $a2)) {
+      return $true
+    }
+    for ($r = 0; $r -lt $a1.Rank; $r++) {
+      if ($a1.GetLength($r) -ne $a2.GetLength($r)) {
+            return $false
+      }
+    }
+
+    $enum1 = $a1.GetEnumerator()
+    $enum2 = $a2.GetEnumerator()   
+
+    while ($enum1.MoveNext() -and $enum2.MoveNext()) {
+      if ($enum1.Current -ne $enum2.Current) {
+            return $false
+      }
+    }
+    return $true
+} 
+##########################################
+
+
+#Allow loading of m99.luabnd
+cls
+$codeloc = 0x34e48c - 0xF700
+[byte[]] $newcode = 0x60, 0x00, 0x00, 0x00
+[byte[]] $oldcode = 0x41, 0x9e, 0x00, 0xdc
+[byte[]] $codexor = 0x21, 0x9e, 0x00, 0xdc
+
+
+if (AreArraysEqual(RBytes $codeloc 4) $oldcode) {
+	"Old bytes found, patching."
+	WBytes $codeloc $newcode
+	[System.IO.File]::WriteAllBytes($path, $ba)
+	"Bytes written successfully"
+	""
+	pause
+} else {
+	if (AreArraysEqual(RBytes $codeloc 4) $newcode) {
+		"New bytes found, patching."
+		WBytes $codeloc $oldcode
+		[System.IO.File]::WriteAllBytes($path, $ba)
+		"Bytes written successfully"
+		""
+		pause
+	} else {
+		"Bytes not recognized, doing nothing."
+		""
+		pause
+	}
+}

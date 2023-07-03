@@ -1,9 +1,23 @@
+#nop 0x34e48c to load luabnds on m99s
+
+
 $path = "D:\Emus\PS3\dev_hdd0\game\NPUB30910\USRDIR\EBOOT.BIN"
 $size = (Get-Item $path).length
 
 
 
 $ba = [System.IO.File]::ReadAllBytes($path)
+##########################################
+Function RBytes
+{
+	Param (
+		$addr,
+		$size
+	)
+	[byte[]] $rb = [byte[]]::new(4)
+	[System.Buffer]::BlockCopy($ba, $addr, $rb, 0, $rb.Length)
+	$rb
+}
 ##########################################
 Function RUInt32
 {   
@@ -66,7 +80,33 @@ Function XorBytes
 	$b3
 }
 ##########################################
+Function AreArraysEqual($a1, $a2) {
+    if ($a1 -isnot [array] -or $a2 -isnot [array]) {
+      throw "Both inputs must be an array"
+    }
+    if ($a1.Rank -ne $a2.Rank) {
+      return $false 
+    }
+    if ([System.Object]::ReferenceEquals($a1, $a2)) {
+      return $true
+    }
+    for ($r = 0; $r -lt $a1.Rank; $r++) {
+      if ($a1.GetLength($r) -ne $a2.GetLength($r)) {
+            return $false
+      }
+    }
 
+    $enum1 = $a1.GetEnumerator()
+    $enum2 = $a2.GetEnumerator()   
+
+    while ($enum1.MoveNext() -and $enum2.MoveNext()) {
+      if ($enum1.Current -ne $enum2.Current) {
+            return $false
+      }
+    }
+    return $true
+} 
+##########################################
 
 
 
@@ -92,13 +132,11 @@ cls
 [byte[]] $newcode4 = 0x48, 0x00, 0x00, 0x64		#m99s
 
 
-[byte[]] $newcode5 = 0x41, 0x9e, 0x01, 0xf0		#Quicker Logos
-[byte[]] $oldcode5 = 0x41, 0x9e, 0x00, 0x38
 
-
-[byte[]] $newcode6 = 0x41, 0x9c, 0x00, 0x58		#Fewer Logos
-[byte[]] $oldcode6 = 0x41, 0x9c, 0x00, 0x58
-
+[byte[]] $logonewcode = 0x38, 0x80, 0x00, 0x00		#Logo Skip
+[byte[]] $logooldcode = 0x38, 0x80, 0x00, 0x01
+[byte[]] $logocodexor = 0x00, 0x00, 0x00, 0x01
+$logoloc = 0x189b38 - 0xF700
 
 
 
@@ -213,7 +251,6 @@ if ($size -eq 9602848) {
 		WBytes (0x66b024 -0xF700) $newcode2
 		WBytes (0x66aefc -0xF700) $newcode3
 		WBytes (0x417340 -0xF700) $newcode4
-		#	WBytes (0x8eef78 -0xF700) $newcode5
 		
 		
 		WBytes $dbgAorigNameULoc $dbgANewNameU
@@ -250,7 +287,6 @@ if ($size -eq 9602848) {
 			WBytes (0x66b024 -0xF700) $oldcode2
 			WBytes (0x66aefc -0xF700) $oldcode3
 			WBytes (0x417340 -0xF700) $oldcode4
-			#	WBytes (0x8eef78 -0xF700) $oldcode5
 			
 			
 			WBytes $dbgAorigNameULoc $dbgAOrigNameU

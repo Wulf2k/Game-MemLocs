@@ -823,6 +823,13 @@ registerSymbol("checkpoint", cp)
       <GroupHeader>1</GroupHeader>
     </CheatEntry>
     <CheatEntry>
+      <ID>133</ID>
+      <Description>"WorldIdle"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Byte</VariableType>
+      <Address>54c86c</Address>
+    </CheatEntry>
+    <CheatEntry>
       <ID>104</ID>
       <Description>"CheatSuccess"</Description>
       <ShowAsSigned>0</ShowAsSigned>
@@ -936,7 +943,7 @@ registerSymbol("checkpoint", cp)
     </CheatEntry>
     <CheatEntry>
       <ID>80</ID>
-      <Description>"WorldIdle"</Description>
+      <Description>"cpWorldIdle"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Byte</VariableType>
       <Address>checkpoint+0x41e</Address>
@@ -952,16 +959,16 @@ registerSymbol("checkpoint", cp)
       <Address>31D116A0</Address>
     </SymbolEntry>
     <SymbolEntry>
-      <Name>kratos</Name>
-      <Address>30A46C70</Address>
-    </SymbolEntry>
-    <SymbolEntry>
       <Name>flashInterface</Name>
       <Address>30A1EA08</Address>
     </SymbolEntry>
     <SymbolEntry>
       <Name>goPlayer</Name>
       <Address>31D0F264</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>kratos</Name>
+      <Address>30A46C70</Address>
     </SymbolEntry>
   </UserdefinedSymbols>
 </CheatTable>
