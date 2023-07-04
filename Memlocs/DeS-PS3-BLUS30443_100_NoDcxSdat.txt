@@ -1,0 +1,155 @@
+$path = "D:\ps3\app_home\EBOOT.FSELF"
+$size = (Get-Item $path).length
+
+$ba = [System.IO.File]::ReadAllBytes($path)
+##########################################
+Function RBytes
+{
+	Param (
+		$addr,
+		$size
+	)
+	[byte[]] $rb = [byte[]]::new(4)
+	[System.Buffer]::BlockCopy($ba, $addr, $rb, 0, $rb.Length)
+	$rb
+}
+##########################################
+Function RUInt32
+{   
+	Param (
+        $addr
+    )
+	[bitconverter]::ToUInt32($ba,$addr)
+}
+##########################################
+Function WBytes
+{
+	Param (
+		$addr,
+		$wb
+	)
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+##########################################
+Function WStrA
+{
+	Param (
+		$addr,
+		$str
+	)
+	$wb = [System.Text.Encoding]::UTF8.GetBytes($str)
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+##########################################
+Function WStrU
+{
+	Param (
+		$addr,
+		$str
+	)
+	$wb = [System.Text.Encoding]::Unicode.GetBytes($str)
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+##########################################
+Function WUInt32
+{
+	Param (
+		$addr,
+		$val
+	)
+	$wb = [bitconverter]::GetBytes($val)
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+##########################################
+Function XorBytes
+{
+	Param (
+		[byte[]] $b1,
+		[byte[]] $b2
+	)
+	[byte[]] $b3 = [byte[]]::new($b1.count)
+	for($i=0; $i -lt $b1.count ; $i++)
+	{
+		$b3[$i] = $b1[$i] -bxor $b2[$i]
+	}
+	$b3
+}
+##########################################
+Function AreArraysEqual($a1, $a2) {
+    if ($a1 -isnot [array] -or $a2 -isnot [array]) {
+      throw "Both inputs must be an array"
+    }
+    if ($a1.Rank -ne $a2.Rank) {
+      return $false 
+    }
+    if ([System.Object]::ReferenceEquals($a1, $a2)) {
+      return $true
+    }
+    for ($r = 0; $r -lt $a1.Rank; $r++) {
+      if ($a1.GetLength($r) -ne $a2.GetLength($r)) {
+            return $false
+      }
+    }
+
+    $enum1 = $a1.GetEnumerator()
+    $enum2 = $a2.GetEnumerator()   
+
+    while ($enum1.MoveNext() -and $enum2.MoveNext()) {
+      if ($enum1.Current -ne $enum2.Current) {
+            return $false
+      }
+    }
+    return $true
+} 
+##########################################
+
+
+
+
+
+
+
+cls
+
+[byte[]] $newcode1 = 0x60, 0x00, 0x00, 0x00		#SDAT
+[byte[]] $oldcode1 = 0x40, 0x9e, 0x01, 0x20
+
+[byte[]] $newcode2 = 0x4b, 0xff, 0xfe, 0xe8		#SDAT
+[byte[]] $oldcode2 = 0x41, 0x9e, 0xfe, 0xe8
+
+
+[byte[]] $newcode3 = 0x60, 0x00, 0x00, 0x00		#DCX
+[byte[]] $oldcode3 = 0x40, 0x9e, 0x00, 0xcc
+
+
+cls
+if ($size -eq 9602848) {
+	"EBOOT.BIN size too small, decrypt and decompress before running this script."
+} else {
+	if ((RUint32 (0x66af08 - 0xF700)) -eq [UInt32]"0x20019e40") {
+		"Original bytes found, patching out DCX/SDAT."
+		WBytes (0x66af08 -0xF700) $newcode1
+		WBytes (0x66b024 -0xF700) $newcode2
+		WBytes (0x66aefc -0xF700) $newcode3
+		[System.IO.File]::WriteAllBytes($path, $ba)
+		"Bytes written successfully"
+		""
+		pause
+	} else {
+		if ((RUint32 (0x66af08 - 0xF700)) -eq [UInt32]"0x00000060") {
+			"Patched bytes found, restoring DCX/SDAT."
+			WBytes (0x66af08 -0xF700) $oldcode1
+			WBytes (0x66b024 -0xF700) $oldcode2
+			WBytes (0x66aefc -0xF700) $oldcode3
+			[System.IO.File]::WriteAllBytes($path, $ba)
+			"Bytes written successfully"
+			""
+			pause
+		} else {
+			"Unrecognized bytes found hook at location, no changes made."
+			"Has EBOOT.BIN been resigned as NONDRM?"
+			""
+			pause
+		}
+	}
+}
