@@ -1,0 +1,276 @@
+function Initialize_m08_00_00_00(proxy)
+
+
+	--  New Stuff in Initialize function for Modding Tutorial, Part 5  --
+		--Set up lever actions, for objects 1000 and 1009
+		proxy:OnDistanceAction( 0, LOCAL_PLAYER, 1000, "LeverSummon_Pull", LeverDist_A, HELPID_PULL_LEVER, 0, LeverAngle_A, everytime);
+		proxy:OnDistanceAction( 0, LOCAL_PLAYER, 1009, "LeverFire_Pull", LeverDist_A, HELPID_PULL_LEVER, 0, LeverAngle_A, everytime);
+		
+		--Set Game Options, Brightness and Show HUD
+		--Just to show that we can
+		--These custom functions are shown below
+		SetBrightness(proxy, 10);
+		ShowHud(proxy, 1);
+		
+		--Initialize dragon settings
+		--EventFlag 9110 will be used in our lever functions to determine if he should be visible or hidden
+		proxy:SetEventFlag( 9110 , false );
+		--EnableLogic is false, so he won't think for himself
+		proxy:EnableLogic( 110 , false );
+		--SuperArmor is true, so he won't stagger if hit
+		proxy:SetSuperArmor( 110 , true );
+		--Draw and Coli are disabled so he's hidden, and won't block anybody moving through him
+		proxy:SetDrawEnable( 110, false );
+		proxy:SetColiEnable( 110, false );
+	--  End of new stuff in Initialize function for Modding Tutorial, Part 5 --
+	
+	
+	
+	
+	--  Commands from previous modding tutorials --
+	--Our old warp
+		proxy:OnRegionJustIn( 99100, 10000, 100, "OnEvent_99100", everytime );
+
+		--Call a function when our barrel breaks
+		proxy:OnObjectDestroy(8000,2010,"OnEvent_8000",once);	
+		
+		--To ensure our Talker character is loaded and visible
+		proxy:SetAlwayEnableBackread_forEvent( 700 , true );
+		
+		--Set up region triggers and prepare Talk
+		proxy:OnRegionJustIn( 7000 , 10000 , 70 , "OnEvent_7000_In",everytime);
+		proxy:OnRegionJustOut( 7000 , 10000 , 70 , "OnEvent_7000_Out",everytime);
+		proxy:RegistSimpleTalk( 7000 , 700 , 47500 , TALK_ATTR_ALL-TALK_ATTR_VOICE);
+	--  End of commands from previous modding tutorials --
+--
+end
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+--  New functions for Modding Tutorial Part 5 --
+	--This is called immediately when the X button is pressed
+	function LeverSummon_Pull(proxy,param)
+		--Call the function SummonDragon in 3 seconds, to give the pull animation time to end
+		proxy:OnKeyTime2( 0, "SummonDragon", 3.0, 0, 1, once);
+		--Warp us to the region we created at the lever, so that we're the right distance and facing
+		--Otherwise our pull animation would likely grab air to either side of the lever
+		proxy:Warp( 10000, 1010 );
+		--Start the lever pull animation (8000) on us (10000)
+		proxy:PlayAnimation( 10000, 8000 );
+		--Start the lever's (1000) being-pulled animation (1)
+		proxy:PlayAnimation( 1000, 1 );
+	end
+	--This is called 3 seconds after the above, thanks to the OnKeyTime2 call
+	function SummonDragon(proxy, param)
+		--Check the "Is the dragon summoned" event flag that we arbitrarily decided was 9110
+		--If false (not summoned) then make him visible and collideable, and set the flag true
+		if proxy:IsCompleteEvent( 9110 ) == false then 
+			proxy:SetDrawEnable( 110, true );
+			proxy:SetColiEnable( 110, true );
+			proxy:SetEventFlag( 9110 , true );
+		else
+			--If 9110 is true, then we're turning the dragon off here, and setting the flag appropriately
+			proxy:SetDrawEnable( 110, false );
+			proxy:SetColiEnable( 110, false );
+			proxy:SetEventFlag( 9110 , false );
+		end
+		--Either way, warp him to the summon spot
+		--We just won't see/touch him, depending on the above
+		proxy:Warp( 110, 1001 );
+		--Set his animation to -1 so that he doesn't immediately fly away, depending on what he was doing
+		proxy:PlayLoopAnimation( 110, -1 );
+	end
+
+	--This is called immediately when the X button is pressed
+	function LeverFire_Pull(proxy,param)
+		--Call the function BreatheFire in 3 seconds
+		proxy:OnKeyTime2( 0, "BreatheFire", 3.0, 0, 1, once);
+		--Warp us to the lever region
+		proxy:Warp( 10000, 1019 );
+		--Play the pulling animation for us and the lever
+		proxy:PlayAnimation( 10000, 8000 );
+		proxy:PlayAnimation( 1009, 1 );
+	end
+	--This is called 3 seconds after the above, thanks to the OnKeyTime2 call
+	function BreatheFire(proxy, param)
+		--We want him visible and touchable for his attack run, regardless of the flag
+		proxy:SetDrawEnable( 110, true );
+		proxy:SetColiEnable( 110, true );
+		--Bring him to the Region we specified for him to start his attack run from
+		proxy:Warp( 110, 1119 );
+		--Wait 0.1 seconds before calling the next function, to avoid any weird race conditions
+		--  between the warp and the animation start
+		proxy:OnKeyTime2( 0, "BreatheFire_StartAnim", 0.1, 0, 1, once);
+	end
+	--This is called 0.1 seconds after the above
+	function BreatheFire_StartAnim(proxy, param)
+		--Prevent the player from moving / running away
+		proxy:DisableMove( 10000, 1 );
+		--Force the attack run animation, regardless of other animations in progress
+		proxy:ForcePlayAnimationStayCancel( 110 , 7007 );
+		
+		--Custom function (below), set SVal to the dragon's event ID
+		proxy:SVal( 110 );
+		--Custom function (below), get the character's pointer in memory from the ID we just set with SVal
+		drg = proxy:GetChrFromId();
+		
+		--Get the game's WorldChrMan pointer in memory
+		wcm = GetWorldChrMan(proxy);
+		--Get the memory address of the character pointer that the game is currently pointing the camera at
+		wcm = wcm + 516;
+
+		--Custom function (below), write the dragon's memorypointer to the above address
+		--The camera will stop following us, and now follow the dragon
+		WInt(proxy, wcm, drg);
+		--Custom function (below), Turn off the HUD, for cinematic effect
+		ShowHud(proxy, 0);
+
+		--When the dragon finishes his attack run, call the BreatheFire_End function
+		proxy:OnChrAnimEnd( 800 , 110 , 7007 , "BreatheFire_End" , once );
+	end
+	--This is called when the dragon finishes animation 7007, thanks to the OnChrAnimEnd call above
+	function BreatheFire_End(proxy, param)
+		--The character can move once again
+		proxy:DisableMove( 10000, 0 );
+		
+		--Like above, find the memory address of the camera's focus, this time write 0 to it
+		--  The camera will point at us by default if nothing is specified there
+		wcm = GetWorldChrMan(proxy);
+		wcm = wcm + 516;
+		WInt(proxy, wcm, 0);
+		
+		--Turn the HUD back on
+		ShowHud(proxy, 1);
+		
+		--If the dragon has been summoned, ensure he's visible
+		if proxy:IsCompleteEvent( 9110 ) == true then 
+			proxy:SetDrawEnable( 110, true );
+			proxy:SetColiEnable( 110, true );
+		--If the dragon was hidden, re-hide him
+		else
+			proxy:SetDrawEnable( 110, false );
+			proxy:SetColiEnable( 110, false );
+		end
+		
+		--Warp him back and reset his animation regardless
+		proxy:Warp( 110, 1001 );
+		proxy:PlayLoopAnimation( 110, -1 );
+	end
+
+
+	--This function will read game memory directly at the address specified
+	function RInt(proxy, loc)
+		proxy:SLoc(loc);
+		val = proxy:RInt();
+		return val;
+	end
+	--This function will write game memory directly at the address specified
+	--**  You can easily crash the game if this function is used carelessly  **--
+	function WInt(proxy, loc, val)
+		proxy:SLoc(loc);
+		proxy:SVal(val);
+		proxy:WInt();
+		return;
+	end
+
+	--This function gets the memory address of the game's Character Manager object
+	function GetWorldChrMan(proxy)
+		wcmptr = 28563168;
+		wcm = RInt(proxy, wcmptr);
+		return wcm;
+	end
+	--This function gets the memory address of the GameData Manager object
+	--This object handles lots of things, but we use it to access the HUD and Brightness options
+	function GetGameDataMan(proxy)
+		gdmptr = 28635036;
+		gdm = RInt(proxy, gdmptr);
+		return gdm;
+	end
+	--Turn the HUD on or off
+	--This function is so long because RInt returns a 4 byte integer value, and
+	--  The HUD value is only a single byte in that value
+	function ShowHud(proxy, val)
+		gdm = GetGameDataMan(proxy);
+		opt = RInt(proxy, gdm + 40);
+		optval = RInt(proxy, gdm + 40);
+		
+		if optval > 16777215 then
+			subs = 16777216;
+			optval = optval - 16777216;
+		else
+			subs = 0;
+		end
+		if optval > 65535 then
+			hud = 65536;
+			optval = optval - 65536;
+		else
+			hud = 0;
+		end
+		if optval > 255 then
+			clr = 256;
+			optval = optval - 256;
+		else
+			clr = 0;
+		end
+		if optval == 1 then
+			cud = 1;
+			optval = 0;
+		else
+			cud = 0;
+		end
+		
+		clr = 256;
+		cud = 1;
+		
+		optval = subs + (65536 * val) + clr + cud;
+		WInt(proxy, opt + 40, optval);
+	end
+	--Set the game's brightness value directly
+	function SetBrightness(proxy, val)
+		gdm = GetGameDataMan(proxy);
+		opt = RInt(proxy, gdm + 40);
+		WInt(proxy, opt + 16, val);
+	end
+--  End of new functions for Modding Tutorial, Part 5  --
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+--  Functions from previous modding tutorials --
+	--Functions that trigger when we enter/leave the Talk Region
+	function OnEvent_7000_In(proxy,param)
+		proxy:PlayLoopAnimation( 700 , 8110 );
+		proxy:TalkNextPage( 7000 );
+	end
+	function OnEvent_7000_Out(proxy,param)
+		proxy:StopLoopAnimation( 700 );
+		proxy:CloseTalk( 7000 );
+	end
+
+	--Warps us to the ball when we hit the barrel
+	function OnEvent_8000(proxy,param)
+		proxy:WarpDmy( 10000, 2020, 1 );
+	end	
+
+	--Our old warp
+	function OnEvent_99100(proxy)
+		proxy:Warp( 10000, 101 );
+		print("Event_99100 end");
+	end
+--  End of functions from previous modding tutorials --
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
