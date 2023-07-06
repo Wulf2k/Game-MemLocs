@@ -1,4 +1,4 @@
-$path = "D:\ps3\app_home\EBOOT.FSELF"
+$path = "D:\DesDemo\Emu\dev_hdd0\game\NPUB30910\USRDIR\EBOOT.BIN"
 $size = (Get-Item $path).length
 
 $bigendian = $true
