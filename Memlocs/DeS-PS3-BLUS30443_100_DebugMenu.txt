@@ -1,0 +1,204 @@
+$path = "D:\Emus\PS3\dev_hdd0\game\NPUB30910\USRDIR\EBOOT.BIN"
+$size = (Get-Item $path).length
+
+$bigendian = $true
+
+$ba = [System.IO.File]::ReadAllBytes($path)
+##########################################
+Function RBytes
+{
+	Param (
+		$addr,
+		$size
+	)
+	[byte[]] $rb = [byte[]]::new(4)
+	[System.Buffer]::BlockCopy($ba, $addr, $rb, 0, $rb.Length)
+	$rb
+}
+##########################################
+Function RUInt32
+{   
+	Param (
+        $addr
+    )
+	[bitconverter]::ToUInt32($ba,$addr)
+}
+##########################################
+Function WBytes
+{
+	Param (
+		$addr,
+		$wb
+	)
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+##########################################
+Function WStrA
+{
+	Param (
+		$addr,
+		$str
+	)
+	$wb = [System.Text.Encoding]::UTF8.GetBytes($str)
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+##########################################
+Function WStrU
+{
+	Param (
+		$addr,
+		$str
+	)
+	
+	$wb = [System.Text.Encoding]::Unicode.GetBytes($str)
+	if ($bigendian) {
+		for ($i = 0; $i -lt $str.Length; $i++)
+		{
+			$a = $wb[$i * 2]
+			$b = $wb[$i * 2 + 1]
+			$wb[$i * 2 + 1] = $a
+			$wb[$i * 2] = $b
+		}
+	}
+	
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+##########################################
+Function WUInt32
+{
+	Param (
+		$addr,
+		$val
+	)
+	$wb = [bitconverter]::GetBytes($val)
+	if ($bigendian)
+	{
+		[Array]::Reverse($wb)
+	}
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+}
+##########################################
+Function XorBytes
+{
+	Param (
+		[byte[]] $b1,
+		[byte[]] $b2
+	)
+	[byte[]] $b3 = [byte[]]::new($b1.count)
+	for($i=0; $i -lt $b1.count ; $i++)
+	{
+		$b3[$i] = $b1[$i] -bxor $b2[$i]
+	}
+	$b3
+}
+##########################################
+Function AreArraysEqual($a1, $a2) {
+    if ($a1 -isnot [array] -or $a2 -isnot [array]) {
+      throw "Both inputs must be an array"
+    }
+    if ($a1.Rank -ne $a2.Rank) {
+      return $false 
+    }
+    if ([System.Object]::ReferenceEquals($a1, $a2)) {
+      return $true
+    }
+    for ($r = 0; $r -lt $a1.Rank; $r++) {
+      if ($a1.GetLength($r) -ne $a2.GetLength($r)) {
+            return $false
+      }
+    }
+
+    $enum1 = $a1.GetEnumerator()
+    $enum2 = $a2.GetEnumerator()   
+
+    while ($enum1.MoveNext() -and $enum2.MoveNext()) {
+      if ($enum1.Current -ne $enum2.Current) {
+            return $false
+      }
+    }
+    return $true
+} 
+##########################################
+
+
+
+$code1loc = 0x66af08 -0xF700
+$code2loc = 0x66b024 -0xF700
+$code3loc = 0x66aefc -0xF700
+[byte[]] $newcode1 = 0x60, 0x00, 0x00, 0x00		#SDAT
+[byte[]] $newcode2 = 0x4b, 0xff, 0xfe, 0xe8		#SDAT
+[byte[]] $newcode3 = 0x60, 0x00, 0x00, 0x00		#DCX
+
+#-------------------------------------------
+$dbgMenuCodeLoc = 0x16f444 - 0xf700
+[byte[]] $dbgMenuCode = 0x4b, 0xfe, 0xd4, 0x35
+#-------------------------------------------
+$protoMenuCodeLoc = 0x16ea640 - 0xf700
+[byte[]] $protoMenuCode = 0x81, 0x3e, 0x80, 0xf0, 0x38, 0x60, 0x00, 0x70, 0x81, 0x7e, 0x80, 0xec,0x80, 0x89, 0x00, 0x00, 0x83, 0xab, 0x00, 0x00, 0x4b, 0x3a, 0x9b, 0xa5, 0x60, 0x00, 0x00, 0x00, 0x7c, 0x7f, 0x1b, 0x78, 0x78, 0x63, 0x00, 0x20, 0x4a, 0xa6, 0xdf, 0x75, 0x60, 0x00, 0x00, 0x00, 0x48, 0x15, 0xe3, 0x26
+
+#-------------------------------------------
+
+
+cls
+if ($size -eq 9602848) {
+	"EBOOT.BIN size too small, decrypt and decompress before running this script."
+} else {
+	"Patching in new code."
+	
+	#SDAT and DCX
+	WBytes $code1loc $newcode1
+	WBytes $code2loc $newcode2
+	WBytes $code3loc $newcode3
+
+	#Jump to DbgMenuStep instead of TitleStep
+	WBytes $dbgMenuCodeLoc $dbgMenuCode
+
+
+	WStrU (0x016c7c00 - 0xF700) ("Model Viewer" + [char]$null)
+	WStrU (0x016c7c30 - 0xF700) ("MoveMap List" + [char]$null)
+	WStrU (0x016c7c58 - 0xF700) ("SFXTest" + [char]$null)
+	WStrU (0x016c7c68 - 0xF700) ("FaceGen Test" + [char]$null)
+	WStrU (0x016c7c90 - 0xF700) ("Title List" + [char]$null)
+	WStrU (0x016c7cb8 - 0xF700) ("Title (FS Debug Server)" + [char]$null)
+	WStrU (0x016c7cf0 - 0xF700) ("Title (SCE Server)" + [char]$null)
+	
+	WStrU (0x016ccb50 - 0xF700) ("Reserve 1" + [char]$null)
+	WStrU (0x016ccb70 - 0xF700) ("Reserve 2" + [char]$null)
+	WStrU (0x016ccb90 - 0xF700) ("Reserve 3" + [char]$null)
+	WStrU (0x016ccbb0 - 0xF700) ("Title" + [char]$null)
+	WStrU (0x016ccbc8 - 0xF700) ("Reserve 5" + [char]$null)
+	WStrU (0x016ccbe8 - 0xF700) ("Menu Test" + [char]$null)
+	
+	WUInt32 (0x018cff4c - 0xF700) 0x016ea610
+	WStrU (0x016ea610 - 0xF700) ("Animation Duration = %f" + [char]$null)
+	
+	WUint32 (0x018cff3c - 0xF700) 0x016c3580
+	WStrU (0x016c3580 - 0xF700) ("Anime ID = %d" + [char]$null)
+	
+	WUint32 (0x01857104 - 0xF700) 0x016ea610
+	WStrU (0x16ea610 - 0xF700) ("Prototype Select" +[char]$null)
+	WUInt32 (0x15e1ec -0xf700) 0x158c458	#adjust switch case to our code for case 1
+	WBytes $protoMenuCodeLoc $protoMenuCode
+	
+	
+	WStrU (0x16d98b0 - 0xF700) ("Clear all (X)" + [char]$null)
+	
+	[System.IO.File]::WriteAllBytes($path, $ba)
+	"Bytes written successfully"
+	""
+	pause
+}
+
+
+
+
+
+
+
+#15aac 
+#r3 = Root
+#406f10
+#4070d8
+#15ab4
+#r3 = pDbgNode
+
