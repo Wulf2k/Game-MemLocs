@@ -1069,7 +1069,7 @@
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
           <CustomType>4 Bytes Big Endian</CustomType>
-          <Address>301ce410</Address>
+          <Address>301ce440</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>174</ID>
@@ -1078,7 +1078,7 @@
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Custom</VariableType>
           <CustomType>4 Bytes Big Endian</CustomType>
-          <Address>301ce414</Address>
+          <Address>301ce444</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>

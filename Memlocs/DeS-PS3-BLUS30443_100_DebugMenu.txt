@@ -1,7 +1,14 @@
-$path = "D:\Emus\PS3\dev_hdd0\game\NPUB30910\USRDIR\EBOOT.BIN"
+
+
+$path = "D:\ps3\TrueAncestor\EBOOT.ELF"
 $size = (Get-Item $path).length
 
 $bigendian = $true
+$addroffset = 0 - 0xF700
+$global:txtptr = 0x01843d60
+
+####  Last new function created at 0x0184df80
+####  Allocate new functions at lower addresses
 
 $ba = [System.IO.File]::ReadAllBytes($path)
 ##########################################
@@ -11,6 +18,7 @@ Function RBytes
 		$addr,
 		$size
 	)
+	$addr = $addr + $addroffset
 	[byte[]] $rb = [byte[]]::new(4)
 	[System.Buffer]::BlockCopy($ba, $addr, $rb, 0, $rb.Length)
 	$rb
@@ -21,7 +29,15 @@ Function RUInt32
 	Param (
         $addr
     )
-	[bitconverter]::ToUInt32($ba,$addr)
+	
+	$rb = RBytes $addr 4
+	
+	if ($bigendian)
+	{
+		[Array]::Reverse($rb)
+	}
+	$addr = $addr + $addroffset
+	[bitconverter]::ToUInt32($rb,0)
 }
 ##########################################
 Function WBytes
@@ -30,6 +46,7 @@ Function WBytes
 		$addr,
 		$wb
 	)
+	$addr = $addr + $addroffset
 	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
 }
 ##########################################
@@ -39,6 +56,7 @@ Function WStrA
 		$addr,
 		$str
 	)
+	$addr = $addr + $addroffset
 	$wb = [System.Text.Encoding]::UTF8.GetBytes($str)
 	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
 }
@@ -49,7 +67,7 @@ Function WStrU
 		$addr,
 		$str
 	)
-	
+	$addr = $addr + $addroffset
 	$wb = [System.Text.Encoding]::Unicode.GetBytes($str)
 	if ($bigendian) {
 		for ($i = 0; $i -lt $str.Length; $i++)
@@ -70,6 +88,7 @@ Function WUInt32
 		$addr,
 		$val
 	)
+	$addr = $addr + $addroffset
 	$wb = [bitconverter]::GetBytes($val)
 	if ($bigendian)
 	{
@@ -84,6 +103,7 @@ Function XorBytes
 		[byte[]] $b1,
 		[byte[]] $b2
 	)
+	$addr = $addr + $addroffset
 	[byte[]] $b3 = [byte[]]::new($b1.count)
 	for($i=0; $i -lt $b1.count ; $i++)
 	{
@@ -119,86 +139,899 @@ Function AreArraysEqual($a1, $a2) {
     return $true
 } 
 ##########################################
-
-
-
-$code1loc = 0x66af08 -0xF700
-$code2loc = 0x66b024 -0xF700
-$code3loc = 0x66aefc -0xF700
-[byte[]] $newcode1 = 0x60, 0x00, 0x00, 0x00		#SDAT
-[byte[]] $newcode2 = 0x4b, 0xff, 0xfe, 0xe8		#SDAT
-[byte[]] $newcode3 = 0x60, 0x00, 0x00, 0x00		#DCX
-
+Function CreatepStrU
+{
+	Param (
+		$addr,
+		$txt
+	)
+	$txt = $txt + [char]$null
+	$addr = $addr
+	WStrU $global:txtptr $txt
+	WUInt32 $addr $global:txtptr 
+	$global:txtptr  = $global:txtptr + ($txt.length * 2)
+}
 #-------------------------------------------
-$dbgMenuCodeLoc = 0x16f444 - 0xf700
-[byte[]] $dbgMenuCode = 0x4b, 0xfe, 0xd4, 0x35
 #-------------------------------------------
-$protoMenuCodeLoc = 0x16ea640 - 0xf700
-[byte[]] $protoMenuCode = 0x81, 0x3e, 0x80, 0xf0, 0x38, 0x60, 0x00, 0x70, 0x81, 0x7e, 0x80, 0xec,0x80, 0x89, 0x00, 0x00, 0x83, 0xab, 0x00, 0x00, 0x4b, 0x3a, 0x9b, 0xa5, 0x60, 0x00, 0x00, 0x00, 0x7c, 0x7f, 0x1b, 0x78, 0x78, 0x63, 0x00, 0x20, 0x4a, 0xa6, 0xdf, 0x75, 0x60, 0x00, 0x00, 0x00, 0x48, 0x15, 0xe3, 0x26
+#-------------------------------------------
+#-------------------------------------------
+#-------------------------------------------
 
-#-------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 cls
 if ($size -eq 9602848) {
 	"EBOOT.BIN size too small, decrypt and decompress before running this script."
 } else {
-	"Patching in new code."
 	
+	
+	if ((RUInt32 (0 - $addroffset)) -eq 0x53434500)
+	{
+		"Please decrypt to ELF first."
+	} elseif ((RUInt32 (0 - $addroffset)) -eq 0x7F454C46) {
+		"Patching in new code."
+		$addroffset = -0x10000
+		
+		
+		
+#-------------------------------------------
+#-------------------------------------------
 	#SDAT and DCX
+	$code1loc = 0x66af08
+	$code2loc = 0x66b024
+	$code3loc = 0x66aefc
+	[byte[]] $newcode1 = 0x60, 0x00, 0x00, 0x00		#SDAT
+	[byte[]] $newcode2 = 0x4b, 0xff, 0xfe, 0xe8		#SDAT
+	[byte[]] $newcode3 = 0x60, 0x00, 0x00, 0x00		#DCX
 	WBytes $code1loc $newcode1
 	WBytes $code2loc $newcode2
 	WBytes $code3loc $newcode3
-
+#-------------------------------------------	
+#-------------------------------------------
+	#Skip logos in case Title is selected intentionally
+	$logoSkipLoc = 0x00189b38
+	[byte[]] $logoSkipCode = 0x38, 0x80, 0x00, 0x00
+	WBytes $logoSkipLoc $logoSkipCode
+#-------------------------------------------	
+#-------------------------------------------
 	#Jump to DbgMenuStep instead of TitleStep
+	$dbgMenuCodeLoc = 0x0016f444
+	[byte[]] $dbgMenuCode = 0x4b, 0xfe, 0xd4, 0x35
 	WBytes $dbgMenuCodeLoc $dbgMenuCode
+#-------------------------------------------
+#-------------------------------------------
+	#Allow loading of m99.luabnd
+	$m99luaCodeLoc = 0x0034e48c
+	[byte[]] $m99luaCode = 0x60, 0x00, 0x00, 0x00
+	WBytes $m99luaCodeLoc $m99luaCode
+#-------------------------------------------	
+#-------------------------------------------
+	#Set DLPanic to attempt debugger instead of hardcrash
+	WUInt32 0x00a9dd94 0x2f800000
+	#instruction to invoke debugger when Panic'd
+	WUInt32 0x00a9ddd4 0x7fe00008
+#-------------------------------------------
+#-------------------------------------------
+	#increase memory allocation
+	WUint32 0x0003a1fc 0x3c600080
+	WUint32 0x0003a244 0x3ca00080
+	WUint32 0x0003a2b0 0x3ca00080
+	WUInt32 0x0003b3fc 0x3c6000e4
+	WUInt32 0x0003b444 0x3ca000e4
+	WUInt32 0x0003b4b0 0x3ca000e4
+#-------------------------------------------
+#-------------------------------------------
+	#lua print redirect
+	WUInt32 0x0196E568 0x00ca5230
+	#PrintText redirect
+	#WUInt32 0x01947a28 0x00ca5230
+#-------------------------------------------
+#-------------------------------------------
+	#Create extra room in memory for our strings
+	# -offset to hit the raw file and not memory address
+	WUInt32 (0x64 - $addroffset) 0x0183ef00
+	WUInt32 (0x6c - $addroffset) 0x0183ef00
+#-------------------------------------------
+#-------------------------------------------
+	$gameDataManDbgHookLoc = 0x0090d214
+	[byte[]] $gameDataManDbgHookCode = 0x49, 0x84, 0xdf, 0xc2
+		<#
+			ba 0x0184dfc0
+		#>
+	$gameDataManDbgCodeLoc = 0x0184dfc0
+	[byte[]] $gameDataManDbgCode = 0x90, 0x03, 0x00, 0x6c, 0x48, 0x91, 0x27, 0x1b, 0x60, 0x00, 0x00, 0x00, 0x7f, 0xe3, 0xfb, 0x78, 0x48, 0x90, 0xd2, 0x1a
+		<#
+			stw %r0, 0x6c(%r3)
+			bla 0x00912718
+			nop
+			or %r3, %r31, %r31
+			ba 0x0090d218
+		#>
 
-
-	WStrU (0x016c7c00 - 0xF700) ("Model Viewer" + [char]$null)
-	WStrU (0x016c7c30 - 0xF700) ("MoveMap List" + [char]$null)
-	WStrU (0x016c7c58 - 0xF700) ("SFXTest" + [char]$null)
-	WStrU (0x016c7c68 - 0xF700) ("FaceGen Test" + [char]$null)
-	WStrU (0x016c7c90 - 0xF700) ("Title List" + [char]$null)
-	WStrU (0x016c7cb8 - 0xF700) ("Title (FS Debug Server)" + [char]$null)
-	WStrU (0x016c7cf0 - 0xF700) ("Title (SCE Server)" + [char]$null)
-	
-	WStrU (0x016ccb50 - 0xF700) ("Reserve 1" + [char]$null)
-	WStrU (0x016ccb70 - 0xF700) ("Reserve 2" + [char]$null)
-	WStrU (0x016ccb90 - 0xF700) ("Reserve 3" + [char]$null)
-	WStrU (0x016ccbb0 - 0xF700) ("Title" + [char]$null)
-	WStrU (0x016ccbc8 - 0xF700) ("Reserve 5" + [char]$null)
-	WStrU (0x016ccbe8 - 0xF700) ("Menu Test" + [char]$null)
-	
-	WUInt32 (0x018cff4c - 0xF700) 0x016ea610
-	WStrU (0x016ea610 - 0xF700) ("Animation Duration = %f" + [char]$null)
-	
-	WUint32 (0x018cff3c - 0xF700) 0x016c3580
-	WStrU (0x016c3580 - 0xF700) ("Anime ID = %d" + [char]$null)
-	
-	WUint32 (0x01857104 - 0xF700) 0x016ea610
-	WStrU (0x16ea610 - 0xF700) ("Prototype Select" +[char]$null)
-	WUInt32 (0x15e1ec -0xf700) 0x158c458	#adjust switch case to our code for case 1
+	WBytes $gameDataManDbgHookLoc $gameDataManDbgHookCode
+	WBytes $gameDataManDbgCodeLoc $gameDataManDbgCode
+#-------------------------------------------
+#-------------------------------------------
+	$dbgRootHookLoc = 0x00015abc
+	[byte[]] $dbgRootHookCode = 0x49, 0x84, 0xe5, 0x02
+		<#
+			ba 0x0184e500
+		#>
+	$dbgRootCodeLoc = 0x0184e500
+	[byte[]] $dbgRootCode = 0x3c, 0x60, 0x01, 0x70, 0x60, 0x63, 0x5b, 0x38, 0x4a, 0xbb, 0x8a, 0x01, 0x60, 0x00, 0x00, 0x00, 0x3c, 0x80, 0x30, 0x1c, 0x60, 0x84, 0xe4, 0x14, 0x90, 0x64, 0x00, 0x00, 0xe8, 0x01, 0x00, 0x90, 0x48, 0x02, 0x0f, 0x4a
+		<#
+			lis %r3, 0x0170
+			ori %r3, %r3, 0x5b38
+			bl 0x00406f08
+			nop
+			lis %r4, 0x301c
+			ori %r4, %r4, 0xe414
+			stw %r3, 0x0(%r4)
+			ld %r0, 0x90(%r1)
+			ba 0x020f48
+		#>
+	#Restore dbgMenu root node
+	WBytes $dbgRootHookLoc $dbgRootHookCode
+	WBytes $dbgRootCodeLoc $dbgRootCode
+#-------------------------------------------
+#-------------------------------------------
+	<#
+		Huge credit to gibbed for releasing the original version of the debug menu.
+		This is not a copy of his code, but was informed heavily by knowledge gained from his work.
+	#>
+	$dbgMenuDrawCodeHookLoc = 0x0001bc08
+	[byte[]] $dbgMenuDrawCodeHook = 0x49, 0x84, 0xe0, 0x03
+		<#
+			bla 0x0184e000
+		#>
+	$dbgMenuDrawCodeLoc = 0x0184e000
+	[byte[]] $dbgMenuDrawCode = 0x7c, 0x68, 0x02, 0xa6, 0x90, 0x61, 0xff, 0xf8, 0x94, 0x21, 0xff, 0x00, 0x3c, 0x60, 0x30, 0x1c, 0x60, 0x63, 0xe4, 0x10, 0x90, 0x61, 0x00, 0xf0, 0x80, 0x83, 0x00, 0x04, 0x90, 0x81, 0x00, 0xe0, 0x2b, 0x84, 0x00, 0x00, 0x41, 0x9e, 0x01, 0x94, 0x80, 0x83, 0x00, 0x08, 0x90, 0x81, 0x00, 0xd0, 0x2b, 0x84, 0x00, 0x00, 0x41, 0x9e, 0x01, 0x84, 0x80, 0x83, 0x00, 0x0c, 0x90, 0x81, 0x00, 0xc0, 0x2b, 0x84, 0x00, 0x00, 0x41, 0x9e, 0x01, 0x74, 0x80, 0x61, 0x00, 0xd0, 0x48, 0x40, 0x01, 0x93, 0x60, 0x00, 0x00, 0x00, 0x80, 0x61, 0x00, 0xd0, 0x7c, 0x84, 0x22, 0x78, 0x88, 0x83, 0x00, 0x0d, 0x2f, 0x84, 0x00, 0x01, 0x40, 0x9e, 0x00, 0xc0, 0x80, 0x61, 0x00, 0xf0, 0x80, 0x83, 0x00, 0x10, 0x38, 0x84, 0x00, 0x01, 0x2f, 0x84, 0x00, 0x01, 0x90, 0x83, 0x00, 0x10, 0x41, 0x9e, 0x00, 0x28, 0x2f, 0x84, 0x00, 0x03, 0x41, 0x9c, 0x00, 0x10, 0x7c, 0x84, 0x22, 0x78, 0x90, 0x83, 0x00, 0x10, 0x48, 0x00, 0x00, 0x94, 0x80, 0x61, 0x00, 0xc0, 0x38, 0x80, 0x00, 0x00, 0x98, 0x83, 0x00, 0x60, 0x48, 0x00, 0x00, 0x10, 0x80, 0x61, 0x00, 0xc0, 0x38, 0x80, 0x00, 0x01, 0x98, 0x83, 0x00, 0x60, 0x80, 0x61, 0x00, 0xf0, 0x80, 0x63, 0x00, 0x10, 0x2f, 0x83, 0x00, 0x01, 0x41, 0x9e, 0x00, 0x34, 0x38, 0x60, 0x00, 0x00, 0x38, 0x80, 0x00, 0x00, 0x48, 0x1c, 0x67, 0x63, 0x60, 0x00, 0x00, 0x00, 0x38, 0x60, 0x00, 0x00, 0x38, 0x80, 0x00, 0x01, 0x48, 0x1c, 0x67, 0x63, 0x60, 0x00, 0x00, 0x00, 0x38, 0x60, 0x00, 0x00, 0x38, 0x80, 0x00, 0x03, 0x48, 0x1c, 0x67, 0x63, 0x48, 0x00, 0x00, 0x38, 0x38, 0x60, 0x00, 0x00, 0x38, 0x80, 0x00, 0x00, 0x48, 0x1c, 0x67, 0xab, 0x60, 0x00, 0x00, 0x00, 0x38, 0x60, 0x00, 0x00, 0x38, 0x80, 0x00, 0x01, 0x48, 0x1c, 0x67, 0xab, 0x60, 0x00, 0x00, 0x00, 0x38, 0x60, 0x00, 0x00, 0x38, 0x80, 0x00, 0x03, 0x48, 0x1c, 0x67, 0xab, 0x60, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00, 0x80, 0x61, 0x00, 0xf0, 0x80, 0x63, 0x00, 0x10, 0x2f, 0x83, 0x00, 0x01, 0x40, 0x9e, 0x00, 0x28, 0x80, 0x61, 0x00, 0xd0, 0x3c, 0x80, 0xff, 0xff, 0x60, 0x84, 0xff, 0xff, 0x90, 0x83, 0x00, 0x04, 0x80, 0x61, 0x00, 0xe0, 0x80, 0x81, 0x00, 0xd0, 0x38, 0xa0, 0x00, 0x01, 0x48, 0x40, 0x33, 0xbb, 0x60, 0x00, 0x00, 0x00, 0x80, 0x61, 0x00, 0xc0, 0x48, 0x40, 0x0f, 0x33, 0x60, 0x00, 0x00, 0x00, 0x3c, 0x80, 0x01, 0x8d, 0x60, 0x84, 0x84, 0xa8, 0xc0, 0x24, 0x00, 0x00, 0x80, 0x61, 0x00, 0xc0, 0x48, 0x40, 0x08, 0xa3, 0x80, 0x61, 0x00, 0xf0, 0x80, 0x63, 0x00, 0x10, 0x2f, 0x83, 0x00, 0x00, 0x41, 0x9e, 0x00, 0x34, 0x80, 0x61, 0x00, 0xc0, 0x48, 0x40, 0x1c, 0x63, 0x60, 0x00, 0x00, 0x00, 0x80, 0x61, 0x00, 0xc0, 0x3c, 0x80, 0xff, 0xff, 0x60, 0x84, 0xff, 0xff, 0x90, 0x83, 0x00, 0x04, 0x80, 0x61, 0x00, 0xe0, 0x80, 0x81, 0x00, 0xc0, 0x38, 0xa0, 0x00, 0x01, 0x48, 0x40, 0x3f, 0xb3, 0x60, 0x00, 0x00, 0x00, 0x38, 0x21, 0x01, 0x00, 0x80, 0x61, 0xff, 0xf8, 0x7c, 0x68, 0x03, 0xa6, 0x4e, 0x80, 0x00, 0x20
+		<#
+			mflr %r3 
+			stw %r3, -8(%r1)
+			stwu %r1, -0x100(%r1) 
+			lis %r3, 0x301c
+			ori %r3, %r3, 0xe410
+			stw %r3, 0xf0(%r1)
+			lwz %r4, 4(%r3)
+			stw %r4, 0xe0(%r1)
+			cmplwi cr7, %r4, 0 
+			beq cr7, 0x184e1b8
+			lwz %r4, 8(%r3)
+			stw %r4, 0xd0(%r1)
+			cmplwi cr7, %r4, 0 
+			beq cr7, 0x184e1b8
+			lwz %r4, 0xc(%r3)
+			stw %r4, 0xc0(%r1)
+			cmplwi cr7, %r4, 0 
+			beq cr7, 0x184e1b8
+			lwz %r3, 0xd0(%r1)
+			bla 0x400190
+			nop 
+			lwz %r3, 0xd0(%r1)
+			xor %r4, %r4, %r4
+			lbz %r4, 0xd(%r3)
+			cmpwi cr7, %r4, 1 
+			bne cr7, 0x184e124
+			lwz %r3, 0xf0(%r1)
+			lwz %r4, 0x10(%r3)
+			addi %r4, %r4, 1 
+			cmpwi cr7, %r4, 1 
+			stw %r4, 0x10(%r3)
+			beq cr7, 0x184e0a4
+			cmpwi cr7, %r4, 3 
+			blt cr7, 0x184e094
+			xor %r4, %r4, %r4
+			stw %r4, 0x10(%r3)
+			b 0x184e124
+			lwz %r3, 0xc0(%r1)
+			li %r4, 0
+			stb %r4, 0x60(%r3)
+			b 0x184e0b0
+			lwz %r3, 0xc0(%r1)
+			li %r4, 1
+			stb %r4, 0x60(%r3)
+			lwz %r3, 0xf0(%r1)
+			lwz %r3, 0x10(%r3)
+			cmpwi cr7, %r3, 1 
+			beq cr7, 0x184e0f0
+			li %r3, 0
+			li %r4, 0
+			bla 0x1c6760
+			nop 
+			li %r3, 0
+			li %r4, 1
+			bla 0x1c6760
+			nop 
+			li %r3, 0
+			li %r4, 3
+			bla 0x1c6760
+			b 0x184e124
+			li %r3, 0
+			li %r4, 0
+			bla 0x1c67a8
+			nop 
+			li %r3, 0
+			li %r4, 1
+			bla 0x1c67a8
+			nop 
+			li %r3, 0x0
+			li %r4, 0x3
+			bla 0x001c67a8
+			nop 
+			nop 
+			lwz %r3, 0xf0(%r1)
+			lwz %r3, 0x10(%r3)
+			cmpwi cr7, %r3, 0x1 
+			bne cr7, 0x0184e158
+			lwz %r3, 0xd0(%r1)
+			lis %r4, 0xffff
+			ori %r4, %r4, 0xffff
+			stw %r4, 4(%r3)
+			lwz %r3, 0xe0(%r1)
+			lwz %r4, 0xd0(%r1)
+			li %r5, 0x1
+			bla 0x004033b8
+			nop 
+			lwz %r3, 0xc0(%r1)
+			bla 0x00400f30
+			nop 
+			lis %r4, 0x018d
+			ori %r4, %r4, 0x84a8
+			lfs f1, 0x0(%r4)
+			lwz %r3, 0xc0(%r1)
+			bla 0x004008a0
+			lwz %r3, 0xf0(%r1)
+			lwz %r3, 0x10(%r3)
+			cmpwi cr7, %r3, 0x0 
+			beq cr7, 0x00184e1b8
+			lwz %r3, 0xc0(%r1)
+			bla 0x00401c60
+			nop 
+			lwz %r3, 0xc0(%r1)
+			lis %r4, 0xffff
+			ori %r4, %r4, 0xffff
+			stw %r4, 0x4(%r3)
+			lwz %r3, 0xe0(%r1)
+			lwz %r4, 0xc0(%r1)
+			li %r5, 0x1
+			bla 0x00403fb0
+			nop 
+			addi %r1, %r1, 0x100 
+			lwz %r3, -0x8(%r1)
+			mtlr %r3 
+			blr 
+		#>
+	#DbgMenu Drawing
+	WBytes $dbgMenuDrawCodeHookLoc $dbgMenuDrawCodeHook
+	WBytes $dbgMenuDrawCodeLoc $dbgMenuDrawCode 
+#-------------------------------------------
+#-------------------------------------------
+	#Fix FieldArea crash on NaviName lookup failure
+	WUInt32 0x0034be10 0x4834bdcf
+	WUInt32 0x0034c4d8 0x4834bdcf
+#-------------------------------------------
+#-------------------------------------------
+	$playerGameDataHookLoc = 0x0090d308
+	[byte[]] $playerGameDataHook = 0x49, 0x84, 0xdf, 0x43
+		<#
+			bla 0x0184df40
+		#>
+	$playerGameDataDbgLoc = 0x0184df40
+	[byte[]] $playerGameDataDbgCode = 0x3c, 0x60, 0x30, 0x1e, 0x60, 0x63, 0x76, 0x68, 0x80, 0x63, 0x00, 0x00, 0x3c, 0x80, 0x30, 0x1e, 0x60, 0x84, 0x76, 0xcc, 0x80, 0x84, 0x00, 0x00, 0x48, 0x91, 0xdb, 0x3b, 0x60, 0x00, 0x00, 0x00, 0x3c, 0x80, 0x30, 0x1e, 0x60, 0x84, 0x76, 0xcc, 0x80, 0x84, 0x00, 0x00, 0x7f, 0x43, 0xd3, 0x78, 0x48, 0x91, 0xdb, 0x3b, 0x60, 0x00, 0x00, 0x00, 0x48, 0x90, 0xd3, 0x0e
+		<#
+			lis %r3, 0x301e
+			ori %r3, %r3, 0x7668
+			lwz %r3, 0x0(%r3)
+			lis %r4, 0x301e
+			ori %r4, %r4, 0x76cc
+			lwz %r4, 0x0(%r4)
+			bla 0x0091db38
+			nop
+			lis %r4, 0x301e
+			ori %r4, %r4, 0x76cc
+			lwz %r4, 0x0(%r4)
+			or %r3, %r26, %r26
+			bla 0x0091db38
+			nop
+			ba 0x0090d30c
+		#>
+	#restore Player Game Data dbg init
+	WBytes $playerGameDataHookLoc $playerGameDataHook
+	WBytes $playerGameDataDbgLoc $playerGameDataDbgCode
+#-------------------------------------------
+#-------------------------------------------
+	$protoMenuCodeLoc = 0x0184e5c0
+	[byte[]] $protoMenuCode = 0x81, 0x3e, 0x80, 0xf0, 0x38, 0x60, 0x00, 0x70, 0x81, 0x7e, 0x80, 0xec,0x80, 0x89, 0x00, 0x00, 0x83, 0xab, 0x00, 0x00, 0x4b, 0x24, 0x5c, 0x25, 0x60, 0x00, 0x00, 0x00, 0x7c, 0x7f, 0x1b, 0x78, 0x78, 0x63, 0x00, 0x20, 0x4a, 0x90, 0x9f, 0xf5, 0x60, 0x00, 0x00, 0x00, 0x48, 0x15, 0xe3, 0x26
+		<#
+			lwz %r9, -0x7f10(%r30)
+			li %r3, 0x70
+			lwz %r11, -0x7f14(%r30)
+			lwz%r4, 0x0(%r9)
+			lwz %r29, 0x0(%r11)
+			bla 000xa941f8
+			nop
+			mr%r31, %r3
+			clrldi %r3, %r3, 0x20
+			bla 0x001585d8
+			nop    
+			ba 0x1005e324
+		#>
+	WUInt32 0x0015e1ec 0x016f03d8	#adjust switch case to our code for case 1
 	WBytes $protoMenuCodeLoc $protoMenuCode
+#-------------------------------------------
+#-------------------------------------------
+	$areaSelCodeLoc = 0x0184e580
+	[byte[]] $areaSelCode = 0x81, 0x3e, 0x80, 0xf0, 0x38, 0x60, 0x00, 0x70, 0x81, 0x7e, 0x80, 0xec,0x80, 0x89, 0x00, 0x00, 0x83, 0xab, 0x00, 0x00, 0x4b, 0x24, 0x5c, 0x65, 0x60, 0x00, 0x00, 0x00, 0x7c, 0x7f, 0x1b, 0x78, 0x78, 0x63, 0x00, 0x20, 0x4a, 0x92, 0x18, 0x1d, 0x60, 0x00, 0x00, 0x00, 0x48, 0x15, 0xe3, 0x26
+		<#
+			lwz %r9, -0x7f10(%r30)
+			li %r3, 0x70
+			lwz %r11, -0x7f14(%r30)
+			lwz %r4, 0x0(%r9)
+			lwz %r29, 0x0(%r11)
+			bla 0x00a941f8
+			nop
+			mr %r31, %r3
+			clrldi %r3, %r3, 0x20
+			bla 0x0016fdc0
+			nop    
+			ba 0x0015e324
+		#>
+	WUInt32 0x0015e1f4 0x016f0398
+	WBytes $areaSelCodeLoc $areaSelCode
+#-------------------------------------------
+#-------------------------------------------
+	$bgmTestCodeLoc = 0x0184e540
+	[byte[]] $bgmTestCode = 0x81, 0x3e, 0x80, 0xf0, 0x38, 0x60, 0x00, 0x70, 0x81, 0x7e, 0x80, 0xec,0x80, 0x89, 0x00, 0x00, 0x83, 0xab, 0x00, 0x00, 0x4b, 0x24, 0x5c, 0xa5, 0x60, 0x00, 0x00, 0x00, 0x7c, 0x7f, 0x1b, 0x78, 0x78, 0x63, 0x00, 0x20, 0x4a, 0x8f, 0x87, 0x0d, 0x60, 0x00, 0x00, 0x00, 0x48, 0x15, 0xe3, 0x26
+		<#
+			lwz %r9, -0x7f10(%r30)
+			li %r3, 0x70
+			lwz %r11, -0x7f14(%r30)
+			lwz %r4, 0x0(%r9)
+			lwz %r29, 0x0(%r11)
+			bla 0x00a941f8
+			nop
+			mr %r31, %r3
+			clrldi %r3, %r3, 0x20
+			bla 0x00146c70
+			nop    
+			ba 0x0015e324
+		#>
+	WUInt32 0x0015e1f8 0x016f0358
+	WBytes $bgmTestCodeLoc $bgmTestCode
+#-------------------------------------------
+#-------------------------------------------
+	<#
+		Credit to 1rux for the code that fixed the debug draw calls
+	#>
+	#bla 0x0021F628
+	WUInt32 0x0021E87C 0x4821F62B
+	WUInt32 0x0021EB24 0x4821F633
+	WUInt32 0x0021EEE4 0x4821F633
 	
+	$dbgDrawFixLoc1 = 0x0021F628
+	[byte[]] $dbgDrawFixCode1 = 0x83, 0xaf, 0x00, 0xa8, 0x48, 0x00, 0x00, 0x08, 0x83, 0xaf, 0x00, 0xa4, 0xf8, 0x21, 0xff, 0xd1, 0x7c, 0x08, 0x02, 0xa6, 0xf8, 0x01, 0x00, 0x40, 0x48, 0x02, 0x38, 0x3b, 0x83, 0x83, 0x00, 0x04, 0x83, 0xaf, 0x00, 0xa8, 0x7f, 0xa5, 0xeb, 0x78, 0x38, 0x80, 0x00, 0x16, 0x7d, 0xc3, 0x73, 0x78, 0x48, 0xce, 0xf0, 0xa3, 0x81, 0x3f, 0x00, 0x00, 0x39, 0x29, 0x00, 0x03, 0x7d, 0xc3, 0x73, 0x78, 0x55, 0x29, 0x00, 0x3a, 0x79, 0x2b, 0x00, 0x20, 0x39, 0x29, 0x00, 0x04, 0x91, 0x3f, 0x00, 0x00, 0x92, 0xeb, 0x00, 0x00, 0x81, 0x3f, 0x00, 0x00, 0x39, 0x29, 0x00, 0x03, 0x55, 0x29, 0x00, 0x3a, 0x79, 0x2b, 0x00, 0x20, 0x39, 0x29, 0x00, 0x04, 0x91, 0x3f, 0x00, 0x00, 0x93, 0x8b, 0x00, 0x00, 0x48, 0xce, 0xf0, 0xc3, 0x7f, 0xa5, 0xeb, 0x78, 0x38, 0x80, 0x00, 0x16, 0x7d, 0xc3, 0x73, 0x78, 0x48, 0xce, 0xf0, 0xa3, 0x81, 0x3f, 0x00, 0x00, 0x39, 0x29, 0x00, 0x03, 0x7d, 0xc3, 0x73, 0x78, 0x55, 0x29, 0x00, 0x3a, 0x79, 0x2b, 0x00, 0x20, 0x39, 0x29, 0x00, 0x04, 0x91, 0x3f, 0x00, 0x00, 0x92, 0xcb, 0x00, 0x00, 0x48, 0xce, 0xf0, 0xc3, 0xe8, 0x01, 0x00, 0x40, 0x7c, 0x08, 0x03, 0xa6, 0x38, 0x21, 0x00, 0x30, 0x4e, 0x80, 0x00, 0x20
+	WBytes $dbgDrawFixLoc1 $dbgDrawFixCode1
+		<#
+			lwz %r29, 0xA8(%r15)
+			b fr
+			lwz %r29, 0xA4(%r15)
+			
+			fr:
+			stdu %r1, -0x30(%r1)
+			mflr %r0
+			std %r0, 0x40(%r1)
+			bla 0x00023838
+			lwz %r28, 0x4(%r3)
+			lwz %r29, 0xA8(%r15)	(NOP ?)
+			mr %r5, %r29
+			li %r4, 0x16
+			mr %r3, %r14
+			bla 0x00CEF0A0
+			lwz %r9, 0x0(%r31)
+			addi %r9, %r9, 0x3
+			mr %r3, %r14
+			clrrwi %r9, %r9, 0x2
+			clrldi %r11, %r9, 0x20
+			addi %r9, %r9, 0x4
+			stw %r9, 0x0(%r31)
+			stw %r23, 0x0(%r11)
+			lwz %r9, 0x0(%r31)
+			addi %r9, %r9, 0x3
+			clrrwi %r9, %r9, 0x2
+			clrldi %r11, %r9, 0x20
+			addi %r9, %r9, 0x4
+			stw %r9, 0x0(%r31)
+			stw %r28, 0x0(%r11)
+			bla 0x00CEF0C0
+			mr %r5, %r29
+			li %r4, 0x16
+			mr %r3, %r14
+			bla 0x00CEF0A0
+			lwz %r9, 0x0(%r31)
+			addi %r9, %r9, 0x3
+			mr %r3, %r14
+			clrrwi %r9, %r9, 0x2
+			clrldi %r11, %r9, 0x20
+			addi %r9, %r9, 0x4
+			stw %r9, 0x0(%r31)
+			stw %r22, 0x0(%r11)
+			bla 0x00CEF0C0
+			
+			finish:
+			ld %r0, 0x40(%r1)
+			mtlr %r0
+			addi %r1, %r1, 0x30
+			blr
+		#>
+
+	#bla 0x0021F6F0
+	WUInt32 0x00144810 0x4821f6f3
+	WUInt32 0x00174498 0x4821f6f3
+	$dbgDrawFixLoc2 = 0x0021F6F0
+	[byte[]] $dbgDrawFixCode2 = 0xf8, 0x21, 0xff, 0x71, 0x7c, 0x08, 0x02, 0xa6, 0xdb, 0xe1, 0x00, 0x88, 0xff, 0xe0, 0x08, 0x90, 0xfb, 0xa1, 0x00, 0x70, 0xfb, 0xe1, 0x00, 0x80, 0xf8, 0x01, 0x00, 0xa0, 0x81, 0x63, 0x00, 0x10, 0x7c, 0x7d, 0x1b, 0x78, 0x2f, 0x8b, 0x00, 0x00, 0x40, 0x9d, 0x00, 0xa0, 0x3b, 0xe0, 0x00, 0x00, 0x48, 0x00, 0x00, 0x34, 0x7d, 0x23, 0x4b, 0x78, 0x81, 0x29, 0x00, 0x00, 0x81, 0x69, 0x02, 0x20, 0x80, 0x0b, 0x00, 0x00, 0xf8, 0x41, 0x00, 0x28, 0x80, 0x4b, 0x00, 0x04, 0x7c, 0x09, 0x03, 0xa6, 0x4e, 0x80, 0x04, 0x21, 0xe8, 0x41, 0x00, 0x28, 0x81, 0x7d, 0x00, 0x10, 0x7f, 0x8b, 0xf8, 0x00, 0x40, 0x9d, 0x00, 0x68, 0x57, 0xe9, 0x10, 0x3a, 0x80, 0x1d, 0x00, 0x0c, 0x3b, 0xff, 0x00, 0x01, 0x7d, 0x29, 0x02, 0x14, 0x79, 0x29, 0x00, 0x20, 0x80, 0x09, 0x00, 0x00, 0x2f, 0x80, 0x00, 0x00, 0x78, 0x09, 0x00, 0x20, 0x41, 0x9e, 0xff, 0xd8, 0x80, 0x09, 0x00, 0x08, 0x7d, 0x23, 0x4b, 0x78, 0xfc, 0x20, 0xf8, 0x90, 0x2f, 0x80, 0x00, 0x02, 0x40, 0x9e, 0xff, 0x9c, 0xf9, 0x21, 0x00, 0x60, 0x81, 0x29, 0x00, 0x00, 0x81, 0x69, 0x00, 0x54, 0x80, 0x0b, 0x00, 0x00, 0xf8, 0x41, 0x00, 0x28, 0x80, 0x4b, 0x00, 0x04, 0x7c, 0x09, 0x03, 0xa6, 0x4e, 0x80, 0x04, 0x21, 0xe8, 0x41, 0x00, 0x28, 0xe9, 0x21, 0x00, 0x60, 0x4b, 0xff, 0xff, 0x70, 0xe8, 0x01, 0x00, 0xa0, 0xeb, 0xa1, 0x00, 0x70, 0xeb, 0xe1, 0x00, 0x80, 0x7c, 0x08, 0x03, 0xa6, 0xcb, 0xe1, 0x00, 0x88, 0x38, 0x21, 0x00, 0x90, 0x4e, 0x80, 0x00, 0x20
+	WBytes $dbgDrawFixLoc2 $dbgDrawFixCode2
+		<#
+			stdu %r1, -0x90(%r1)
+			mflr %r0
+			stfd %f31, 0x88(%r1)
+			fmr %f31, %f1
+			std %r29, 0x70(%r1)
+			std %r31, 0x80(%r1)
+			std %r0, 0xA0(%r1)
+			lwz %r11, 0x10(%r3)
+			mr %r29, %r3
+			cmpwi %cr7, %r11, 0x0
+			ble %cr7, loc_2944D8
+			li %r31, 0x0
+			b loc_294470
+			
+			callDbgDisp:
+			mr %r3, %r9
+			lwz %r9, 0x0(%r9)
+			lwz %r11, 0x220(%r9)
+			lwz %r0, 0x0(%r11)
+			std %r2, 0x28(%r1)
+			lwz %r2, 0x4(%r11)
+			mtctr %r0
+			bctrl
+			ld %r2, 0x28(%r1)
+			lwz %r11, 0x10(%r29)
+			
+			loc_294468:
+			cmpw %cr7, %r11, %r31
+			ble %cr7, loc_2944D8
+			
+			loc_294470:
+			slwi %r9, %r31, 0x2
+			lwz %r0, 0xC(%r29)
+			addi %r31, %r31, 0x1
+			add %r9, %r9, %r0
+			clrldi %r9, %r9, 0x20
+			lwz %r0, 0x0(%r9)
+			cmpwi %cr7, %r0, 0x0
+			clrldi %r9, %r0, 0x20
+			beq %cr7, loc_294468
+			lwz %r0, 0x8(%r9)
+			mr %r3, %r9
+			fmr %f1, %f31
+			cmpwi %cr7, %r0, 0x2
+			bne %cr7, callDbgDisp
+			std %r9, 0x60(%r1)
+			lwz %r9, 0x0(%r9)
+			lwz %r11, 0x54(%r9)
+			lwz %r0, 0x0(%r11)
+			std %r2, 0x28(%r1)
+			lwz %r2, 0x4(%r11)
+			mtctr %r0
+			bctrl
+			ld %r2, 0x28(%r1)
+			ld %r9, 0x60(%r1)
+			b callDbgDisp
+			
+			loc_2944D8:
+			ld %r0, 0xA0(%r1)
+			ld %r29, 0x70(%r1)
+			ld %r31, 0x80(%r1)
+			mtlr %r0
+			lfd %f31, 0x88(%r1)
+			addi %r1, %r1, 0x90
+			blr
+		#>
 	
-	WStrU (0x16d98b0 - 0xF700) ("Clear all (X)" + [char]$null)
+#-------------------------------------------
+#-------------------------------------------
+	CreatepStrU 0x01857100 "Model Viewer"
+	CreatepStrU 0x01857104 "Prototype Select"
+	CreatepStrU 0x01857108 "Map Select"
+	CreatepStrU 0x0185710c "Area Select"
+	CreatepStrU 0x01857110 "BGM Test"
+	#CreatepStrU 0x01857114 "SFX Test"
+	CreatepStrU 0x01857114 "---"
+	CreatepStrU 0x01857120 "FaceGen Test"
+	CreatepStrU 0x01857124 "Title List"
+	CreatepStrU 0x01857128 "Title (FS Debug Server)"
+	CreatepStrU 0x0185712c "Title (SCE Server)"
+	
+	CreatepStrU 0x01858078 "Reserve 1"
+	CreatepStrU 0x0185807c "Reserve 2"
+	CreatepStrU 0x01858080 "Reserve 3"
+	CreatepStrU 0x01858084 "Title"
+	CreatepStrU 0x01858088 "Reserve 5"
+	CreatepStrU 0x0185808c "Menu Test"
+	CreatepStrU 0x01858a00 "None"
+	CreatepStrU 0x01858a08 "Character (Hem＋DirDifSpcx3)"
+	CreatepStrU 0x01858a10 "Environment (Hem+EnvDifSpc)"
+	CreatepStrU 0x0185ac38 "None"
+	CreatepStrU 0x0185ac3c "Activate"
+	CreatepStrU 0x0185ac40 "Active"
+	CreatepStrU 0x0185ac44 "Deactivate"
+	CreatepStrU 0x0185ac48 "None"
+	CreatepStrU 0x0185ac4c "Activate"
+	CreatepStrU 0x0185ac50 "Active"
+	CreatepStrU 0x0185ac54 "Deactivate"
+	
+	CreatepStrU 0x01864fb0 "none"
+	CreatepStrU 0x01864fb4 "walking"
+	CreatepStrU 0x01864fb8 "run"
+	CreatepStrU 0x01864fbc "dash"
+	CreatepStrU 0x01864fc0 "rolling"
+	CreatepStrU 0x01864fc4 "landing"
+	
+	CreatepStrU 0x018c90e4 "UseInternalHdd:[%s] < When set to ON, internal HDD is used"
+	CreatepStrU 0x018c90f0 "IsCaptureSS:[%s] < Capture when set to ON"
+	CreatepStrU 0x018cff3c "Anim ID = %d"
+	CreatepStrU 0x018cff4c "Anim Time = %f"
+	CreatepStrU 0x018cff58 "Anim Frame = %d"
+	CreatepStrU 0x018cff6c "○: ID+   ×: ID-   □: Pause   L1R1: Frame -/+   △: Use movement amount"
+	
+	CreatepStrU 0x018d1a98 "New save data creation time - %.2f"
+	CreatepStrU 0x018d2bf8 "IsNew: New shader"
+	CreatepStrU 0x018d3700 "Valid: %d"
+	CreatepStrU 0x018d3710 "Rebuild (Push X)"
+	CreatepStrU 0x018d3750 "[Initialization parameter] Original ankle joint index : %d"
+	CreatepStrU 0x018d375c "[Initialization parameters] Height from origin to ground: %f"
+	CreatepStrU 0x018d40d8 "[Physics] Velocity Decay %f"
+	CreatepStrU 0x018d45e4 "Fall movement %.3f, %.3f, %.3f [%s]"
+	CreatepStrU 0x018d45e0 "air"
+	CreatepStrU 0x018d45e8 "Fall acceleration %.3f, %.3f, %.3f"
+	CreatepStrU 0x018d45f8 "Floor Material: %d, Floor Alpha: %.3f"
+	CreatepStrU 0x018d47f4 "Disable floor collision detection system using raycast : %d"
+	CreatepStrU 0x018d5040 "Last profile save time %d/%d %d:%d:%d"
+	CreatepStrU 0x018d5044 "Last Option save time %d/%d %d:%d:%d"
+	CreatepStrU 0x018d5048 "Requesting Profile Save"
+	CreatepStrU 0x018d504c "No Profile Save Request"
+	CreatepStrU 0x018d5050 "Requesting Option Save"
+	CreatepStrU 0x018d5054 "Option Save not requested"
+	CreatepStrU 0x018d5058 "Requesting Profile Load Idx : [%d]"
+	CreatepStrU 0x018d505c "No Profile Load Request"
+	CreatepStrU 0x018d5070 "Lottery test ID: [[%d]%d%d%d%d%d]"
+	CreatepStrU 0x018d5074 "Lottery test ID: [%d[%d]%d%d%d%d]"
+	CreatepStrU 0x018d5078 "Lottery test ID: [%d%d%[%d]d%d%d]"
+	CreatepStrU 0x018d507c "Lottery test ID: [%d%d%d[%d]%d%d]"
+	CreatepStrU 0x018d5080 "Lottery test ID: [%d%d%d%d[%d]%d]"
+	CreatepStrU 0x018d5084 "Lottery test ID: [%d%d%d%d%d[%d]]"
+	CreatepStrU 0x018d50ec "Current profile index [%d]"
+	CreatepStrU 0x018d5108 "[%d] lottery test times"
+	CreatepStrU 0x018d516c "SOStype <White Soul>,"
+	CreatepStrU 0x018d5170 "SOStype <Black Soul>,"
+	CreatepStrU 0x018d5174 "SOStype <Intrusion>,"
+	CreatepStrU 0x018d5178 "SOStype <forced summon>"
+	CreatepStrU 0x018d517c "Summoned or <%d>, Start from SOS or <%d>, Start from blood letter or <%d>"
+	CreatepStrU 0x018d5180 "Pre-summon pos <%d>, Forced summon point <%d>, ChrType pre-summon <%d>"
+	CreatepStrU 0x018d5184 "Next MapUid <%d,%d,%d,%d>, Starting pos of next map evid <%d>"
+	CreatepStrU 0x018d53b8 "Clear tone map (Push ○)"
+	CreatepStrU 0x018d53d8 "4th Slice end distance [m]: %.3f [ShadowParam end distance]"
+	CreatepStrU 0x018d53fc "Camera dot light [%.5f] Light up direction X: [%.3f] Y: [%.3f] Z: [%.3f]"
+	CreatepStrU 0x018d54c0 "Color adjustment"
+	CreatepStrU 0x018d54f8 "[%f] <ShadowMap Filter Range Magnification"
+	CreatepStrU 0x018d54fc "【%d】 <ShadowMap Size"
+	CreatepStrU 0x018d550c "[%f] <1st Slice end distance multiplier"
+	CreatepStrU 0x018d5510 "[%f] <2nd Slice end distance multiplier"
+	CreatepStrU 0x018d5514 "[%f] <3rd Slice end distance multiplier"
+	CreatepStrU 0x018d58a0 "Minimum equippable weight [kg] %.2f"
+	CreatepStrU 0x018d58c4 "Maximum holdable basic weight [kg] %.1f"
+	CreatepStrU 0x014d5954 "Adjustment value for maximum SP"
+	CreatepStrU 0x018d595c "Minimum of maximum SP %.1f"
+	CreatepStrU 0x018d5970 "Maximum SP increase upper limit %.1f"
+	CreatepStrU 0x018d597c "Perseverance value at maximum SP increase limit %.1f"
+	CreatepStrU 0x018d599c "Compensation damage related"
+	CreatepStrU 0x018d5ab4 "Total Physical Growth Defense Power Multiplier"
+	CreatepStrU 0x018d5ab8 "Physical %s [%%.3f]"
+	CreatepStrU 0x018d5abc "Magic Total Growth Defense Multiplier"
+	CreatepStrU 0x018d5ac0 "Magic %s [%%.3f]"
+	CreatepStrU 0x018d5ac4 "Fire Total Growth Defense Power Multiplier"
+	CreatepStrU 0x018d5ac8 "Flame %s [%%.3f]"
+	CreatepStrU 0x018d5acc "Item lottery related"
+	CreatepStrU 0x018d5ad4 "Luck correction factor %.1f"
+	CreatepStrU 0x018d5ae0 "Correction factor by QWC %.1f"
+	CreatepStrU 0x018d5aec "Correction factor for special effects %.1f"
+	CreatepStrU 0x018d670c "TREASURE MAN"
+	CreatepStrU 0x018d71a8 "Forced death"
+	CreatepStrU 0x018d71ac "completely disabled"
+	CreatepStrU 0x018d71b0 "Switch Hit ON/OFF (Push X)"
+	CreatepStrU 0x018d71b4 "Switch Damage Ragdoll (Push X)"
+	CreatepStrU 0x018d71b8 "Switch Dead Ragdoll (Push X)"
+	CreatepStrU 0x018d71d0 "Event → Issue command to EzState (Set ID with ↑ and issue with ○)"
+	CreatepStrU 0x018d71e8 "Damage from this character"
+	CreatepStrU 0x018d71e4 "Hang on debug. Do not use without programmer's permission (Push X)"
+	CreatepStrU 0x018d7238 "Poison Resist : [%d / %d]"
+	CreatepStrU 0x018d723c "Disease Resist : [%d / %d]"
+	CreatepStrU 0x018d7240 "Blood Resist : [%d / %d]"
+	CreatepStrU 0x018d7270 "SFX Variation ID %d"
+	CreatepStrU 0x018d7288 "Publishing EzState→Message ID to event [%d : %d]"
+	CreatepStrU 0x018d728c "Grounding"
+	CreatepStrU 0x018d7290 "No ground"
+	CreatepStrU 0x018d7294 "Really grounded"
+	CreatepStrU 0x018d7298 "No real ground"
+	CreatepStrU 0x018d729c "Fall Height [%f] %s %s"
+	CreatepStrU 0x018d72a0 "Last grounded position: %.2f %.2f %.2f"
+	CreatepStrU 0x018d72a8 "Omission processing or [Normal] Lv%d"
+	CreatepStrU 0x018d72b4 "Current Item ID %d" 
+	CreatepStrU 0x018d72ec "riding"
+	CreatepStrU 0x018d72f0 "not riding"
+	CreatepStrU 0x018d72f4 "Are you in the elevator %s"
+	CreatepStrU 0x018d7320 "Ignore Gravity : %d"
+	CreatepStrU 0x018d755c "All Omission Mode %d"
+	CreatepStrU 0x018d756c "%d people who update reliably"
+	CreatepStrU 0x018d7570 "%d of people who omit more when not visible"
+	CreatepStrU 0x018d7574 "Distance %f.2 not updated at all"
+	CreatepStrU 0x018d7580 "Show skip update status %d"
+	CreatepStrU 0x018d7584 "Locally controlled NPC display %d"
+	CreatepStrU 0x018d7590 "Detach Camera On/Off %d"
+	CreatepStrU 0x018d7598 "[Name display] Initial floor hit disp first floor hit %d"
+	CreatepStrU 0x018d759c "[Name display] Update state disp update state %d"
+	CreatepStrU 0x018d75a0 "[Name display] Dead state %d"
+	CreatepStrU 0x018d7968 "Correction factor for treasure search %.2f"
+	CreatepStrU 0x018d7990 "CORPSE MAN"
+	CreatepStrU 0x018d7ea8 "death"
+	CreatepStrU 0x018d7eac "Waiting out"
+	CreatepStrU 0x018d7eb4 "[Update timer %.3f]"
+	CreatepStrU 0x018d7eb8 "valid"
+	CreatepStrU 0x018d7ebc "invalid"
+	CreatepStrU 0x018d7efc "Whether to draw points: %d"
+	CreatepStrU 0x018d7f14 "Gen Type: %d"
+	CreatepStrU 0x018d7f20 "Maximum number: %d"
+	CreatepStrU 0x018d7f2c "Limit number : %d"
+	CreatepStrU 0x018d7f38 "Min generate num: %d"
+	CreatepStrU 0x018d7f44 "Max generate num: %d"
+	CreatepStrU 0x018d7f50 "Min interval [seconds] : %f"
+	CreatepStrU 0x018d7f6c "Max interval [seconds] : %f"
+	CreatepStrU 0x018d8484 "Stamina Recover Base Velocity [％/s] %.1f"
+	CreatepStrU 0x018d8490 "MP Recover Base Velocity [％/s]  %.1f"
+	CreatepStrU 0x018d84cc "High damage threshold: %f"
+	CreatepStrU 0x018d84e4 "Lower attack angle: %f"
+	CreatepStrU 0x018d84fc "Resist recover rate [point/s] : %d"
+	CreatepStrU 0x018d8514 "Knockback reduction rate when attacking walls: %f"
+	CreatepStrU 0x018d8520 "Rotation upper limit angle %.2f [deg] when dealing damage"
+	CreatepStrU 0x018d852c "Rotation duration when dealing damage %.2f[sec]"
+	CreatepStrU 0x018d854c "Kick Out [Host Only]"
+	CreatepStrU 0x018d855c "I'm going to have a super longsword %d"
+	CreatepStrU 0x018d8574 "guard"
+	CreatepStrU 0x018d8ae4 "Damage level [ %d : %d ]"
+	CreatepStrU 0x018d8ae8 "Guard Level [ %d : %d ]"
+	CreatepStrU 0x018d8aec "Damage direction [ %d ]"
+	CreatepStrU 0x018d8b08 "already changed"
+	CreatepStrU 0x018d8b48 "%d not working at all"
+	CreatepStrU 0x018d8b58 "Map hit disable debug %d"
+	CreatepStrU 0x018d8b68 "SetDmgLevel %d"
+	CreatepStrU 0x018d8b74 "SetGuardLevel %d"
+	CreatepStrU 0x018d8b80 "SetDamageDir %d"
+	CreatepStrU 0x018d8b88 "SetDamage (Push X)"
+	CreatepStrU 0x018d8b94 "Enable the quick damage test (the ○ button gives damage) %d"
+	CreatepStrU 0x018d8ba8 "CurrentMoveParamIdx %d"
+	CreatepStrU 0x018d8bb4 "Change Move Param (Push X)"
+	CreatepStrU 0x018d8bbc "Knockback Velocity %.2f"
+	CreatepStrU 0x018d8bd8 "Knockback Time [s] %.2f"
+	CreatepStrU 0x018d8bf8 "Knockback Decrease Time [s] %.2f"
+	CreatepStrU 0x018d9944 "Lever input period (frames): %d"
+	CreatepStrU 0x018d9954 "Lever Input Threshold: %.2f"
+	CreatepStrU 0x018d9968 "Lever input threshold (for neutral): %.2f"
+	CreatepStrU 0x018d9974 "Dash Button Input Duration: %.2f"
+	CreatepStrU 0x018d9988 "Lever flick Duration: %.2f"
+	CreatepStrU 0x018d99a0 "Lever flick threshold: %.2f"
+	CreatepStrU 0x018d99ac "Do not match the forward of the operation and the forward of the camera"
+	CreatepStrU 0x018d99bc "Reset when dir of the operation and the camera dir are > or = to angle %.2f[deg]"
+	CreatepStrU 0x018d99d0 "Rumbling Run Time: %.2f"
+	CreatepStrU 0x018d9c20 "Force up/down %d"
+	CreatepStrU 0x018d9c34 "Vertical rotation upper limit angle [deg] %d"
+	CreatepStrU 0x018d9c48 "Vertical rotation lower limit angle [deg] %d"
+	CreatepStrU 0x018d9c5c "Vertical turn upper threshold [deg] %d"
+	CreatepStrU 0x018d9c6c "Vertical turn lower threshold [deg] %d"
+	CreatepStrU 0x018da00c "Angle %f to turn back from super dash"
+	CreatepStrU 0x018dbcd8 "DROPITEM MAN"
+	CreatepStrU 0x018dc08c "Special Effect"
+	CreatepStrU 0x018dc0a0 "Debug Trigger Special Effect Param ID: %d"
+	CreatepStrU 0x018dc0b8 "Trigger special effect from player (Push X)"
+	CreatepStrU 0x018dc0bc "Clear All (Push X)"
+	CreatepStrU 0x018dc5d0 "Blood letter request"
+	CreatepStrU 0x018dc5d8 "Delete all net blood characters"
+	CreatepStrU 0x018dc5e0 "Delete all hint blood letters"
+	CreatepStrU 0x018dc5f4 "Net blood letters"
+	CreatepStrU 0x018dc5f8 "Hint blood letters"
+	CreatepStrU 0x018dc608 "Hint blood letter MSGCATE[%d]MSG[%d]PARAM[%d]"
+	CreatepStrU 0x018dc610 "Replay Ghost ID : %d"
+	CreatepStrU 0x018dc618 "Message ID: %d"
+	CreatepStrU 0x018dc61c "Location : [%4.2f][%4.2f][%4.2f]"
+	CreatepStrU 0x018dc76c "Blood stain ID ""%d"" POS [%.2f] [%.2f] [%.2f]"
+	CreatepStrU 0x018dc774 "Replay Ghost ID : %d"
+	CreatepStrU 0x018dc77c "Position [%.2f] [%.2f] [%.2f]"
+	CreatepStrU 0x018dc798 "Blood stain"
+	CreatepStrU 0x018dc9c0 "Last Normal Summon Result:"
+	CreatepStrU 0x018dc9c4 "Final forced summon result:"
+	CreatepStrU 0x018dc9e8 "Summons not yet executed"
+	CreatepStrU 0x018dca10 "Message ID: %d"
+	CreatepStrU 0x018dca50 "Forced summon"
+	CreatepStrU 0x018dca58 "Forced Summon Area ID: [%d]"
+	CreatepStrU 0x018dca5c "Start position point ID of the person who was forcibly summoned: [%d]"
+	CreatepStrU 0x018dca68 "Whether to receive forced intrusion: [%d]"
+	CreatepStrU 0x018dca6c "Number of Blacks Summoned : [%d]"
+	CreatepStrU 0x018dca70 "Number of Summoned Whites : [%d]"
+	CreatepStrU 0x018dca74 "Local SOS sign"
+	CreatepStrU 0x018dca78 "Active SOS sign"
+	CreatepStrU 0x018dce3c "Meteor: Plane Range: %f"
+	CreatepStrU 0x018dce5c "Meteor: Raycast Offset : %f"
+	CreatepStrU 0x018dd3a8 "Bullet direction drawing %d"
+	CreatepStrU 0x018dd5c4 "Has animation data: %d"
+	CreatepStrU 0x018dd5c8 "Reuse Anim ID %d"
+	CreatepStrU 0x018dd64c "Movement amount [%.3f, %.3f, %.3f], %.3f"
+	CreatepStrU 0x018dd6fc "Draw Skeleton %d"
+	CreatepStrU 0x018dd70c "Draw BoneName %d"
+	CreatepStrU 0x018dd71c "Draw Extract Motion %d"
+	
+	CreatepStrU 0x018e45dc "Start delta angle: %f"
+	CreatepStrU 0x018e45e8 "End delta angle: %f"
+	CreatepStrU 0x018e6388 "Particle information"
+	CreatepStrU 0x018e6394 "Load management information"
+	CreatepStrU 0x018e6398 "System stress: %0.2f"
+	CreatepStrU 0x018e63a8 "Wind"
+	CreatepStrU 0x018e63ac "Enable debug style: %d"
+	CreatepStrU 0x018e63b0 "Wind X-axis: %0.1f"
+	CreatepStrU 0x018e63cc "Wind Y axis: %0.1f"
+	CreatepStrU 0x018e63d0 "Wind Z axis: %0.1f"
+	CreatepStrU 0x018e63d4 "Region"
+	CreatepStrU 0x018e63d8 "Enable debug region: %d"
+	CreatepStrU 0x018e63dc "Region: %d"
+	CreatepStrU 0x018e6fa4 "Net handle waiting for character creation: %d"
+	CreatepStrU 0x018e73a0 "Timeout count [%d][%d]"
+	CreatepStrU 0x018e73a4 "Server QWC [%.1f][%.1f][%.1f][%.1f][%.1f][%.1f]"
+	CreatepStrU 0x018e9318 "Test: Key guide button placement to Japanese specifications"
+	CreatepStrU 0x018e9320 "Test: Key guide button layout for overseas specifications"
+	CreatepStrU 0x018e9434 "test buffer"
+	CreatepStrU 0x018ed0b4 "Connect Lua Console Debugger (nullsub 0x00678978)"
+	CreatepStrU 0x018ed0c8 "Path search disabled: %d"
+	CreatepStrU 0x018ed0f8 "Whether to display the movement points of the selected character: %d"
+	CreatepStrU 0x018ed104 "Normal AI sound"
+	CreatepStrU 0x018ed108 "Soul coin sound"
+	CreatepStrU 0x018ed10c "Auditory hallucinations"
+	CreatepStrU 0x018edbc4 "Measurement %d"
+	CreatepStrU 0x018edc64 "Number of active notes: %d"
+	CreatepStrU 0x018edcf8 "Sound source range [%s] %%.2f"
+	CreatepStrU 0x018edd10 "Sound source life [%s] %%.2f"
+	CreatepStrU 0x018edd2c "Sound source drawing: %d"
+	CreatepStrU 0x018edfa0 "Command from event (slot:0) %.1f"
+	CreatepStrU 0x018edfb8 "Show goal details %d"
+	CreatepStrU 0x018edfcc "Draw Target Position %d"
+	CreatepStrU 0x018edfd8 "Enable Path Smoothing %d"
+	CreatepStrU 0x018edfe8 "Draw Move Point %d"
+	CreatepStrU 0x018edff4 "Draw Initial Move Point %d"
+	CreatepStrU 0x018ee000 "Point Move Type %d"
+	CreatepStrU 0x018ee00c "Move to next point (Push X)"
+	CreatepStrU 0x018ee010 "Change to point tour mode (Push X)"
+	CreatepStrU 0x018ee018 "Team Order Role %.0f"
+	CreatepStrU 0x018ee064 "No role"
+	CreatepStrU 0x018ee07c "no target"
+	CreatepStrU 0x018ee080 "close range"
+	CreatepStrU 0x018ee084 "medium range"
+	CreatepStrU 0x018ee088 "long distance"
+	CreatepStrU 0x018ee08c "in combat range"
+	CreatepStrU 0x018ee090 "out of combat range"
+	CreatepStrU 0x018ee094 "distance type ["
+	CreatepStrU 0x018ee0a0 "Angle difference [ Horizontal : %.1f, Vertical : %.1f ]"
+	CreatepStrU 0x018ee0ac "Angular difference [no target]"
+	CreatepStrU 0x018ee0b4 "Instructions from events ["
+	CreatepStrU 0x018ee0c0 "Team Order ["
+	CreatepStrU 0x018ee0c4 "Movement Point Affected Range [%.2f]m"
+	CreatepStrU 0x018ee1f8 "Blackboard"
+	CreatepStrU 0x018ee204 "Disable Blackboard (count goes to 0): %d"
+	CreatepStrU 0x018ee754 "CannotMoveChecker"
+	CreatepStrU 0x018ee760 "Judgment period [s] : %f"
+	CreatepStrU 0x018ee780 "Distance considered to be moving [m] : %f"
+	CreatepStrU 0x018ee790 "Minimum distance from moving target to judge [m]: %f"
+	CreatepStrU 0x018ee7a0 "Judgment period long version [s]: %f"
+	CreatepStrU 0x018ee7b0 "Distance considered to be moving Long version [m]: %f"
+	CreatepStrU 0x018ee7c0 "Minimum distance from moving target to judge Long version [m] : %f"
+	CreatepStrU 0x018eef6c "Number of Simultaneous Attackers %d"
+	CreatepStrU 0x018eef7c "Team spectator num %d"
+	CreatepStrU 0x018eef88 "Team update interval %.2f"
+	CreatepStrU 0x018eefac "Draw team detail %d"
+	CreatepStrU 0x018eefbc "Will role assignments be done on a total attack impact basis? %d"
+	CreatepStrU 0x018eefd0 "Total Attack Impact %d"
+	CreatepStrU 0x018eefdc "Total entourage %d"
+	CreatepStrU 0x018ef478 "■ All parts reachability check (Push X)"
+	CreatepStrU 0x018ef4d8 "Draw only around the player %d"
+	CreatepStrU 0x018ef64c "<NAVI> Show current mesh node %d"
+	CreatepStrU 0x018ef654 "Use <NAVI> search hint parts? %d"
+	CreatepStrU 0x018ef658 "Use search hint parts when updating <NAVI>? %d"
+	CreatepStrU 0x018efba0 "Draw Path Finding Result %d"
+	
+	CreatepStrU 0x018f6b94 "QWC - [Castle]"
+	CreatepStrU 0x018f6bb8 "QWC - [Ancient Fortress]"
+	CreatepStrU 0x018f6bbc "QWC - [Castle]"
+	CreatepStrU 0x018f6bc0 "QWC - [Unclean]"
+	CreatepStrU 0x018f6bc4 "QWC - [Tunnel]"
+	CreatepStrU 0x018f6bc8 "QWC - [Northern Limit]"
+	CreatepStrU 0x018f6bcc "QWC - StonePillar"
+	CreatepStrU 0x018fa97c "Type to add: %s"
+	CreatepStrU 0x018fabec "Magic Name:【】"
+	CreatepStrU 0x018fabf0 "Selected magic name: [%s]"
+	CreatepStrU 0x018facb0 "Skill name:【】"
+	CreatepStrU 0x018facb4 "Skill Name: [%s]"
+	CreatepStrU 0x018faee4 "Parameter change: [%s] [Push X]"
+	CreatepStrU 0x018faf6c "Use NPC Player Debug Menu %d (need to re-enter, may run out of memory)"
+	CreatepStrU 0x018fb4f0 "QWC value"
+	CreatepStrU 0x018fb4f4 "Local QWC value"
+	CreatepStrU 0x018fb500 "Global QWC value"
+	CreatepStrU 0x018fb504 "m01 Stone Pillar B-W :       %0.3f"
+	CreatepStrU 0x018fb508 "Floating Stone Pillar B-W:  %0.3f"
+	CreatepStrU 0x018fb50c "m02 Royal Castle B-W:       %0.3f"
+	CreatepStrU 0x018fb510 "Floating Castle B-W:         %0.3f"
+	CreatepStrU 0x018fb514 "m03 Old Fort B-W :           %0.3f"
+	CreatepStrU 0x018fb518 "Fluctuating Old Fort B-W:   %0.3f"
+	CreatepStrU 0x018fb51c "m04 Prison B-W:              %0.3f"
+	CreatepStrU 0x018fb520 "Floating Prison B-W:         %0.3f"
+	CreatepStrU 0x018fb524 "m05 Impure B-W :             %0.3f"
+	CreatepStrU 0x018fb528 "Fluctuation Impure B-W :    %0.3f"
+	CreatepStrU 0x018fb52c "m06 Tunnel B-W :             %0.3f"
+	CreatepStrU 0x018fb530 "Variable Tunnel B-W:        %0.3f"
+	CreatepStrU 0x018fb534 "m07 Spare B-W :              %0.3f"
+	CreatepStrU 0x018fb538 "Fluctuation Reserve B-W :   %0.3f"
+	CreatepStrU 0x018fb53c "Server QWC applicable rate <%0.3f%>"
+	CreatepStrU 0x018fb548 "Has server QWC been applied? <%d>"
+	CreatepStrU 0x018fba9c "Generate (Push X)"
+	CreatepStrU 0x018fbaa8 "【%0.1f】 <Age (15-60)"
+	CreatepStrU 0x018fbaac "[%0.3f] <Gender (-1: male, +1: female)"
+	CreatepStrU 0x018fbab0 "【%0.3f] <Caricature (0.01-2.00)"
+	CreatepStrU 0x018fbab4 "【%0.3f】<Asymmetry (0.01-2.00)"
+	
+	CreatepStrU 0x019d9ae4 "Normal"
+	CreatepStrU 0x019d9aec "TexEdge"
+	CreatepStrU 0x019d9af4 "Blend"
+	CreatepStrU 0x019d9afc "Water"
+	CreatepStrU 0x019d9b04 "Add"
+	CreatepStrU 0x019d9b0c "Sub"
+	CreatepStrU 0x019d9b14 "Mul"
+	CreatepStrU 0x019d9b1c "AddMul"
+	CreatepStrU 0x019d9b24 "SubMul"
+#-------------------------------------------
+#-------------------------------------------	
+
 	
 	[System.IO.File]::WriteAllBytes($path, $ba)
 	"Bytes written successfully"
 	""
 	pause
+	
+	
+	
+
+	} else {
+		"Unrecognized bytes."
+	}
 }
-
-
-
-
-
-
-
-#15aac 
-#r3 = Root
-#406f10
-#4070d8
-#15ab4
-#r3 = pDbgNode
-
