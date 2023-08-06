@@ -1,0 +1,1464 @@
+  #Å`Å`ThensÅ'CompletedAndCleanerModelViewerÅ
+  #Å`Å`IncludesAllTheCutContentÅ
+  #Å`Å`OrderedInTheFollowing:Å
+  #Å`Å`PartsÅ
+  #Å`Å`Chrs
+  #Å`Å`ObjsÅ
+  
+  
+  
+#Provided courtesy of Thens 
+  #Å`Å`Index:Å
+Parts:
+|4-29|(Armor)
+|30-49|(Weapons)
+
+Chr:
+|50-63|(Characters)
+
+
+
+Objs:
+|64-70|(MiscellaneousObjects)
+|71-75|(Nexus)
+|76-89|(Boletaria)
+|90-98|(ShrineOfStorms)
+|99-108|(TowerOfLatria)
+|109-120|(ValleyOfDefilement)
+|121-133|(StoneFang)
+|134-135|(NorthernLimit)
+|136-147|(TestObjects)
+  #Å`Å`Hair:
+  
+  #Å`Å`Hair FÅ
+parts:/hr_f_0000.partsbnd	#NoHairOption
+parts:/hr_f_0001.partsbnd	#Buzzcut
+parts:/hr_f_0002.partsbnd	#ShortWavy
+parts:/hr_f_0003.partsbnd	#LongWavy
+parts:/hr_f_0004.partsbnd	#Short
+parts:/hr_f_0005.partsbnd	#Long
+parts:/hr_f_0006.partsbnd	#MaidenInBlackHair
+parts:/hr_f_0007.partsbnd	#Wild
+parts:/hr_f_0008.partsbnd	#Ponytail
+parts:/hr_f_0009.partsbnd	#Chignon
+parts:/hr_f_9000.partsbnd	#RoamingPonytail
+
+
+
+
+
+
+  #Å`Å`Hair MÅ
+parts:/hr_m_0000.partsbnd	#NoHairOption
+parts:/hr_m_0001.partsbnd	#Buzzcut
+parts:/hr_m_0002.partsbnd	#Spiked
+parts:/hr_m_0003.partsbnd	#Bowl
+parts:/hr_m_0004.partsbnd	#SweptBack
+parts:/hr_m_0005.partsbnd	#PartedCenter
+parts:/hr_m_0006.partsbnd	#CutHair
+parts:/hr_m_0007.partsbnd	#Wavy
+parts:/hr_m_0008.partsbnd	#Wild
+parts:/hr_m_0009.partsbnd	#Ponytail
+parts:/hr_m_9000.partsbnd	#RoamingWild
+
+
+
+
+
+
+
+
+  #Å`Å`Face:
+  
+  #Å`Å`Face FÅ
+parts:/fc_f_0000.partsbnd	#Face
+parts:/fc_f_9900.partsbnd	#WanderingFace
+
+  #Å`Å`Face MÅ
+parts:/fc_m_0000.partsbnd	#Face
+parts:/fc_m_5010.partsbnd	#PlaceholderFace
+parts:/fc_m_9900.partsbnd	#WanderingFace
+  #Å`Å`Helmets:
+  
+  #Å`Å`Helmets AllÅ
+parts:/hd_a_8020.partsbnd	#BrushwoodHelm
+parts:/hd_a_8110.partsbnd	#GloomHelm
+parts:/hd_a_9500.partsbnd	#Monk`sHeadCollar
+
+
+
+
+  #Å`Å`Helmets FÅ
+parts:/hd_f_0000.partsbnd	#NoHelm
+parts:/hd_f_5000.partsbnd	#GoldMask
+parts:/hd_f_5010.partsbnd	#SilverCoronet
+parts:/hd_f_5900.partsbnd	#Empty
+parts:/hd_f_6000.partsbnd	#Assassin'sMask
+parts:/hd_f_6010.partsbnd	#LeatherCap
+parts:/hd_f_6900.partsbnd	#WanderingAssassin'sMask
+parts:/hd_f_7000.partsbnd	#ChainHelmet
+parts:/hd_f_7010.partsbnd	#MirdanHelmet
+parts:/hd_f_7100.partsbnd	#Three-corneredHat
+parts:/hd_f_7900.partsbnd	#WanderingChainHelmet
+parts:/hd_f_8000.partsbnd	#PlateHelmet
+parts:/hd_f_8010.partsbnd	#FlutedHelmet
+parts:/hd_f_8100.partsbnd	#DullGoldHelmet
+parts:/hd_f_8120.partsbnd	#BindedHood
+parts:/hd_f_8900.partsbnd	#WanderingFlutedHelm
+parts:/hd_f_9000.partsbnd	#Empty
+parts:/hd_f_9010.partsbnd	#Empty
+parts:/hd_f_9020.partsbnd	#Official`sCap
+  #Å`Å`Helmets MÅ
+parts:/hd_m_0000.partsbnd	#NoHelm
+parts:/hd_m_5010.partsbnd	#SilverCoronet
+parts:/hd_m_5900.partsbnd	#Empty
+parts:/hd_m_6000.partsbnd	#Assassin'sMask
+parts:/hd_m_6010.partsbnd	#LeatherCap
+parts:/hd_m_6900.partsbnd	#WanderingAssassin'sMask
+parts:/hd_m_7000.partsbnd	#ChainHelmet
+parts:/hd_m_7010.partsbnd	#MirdanHelmet
+parts:/hd_m_7100.partsbnd	#VenerableSage`sHood
+parts:/hd_m_7900.partsbnd	#WanderingChainHelmet
+parts:/hd_m_8000.partsbnd	#PlateHelmet
+parts:/hd_m_8010.partsbnd	#FlutedKnight
+parts:/hd_m_8100.partsbnd	#DarkSilverHelm
+parts:/hd_m_8120.partsbnd	#AncientKing`sMask
+parts:/hd_m_8900.partsbnd	#WanderingFlutedHelm
+parts:/hd_m_9000.partsbnd	#Empty
+parts:/hd_m_9010.partsbnd	#Empty
+parts:/hd_m_9020.partsbnd	#Official`sCap
+parts:/hd_m_9500.partsbnd	#Monk`sHeadCollar(?)
+  #Å`Å`Body:
+  
+  #Å`Å`Body FÅ
+parts:/bd_f_0000.partsbnd	#NoChestplate
+parts:/bd_f_5000.partsbnd	#Rogue`sClothes
+parts:/bd_f_5010.partsbnd	#Wizard`sClothes
+parts:/bd_f_5900.partsbnd	#WanderingWizard`sClothes
+parts:/bd_f_6000.partsbnd	#BlackLeather
+parts:/bd_f_6010.partsbnd	#LeatherArmor
+parts:/bd_f_6900.partsbnd	#WanderingBlackLeather
+parts:/bd_f_7000.partsbnd	#ChainMail
+parts:/bd_f_7010.partsbnd	#MirdanScaleMail
+parts:/bd_f_7100.partsbnd	#OldRaggedyRobes
+parts:/bd_f_7900.partsbnd	#WanderingChainMail
+parts:/bd_f_8000.partsbnd	#CoatOfPlate
+parts:/bd_f_8010.partsbnd	#FlutedArmor
+parts:/bd_f_8020.partsbnd	#BrushwoodArmor
+parts:/bd_f_8100.partsbnd	#DullGoldArmor
+parts:/bd_f_8110.partsbnd	#GloomArmor
+parts:/bd_f_8120.partsbnd	#BindedCross
+parts:/bd_f_8900.partsbnd	#WanderingCoatOfPlate
+parts:/bd_f_9000.partsbnd	#NoChestplate
+parts:/bd_f_9010.partsbnd	#NoChestplate
+
+
+
+
+
+
+
+  #Å`Å`Body M
+parts:/bd_m_0000.partsbnd	#NoChestplate
+parts:/bd_m_5000.partsbnd	#Shaman'sClothes
+parts:/bd_m_5010.partsbnd	#Wizard'sClothes
+parts:/bd_m_5900.partsbnd	#WanderingWizard'sClothes
+parts:/bd_m_6000.partsbnd	#BlackLeather
+parts:/bd_m_6010.partsbnd	#LeatherArmor
+parts:/bd_m_6900.partsbnd	#WanderingLeatherArmor
+parts:/bd_m_7000.partsbnd	#ChainMail
+parts:/bd_m_7010.partsbnd	#MirdanScaleMail
+parts:/bd_m_7100.partsbnd	#VenerableSage'sRobe
+parts:/bd_m_7900.partsbnd	#WanderingChainMail
+parts:/bd_m_8000.partsbnd	#CoatOfPlate
+parts:/bd_m_8010.partsbnd	#FlutedArmor
+parts:/bd_m_8020.partsbnd	#BrushwoodArmor
+parts:/bd_m_8100.partsbnd	#DarkSilverArmor
+parts:/bd_m_8110.partsbnd	#GloomArmor
+parts:/bd_m_8120.partsbnd	#AncientKing'sBreastplate
+parts:/bd_m_8130.partsbnd	#Saint'sRobes
+parts:/bd_m_8900.partsbnd	#WanderingFlutedArmor
+parts:/bd_m_9000.partsbnd	#NoChestplate
+parts:/bd_m_9010.partsbnd	#NoChestplate
+
+
+
+
+
+
+
+
+  #Å`Å`Arms:
+  
+  #Å`Å`Arms AllÅ
+parts:/am_a_8020.partsbnd	#BrushwoodGauntlets
+parts:/am_a_8110.partsbnd	#GloomGauntlets
+
+
+
+
+
+  #Å`Å`Arms FÅ
+parts:/am_f_0000.partsbnd	#NoGauntlets
+parts:/am_f_5000.partsbnd	#Rogue'sGloves
+parts:/am_f_5010.partsbnd	#Wizard`sGloves
+parts:/am_f_5900.partsbnd	#WanderingWizard'sGloves
+parts:/am_f_6000.partsbnd	#BlackGloves
+parts:/am_f_6010.partsbnd	#LeatherGloves
+parts:/am_f_6900.partsbnd	#WanderingBlackGloves
+parts:/am_f_7000.partsbnd	#ChainGloves
+parts:/am_f_7010.partsbnd	#MirdanGauntlets
+parts:/am_f_7100.partsbnd	#OldRaggedyGloves
+parts:/am_f_7900.partsbnd	#WanderingChainGloves
+parts:/am_f_8000.partsbnd	#PlateGauntlets
+parts:/am_f_8010.partsbnd	#FlutedGauntlets
+parts:/am_f_8100.partsbnd	#DullGoldGauntlets
+parts:/am_f_8120.partsbnd	#BindedGloves
+parts:/am_f_8900.partsbnd	#WanderingFlutedGauntlets
+parts:/am_f_9020.partsbnd	#SilverBracelets
+
+
+  #Å`Å`Arms MÅ
+parts:/am_m_0000.partsbnd	#NoGauntlets
+parts:/am_m_5000.partsbnd	#Shaman'sArmband
+parts:/am_m_5010.partsbnd	#Wizard'sGloves
+parts:/am_m_5900.partsbnd	#WanderingWizard'sGloves
+parts:/am_m_6000.partsbnd	#BlackGloves
+parts:/am_m_6010.partsbnd	#LeatherGloves
+parts:/am_m_6900.partsbnd	#WanderingLeatherGloves
+parts:/am_m_7000.partsbnd	#ChainGloves
+parts:/am_m_7010.partsbnd	#MirdanGauntlets
+parts:/am_m_7100.partsbnd	#VenerableSage'sGloves
+parts:/am_m_7900.partsbnd	#WanderingChainGloves
+parts:/am_m_8000.partsbnd	#Plate Gauntlet
+parts:/am_m_8010.partsbnd	#FlutedGauntlets
+parts:/am_m_8100.partsbnd	#DarkSilverGauntlets
+parts:/am_m_8120.partsbnd	#AncientKing'sGauntlets
+parts:/am_m_8130.partsbnd	#Saint'sGloves
+parts:/am_m_8900.partsbnd	#WanderingFlutedArmor
+
+
+  #Å`Å`Legs:
+  
+  #Å`Å`Legs FÅ
+parts:/lg_f_0000.partsbnd	#NoLeggings
+parts:/lg_f_5000.partsbnd	#Rogue'sBoots
+parts:/lg_f_5010.partsbnd	#Wizard'sShoes
+parts:/lg_f_5900.partsbnd	#WanderingWizard'sShoes
+parts:/lg_f_6000.partsbnd	#BlackBoots
+parts:/lg_f_6010.partsbnd	#LeatherBoots
+parts:/lg_f_6900.partsbnd	#WanderingBlackBoots
+parts:/lg_f_7000.partsbnd	#HardLeatherBoots
+parts:/lg_f_7010.partsbnd	#MirdanLeggings
+parts:/lg_f_7100.partsbnd	#OldRaggedyBoots	
+parts:/lg_f_7900.partsbnd	#WanderingHardLeatherBoots
+parts:/lg_f_8000.partsbnd	#PlateLeggings
+parts:/lg_f_8010.partsbnd	#FlutedLeggings
+parts:/lg_f_8020.partsbnd	#BrushwoodLeggings	
+parts:/lg_f_8100.partsbnd	#DullGoldLeggings
+parts:/lg_f_8110.partsbnd	#GloomLeggings
+parts:/lg_f_8120.partsbnd	#BindedBoots
+parts:/lg_f_8900.partsbnd	##WanderingFlutedLeggings
+parts:/lg_f_9000.partsbnd	#NoLeggings
+parts:/lg_f_9010.partsbnd	#NoLeggings
+
+
+
+
+
+
+
+  #Å`Å`Legs MÅ
+parts:/lg_m_0000.partsbnd	#NoLeggings
+parts:/lg_m_5000.partsbnd	#Shaman'sTabiSocks
+parts:/lg_m_5010.partsbnd	#Wizard'sShoes
+parts:/lg_m_5900.partsbnd	#WanderingWizard'sShoes
+parts:/lg_m_6000.partsbnd	#BlackBoots
+parts:/lg_m_6010.partsbnd	#LeatherBoots	
+parts:/lg_m_6900.partsbnd	#WanderingLeatherBoots
+parts:/lg_m_7000.partsbnd	#HardLeatherBoots	
+parts:/lg_m_7010.partsbnd	#MirdanLeggings
+parts:/lg_m_7100.partsbnd	#VenerableSage'sBoots
+parts:/lg_m_7900.partsbnd	#WanderingHardLeatherBoots
+parts:/lg_m_8000.partsbnd	#PlateLeggings
+parts:/lg_m_8010.partsbnd	#FlutedLeggings
+parts:/lg_m_8020.partsbnd	#BrushwoodLeggings
+parts:/lg_m_8100.partsbnd	#DarkSilverLeggings
+parts:/lg_m_8110.partsbnd	#GloomLeggings
+parts:/lg_m_8120.partsbnd	#AncientKing'sLeggings
+parts:/lg_m_8130.partsbnd	#Saint'sBoots
+parts:/lg_m_8900.partsbnd	##WanderingFlutedLeggings
+  #Å`Å`Weapons:
+  
+  #Å`Å`Daggers
+parts:/WP_A_0100.partsbnd	#Dagger
+parts:/WP_A_0102.partsbnd	#MailBreaker
+parts:/WP_A_0103.partsbnd	#ParryingDagger
+parts:/WP_A_0105.partsbnd	#SecretDagger
+parts:/WP_A_0106.partsbnd	#SecretThrowingDagger
+parts:/WP_A_0150.partsbnd	#BabysNail
+parts:/WP_A_0151.partsbnd	#GerisStiletto
+parts:/WP_A_0152.partsbnd	#KrisBlade
+parts:/WP_A_0190.partsbnd	#RoamingDagger
+
+
+
+
+
+
+
+
+ #Å`Å`Straightswords/Greatswords/Ultras
+parts:/WP_A_0200.partsbnd	#ShortSword
+parts:/WP_A_0201.partsbnd	#LongSword
+parts:/WP_A_0202.partsbnd	#BroadSword
+parts:/WP_A_0206.partsbnd	#BastardSword
+parts:/WP_A_0207.partsbnd	#Claymore
+parts:/WP_A_0208.partsbnd	#GreatSword
+parts:/WP_A_0210.partsbnd	#Flamberge
+parts:/WP_A_0212.partsbnd	#KnightSword
+parts:/WP_A_0250.partsbnd	#DragonBoneSmasher
+parts:/WP_A_0251.partsbnd	#Soulbrandt
+parts:/WP_A_0252.partsbnd	#RuneSword
+parts:/WP_A_0253.partsbnd   #NorthernRegalia
+parts:/WP_A_0254.partsbnd   #Demonbrandt
+parts:/WP_A_0255.partsbnd	#BrokenStraightSword
+parts:/WP_A_0256.partsbnd	#StormRuler
+parts:/WP_A_0257.partsbnd	#BluebloodSword
+parts:/WP_A_0258.partsbnd	#LargeSwordOfMoonlight
+parts:/WP_A_0259.partsbnd	#PenetratingSword
+parts:/WP_A_0260.partsbnd	#MorionBlade
+parts:/WP_A_0270.partsbnd	#LongSwordAgain
+parts:/WP_A_0290.partsbnd	#RoamingStraightSword
+
+
+
+
+
+
+
+
+ #Å`Å`PiercingSwords/CurvedSwords
+parts:/WP_A_0300.partsbnd	#Rapier
+parts:/WP_A_0301.partsbnd	#Estoc
+parts:/WP_A_0350.partsbnd	#EpeeRapier
+parts:/WP_A_0351.partsbnd	#SpiralRapier
+parts:/WP_A_0352.partsbnd	#NeedleOfEternalAgony
+parts:/WP_A_0390.partsbnd	#RoamingRapier
+parts:/WP_A_0400.partsbnd	#Scimitar
+parts:/WP_A_0401.partsbnd	#Kilij
+parts:/WP_A_0402.partsbnd	#Uchigatana
+parts:/WP_A_0403.partsbnd	#Shotel
+parts:/WP_A_0404.partsbnd	#Falchion
+parts:/WP_A_0450.partsbnd	#Hiltless
+parts:/WP_A_0451.partsbnd	#Blind
+parts:/WP_A_0452.partsbnd	#MagicSword"Makoto"
+parts:/WP_A_0453.partsbnd	#LargeSwordOfSearching
+parts:/WP_A_0490.partsbnd	#RoamingCurvedSword
+
+
+
+ #Å`Å`Axes/GreatAxesÅ
+parts:/WP_A_0501.partsbnd	#BattleAxe
+parts:/WP_A_0503.partsbnd	#CrescentAxe
+parts:/WP_A_0504.partsbnd	#GreatAxe
+parts:/WP_A_0550.partsbnd	#GuillotineAxe
+parts:/WP_A_0551.partsbnd	#DozerAxe
+parts:/WP_A_0590.partsbnd	#WanderingAxe
+
+
+
+ #Å`Å`Hammers/GreatHammersÅ
+parts:/WP_A_0600.partsbnd	#Club
+parts:/WP_A_0601.partsbnd	#GreatClub
+parts:/WP_A_0602.partsbnd	#Mace
+parts:/WP_A_0603.partsbnd	#MorningStar
+parts:/WP_A_0604.partsbnd	#WarPick
+parts:/WP_A_0605.partsbnd	#Pickaxe
+parts:/WP_A_0610.partsbnd	#MeatCleaver
+parts:/WP_A_0650.partsbnd	#Bramd
+parts:/WP_A_0690.partsbnd	#WanderingClub
+ #Å`Å`SpearsÅ
+parts:/WP_A_0700.partsbnd	#ShortSpear
+parts:/WP_A_0702.partsbnd	#WingedSpear
+parts:/WP_A_0750.partsbnd	#Istarelle
+parts:/WP_A_0751.partsbnd	#ScrapingSpear
+parts:/WP_A_0790.partsbnd	#WanderingSpear
+
+
+
+
+ #Å`Å`Poles
+parts:/WP_A_0801.partsbnd	#WarScythe
+parts:/WP_A_0802.partsbnd	#MirdanHammer
+parts:/WP_A_0804.partsbnd	#Halberd
+parts:/WP_A_0850.partsbnd	#PhosphorescentPole
+parts:/WP_A_0890.partsbnd	#WanderingPole
+
+
+
+
+ #Å`Å`Catalysts/TalismansÅ
+parts:/WP_A_0900.partsbnd	#WoodenCatalyst
+parts:/WP_A_0901.partsbnd	#SilverCatalyst
+parts:/WP_A_0950.partsbnd	#InsanityCatalyst
+parts:/WP_A_0951.partsbnd	#TalismanOfGod
+parts:/WP_A_0952.partsbnd	#TalismanOfBeasts
+parts:/WP_A_0990.partsbnd	#WanderingCatalyst
+
+
+
+ #Å`Å`FistsÅ
+parts:/WP_A_1000.partsbnd	#IronKnuckles
+parts:/WP_A_1001.partsbnd	#Claws
+parts:/WP_A_1050.partsbnd	#HandsOfGod
+parts:/WP_A_1090.partsbnd	#WanderingFists(LoadsModelIsNothing
+
+
+
+
+
+ #Å`Å`BowsÅ
+parts:/WP_A_1300.partsbnd	#ShortBow
+parts:/WP_A_1301.partsbnd	#Longbow
+parts:/WP_A_1302.partsbnd	#CompoundShortBow
+parts:/WP_A_1303.partsbnd	#CompoundLongBow
+parts:/WP_A_1350.partsbnd	#WhiteBow
+parts:/WP_A_1351.partsbnd	#LavaBow
+parts:/WP_A_1390.partsbnd	#WanderingBow
+
+
+ #Å`Å`CrossbowsÅÅ
+parts:/WP_A_1401.partsbnd	#LightCrossbow
+parts:/WP_A_1402.partsbnd	#HeavyCrossbow
+parts:/WP_A_1403.partsbnd	#GargoyleCrossbow
+parts:/WP_A_1490.partsbnd	#WanderingCrossbow 
+
+
+
+
+
+ #Å`Å`ShieldsÅÅ
+parts:/WP_A_1500.partsbnd	#Buckler
+parts:/WP_A_1501.partsbnd	#WoodenShield
+parts:/WP_A_1502.partsbnd	#LeatherShield
+parts:/WP_A_1503.partsbnd	#HeaterShield
+parts:/WP_A_1504.partsbnd	#SpikedShield
+parts:/WP_A_1505.partsbnd	#AdjudicatorsShield
+parts:/WP_A_1508.partsbnd	#KiteShield
+parts:/WP_A_1509.partsbnd	#SoldiersShield
+parts:/WP_A_1510.partsbnd	#KnightsShield
+parts:/WP_A_1511.partsbnd	#SlavesShield
+parts:/WP_A_1550.partsbnd	#TowerShield
+parts:/WP_A_1551.partsbnd	#DarkSilverShield
+parts:/WP_A_1552.partsbnd	#LargeBrushwoodShield
+parts:/WP_A_1553.partsbnd	#RuneShield
+parts:/WP_A_1554.partsbnd	#SteelShield
+parts:/WP_A_1555.partsbnd	#PurpleFlameShield
+parts:/WP_A_1590.partsbnd	#WanderingShield
+
+
+ #Å`Å`Quivers/BoltContainers
+parts:/WP_A_1398.partsbnd	#RoamingQuiver
+parts:/WP_A_1399.partsbnd	#Quiver
+parts:/WP_A_1600.partsbnd	#Quiver
+parts:/WP_A_1601.partsbnd	#Quiver
+parts:/WP_A_1602.partsbnd	#Quiver
+parts:/WP_A_1603.partsbnd	#Quiver
+parts:/WP_A_1604.partsbnd	#Quiver
+parts:/WP_A_1605.partsbnd	#Quiver
+parts:/WP_A_1606.partsbnd	#Quiver
+parts:/WP_A_1607.partsbnd	#Quiver
+parts:/WP_A_1700.partsbnd	#BoltContainer
+parts:/WP_A_1701.partsbnd	#BoltContainer
+parts:/WP_A_1702.partsbnd	#BoltContainer
+parts:/WP_A_1703.partsbnd	#BoltContainer
+parts:/WP_A_1704.partsbnd	#RoamingBoltContainer(?)
+
+
+
+
+ #Å`Å`CutContentÅ
+parts:/WP_A_0104.partsbnd	#Dagger
+parts:/WP_A_1800.partsbnd	#Torch
+parts:/WP_C_0209.partsbnd   #SwordSheath(?
+parts:/WP_A_0500.partsbnd	#HandAxe
+parts:/WP_A_0701.partsbnd	#Pike
+parts:/WP_A_9999.partsbnd	#LancerAssaultRifle
+
+
+
+ #Å`Å`CharactersÅÅ
+loadlist:/c0000.loadlist		#PlayerCharacter
+loadlist:/c0100.loadlist		#R/B|EyedKnight.Crash
+loadlist:/c0200.loadlist		#BoletarianAssassin.Crash
+loadlist:/c0300.loadlist		#BrokenDepravedOne
+loadlist:/c1000.loadlist		#SerpentSoldier(Sword
+loadlist:/c1001.loadlist		#SerpentSoldier(Archer
+loadlist:/c1020.loadlist		#DragonGod
+loadlist:/c1030.loadlist		#Vanguard
+loadlist:/c1040.loadlist		#Crocodile
+loadlist:/c1070.loadlist		#Deer
+loadlist:/c1080.loadlist		#Doe
+loadlist:/c1090.loadlist		#Crow.Crash
+loadlist:/c1200.loadlist		#Rat
+loadlist:/c2000.loadlist		#Dregling
+loadlist:/c2005.loadlist		#GhostDregling
+loadlist:/c2010.loadlist		#BoletarianSoldier
+loadlist:/c2011.loadlist		#BoletarianSoldierCrossbow
+loadlist:/c2020.loadlist		#R/B_EyedKnight
+loadlist:/c2030.loadlist		#BoletarianAssassin
+loadlist:/c2040.loadlist		#WolfWarrior
+loadlist:/c2050.loadlist		#BearWarrior
+loadlist:/c2060.loadlist		#HyenaWarrior
+loadlist:/c2070.loadlist		#Prisoner
+loadlist:/c2075.loadlist		#PrisonerHorde
+loadlist:/c2080.loadlist		#FatOfficial
+loadlist:/c2090.loadlist		#OnceRoyalMistress
+loadlist:/c2095.loadlist		#GhostOnceRoyalMistress
+loadlist:/c2100.loadlist		#DepravedOne
+loadlist:/c2101.loadlist		#GiantDepravedOne
+loadlist:/c2110.loadlist		#ScaleMiner
+loadlist:/c2120.loadlist		#Shadowlurker
+loadlist:/c2130.loadlist		#Shadowlurker(Female
+loadlist:/c2140.loadlist		#OwlWarrior
+loadlist:/c3010.loadlist		#Dog
+loadlist:/c3011.loadlist		#BloodiedDog
+loadlist:/c3020.loadlist		#Wolf
+loadlist:/c3030.loadlist		#Hawk(ShrineOfStorms
+loadlist:/c3040.loadlist		#Maneater
+loadlist:/c3050.loadlist		#Gargoyle
+loadlist:/c3060.loadlist		#Rat
+loadlist:/c3070.loadlist		#Slug
+loadlist:/c3071.loadlist		#PhosphorescentSlug
+loadlist:/c3080.loadlist		#PoisonJelly
+loadlist:/c3090.loadlist		#Mosquito
+loadlist:/c3100.loadlist		#RockWorm
+loadlist:/c3110.loadlist		#CrystalLizard
+loadlist:/c3120.loadlist		#FireLizard
+loadlist:/c3130.loadlist		#LargeBearbug
+loadlist:/c3131.loadlist		#Bearbug
+loadlist:/c3132.loadlist		#SmallBearbugWithWings
+loadlist:/c3133.loadlist		#SmallBearbug
+loadlist:/c3140.loadlist		#ShadowBird
+loadlist:/c3160.loadlist		#BrokenMindFlayer
+loadlist:/c3170.loadlist		#Planarian
+loadlist:/c3180.loadlist		#GiantTick
+loadlist:/c4000.loadlist		#KingAllant
+loadlist:/c4010.loadlist		#Reaper
+loadlist:/c4020.loadlist		#Skeleton(Gold
+loadlist:/c4021.loadlist		#Skeleton(Silver
+loadlist:/c4022.loadlist		#Skeleton(Black
+loadlist:/c4030.loadlist		#MindFlayer
+loadlist:/c4040.loadlist		#CelebrityVermin
+loadlist:/c4050.loadlist		#Flamelurker
+loadlist:/c4060.loadlist		#Yeti
+loadlist:/c5000.loadlist		#Hoplite
+loadlist:/c5001.loadlist		#Phalanx
+loadlist:/c5002.loadlist		#FlatPhalanx.Crash
+loadlist:/c5009.loadlist		#Hoplite(DoesntLoad)
+loadlist:/c5010.loadlist		#TowerKnight
+loadlist:/c5020.loadlist		#Penetrator
+loadlist:/c5030.loadlist		#StormKing
+loadlist:/c5031.loadlist		#StormBeast
+loadlist:/c5040.loadlist		#Adjudicator
+loadlist:/c5050.loadlist		#BrokenMindFlayer
+loadlist:/c5060.loadlist		#FoolsIdol
+loadlist:/c5070.loadlist		#ManCentipede
+loadlist:/c5071.loadlist		#ManCentipedeSmall
+loadlist:/c5080.loadlist		#DirtyColossus
+loadlist:/c5090.loadlist		#Leechmonger
+loadlist:/c5100.loadlist		#ArmorSpider
+loadlist:/c5110.loadlist		#PrimevalDemon
+loadlist:/c5120.loadlist		#BlueDragon/Wyvern
+loadlist:/c5130.loadlist		#RedDragon/Wyvern
+loadlist:/c6000.loadlist		#OldOne(DoesntLoad
+loadlist:/c6020.loadlist		#OldHero
+loadlist:/c6030.loadlist		#OldMonk
+loadlist:/c6031.loadlist		#CutOldMonk
+loadlist:/c6032.loadlist		#FlyingOldMonkRobe
+loadlist:/c6040.loadlist		#MaidenAstraea
+loadlist:/c6041.loadlist		#FilthyOne
+loadlist:/c6050.loadlist		#DragonGod
+loadlist:/c7050.loadlist		#CutNPC(LeatherArmor
+loadlist:/c7080.loadlist		#TheMonumental
+loadlist:/c7090.loadlist		#CutNPCWithMonocle
+loadlist:/c7100.loadlist		#FilthyMan
+loadlist:/c7105.loadlist		#GhostFilthyMan
+loadlist:/c7110.loadlist		#FilthyWoman
+loadlist:/c7115.loadlist		#GhostFilthyWoman
+loadlist:/c7120.loadlist		#FithlyWomansChild
+loadlist:/c7130.loadlist		#BlacksmithBoldwin
+loadlist:/c7131.loadlist		#BlacksmithEd
+loadlist:/c7135.loadlist		#GhostBlacksmith
+loadlist:/c7150.loadlist		#MaidenInBlack
+loadlist:/c7230.loadlist		#FalseKingAllant
+loadlist:/c8010.loadlist		#CrashesGame
+loadlist:/c8020.loadlist		#CrashesGame
+loadlist:/c8100.loadlist		#DepravedOneWithDagger
+loadlist:/c9500.loadlist		#KingsFieldIV_IceGolem.Crash
+loadlist:/c9501.loadlist		#Crocodile.Crash
+loadlist:/c9700.loadlist		#FlutedKnight.Crash
+loadlist:/c9701.loadlist		#ManInChainSet.Crash
+loadlist:/c9702.loadlist		#ManInLeatherSet.Crash
+loadlist:/c9703.loadlist		#ManInWizardSet.Crash
+loadlist:/c9704.loadlist		#ManInMirdanSet.Crash
+loadlist:/c9705.loadlist		#ManInThiefSet.Crash
+loadlist:/c9706.loadlist		#ManInPlateSet.Crash
+loadlist:/c9707.loadlist		#ManInShamanSet.Crash
+loadlist:/c9900.loadlist		#FlutedKnight.Crash
+loadlist:/c9901.loadlist		#FlutedKnight.Crash
+loadlist:/c9950.loadlist		#DepravedOne.Placeholder
+loadlist:/c9951.loadlist		#DepravedOne.Placeholder
+loadlist:/c9970.loadlist		#Empty.NoFlver
+loadlist:/c9980.loadlist		#AssassinWithSwordAndShield.Crash
+loadlist:/c9981.loadlist		#CompletlyUnused.CrashesGame
+loadlist:/c9982.loadlist		#AssassinWithBowAndArrow.Crash
+loadlist:/c9983.loadlist		#OldPlayerCharacterGhost.Crash
+loadlist:/c9990.loadlist		#FlutedKnight
+loadlist:/c9995.loadlist		#FlutedKnight.WhitePhantom.Crash
+loadlist:/c9996.loadlist		#FlutedKnight.BlackPhantom.Crash
+loadlist:/c9997.loadlist		#FlutedKnight.WanderingPhantom.Crash
+loadlist:/c9998.loadlist		#ArmsOfOldPlayerCharacter.Crash
+loadlist:/c9999.loadlist		#OldPlayerCharacter.Crash
+
+
+
+
+
+
+
+ #Å`Å`Miscellaneous(SomeNexusObjs,TutorialObj,AndTestObjs)
+obj:/o0000.objbnd		#Ballista
+obj:/o0010.objbnd		#Arrow.Crash
+obj:/o0020.objbnd		#Box.Empty
+obj:/o0050.objbnd		#Crash
+obj:/o0051.objbnd		#TorturedPrisonerCorpse
+obj:/o0052.objbnd		#DepravedOnesCorpse
+obj:/o0053.objbnd		#FilthyWomanCorpse
+obj:/o0100.objbnd		#Skeleton[Pattern1]
+obj:/o0101.objbnd		#Skeleton[Pattern2].Crash
+obj:/o0102.objbnd		#Skeleton[Pattern3]
+obj:/o0103.objbnd		#Skeleton[Pattern4]
+obj:/o0104.objbnd		#Brazier.Crash
+obj:/o0105.objbnd		#Barrel
+obj:/o0106.objbnd		#Crate
+obj:/o0107.objbnd		#Buckler.Crash
+obj:/o0108.objbnd		#BrokenBroadsword.Crash
+obj:/o0109.objbnd		#BrokenSword.Crash
+obj:/o0110.objbnd		#Brazier(Small).Crash
+obj:/o0111.objbnd		#Arrow
+obj:/o0120.objbnd		#StoneStatue
+obj:/o0121.objbnd		#DestroyedStoneStatue(Pattern1)
+obj:/o0122.objbnd		#DestroyedStoneStatue(Pattern2)
+obj:/o0123.objbnd		#DestroyedStoneStatue(Pattern3)
+obj:/o0124.objbnd		#Rock.Crash
+obj:/o0125.objbnd		#Rock.Crash
+obj:/o0126.objbnd		#Skull.Crash
+obj:/o0130.objbnd		#StonePillar(Bottom).Crash
+obj:/o0131.objbnd		#StonePillar(Top).Crash
+obj:/o0140.objbnd		#GunpowderBarrel
+obj:/o0141.objbnd		#GunpowderBarrels
+obj:/o0200.objbnd		#BrickRubble
+obj:/o0201.objbnd		#ChainedMeatA(HangedCrocodile)
+obj:/o0202.objbnd		#ChainedMeatB(HangedMan)
+obj:/o0205.objbnd		#Chain
+obj:/o0206.objbnd		#Chain
+obj:/o0207.objbnd		#Chain
+obj:/o0210.objbnd		#Lever
+obj:/o0211.objbnd		#portcullis
+obj:/o0212.objbnd		#portcullis
+obj:/o0220.objbnd		#CollapsedArchA.Crash
+obj:/o0221.objbnd		#CollapsedArchB.Crash
+obj:/o0222.objbnd		#CrumblingPillars
+obj:/o0223.objbnd		#CollapsedArchC.Crash
+obj:/o0224.objbnd		#CollapsingBricks
+obj:/o0225.objbnd		#CollapsingBricks
+obj:/o0226.objbnd		#CeilingOfBricksFalling
+obj:/o0230.objbnd		#AfterTheCollapseOfCollapsedArch.Crash
+obj:/o0231.objbnd		#AfterTheCollapseOfCollapsedArch.Crash
+obj:/o0240.objbnd		#Equipment.Crash
+obj:/o0241.objbnd		#Equipment.Crash
+obj:/o0242.objbnd		#Equipment.Crash
+obj:/o0244.objbnd		#Equipment.Crash
+obj:/o0250.objbnd		#Brazier
+obj:/o0258.objbnd		#MoonlightGreatsword(textureless
+obj:/o0300.objbnd		#ArchstoneTapire
+obj:/o0301.objbnd		#ArchstoneTapire
+obj:/o0350.objbnd		#Empty
+obj:/o0400.objbnd		#ArchstoneSword
+obj:/o0500.objbnd		#TreasureCorpse(General)
+obj:/o0501.objbnd		#Keystone(temporary)
+obj:/o0502.objbnd		#ItemCorpse_FlutedKnight
+obj:/o0503.objbnd		#ItemCorpse_Cleric
+obj:/o0504.objbnd		#ItemCorpse_FlutedKnightArrows
+obj:/o0610.objbnd		#MeatCleaver
+obj:/o0700.objbnd		#Stool
+
+
+
+
+ #Å`Å`NexusÅ
+obj:/o1000.objbnd		#ShrineOfStormsArchstone
+obj:/o1010.objbnd		#ValleyOfDefilementArchstone
+obj:/o1020.objbnd		#BoletariaArchstone
+obj:/o1030.objbnd		#StonefangArchstone
+obj:/o1040.objbnd		#TowerOfLatriaArchstone
+obj:/o1050.objbnd		#NothernLimitArchstone
+obj:/o1100.objbnd		#OldOne[FinalBoss]
+obj:/o1101.objbnd		#FlockOfBirds
+obj:/o1102.objbnd		#MonumentalObj
+obj:/o1200.objbnd		#WoodenDoor.Empty
+obj:/o1201.objbnd		#WoodenDoor.Empty
+obj:/o1300.objbnd		#DroppingTrueKings
+obj:/o1400.objbnd		#Stump
+obj:/o1401.objbnd		#Twig
+obj:/o1402.objbnd		#HeroineCorpseOBJ
+obj:/o1403.objbnd		#SwordStuckInHeroine
+obj:/o1450.objbnd		#MagicSquare
+obj:/o1460.objbnd		#SwordDroppedInNexus
+obj:/o1500.objbnd		#WallofLight
+obj:/o1504.objbnd		#TexturelessShield
+obj:/o1600.objbnd		#MerchantSet1
+obj:/o1601.objbnd		#MerchantSet2
+obj:/o1602.objbnd		#MerchantSet3
+obj:/o1603.objbnd		#MerchantSet4
+obj:/o1604.objbnd		#MerchantSet5
+obj:/o1605.objbnd		#MerchantSet6
+obj:/o1606.objbnd		#MerchantSet7
+obj:/o1607.objbnd		#MerchantSet8
+obj:/o1608.objbnd		#MerchantSet9(Map)
+obj:/o1609.objbnd		#MerchantSet10
+obj:/o1610.objbnd		#MerchantSet11
+obj:/o1611.objbnd		#MerchantSet12
+obj:/o1612.objbnd		#MerchantSet13
+obj:/o1613.objbnd		#MerchantSet14
+obj:/o1614.objbnd		#MerchantSet15
+obj:/o1615.objbnd		#MerchantSet16
+obj:/o1616.objbnd		#MerchantSet17
+obj:/o1617.objbnd		#MerchantSet18
+obj:/o1618.objbnd		#MerchantSet19
+obj:/o1700.objbnd		#Soulbrandt
+
+
+
+
+
+
+
+
+
+ #Å`Å`BoletariaÅ
+obj:/o2000.objbnd		#BoletarianFlag
+obj:/o2010.objbnd		#PhalanxSpear
+obj:/o2040.objbnd		#Demonbrandt
+obj:/o2051.objbnd		#WoodenBoard
+obj:/o2060.objbnd		#DrownedCorpses
+obj:/o2100.objbnd		#Stables
+obj:/o2110.objbnd		#Chain
+obj:/o2120.objbnd		#Fence
+obj:/o2121.objbnd		#IronBall
+obj:/o2122.objbnd		#IronBall
+obj:/o2150.objbnd		#TexturelessStable
+obj:/o2160.objbnd		#GearMechanism
+obj:/o2170.objbnd		#DoorsOpenedByEnemies
+obj:/o2180.objbnd		#DoorToTheExecutionSite
+obj:/o2190.objbnd		#BurningDoor
+obj:/o2191.objbnd		#Door(Fancy
+obj:/o2195.objbnd		#TexturelessCorpse
+obj:/o2200.objbnd		#Portcullis
+obj:/o2201.objbnd		#HangedGator(Boxes
+obj:/o2211.objbnd		#Lever
+obj:/o2221.objbnd		#GiantPortcullis
+obj:/o2231.objbnd		#GiantPortcullis
+obj:/o2241.objbnd		#TwoPortcullis
+obj:/o2251.objbnd		#TwoPortcullis
+obj:/o2261.objbnd		#WoodenDoor
+obj:/o2271.objbnd		#Ladder
+obj:/o2280.objbnd		#SomeGearThing?
+obj:/o2281.objbnd		#Ballista
+obj:/o2282.objbnd		#BallistaStand
+obj:/o2290.objbnd		#TexturelessWoodenBoards
+obj:/o2291.objbnd		#TexturelessWoodenBoards
+obj:/o2300.objbnd		#Portcullis
+obj:/o2301.objbnd		#FogWall??
+obj:/o2303.objbnd		#FatOfficialStair
+obj:/o2304.objbnd		#DogCart
+obj:/o2305.objbnd		#Empty
+obj:/o2306.objbnd		#Corpses
+obj:/o2309.objbnd		#Empty
+obj:/o2310.objbnd		#Empty
+obj:/o2311.objbnd		#Table
+obj:/o2312.objbnd		#Storage
+obj:/o2313.objbnd		#Bench
+obj:/o2314.objbnd		#Bucket
+obj:/o2315.objbnd		#Trough
+obj:/o2316.objbnd		#StackedWood
+obj:/o2317.objbnd		#Stain
+obj:/o2318.objbnd		#Balcony
+obj:/o2319.objbnd		#Ball
+obj:/o2320.objbnd		#MovingBalls
+obj:/o2321.objbnd		#GatedDoor
+obj:/o2322.objbnd		#FallingCart
+obj:/o2323.objbnd		#TrainingDummy
+obj:/o2324.objbnd		#EmptyHasAnim
+obj:/o2325.objbnd		#SwingingOpenDoor
+obj:/o2326.objbnd		#EmptyHasAnim
+obj:/o2327.objbnd		#CartRollingDownHill
+obj:/o2328.objbnd		#StackedBoxesAndBarrels
+obj:/o2330.objbnd		#BoletariaKnightStatue(Sword
+obj:/o2331.objbnd		#BoletariaKnightStatue(Shield
+obj:/o2399.objbnd		#Catapult
+obj:/o2400.objbnd		#StorageFilledWithBoxesAndSacks
+obj:/o2401.objbnd		#TableWithBoxesAndSacks
+obj:/o2402.objbnd		#LargeStorageFilledWithBoxesAndSacks
+obj:/o2403.objbnd		#WineRackFull
+obj:/o2404.objbnd		#WineStorageWithFood
+obj:/o2405.objbnd		#TableWithBooksAndBenches
+obj:/o2406.objbnd		#SmallTableWithStool
+obj:/o2407.objbnd		#TableWithFoodAndBenches
+obj:/o2408.objbnd		#TableWithScrolls\CandlesAndBenches
+obj:/o2410.objbnd		#WagonWithExplosives
+obj:/o2411.objbnd		#WagonWithExplosivesAndBoxes
+obj:/o2412.objbnd		#WagonWithWood
+obj:/o2414.objbnd		#EmptyWagon
+obj:/o2420.objbnd		#SwordsInStorage
+obj:/o2421.objbnd		#TexturelessBed
+obj:/o2422.objbnd		#Dresser
+obj:/o2423.objbnd		#DeskWithStorage
+obj:/o2424.objbnd		#SmallTable
+obj:/o2425.objbnd		#WeaponRack(Spears
+obj:/o2426.objbnd		#SmallWeaponRack(Spears
+obj:/o2427.objbnd		#TexturelessChair
+obj:/o2428.objbnd		#Box(?
+obj:/o2429.objbnd		#Box
+obj:/o2430.objbnd		#SmallBench
+obj:/o2431.objbnd		#TexturelessBench
+obj:/o2432.objbnd		#ArcherPartition
+obj:/o2433.objbnd		#BrokenArcherPartition
+obj:/o2434.objbnd		#BrokenbWagon
+obj:/o2435.objbnd		#BrokenbWagon
+obj:/o2440.objbnd		#Rubble
+obj:/o2441.objbnd		#Rubble
+obj:/o2442.objbnd		#Rubble
+obj:/o2443.objbnd		#TexturelessRubble
+obj:/o2444.objbnd		#Rubble
+obj:/o2445.objbnd		#TexturelessRubble
+obj:/o2446.objbnd		#Rubble
+obj:/o2447.objbnd		#KingAllant'sThrone
+obj:/o2448.objbnd		#TexturelessRubble
+obj:/o2449.objbnd		#TexturelessRubble
+obj:/o2450.objbnd		#LargeBoletarianFlag
+obj:/o2451.objbnd		#SmallBoletarianFlag
+obj:/o2452.objbnd		#SmallBoletarianFlag
+obj:/o2455.objbnd		#DreglingOnLever
+obj:/o2456.objbnd		#Gears
+obj:/o2460.objbnd		#TexturelessBuilding
+obj:/o2461.objbnd		#TexturelessBuilding
+obj:/o2462.objbnd		#TexturelessBuilding
+obj:/o2470.objbnd		#Tower
+obj:/o2471.objbnd		#Tower
+obj:/o2472.objbnd		#DamagedTower
+obj:/o2480.objbnd		#KingAllant'sElevator
+obj:/o2490.objbnd		#DeadHorse
+obj:/o2501.objbnd		#CrashesGame
+obj:/o2511.objbnd		#Empty
+obj:/o2513.objbnd		#Empty
+obj:/o2521.objbnd		#Empty
+obj:/o2523.objbnd		#Empty
+obj:/o2531.objbnd		#Empty
+obj:/o2533.objbnd		#Empty
+obj:/o2534.objbnd		#Empty
+obj:/o2541.objbnd		#Empty
+obj:/o2551.objbnd		#Empty
+obj:/o2552.objbnd		#Empty
+obj:/o2553.objbnd		#Empty
+obj:/o2554.objbnd		#Empty
+obj:/o2600.objbnd		#CellDoor
+obj:/o2601.objbnd		#DoubleCellDoor
+obj:/o2602.objbnd		#WoodDoor(Green
+obj:/o2650.objbnd		#CandelabrumOnPole
+obj:/o2700.objbnd		#LargeLadder
+obj:/o2701.objbnd		#Ladder
+obj:/o2750.objbnd		#PenetratorStatue
+obj:/o2760.objbnd		#TowerKnightStatue
+obj:/o2761.objbnd		#TowerKnightStatueFlipped
+obj:/o2800.objbnd		#KingAllant'sCape
+obj:/o2900.objbnd		#DoorBehindFog(?
+obj:/o2997.objbnd		#DogObject
+obj:/o2998.objbnd		#EmptyHasAnim
+obj:/o2999.objbnd		#DoesntLoad
+ #Å`Å`ShrineOfStormsÅ
+obj:/o3000.objbnd		#CrashesGame
+obj:/o3100.objbnd		#KickedOpenDoor
+obj:/o3101.objbnd		#FancyDoor
+obj:/o3102.objbnd		#FancyDoor
+obj:/o3103.objbnd		#Boulder
+obj:/o3104.objbnd		#CrashesGame
+obj:/o3105.objbnd		#CellDoor(Blige
+obj:/o3106.objbnd		#Empty
+obj:/o3107.objbnd		#Empty
+obj:/o3110.objbnd		#Ladder
+obj:/o3120.objbnd		#StoneStructure
+obj:/o3121.objbnd		#StoneStructure
+obj:/o3122.objbnd		#StoneStructure
+obj:/o3123.objbnd		#StoneStructure
+obj:/o3124.objbnd		#StoneStructure
+obj:/o3125.objbnd		#StoneStructure
+obj:/o3126.objbnd		#StoneStructure
+obj:/o3127.objbnd		#StoneStructure
+obj:/o3128.objbnd		#StoneStructure
+obj:/o3129.objbnd		#StoneStructure
+obj:/o3130.objbnd		#StoneStructure
+obj:/o3131.objbnd		#StoneStructure
+obj:/o3132.objbnd		#StoneStructure
+obj:/o3140.objbnd		#StoneStructure
+obj:/o3141.objbnd		#StoneStructure
+obj:/o3142.objbnd		#StoneStructure
+obj:/o3143.objbnd		#StoneStructure
+obj:/o3144.objbnd		#StoneStructure
+obj:/o3145.objbnd		#StoneStructure
+obj:/o3146.objbnd		#StoneStructure
+obj:/o3147.objbnd		#StoneStructure
+obj:/o3148.objbnd		#StoneStructure
+obj:/o3160.objbnd		#Pillar
+obj:/o3200.objbnd		#StoneDoor
+obj:/o3201.objbnd		#IllusoryWall
+obj:/o3210.objbnd		#Door
+obj:/o3211.objbnd		#Wall(Illusory?
+obj:/o3220.objbnd		#LargePressurePlate
+obj:/o3230.objbnd		#StatueWithSwordAndShield
+obj:/o3240.objbnd		#Skull
+obj:/o3250.objbnd		#Doors
+obj:/o3270.objbnd		#StatueOfSkeleton
+obj:/o3280.objbnd		#CorpseCobwebbed
+obj:/o3290.objbnd		#UnusedGhostOfOldHero
+obj:/o3291.objbnd		#Rubble
+obj:/o3292.objbnd		#OldHeroObject
+obj:/o3300.objbnd		#Grave(?
+obj:/o3301.objbnd		#Grave(?
+obj:/o3302.objbnd		#Grave(?
+obj:/o3303.objbnd		#Grave(?
+obj:/o3304.objbnd		#Grave(?
+obj:/o3305.objbnd		#VeryLargeGrave(?
+obj:/o3400.objbnd		#TreeOnRock
+obj:/o3410.objbnd		#Pot
+obj:/o3411.objbnd		#Pot(Bottom
+obj:/o3412.objbnd		#Pot(Wide
+obj:/o3413.objbnd		#Pot
+obj:/o3414.objbnd		#Pot
+obj:/o3415.objbnd		#Pot
+obj:/o3420.objbnd		#Flag
+obj:/o3421.objbnd		#Pot
+obj:/o3422.objbnd		#BrokenWagon
+obj:/o3423.objbnd		#BrokenWagon
+obj:/o3430.objbnd		#BrokenWagon
+obj:/o3431.objbnd		#BrokenCrate
+obj:/o3432.objbnd		#BrokenCrate
+obj:/o3440.objbnd		#Archer Partition
+obj:/o3450.objbnd		#BrokenStorage
+obj:/o3460.objbnd		#SkeletonInArmor
+obj:/o3461.objbnd		#Skeleton
+obj:/o3462.objbnd		#SkeletonItemCorpse
+obj:/o3470.objbnd		#BrokenBarrel
+obj:/o3471.objbnd		#LessBrokenBarrel
+obj:/o3480.objbnd		#DeadStingrays
+obj:/o3511.objbnd		#Empty
+obj:/o3512.objbnd		#Empty
+obj:/o3521.objbnd		#Empty
+obj:/o3522.objbnd		#Empty
+obj:/o3531.objbnd		#Empty
+obj:/o3600.objbnd		#Arrowtrap(sound
+obj:/o3601.objbnd		#PressurePlate
+obj:/o3602.objbnd		#Arrowhead
+obj:/o3700.objbnd		#Unused(Anim?
+obj:/o3800.objbnd		#StormRuler
+obj:/o3998.objbnd		#MirdanKnightCorpse
+obj:/o3999.objbnd		#ShamanCoprseSword
+
+
+
+ #Å`Å`TowerOfLatria
+obj:/o4000.objbnd		#Gargoyle
+obj:/o4001.objbnd		#ExecutionWheel
+obj:/o4002.objbnd		#BrokenGargoyle
+obj:/o4005.objbnd		#PrisonerClutchingTapire
+obj:/o4006.objbnd		#Belongings
+obj:/o4007.objbnd		#Stool
+obj:/o4010.objbnd		#Chain
+obj:/o4020.objbnd		#TableWithBooksAndCups
+obj:/o4030.objbnd		#Stool
+obj:/o4040.objbnd		#PrisonerHanging
+obj:/o4050.objbnd		#Table
+obj:/o4060.objbnd		#Bucket
+obj:/o4070.objbnd		#StatueTrapBody
+obj:/o4080.objbnd		#StatueTrapBallista
+obj:/o4090.objbnd		#StatueTrapStand
+obj:/o4100.objbnd		#CellDoorTwoWide
+obj:/o4101.objbnd		#CellDoorTwoWide
+obj:/o4110.objbnd		#CellDoorSingle
+obj:/o4120.objbnd		#PrisonDoor
+obj:/o4130.objbnd		#PrisonPortcullis
+obj:/o4140.objbnd		#PrisonPortcullis
+obj:/o4141.objbnd		#PrisonPortcullis
+obj:/o4150.objbnd		#FoolsIdolDoor
+obj:/o4160.objbnd		#WoodenDoor
+obj:/o4161.objbnd		#WoodenDoor
+obj:/o4170.objbnd		#Chair
+obj:/o4180.objbnd		#BrokenChurchPewLeft
+obj:/o4181.objbnd		#BrokenChurchPewMiddle
+obj:/o4182.objbnd		#BrokenChurchPewRight
+obj:/o4200.objbnd		#MetalDoor
+obj:/o4210.objbnd		#Vase
+obj:/o4211.objbnd		#Vase
+obj:/o4212.objbnd		#Vase
+obj:/o4213.objbnd		#TexturelessBrokenVase
+obj:/o4214.objbnd		#BrokenVase
+obj:/o4215.objbnd		#Vase
+obj:/o4216.objbnd		#StackedCoffins
+obj:/o4217.objbnd		#VaseOnStand(FaceVase)
+obj:/o4218.objbnd		#SingleCoffin
+obj:/o4219.objbnd		#LordRydellCorpse
+obj:/o4220.objbnd		#IronMaiden
+obj:/o4221.objbnd		#Keys
+obj:/o4231.objbnd		#Candle
+obj:/o4240.objbnd		#TortureChair
+obj:/o4241.objbnd		#TortureChair(Open
+obj:/o4242.objbnd		#TableWithBooks,Cups,AndBenches
+obj:/o4243.objbnd		#Stand(?
+obj:/o4244.objbnd		#Chest
+obj:/o4245.objbnd		#Bench
+obj:/o4300.objbnd		#Elevator
+obj:/o4301.objbnd		#TexturelessElevator
+obj:/o4302.objbnd		#Elevator
+obj:/o4305.objbnd		#CageElevator
+obj:/o4306.objbnd		#CageElevator
+obj:/o4310.objbnd		#WoodenBoard
+obj:/o4400.objbnd		#ChainHoldingHeart
+obj:/o4401.objbnd		#ChainHoldingHeart
+obj:/o4402.objbnd		#ChainHoldingHeart
+obj:/o4405.objbnd		#Chain
+obj:/o4406.objbnd		#Chain
+obj:/o4410.objbnd		#Pillar
+obj:/o4411.objbnd		#BrokenInCenterPillar
+obj:/o4412.objbnd		#Pillar
+obj:/o4420.objbnd		#FlagPoleWithGoldenGarb
+obj:/o4421.objbnd		#LatriaFlag
+obj:/o4422.objbnd		#LatriaFlagOnFlagPole
+obj:/o4430.objbnd		#Pillar
+obj:/o4435.objbnd		#Tendrils
+obj:/o4436.objbnd		#Tendrils
+obj:/o4437.objbnd		#Tendrils
+obj:/o4438.objbnd		#Tendrils
+obj:/o4439.objbnd		#Tendrils
+obj:/o4440.objbnd		#Tendrils
+obj:/o4441.objbnd		#Tendrils
+obj:/o4442.objbnd		#Tendrils
+obj:/o4445.objbnd		#Tendrils
+obj:/o4446.objbnd		#Tendrils
+obj:/o4531.objbnd		#Empty
+obj:/o4600.objbnd		#FancyChair
+obj:/o4700.objbnd		#Empty
+obj:/o4750.objbnd		#Tendrils
+obj:/o4751.objbnd		#Tendrils
+obj:/o4800.objbnd		#DemonWomb(Heart)
+obj:/o4810.objbnd		#CollapsedDemonWomb(Heart)
+obj:/o4850.objbnd		#MovingGoldenGarb
+obj:/o4851.objbnd		#MovingGoldenGarb
+obj:/o4900.objbnd		#Empty
+obj:/o4901.objbnd		#Empty
+obj:/o4910.objbnd		#Empty
+obj:/o4911.objbnd		#Empty
+obj:/o4980.objbnd		#Chain
+obj:/o4998.objbnd		#Elevator
+obj:/o4999.objbnd		#RotatingStatueTrap
+
+
+
+
+
+
+ #Å`Å`ValleyOfDefilementÅ
+obj:/o5000.objbnd		#WoodenBoards
+obj:/o5001.objbnd		#DeadRats
+obj:/o5002.objbnd		#DeadDog
+obj:/o5003.objbnd		#DeadDoe
+obj:/o5010.objbnd		#WoodenBoards
+obj:/o5020.objbnd		#BoardsYouKickOver
+obj:/o5030.objbnd		#BoardsYouKickOver
+obj:/o5040.objbnd		#Ladder
+obj:/o5050.objbnd		#Ladder
+obj:/o5060.objbnd		#Ladder
+obj:/o5070.objbnd		#SingleBoard
+obj:/o5080.objbnd		#SingleBoard
+obj:/o5090.objbnd		#SingleBoard
+obj:/o5100.objbnd		#SingleBoard
+obj:/o5110.objbnd		#ClericCorpseImpaled
+obj:/o5111.objbnd		#FlutedKnightCorpseImpaled
+obj:/o5112.objbnd		#TexturelessCorpseImpaled
+obj:/o5120.objbnd		#Boards
+obj:/o5130.objbnd		#Boulder
+obj:/o5140.objbnd		#Boulder
+obj:/o5150.objbnd		#TexturelessWoodenStructure
+obj:/o5151.objbnd		#TexturelessWoodenStructure
+obj:/o5152.objbnd		#TexturelessWoodenStructure
+obj:/o5153.objbnd		#TexturelessWoodenStructure
+obj:/o5154.objbnd		#TexturelessBoxesAndBarrels
+obj:/o5155.objbnd		#TexturelessCanoe
+obj:/o5156.objbnd		#TexturelessWoodenSomething(?
+obj:/o5157.objbnd		#TexturelessWagon
+obj:/o5158.objbnd		#TexturelessWagon
+obj:/o5159.objbnd		#TexturelessBox
+obj:/o5160.objbnd		#TexturelessFence
+obj:/o5161.objbnd		#TexturelessFence
+obj:/o5162.objbnd		#TexturelessFence
+obj:/o5163.objbnd		#TexturelessFence
+obj:/o5164.objbnd		#TexturelessFence
+obj:/o5165.objbnd		#TexturelessFence
+obj:/o5170.objbnd		#Bug
+obj:/o5180.objbnd		#Bug
+obj:/o5200.objbnd		#ShakyBridge
+obj:/o5210.objbnd		#ShakyBridge
+obj:/o5220.objbnd		#ShakyBridge
+obj:/o5230.objbnd		#ShakyBridge
+obj:/o5250.objbnd		#Rope
+obj:/o5260.objbnd		#HangingFlutedKnightAndWizard
+obj:/o5270.objbnd		#Leeches
+obj:/o5275.objbnd		#Leeche
+obj:/o5280.objbnd		#HangingSlugs(Bito
+obj:/o5281.objbnd		#StrandOfSomething
+obj:/o5290.objbnd		#MovingPlants(SoftLanding
+obj:/o5300.objbnd		#MoonlightGreatsword
+obj:/o5301.objbnd		#Ladder
+obj:/o5302.objbnd		#Ladder
+obj:/o5303.objbnd		#Corpse
+obj:/o5304.objbnd		#TexturelessLeatherArmorCorpse
+obj:/o5305.objbnd		#TexturelessFlutedKnightCorpse
+obj:/o5306.objbnd		#Istarelle
+obj:/o5350.objbnd		#HangingCloth
+obj:/o5400.objbnd		#ImpaledSlugs
+obj:/o5511.objbnd		#Empty
+obj:/o5512.objbnd		#Empty
+obj:/o5531.objbnd		#Empty
+obj:/o5600.objbnd		#Belongings(WeaponsAndSacks
+obj:/o5601.objbnd		#Belongings(Sacks
+obj:/o5602.objbnd		#Belongings
+obj:/o5700.objbnd		#DriedPoisonJelly
+obj:/o5874.objbnd		#Ring
+obj:/o5875.objbnd		#TexturelessWoodenRing
+obj:/o5876.objbnd		#TexturelessWoodenRing
+obj:/o5877.objbnd		#TexturelessWoodenRing
+obj:/o5878.objbnd		#TexturelessMass
+obj:/o5879.objbnd		#TexturelessFloatingParticles
+obj:/o5880.objbnd		#TexturelessWoodenRing
+obj:/o5881.objbnd		#TexturelessWoodenRing
+obj:/o5882.objbnd		#TexturelessWoodenRing
+obj:/o5883.objbnd		#TexturelessWoodenRing
+obj:/o5884.objbnd		#TexturelessWoodenRing
+obj:/o5885.objbnd		#TexturelessWoodenRing
+obj:/o5886.objbnd		#TexturelessWoodenRing
+obj:/o5887.objbnd		#TexturelessWoodenRing
+obj:/o5888.objbnd		#TexturelessWoodenBall
+obj:/o5889.objbnd		#TexturelessWoodenBall
+obj:/o5890.objbnd		#TexturelessFence
+obj:/o5891.objbnd		#TexturelessFence
+obj:/o5892.objbnd		#TexturelessFence
+obj:/o5893.objbnd		#TexturelessFence
+obj:/o5894.objbnd		#TexturelessFence
+obj:/o5895.objbnd		#TexturelessFence
+obj:/o5896.objbnd		#TexturelessFence
+obj:/o5897.objbnd		#TexturelessFence
+obj:/o5898.objbnd		#TexturelessFence
+obj:/o5899.objbnd		#TexturelessFence
+obj:/o5900.objbnd		#TexturelessMass
+obj:/o5901.objbnd		#TexturelessMass
+obj:/o5902.objbnd		#TexturelessMass
+obj:/o5903.objbnd		#TexturelessMass
+obj:/o5904.objbnd		#MovingWater
+obj:/o5985.objbnd		#Empty
+obj:/o5986.objbnd		#Empty
+obj:/o5987.objbnd		#Empty
+obj:/o5988.objbnd		#Empty
+obj:/o5989.objbnd		#Empty
+obj:/o5990.objbnd		#Empty
+obj:/o5991.objbnd		#Empty
+obj:/o5992.objbnd		#PoisonJellys
+obj:/o5993.objbnd		#Empty
+obj:/o5994.objbnd		#Empty
+obj:/o5995.objbnd		#Crow
+obj:/o5996.objbnd		#Crow
+obj:/o5998.objbnd		#Crow
+obj:/o5999.objbnd		#CrowFlying
+
+
+
+
+
+
+
+
+
+ #Å`Å`Stonefang
+obj:/o6000.objbnd		#Lever
+obj:/o6010.objbnd		#Portcullis
+obj:/o6020.objbnd		#Handle
+obj:/o6040.objbnd		#Handle		
+obj:/o6050.objbnd		#GearsAndRopes
+obj:/o6060.objbnd		#WaterWheel
+obj:/o6070.objbnd		#pyramid?
+obj:/o6080.objbnd		#pyramid?
+obj:/o6090.objbnd		#ShiftingGate
+obj:/o6100.objbnd		#Ladder
+obj:/o6110.objbnd		#SmallerElevator
+obj:/o6111.objbnd		#LargeElevator
+obj:/o6120.objbnd		#Ladder
+obj:/o6130.objbnd		#RotatingElevator
+obj:/o6140.objbnd		#LongerRotatingElevator
+obj:/o6150.objbnd		#CartsOnChainWithGears
+obj:/o6160.objbnd		#Water(?
+obj:/o6170.objbnd		#Water(?
+obj:/o6180.objbnd		#WoodenBridge
+obj:/o6181.objbnd		#BoardsThatBreakBelowYou
+obj:/o6190.objbnd		#Boulder
+obj:/o6200.objbnd		#Ladder
+obj:/o6201.objbnd		#MovingCart
+obj:/o6202.objbnd		#Empty(MagicBarrierTexture
+obj:/o6203.objbnd		#MovingCart
+obj:/o6204.objbnd		#MovingCart
+obj:/o6210.objbnd		#Ladder
+obj:/o6211.objbnd		#Sack
+obj:/o6212.objbnd		#Sack
+obj:/o6215.objbnd		#WoodenStructure
+obj:/o6216.objbnd		#WoodenStructure
+obj:/o6220.objbnd		#SiftingBox
+obj:/o6221.objbnd		#WheelbarrowWithCoal
+obj:/o6222.objbnd		#CrateWithCoal
+obj:/o6223.objbnd		#BucketWithCoal
+obj:/o6224.objbnd		#BucketWithCoal
+obj:/o6225.objbnd		#Bucket
+obj:/o6226.objbnd		#Bucket
+obj:/o6227.objbnd		#Bucket
+obj:/o6228.objbnd		#Bucket
+obj:/o6230.objbnd		#Seat
+obj:/o6231.objbnd		#Bench
+obj:/o6232.objbnd		#AnvilWithSword
+obj:/o6233.objbnd		#EmptyBucket
+obj:/o6234.objbnd		#BlacksmithingTools
+obj:/o6235.objbnd		#BlacksmithingToolsInStorage
+obj:/o6236.objbnd		#WeaponRack(Swords
+obj:/o6237.objbnd		#WeaponRack(Mace,Sword,Axe
+obj:/o6238.objbnd		#BlacksmithingToolsRack
+obj:/o6239.objbnd		#StackedBarrels
+obj:/o6240.objbnd		#StackedBarrels
+obj:/o6241.objbnd		#CrateWithCoal
+obj:/o6242.objbnd		#CratesWithCoal
+obj:/o6243.objbnd		#KnockedOverCartWithRocks,Sacks,Coal
+obj:/o6244.objbnd		#StackedPots
+obj:/o6245.objbnd		#StackedExplosiveBarrels
+obj:/o6247.objbnd		#Barrel
+obj:/o6248.objbnd		#KnockedOverCartWithRocks,Sacks,Coal
+obj:/o6250.objbnd		#SpiderWeb(Strand
+obj:/o6260.objbnd		#SpiderWeb(Dome
+obj:/o6261.objbnd		#SpiderWebs
+obj:/o6270.objbnd		#Plants(?
+obj:/o6271.objbnd		#Plants(?
+obj:/o6272.objbnd		#Plants(?
+obj:/o6300.objbnd		#TexturelessBird
+obj:/o6350.objbnd		#Lava
+obj:/o6351.objbnd		#Empty
+obj:/o6400.objbnd		#Fence
+obj:/o6401.objbnd		#Fence
+obj:/o6402.objbnd		#Fence
+obj:/o6403.objbnd		#Fence
+obj:/o6430.objbnd		#DragonGodStructure
+obj:/o6431.objbnd		#DragonGodStructure
+obj:/o6432.objbnd		#DragonGodStructure
+obj:/o6440.objbnd		#WallOfBricks
+obj:/o6441.objbnd		#WallOfBricks
+obj:/o6450.objbnd		#TexturelessStoneStructure
+obj:/o6451.objbnd		#TexturelessStoneStructure
+obj:/o6452.objbnd		#TexturelessStoneStructure
+obj:/o6453.objbnd		#TexturedStoneStructure(same
+obj:/o6454.objbnd		#TexturedStoneStructure(same
+obj:/o6455.objbnd		#TexturelessStoneStructure
+obj:/o6456.objbnd		#TexturelessStoneStructure
+obj:/o6457.objbnd		#TexturelessStoneStructure
+obj:/o6458.objbnd		#TexturelessStoneStructure
+obj:/o6459.objbnd		#TexturelessStoneStructures
+obj:/o6460.objbnd		#StoneBlockade
+obj:/o6461.objbnd		#StoneBlockade
+obj:/o6462.objbnd		#StoneBlockade
+obj:/o6465.objbnd		#StoneBlockade
+obj:/o6470.objbnd		#StoneStructure
+obj:/o6471.objbnd		#StoneStructure
+obj:/o6472.objbnd		#Empty
+obj:/o6500.objbnd		#DragonBoneSmasher
+obj:/o6504.objbnd		#WineAndPaper
+obj:/o6505.objbnd		#Lamp
+obj:/o6510.objbnd		#Belongings
+obj:/o6511.objbnd		#Empty(?
+obj:/o6512.objbnd		#Empty(?
+obj:/o6521.objbnd		#Empty(?
+obj:/o6522.objbnd		#Empty(?
+obj:/o6531.objbnd		#Empty(?
+obj:/o6600.objbnd		#Empty(?
+obj:/o6601.objbnd		#Empty(?
+obj:/o6602.objbnd		#Empty(?
+obj:/o6700.objbnd		#DragonGodBallista(anim
+obj:/o6701.objbnd		#DragonGodBallista(NoAnim
+obj:/o6702.objbnd		#SmallWall
+obj:/o6750.objbnd		#BearbugShell
+obj:/o6751.objbnd		#BearbugShell
+obj:/o6752.objbnd		#RockWormShell
+obj:/o6753.objbnd		#RockWormShell
+obj:/o6760.objbnd		#StretchedTexture?
+obj:/o6761.objbnd		#StretchedTexture?
+obj:/o6770.objbnd		#StretchedTexture?
+obj:/o6771.objbnd		#StretchedTexture?
+obj:/o6780.objbnd		#StretchedTexture?
+obj:/o6781.objbnd		#StretchedTexture?
+obj:/o6800.objbnd		#Empty
+obj:/o6801.objbnd		#Empty
+obj:/o6900.objbnd		#SmallTexutrelessPanel
+obj:/o6999.objbnd		#Triangle(GargoyleTextures?
+
+
+
+
+
+
+
+ #Å`Å`NorthernLimitÅ
+obj:/o7000.objbnd		#Pyramid(GargoyleTextures?
+obj:/o7010.objbnd		#StoneStructure(Closed
+obj:/o7020.objbnd		#StoneStructure(Open
+obj:/o7030.objbnd		#SnowPieces
+obj:/o7040.objbnd		#SnowPieces
+obj:/o7050.objbnd		#SnowPieces
+obj:/o7101.objbnd		#SnowPieces
+obj:/o7102.objbnd		#SnowPieces
+obj:/o7103.objbnd		#SnowPieces
+obj:/o7900.objbnd		#PlanarianObject
+obj:/o7999.objbnd		#Crash
+
+
+
+
+
+
+
+
+ #Å`Å`TestObjects
+obj:/o8000.objbnd		#FloatingCube
+obj:/o8100.objbnd		#Ladder
+obj:/o8110.objbnd		#Empty
+obj:/o8111.objbnd		#Empty
+obj:/o8120.objbnd		#Pillar
+obj:/o8200.objbnd		#VeryLongLadder
+obj:/o8510.objbnd		#ManCentipede
+obj:/o8511.objbnd		#BetaOldHero
+obj:/o9010.objbnd		#TexturelessDoor
+obj:/o9120.objbnd		#TexturelessPillar
+obj:/o9121.objbnd		#TexturelessBrokenPillar
+obj:/o9122.objbnd		#TexturelessBrokenPillar
+obj:/o9123.objbnd		#TexturelessPillar
+obj:/o9124.objbnd		#TexturelessBrokenPillar
+obj:/o9125.objbnd		#TexturelessPillar
+obj:/o9140.objbnd		#Textureless(Pot?
+obj:/o9141.objbnd		#TexturelessSconce
+obj:/o9150.objbnd		#TexturelessTorchHolder
+obj:/o9160.objbnd		#TexturelessPillar
+obj:/o9200.objbnd		#PopUpRockWorm
+obj:/o9201.objbnd		#PopUpRockWorm
+obj:/o9202.objbnd		#PopUpRockWorm
+obj:/o9203.objbnd		#PopUpRockWorm
+obj:/o9211.objbnd		#MindFlayer(RingingBell
+obj:/o9220.objbnd		#HyenaWarrior(Walking
+obj:/o9221.objbnd		#HyenaWarrior(Eating
+obj:/o9222.objbnd		#HyenaWarrior(Scavenging
+obj:/o9400.objbnd		#DragonBoneSmasher(Grab
+obj:/o9401.objbnd		#Hiltless(Grab
+obj:/o9402.objbnd		#MorionBlade(Grab
+obj:/o9500.objbnd		#PenetratorWithWings
+obj:/o9501.objbnd		#Gargoyle
+obj:/o9502.objbnd		#RockWorm
+obj:/o9503.objbnd		#Wolf
+obj:/o9504.objbnd		#BearWarrior
+obj:/o9505.objbnd		#TexturelessOwlWarrior
+obj:/o9506.objbnd		#FireLizard
+obj:/o9507.objbnd		#ShadowBird
+obj:/o9508.objbnd		#TexturelessShadowlurker
+obj:/o9509.objbnd		#TexturelessReaper
+obj:/o9510.objbnd		#WolfWarrior
+obj:/o9511.objbnd		#ScaleMiner
+obj:/o9512.objbnd		#TexturelessGargoyle
+obj:/o9513.objbnd		#Soldier
+obj:/o9514.objbnd		#Dog
+obj:/o9515.objbnd		#HyenaWarrior
+obj:/o9516.objbnd		#Hawk
+obj:/o9517.objbnd		#PoisonJelly
+obj:/o9518.objbnd		#BetaShadowlurker(F
+obj:/o9519.objbnd		#Planarian
+obj:/o9520.objbnd		#Boldwin
+obj:/o9521.objbnd		#Mosquito
+obj:/o9522.objbnd		#Bearbug
+obj:/o9523.objbnd		#MindFlayer
+obj:/o9524.objbnd		#Prisoner
+obj:/o9525.objbnd		#Mosquito
+obj:/o9526.objbnd		#Reaper
+obj:/o9530.objbnd		#GoldSkeleton
+obj:/o9535.objbnd		#FatOfficial
+obj:/o9536.objbnd		#OnceRoyalMistress
+obj:/o9537.objbnd		#Maneater
+obj:/o9541.objbnd		#CelebrityVermin
+obj:/o9546.objbnd		#Flamelurker
+obj:/o9551.objbnd		#Yeti
+obj:/o9555.objbnd		#Monumental
+obj:/o9556.objbnd		#CutNPCWithMonocle
+obj:/o9557.objbnd		#FilthyMan
+obj:/o9558.objbnd		#FilthyWoman
+obj:/o9559.objbnd		#FilthyChild
+obj:/o9560.objbnd		#TrueKingSlug
+obj:/o9570.objbnd		#TestArmorSpider
+obj:/o9580.objbnd		#Hydra
+obj:/o9600.objbnd		#VeryLongChain
+obj:/o9700.objbnd		#DeadFlutedKnight
+obj:/o9701.objbnd		#ClericGettingTheirAssKicked
+obj:/o9702.objbnd		#LordRydell(Cutscene
+obj:/o9800.objbnd		#PrimevalDemon
+obj:/o9900.objbnd		#Wizard'sClothing(F
+obj:/o9901.objbnd		#ChainMailSet(F
+obj:/o9902.objbnd		#GloomSetAndCutWeapons
+obj:/o9903.objbnd		#NoArmor(F
+obj:/o9904.objbnd		#FlutedSet(F
+obj:/o9905.objbnd		#BLackLeather(F
+obj:/o9906.objbnd		#Empty
+obj:/o9907.objbnd		#Empty
+obj:/o9909.objbnd		#PlateSet(F
+obj:/o9910.objbnd		#LeatherSet(F,DifferentTexturedHelm
+obj:/o9911.objbnd		#MirdanSet(F
+obj:/o9912.objbnd		#DullGoldSet
+obj:/o9913.objbnd		#VenerableSageSet
+obj:/o9914.objbnd		#BindedSet
+obj:/o9915.objbnd		#DarkSilverSet
+obj:/o9916.objbnd		#BrushwoodSet
+obj:/o9917.objbnd		#RaggedSet
+obj:/o9970.objbnd		#PhosphorescentSlug
+obj:/o9971.objbnd		#PhosphorescentSlug(Green
+obj:/o9972.objbnd		#OldMonkObject
+obj:/o9980.objbnd		#CrashesGame
+obj:/o9981.objbnd		#CrashesGame
+obj:/o9985.objbnd		#LongSpearofSomething
+obj:/o9986.objbnd		#CrossOfLight
+obj:/o9987.objbnd		#Box
+obj:/o9988.objbnd		#CrashesGame
+obj:/o9989.objbnd		#CrashesGame
+obj:/o9990.objbnd		#CrashesGame
+obj:/o9991.objbnd		#CrashesGame
+obj:/o9992.objbnd		#CrashesGame
+obj:/o9993.objbnd		#CrashesGame
+obj:/o9994.objbnd		#CrashesGame
+obj:/o9995.objbnd		#CrashesGame
+obj:/o9996.objbnd		#CrashesGame
+obj:/o9997.objbnd		#CrashesGame
+obj:/o9998.objbnd		#CrashesGame
