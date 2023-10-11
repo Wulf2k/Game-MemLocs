@@ -3,9 +3,6 @@ $bigendian = $false
 $global:txtptr = [IntPtr]::Zero
 
 
-#PsSuspend available from SysInternals - https://learn.microsoft.com/en-us/sysinternals/downloads/pssuspend
-#Save it somewhere, and update the path below
-$pssuspend = 'C:\utils\pssuspend.exe'
 
 [console]::CursorVisible = $false
 $Host.UI.RawUI.BackgroundColor = 'Black'
@@ -205,17 +202,15 @@ $MEM_COMMIT = 0x00001000
 
 #Pull RBX from a breakpoint at Dangan3Desktop.exe+886a55
 ############################################################################
-$processNameToSuspend = "Dangan3Desktop"
+$processName = "Dangan3Desktop"
 
 cls
-Write-Host "Waiting for process '$processNameToSuspend'."
+Write-Host "Waiting for process '$processName'."
 $cont = $true
 while ($cont) {
-	$process = Get-Process -Name $processNameToSuspend -ErrorAction SilentlyContinue
+	$process = Get-Process -Name $processName -ErrorAction SilentlyContinue
 	if ($process -ne $null) {
-		Start-Process -FilePath "$pssuspend" -ArgumentList "-nobanner $($process.ID)"
 		$cont = $false
-		Write-Host "Process '$processNameToSuspend' (PID: $($process.Id)) has been suspended."
 		""
 	} else {
 
@@ -341,10 +336,8 @@ if ($cmp -eq 0x7d801050)
 	
 	
 
-	#pause
-	Start-Process -FilePath "$pssuspend" -ArgumentList "-r -nobanner $($process.ID)"
 	""
-	"Process resumed."
+	"Process modified."
 	
 } else {
 	"Bytes don't match, wrong version?"
