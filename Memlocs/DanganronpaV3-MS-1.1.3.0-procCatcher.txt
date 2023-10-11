@@ -1,9 +1,9 @@
-$savepath = 'D:\temp\gow\GoW1-Saves\'
+$procname = 'Dangan3Desktop'
+$bigendian = $false
 
-
-$procname = "rpcs3"
-$bigendian = $true
-
+#PsSuspend available from SysInternals - https://learn.microsoft.com/en-us/sysinternals/downloads/pssuspend
+#Save it somewhere, and update the path below
+$pssuspend = 'C:\utils\pssuspend.exe'
 
 [console]::CursorVisible = $false
 $Host.UI.RawUI.BackgroundColor = 'Black'
@@ -118,21 +118,10 @@ Function WBytes
 		$addr,
 		$wb
 	)
-	$rpm::WriteProcessMemory($proc,$addr,$wb,$wb.length,$null);
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+	
+	$rpm::WriteProcessMemory($proc,$addr,$buff,$buff.length,$null);
 }
-Function WUInt32
-{
-	Param (
-		$addr,
-		$val
-	)
-	$wb = [bitconverter]::GetBytes($val)
-	if ($bigendian) {
-		[Array]::Reverse($wb)
-	}
-	$rpm::WriteProcessMemory($proc,$addr,$wb,$wb.length,$null)|Out-Null
-}
-
 
 $signature = @"
 [DllImport("kernel32.dll")] public static extern IntPtr OpenProcess(
@@ -141,51 +130,56 @@ $signature = @"
     IntPtr hp,IntPtr Base,[Out]Byte[] buff,int Size,[Out]int bread);
 [DllImport("kernel32.dll")] public static extern bool WriteProcessMemory(
     IntPtr hp,IntPtr Base,[In]Byte[] buff,int Size,[Out]int bwrite);
-[DllImport("kernel32.dll")] public static extern bool VirtualProtectEx(
-	IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint flNewProtect, out uint lpflOldProtect);
 "@
-$PAGE_EXECUTE_READWRITE = 0x40
-$oldProtection = 0
 
 $rpm = Add-Type -MemberDefinition $signature -Name rpm -PassThru
 $access = 0x001F0FFF
+
+
+
+#Pull RBX from a breakpoint at Dangan3Desktop.exe+886a55
+############################################################################
+$processNameToSuspend = "Dangan3Desktop"
+
+cls
+Write-Host "Waiting for process '$processNameToSuspend'."
+$cont = $true
+while ($cont) {
+	$process = Get-Process -Name $processNameToSuspend -ErrorAction SilentlyContinue
+	if ($process -ne $null) {
+		Start-Process -FilePath "$pssuspend" -ArgumentList "-nobanner $($process.ID)"
+		$cont = $false
+		Write-Host "Process '$processNameToSuspend' (PID: $($process.Id)) has been suspended."
+		""
+	} else {
+
+	}
+}
 
 $ba = (get-Process $procname).MainModule.BaseAddress
 $procid = (get-Process $procname).ID
 $proc = $rpm::OpenProcess($access, $false, $procid)
 
+$cmp = RUInt32 ([Int64]$ba + [Int64]0x889c48)
+if ($cmp -eq 0x7d801050)
+{
+	"Version check successful."
+	"Press Enter after setting a breakpoint at Dangan3Desktop.exe+886a55"
+	pause
+	Start-Process -FilePath "$pssuspend" -ArgumentList "-r -nobanner $($process.ID)"
+	""
+	"Process resumed."
+	"Run DumpLoading script from other file."
+	"When the breakpoint is hit, copy the value of RBX from CE and enter the following command with it included at the end:"
+	"DumpLoading 0x"
+	"(eg, DumpLoading 0x12345678)"
+	""
+	"If RBX changes, run DumpLoading in a new powershell window against that new RBX as well."
 
-
-
-
-
-
-$prevtime = 0
-$currtime = 0
-[String]$path = ""
-[String]$wad1 = ""
-[String]$wad2 = ""
-
-do {
-	$currtime = [Math]::Floor([decimal](RSingle 0x30055f54a))
-	if ($prevtime -lt $currtime) {
-		$prevtime = $currtime
-		
-		$wad1 = RAsciiStr 0x30055f4e8
-		$wad2 = RAsciiStr 0x30055f4f3
-		
-		$path = $prevtime
-		$path = $path.PadLeft(6, '0')
-		$path = $savepath + $path + "_" + $wad1 + "_" + $wad2
-		
-		$ba = RBytes 0x30055f4e0 0x14000
-		[io.file]::WriteAllBytes($path, $ba)
-	}
-
-	cls
-	"Checkpoint playtime (s): " + $currtime
-	"WAD 1:                   " + $wad1
-	"WAD 2:                   " + $wad2
-	sleep 1
+} else {
+	"Bytes don't match, wrong version?"
+	"Aborting"
 }
-while ($true)
+
+
+############################################################################

@@ -1,0 +1,916 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>13</ID>
+      <Description>"00E79D30 --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>Dangan3Desktop.exe+0xe79d30</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>14</ID>
+          <Description>"0x0"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xe79d30]+0x0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>105</ID>
+          <Description>"0x78"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xe79d30]+0x78</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>17</ID>
+          <Description>"Gallery Type"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xe79d30]+0x7c</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>15</ID>
+          <Description>"MenuIdx"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xe79d30]+0x90</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>16</ID>
+          <Description>"MenuIdx Offset"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xe79d30]+0x94</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>108</ID>
+      <Description>"GameMode"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>Dangan3Desktop.exe+e7d3c0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>22</ID>
+      <Description>"00E7D4B0 --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>Dangan3Desktop.exe+0xe7d4b0</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>50</ID>
+          <Description>"0x0"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xe7d4b0]+0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>23</ID>
+          <Description>"0x8f8 --&gt;"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xe7d4b0]+0x8f8</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>24</ID>
+              <Description>"0x0"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x8f8]</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>42</ID>
+              <Description>"0x4"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>String</VariableType>
+              <Length>64</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x8f8]+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>83</ID>
+              <Description>"0x144"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>String</VariableType>
+              <Length>64</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x8f8]+144</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>84</ID>
+              <Description>"0x284"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>String</VariableType>
+              <Length>64</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x8f8]+284</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>86</ID>
+              <Description>"0x3c4"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>String</VariableType>
+              <Length>64</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x8f8]+3c4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>85</ID>
+              <Description>"0x504"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>String</VariableType>
+              <Length>64</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x8f8]+504</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>93</ID>
+              <Description>"0x644"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>2 Bytes</VariableType>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x8f8]+644</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>43</ID>
+              <Description>"0x6ac"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x8f8]+6ac</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>87</ID>
+              <Description>"0x6b8"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x8f8]+6b8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>60</ID>
+              <Description>"0x6cc"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x8f8]+6cc</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>45</ID>
+              <Description>"0x16a4"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>2 Bytes</VariableType>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x8f8]+16a4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>99</ID>
+              <Description>"0x1704"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>2 Bytes</VariableType>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x8f8]+1704</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>56</ID>
+              <Description>"0x1a14"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>String</VariableType>
+              <Length>32</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>[[[Dangan3Desktop.exe+0xe7d4b0]+0x8f8]+1a14]</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>89</ID>
+              <Description>"0x5e2c"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>2 Bytes</VariableType>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x8f8]+65e2c</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>31</ID>
+          <Description>"0x958 --&gt;"</Description>
+          <Options moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xe7d4b0]+0x958</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>32</ID>
+              <Description>"0x0"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x958]</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>52</ID>
+              <Description>"0x8"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>2 Bytes</VariableType>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x958]+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>33</ID>
+              <Description>"0x10"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>String</VariableType>
+              <Length>32</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>[[[Dangan3Desktop.exe+0xe7d4b0]+0x958]+0x10]</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>34</ID>
+              <Description>"0x18"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>String</VariableType>
+              <Length>32</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>[[[Dangan3Desktop.exe+0xe7d4b0]+0x958]+0x18]</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>35</ID>
+              <Description>"0x20"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>String</VariableType>
+              <Length>32</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>[[[Dangan3Desktop.exe+0xe7d4b0]+0x958]+0x20]</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>36</ID>
+              <Description>"0x28"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>String</VariableType>
+              <Length>32</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>[[[Dangan3Desktop.exe+0xe7d4b0]+0x958]+0x28]</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>37</ID>
+              <Description>"0x30"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>String</VariableType>
+              <Length>32</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>[[[Dangan3Desktop.exe+0xe7d4b0]+0x958]+0x30]</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>38</ID>
+              <Description>"0x38"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>String</VariableType>
+              <Length>32</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>[[[Dangan3Desktop.exe+0xe7d4b0]+0x958]+0x38]</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>53</ID>
+              <Description>"0x70"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>2 Bytes</VariableType>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x958]+0x70</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>54</ID>
+              <Description>"0x88"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>2 Bytes</VariableType>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x958]+0x88</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>57</ID>
+              <Description>"0x53c"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>2 Bytes</VariableType>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x958]+53c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>55</ID>
+              <Description>"0x2df0"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>2 Bytes</VariableType>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x958]+0x2df0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>39</ID>
+              <Description>"0x2E00"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>String</VariableType>
+              <Length>256</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x958]+0x2e00</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>41</ID>
+              <Description>"0x2F00"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>String</VariableType>
+              <Length>96</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x958]+0x2f00</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>40</ID>
+              <Description>"0x2f44"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+0x958]+0x2f44</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>44</ID>
+          <Description>"0x66e0"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>[Dangan3Desktop.exe+0xe7d4b0]+66e0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>81</ID>
+          <Description>"0xaab8 --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xe7d4b0]+aab8</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>82</ID>
+              <Description>"0x0"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+aab8]</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>58</ID>
+          <Description>"0xaae8 --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xe7d4b0]+aae8</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>59</ID>
+              <Description>"0x0"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>[[Dangan3Desktop.exe+0xe7d4b0]+aae8]</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>47</ID>
+          <Description>"0xab08"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xe7d4b0]+ab08</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>62</ID>
+          <Description>"0xab38"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xe7d4b0]+ab38</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>64</ID>
+          <Description>"0xab3c"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xe7d4b0]+ab3c</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>63</ID>
+          <Description>"0xab40"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xe7d4b0]+ab40</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>48</ID>
+          <Description>"0xab68"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xe7d4b0]+ab68</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>49</ID>
+          <Description>"0xab74"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>48</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>[Dangan3Desktop.exe+0xe7d4b0]+ab74</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>51</ID>
+          <Description>"0xac74"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>48</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>[Dangan3Desktop.exe+0xe7d4b0]+ac74</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>61</ID>
+          <Description>"0xb6e4"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xe7d4b0]+b6e4</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"00F75350 --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>2 Bytes</VariableType>
+      <Address>[Dangan3Desktop.exe+0xF75350]</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>3</ID>
+          <Description>"BGM Vol"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xF75350]+0x80</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>2</ID>
+          <Description>"SFX Vol"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xF75350]+0x82</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"Voice Vol"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xF75350]+0x84</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>6</ID>
+          <Description>"Reticle Speed"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xF75350]+0x86</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>7</ID>
+          <Description>"Movement Bob"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xF75350]+0x88</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"ShooterControls"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xF75350]+0x8a</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>9</ID>
+          <Description>"LookInvert"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xF75350]+0x8c</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>8</ID>
+          <Description>"TextDisplaySpeed"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xF75350]+0x8e</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10</ID>
+          <Description>"MapDisplayTurn"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xF75350]+0x90</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"Level"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xF75350]+0x242c</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>12</ID>
+          <Description>"BGM Available --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xF75350]+0x2368 + 0 * 4</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>65</ID>
+              <Description>"DANGANRONPA V3 (1)"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>1</BitLength>
+              <ShowAsBinary>0</ShowAsBinary>
+              <Address>[Dangan3Desktop.exe+0xF75350]+0x2368 + 0 * 4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>66</ID>
+              <Description>"DANGANRONPA V3 (2)"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>1</BitStart>
+              <BitLength>1</BitLength>
+              <ShowAsBinary>0</ShowAsBinary>
+              <Address>[Dangan3Desktop.exe+0xF75350]+0x2368 + 0 * 4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>71</ID>
+              <Description>"V3 Gallery Music"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>2</BitStart>
+              <BitLength>1</BitLength>
+              <ShowAsBinary>0</ShowAsBinary>
+              <Address>[Dangan3Desktop.exe+0xF75350]+0x2368 + 0 * 4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>70</ID>
+              <Description>"DANGANVEGAS"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>3</BitStart>
+              <BitLength>1</BitLength>
+              <ShowAsBinary>0</ShowAsBinary>
+              <Address>[Dangan3Desktop.exe+0xF75350]+0x2368 + 0 * 4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>69</ID>
+              <Description>"Beautiful Lie"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>4</BitStart>
+              <BitLength>1</BitLength>
+              <ShowAsBinary>0</ShowAsBinary>
+              <Address>[Dangan3Desktop.exe+0xF75350]+0x2368 + 0 * 4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>68</ID>
+              <Description>"Darkness Time"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>5</BitStart>
+              <BitLength>1</BitLength>
+              <ShowAsBinary>0</ShowAsBinary>
+              <Address>[Dangan3Desktop.exe+0xF75350]+0x2368 + 0 * 4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>67</ID>
+              <Description>"Spirit, Praise, and Beauty"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>6</BitStart>
+              <BitLength>1</BitLength>
+              <ShowAsBinary>0</ShowAsBinary>
+              <Address>[Dangan3Desktop.exe+0xF75350]+0x2368 + 0 * 4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72</ID>
+              <Description>"Beautiful Lie in the Virtual World"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>7</BitStart>
+              <BitLength>1</BitLength>
+              <ShowAsBinary>0</ShowAsBinary>
+              <Address>[Dangan3Desktop.exe+0xF75350]+0x2368 + 0 * 4</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>21</ID>
+          <Description>"BGM Available (2)"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xF75350]+0x2368 + 1 * 4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>20</ID>
+          <Description>"BGM Available (3)"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xF75350]+0x2368 + 2 * 4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>19</ID>
+          <Description>"BGM Purchased --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xF75350]+0x2388</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>73</ID>
+              <Description>"DANGANRONPA V3 (1)"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>0</BitStart>
+              <BitLength>1</BitLength>
+              <ShowAsBinary>0</ShowAsBinary>
+              <Address>[Dangan3Desktop.exe+0xF75350]+0x2388</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>74</ID>
+              <Description>"DANGANRONPA V3 (2)"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>1</BitStart>
+              <BitLength>1</BitLength>
+              <ShowAsBinary>0</ShowAsBinary>
+              <Address>[Dangan3Desktop.exe+0xF75350]+0x2388</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>75</ID>
+              <Description>"V3 Gallery Music"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>2</BitStart>
+              <BitLength>1</BitLength>
+              <ShowAsBinary>0</ShowAsBinary>
+              <Address>[Dangan3Desktop.exe+0xF75350]+0x2388</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>76</ID>
+              <Description>"DANGANVEGAS"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>3</BitStart>
+              <BitLength>1</BitLength>
+              <ShowAsBinary>0</ShowAsBinary>
+              <Address>[Dangan3Desktop.exe+0xF75350]+0x2388</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>77</ID>
+              <Description>"Beautiful Lie"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>4</BitStart>
+              <BitLength>1</BitLength>
+              <ShowAsBinary>0</ShowAsBinary>
+              <Address>[Dangan3Desktop.exe+0xF75350]+0x2388</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>78</ID>
+              <Description>"Darkness Time"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>5</BitStart>
+              <BitLength>1</BitLength>
+              <ShowAsBinary>0</ShowAsBinary>
+              <Address>[Dangan3Desktop.exe+0xF75350]+0x2388</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>79</ID>
+              <Description>"Spirit, Praise, and Beauty"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>6</BitStart>
+              <BitLength>1</BitLength>
+              <ShowAsBinary>0</ShowAsBinary>
+              <Address>[Dangan3Desktop.exe+0xF75350]+0x2388</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>80</ID>
+              <Description>"Beautiful Lie in the Virtual World"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Binary</VariableType>
+              <BitStart>7</BitStart>
+              <BitLength>1</BitLength>
+              <ShowAsBinary>0</ShowAsBinary>
+              <Address>[Dangan3Desktop.exe+0xF75350]+0x2388</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>18</ID>
+          <Description>"XP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xF75350]+0x2430</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>11</ID>
+          <Description>"Monocoins"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xF75350]+0x2656</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>106</ID>
+          <Description>"Casino Coins"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+0xF75350]+0xaf00</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>90</ID>
+      <Description>"GameServer --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>8 Bytes</VariableType>
+      <Address>Dangan3Desktop.exe+C51A58</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>91</ID>
+          <Description>"0x0"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+C51A58]</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>92</ID>
+          <Description>"0x2b8"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>22</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>[Dangan3Desktop.exe+C51A58]+0x2b8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>94</ID>
+          <Description>"Language"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>[Dangan3Desktop.exe+C51A58]+0xe7c</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>107</ID>
+          <Description>"0xd10"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+C51A58]+0xd10</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>95</ID>
+          <Description>"0xe8c"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+C51A58]+0xe8c</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>96</ID>
+      <Description>"SpFileServer --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>Dangan3Desktop.exe+F791C8</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>97</ID>
+          <Description>"0x0"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+F791C8]</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>98</ID>
+          <Description>"0x8"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>16</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>[[Dangan3Desktop.exe+F791C8]+0x8]</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>100</ID>
+      <Description>"SpDebugMenuRoot --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>8 Bytes</VariableType>
+      <Address>Dangan3Desktop.exe+F79260</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>102</ID>
+          <Description>"0x0"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+F79260]</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>103</ID>
+      <Description>"SpDebugRemoteMenuRoot --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>Dangan3Desktop.exe+F76128</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>104</ID>
+          <Description>"0x0"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>[Dangan3Desktop.exe+F76128]</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

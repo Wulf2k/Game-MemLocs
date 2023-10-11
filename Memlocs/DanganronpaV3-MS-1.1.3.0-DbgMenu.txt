@@ -1,0 +1,358 @@
+$procname = 'Dangan3Desktop'
+$bigendian = $false
+$global:txtptr = [IntPtr]::Zero
+
+
+#PsSuspend available from SysInternals - https://learn.microsoft.com/en-us/sysinternals/downloads/pssuspend
+#Save it somewhere, and update the path below
+$pssuspend = 'C:\utils\pssuspend.exe'
+
+[console]::CursorVisible = $false
+$Host.UI.RawUI.BackgroundColor = 'Black'
+$Host.UI.RawUI.ForegroundColor = 'Green'
+
+Function RBytes
+{
+	Param (
+		$addr,
+		$sizetoread
+	)
+	[Byte[]] $buff = New-Object Byte[]($sizetoread)
+	$read = $rpm::ReadProcessMemory($proc,$addr,$buff,$buff.length,$null);
+	$buff
+}
+
+Function RAsciiStr
+{   
+	Param (
+        $addr
+    )
+	([System.Text.Encoding]::ASCII.GetString($(RBytes $addr 0x50))).Split([char]0)[0]
+}
+Function RInt16
+{   
+	Param (
+        $addr
+    )
+	$buff = RBytes $addr 2
+	if ($bigendian -eq $true) {
+		[Array]::Reverse($buff)
+	}
+	[bitconverter]::ToInt16($buff,0)
+}
+Function RInt32
+{   
+	Param (
+        $addr
+    )
+	$buff = RBytes $addr 4
+	if ($bigendian -eq $true) {
+		[Array]::Reverse($buff)
+	}
+	[bitconverter]::ToInt32($buff,0)
+}
+Function RInt64
+{   
+	Param (
+        $addr
+    )
+	$buff = RBytes $addr 8
+	if ($bigendian -eq $true) {
+		[Array]::Reverse($buff)
+	}
+	[bitconverter]::ToInt64($buff,0)
+}
+Function RUInt8
+{   
+	Param (
+        $addr
+    )
+	RBytes $addr 1
+}
+Function RUInt16
+{   
+	Param (
+        $addr
+    )
+	$buff = RBytes $addr 2
+	if ($bigendian -eq $true) {
+		[Array]::Reverse($buff)
+	}
+	[bitconverter]::ToUInt16($buff,0)
+}
+Function RUInt32
+{   
+	Param (
+        $addr
+    )
+	$buff = RBytes $addr 4
+	if ($bigendian -eq $true) {
+		[Array]::Reverse($buff)
+	}
+	[bitconverter]::ToUInt32($buff,0)
+}
+Function RUInt64
+{   
+	Param (
+        $addr
+    )
+	$buff = RBytes $addr 8
+	if ($bigendian -eq $true) {
+		[Array]::Reverse($buff)
+	}
+	[bitconverter]::ToUInt64($buff,0)
+}
+Function RSingle
+{   
+	Param (
+        $addr
+    )
+	$buff = RBytes $addr 4
+	if ($bigendian -eq $true) {
+		[Array]::Reverse($buff)
+	}
+	[bitconverter]::ToSingle($buff,0)
+}
+
+Function WBytes
+{
+	Param (
+		$addr,
+		$wb
+	)
+	$rpm::WriteProcessMemory($proc,$addr,$wb,$wb.length,$null) |Out-Null
+}
+Function WStrU
+{
+	Param (
+		$addr,
+		$str
+	)
+	$wb = [System.Text.Encoding]::Unicode.GetBytes($str)
+	if ($bigendian) {
+		for ($i = 0; $i -lt $str.Length; $i++)
+		{
+			$a = $wb[$i * 2]
+			$b = $wb[$i * 2 + 1]
+			$wb[$i * 2 + 1] = $a
+			$wb[$i * 2] = $b
+		}
+	}
+	
+	$rpm::WriteProcessMemory($proc,$addr,$wb,$wb.length,$null)|Out-Null
+}
+Function WUInt32
+{
+	Param (
+		$addr,
+		[UInt32]$val
+	)
+	$wb = [bitconverter]::GetBytes($val)
+	if ($bigendian) {
+		[Array]::Reverse($wb)
+	}
+	$rpm::WriteProcessMemory($proc,$addr,$wb,$wb.length,$null)|Out-Null
+}
+Function WUInt64
+{
+	Param (
+		$addr,
+		[UInt64]$val
+	)
+	$wb = [bitconverter]::GetBytes($val)
+	if ($bigendian) {
+		[Array]::Reverse($wb)
+	}
+	$rpm::WriteProcessMemory($proc,$addr,$wb,$wb.length,$null)|Out-Null
+}
+
+
+Function CreatepStrU
+{
+	Param (
+		$addr,
+		$txt
+	)
+	$txt = $txt + [char]$null
+	WStrU $global:txtptr $txt
+	WUInt64 $addr $global:txtptr.ToInt64()
+	$global:txtptr = [IntPtr]::Add($global:txtptr, $txt.length * 2)
+}
+
+
+
+
+
+$signature = @"
+[DllImport("kernel32.dll")] public static extern IntPtr OpenProcess(
+    uint h,bool b ,uint p);
+[DllImport("kernel32.dll")] public static extern bool ReadProcessMemory(
+    IntPtr hp,IntPtr Base,[Out]Byte[] buff,int Size,[Out]int bread);
+[DllImport("kernel32.dll")] public static extern bool WriteProcessMemory(
+    IntPtr hp,IntPtr Base,[In]Byte[] buff,int Size,[Out]int bwrite);
+[DllImport("kernel32.dll")] public static extern bool VirtualProtectEx(
+	IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint flNewProtect, out uint lpflOldProtect);
+[DllImport("kernel32.dll")] public static extern IntPtr VirtualAllocEx(
+    IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);
+
+"@
+
+$rpm = Add-Type -MemberDefinition $signature -Name rpm -PassThru
+$access = 0x001F0FFF
+$PAGE_EXECUTE_READWRITE = 0x40
+$oldProtection = 0
+$MEM_COMMIT = 0x00001000
+
+#Pull RBX from a breakpoint at Dangan3Desktop.exe+886a55
+############################################################################
+$processNameToSuspend = "Dangan3Desktop"
+
+cls
+Write-Host "Waiting for process '$processNameToSuspend'."
+$cont = $true
+while ($cont) {
+	$process = Get-Process -Name $processNameToSuspend -ErrorAction SilentlyContinue
+	if ($process -ne $null) {
+		Start-Process -FilePath "$pssuspend" -ArgumentList "-nobanner $($process.ID)"
+		$cont = $false
+		Write-Host "Process '$processNameToSuspend' (PID: $($process.Id)) has been suspended."
+		""
+	} else {
+
+	}
+}
+
+$ba = (get-Process $procname).MainModule.BaseAddress
+$procid = (get-Process $procname).ID
+$proc = $rpm::OpenProcess($access, $false, $procid)
+
+$cmp = RUInt32 ([Int64]$ba + [Int64]0x889c48)
+if ($cmp -eq 0x7d801050)
+{
+	"Version check successful."
+	$rpm::VirtualProtectEx($proc, ([IntPtr]::Add($ba, 0x942000)), 0x3e000, $PAGE_EXECUTE_READWRITE, [ref]$oldProtection)
+	$rpm::VirtualProtectEx($proc, ([IntPtr]::Add($ba, 0x980000)), 0x10000, $PAGE_EXECUTE_READWRITE, [ref]$oldProtection)
+	$global:txtptr = [IntPtr]::Zero
+	$global:txtptr = $rpm::VirtualAllocEx($proc, ([IntPtr]::Zero), 0x10000, $MEM_COMMIT, $PAGE_EXECUTE_READWRITE)
+
+	#Jump to DbgMenu
+	#WUInt32 ([IntPtr]::Add($ba, 0x4c7838)) 0x4c77b2
+	[byte[]] $b = 0x11
+	WBytes ([IntPtr]::Add($ba, 0x4c704b)) $b
+	
+	$b = 0xc7, 0x85, 0x10, 0x0d, 0x00, 0x00, 0xe7, 0x03, 0x00, 0x00, 0x90, 0x90, 0x90, 0x90
+	WBytes ([IntPtr]::Add($ba, 0x52343c)) $b
+	
+	
+	#Breakpoint Dangan3Desktop.exe+0x7e9530 to translate debug menu items
+	#rcx will have the text it's trying to display
+	
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a760)) "Debug Menu"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a778)) "Debug Load"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a790)) "Script Check"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a7a8)) "Minigame Check"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a7c0)) "Version Confirmation"
+	#CreatepStrU ([IntPtr]::Add($ba, 0x98a7e0)) "Brain Drive"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a7e0)) "Psyche Taxi"
+	#CreatepStrU ([IntPtr]::Add($ba, 0x98a7f8)) "Anagrams"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a7f8)) "Hangman's Gambit"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a810)) "Mind Mine"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a828)) "Escape Game"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a840)) "Theoretical Armament"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a858)) "Casino"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a870)) "Chapter 6 Safe"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a890)) "Title"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a8a8)) "Main Menu (All Unlocked)"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a8c0)) "Intro"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a8e0)) "Stage 1 (vs Akamatsu)"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a8f8)) "Stage 2 (vs Tojo)"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a910)) "Stage 3 (vs Shinguji)"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a928)) "Stage 4 (vs Momota)"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a940)) "Stage 5 (vs Chuncheon)"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a958)) "Stage 6 (vs Shirogane)"
+	
+	#Psyche Taxi Stage Names
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a970)) "Stage 000"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a988)) "Stage 001"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a9a0)) "Stage 002"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a9b8)) "Stage 003"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a9d0)) "Stage 004"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98a9e8)) "Stage 005"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98aa00)) "Stage 006"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98aa18)) "Stage 007"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98aa30)) "Stage 008"
+	
+	#Hangman's Gambit Stage Names
+	CreatepStrU ([IntPtr]::Add($ba, 0x98aa50)) "Stage 000"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98aa68)) "Stage 001"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98aa80)) "Stage 002"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98aa98)) "Stage 003"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98aab0)) "Stage 004"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98aac8)) "Stage 005"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98aae0)) "Stage 006"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98aaf8)) "Stage 007"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98ab10)) "Stage 008"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98ab28)) "Stage 009"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98ab40)) "Stage 010"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98ab58)) "Stage 011"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98ab70)) "Stage 012"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98ab88)) "Pubs"
+	
+	CreatepStrU ([IntPtr]::Add($ba, 0x98ac90)) "Cash Exchange"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98aca8)) "Prize Exchange"
+	
+	#CreatepStrU ([IntPtr]::Add($ba, 0x98acc0)) "Towa Run"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98acc0)) "Outlaw Run"
+	#CreatepStrU ([IntPtr]::Add($ba, 0x98acd8)) "Sake no Tukamidori"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98acd8)) "Salmon Fishing"
+	#CreatepStrU ([IntPtr]::Add($ba, 0x98acf0)) "Treasure Finds! Monolith"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98acf0)) "Treasure Hunter! Monolith"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98ad08)) "Slot Machine (reel00)"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98ad20)) "Slot Machine (reel01)"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98ad38)) "Slot Machine (reel02)"
+	CreatepStrU ([IntPtr]::Add($ba, 0x98ad50)) "Slot Machine (reel10 Ainori)"
+	
+	WStrU ([IntPtr]::Add($ba, 0x98a390)) ("Continue" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a3a0)) ("Begin" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a3b0)) ("Chapter Sel" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a3c8)) ("DevPlan" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a3d8)) ("RPG" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a3e8)) ("Salmon" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a3f8)) ("x.Novel" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a410)) ("Options" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a428)) ("EXTRA" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a460)) ("Start" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a480)) ("Investigate" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a498)) ("Trial" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a4b0)) ("Check Highest Grade" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a510)) ("BGM" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a520)) ("SE" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a5c8)) ("FPS" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a620)) ("x.Event Gallery" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a640)) ("Movie Gallery" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a660)) ("Art Gallery" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a688)) ("Sound Gallery" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a6a8)) ("MonoMachine" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a6c0)) ("Vending" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a6e0)) ("Shinmitsu" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a700)) ("SE Chk" + [char]0)
+	WStrU ([IntPtr]::Add($ba, 0x98a710)) ("Voi Chk" + [char]0)
+
+	
+	
+
+	#pause
+	Start-Process -FilePath "$pssuspend" -ArgumentList "-r -nobanner $($process.ID)"
+	""
+	"Process resumed."
+	
+} else {
+	"Bytes don't match, wrong version?"
+	"Aborting"
+}
+
+
+############################################################################
+
+
+

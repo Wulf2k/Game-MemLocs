@@ -1,8 +1,10 @@
-$savepath = 'D:\temp\gow\GoW1-Saves\'
+$procname = 'Dangan3Desktop'
+$bigendian = $false
 
 
-$procname = "rpcs3"
-$bigendian = $true
+#The path below is where the extracted files will be saved
+$savepath = 'C:\XboxGames\Danganronpa V3- Killing Harmony Anniversary Edition\Content\data\WIN\'
+
 
 
 [console]::CursorVisible = $false
@@ -118,21 +120,10 @@ Function WBytes
 		$addr,
 		$wb
 	)
-	$rpm::WriteProcessMemory($proc,$addr,$wb,$wb.length,$null);
+	[System.Buffer]::BlockCopy($wb, 0, $ba, $addr, $wb.Length)
+	
+	$rpm::WriteProcessMemory($proc,$addr,$buff,$buff.length,$null);
 }
-Function WUInt32
-{
-	Param (
-		$addr,
-		$val
-	)
-	$wb = [bitconverter]::GetBytes($val)
-	if ($bigendian) {
-		[Array]::Reverse($wb)
-	}
-	$rpm::WriteProcessMemory($proc,$addr,$wb,$wb.length,$null)|Out-Null
-}
-
 
 $signature = @"
 [DllImport("kernel32.dll")] public static extern IntPtr OpenProcess(
@@ -141,51 +132,59 @@ $signature = @"
     IntPtr hp,IntPtr Base,[Out]Byte[] buff,int Size,[Out]int bread);
 [DllImport("kernel32.dll")] public static extern bool WriteProcessMemory(
     IntPtr hp,IntPtr Base,[In]Byte[] buff,int Size,[Out]int bwrite);
-[DllImport("kernel32.dll")] public static extern bool VirtualProtectEx(
-	IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint flNewProtect, out uint lpflOldProtect);
 "@
-$PAGE_EXECUTE_READWRITE = 0x40
-$oldProtection = 0
 
 $rpm = Add-Type -MemberDefinition $signature -Name rpm -PassThru
 $access = 0x001F0FFF
 
-$ba = (get-Process $procname).MainModule.BaseAddress
-$procid = (get-Process $procname).ID
-$proc = $rpm::OpenProcess($access, $false, $procid)
 
+Add-Type -AssemblyName System.Windows.Forms
 
+#Can also bp at Dangan3Desktop.exe+886910, change loading name, then extract at bp below
+#Pull RBX from a breakpoint at Dangan3Desktop.exe+886a55
+Function DumpLoading
+{
+	Param (
+		$rbx
+	)
 
+	"Monitoring..."
+	
+	$ba = (get-Process $procname).MainModule.BaseAddress
+	$procid = (get-Process $procname).ID
+	$proc = $rpm::OpenProcess($access, $false, $procid)
 
+	$prevname = ""
+	while ($true) {
+		Sleep -Milliseconds 10
+		$filename = RAsciiStr (RInt64 ($rbx + 0x10))
+		if ($filename.Contains('/')) {
+			if ($filename -ne $prevname) {
+				$prevname = $filename
+				$size = RInt32 ($rbx + 0x58)
+				$loc = RInt64 ($rbx + 0x38)
+				if ($loc -gt 0) {
+					$loc = $loc + (RInt64 ($rbx + 0x40))
 
+					$ba = RBytes $loc $size
+					$filename = $filename.Replace('/', '\')
 
-
-$prevtime = 0
-$currtime = 0
-[String]$path = ""
-[String]$wad1 = ""
-[String]$wad2 = ""
-
-do {
-	$currtime = [Math]::Floor([decimal](RSingle 0x30055f54a))
-	if ($prevtime -lt $currtime) {
-		$prevtime = $currtime
-		
-		$wad1 = RAsciiStr 0x30055f4e8
-		$wad2 = RAsciiStr 0x30055f4f3
-		
-		$path = $prevtime
-		$path = $path.PadLeft(6, '0')
-		$path = $savepath + $path + "_" + $wad1 + "_" + $wad2
-		
-		$ba = RBytes 0x30055f4e0 0x14000
-		[io.file]::WriteAllBytes($path, $ba)
+					if (Test-Path -Path ($savepath + $filename) -PathType Leaf) {
+						Sleep -milliseconds 10
+					} else {
+						[System.IO.Directory]::CreateDirectory([System.IO.Path]::GetDirectoryName($savepath + $filename)) | Out-Null
+						[io.file]::WriteAllBytes($savepath + $filename, $ba)
+						$rbx.ToString("X") + " : Dumped $filename"
+						Sleep -milliseconds 10
+					}
+				}
+			}
+			#[System.Windows.Forms.SendKeys]::SendWait("{F9}")
+		}
 	}
-
-	cls
-	"Checkpoint playtime (s): " + $currtime
-	"WAD 1:                   " + $wad1
-	"WAD 2:                   " + $wad2
-	sleep 1
 }
-while ($true)
+
+
+#############
+cls
+"Usage:  DumpLoading 0x12345678 (exact number pulled from game's RBX at breakpoint)"
