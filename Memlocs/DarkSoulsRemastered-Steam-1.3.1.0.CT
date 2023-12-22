@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"___ --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"FileMan --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141c81198</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"FrpgSystem --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141b68e18</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"FrpgWindow --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141c6aee8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"GameDataMan --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141c8a530</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"GameMan --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141c74e08</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10</ID>
+      <Description>"HgMan --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141b68ec8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>11</ID>
+      <Description>"LockTgtMan --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141c7a138</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>13</ID>
+      <Description>"MapItemMan --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141c7a0c8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"RemoManStep --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141c71970</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"WorldChrMan --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141c77e50</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"WorldChrManDbg --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141c77e88</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>3</ID>
+          <Description>"PlayerNoDead"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Byte</VariableType>
+          <Address>0x141c77e59</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
