@@ -20,6 +20,15 @@
       <Address>0x141c81198</Address>
     </CheatEntry>
     <CheatEntry>
+      <ID>15</ID>
+      <Description>"FrpgMouseMan --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141c6aed8</Address>
+    </CheatEntry>
+    <CheatEntry>
       <ID>6</ID>
       <Description>"FrpgSystem --&gt;"</Description>
       <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
@@ -83,6 +92,60 @@
       <Address>0x141c7a0c8</Address>
     </CheatEntry>
     <CheatEntry>
+      <ID>14</ID>
+      <Description>"MenuMan --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141c88d98</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"MsbMan --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141c7db38</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>17</ID>
+      <Description>"MsgMan --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141c7e3e8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>18</ID>
+      <Description>"MsgTagMan --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141c7e3f0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>19</ID>
+      <Description>"PadMan --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141c6aea0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>20</ID>
+      <Description>"ParamMan --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141c7dd38</Address>
+    </CheatEntry>
+    <CheatEntry>
       <ID>5</ID>
       <Description>"RemoManStep --&gt;"</Description>
       <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
@@ -90,6 +153,24 @@
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>8 Bytes</VariableType>
       <Address>0x141c71970</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>21</ID>
+      <Description>"RenderTargetMan --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141c6d598</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>22</ID>
+      <Description>"TexMan --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141c7fa48</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>12</ID>
@@ -118,6 +199,23 @@
           <Address>0x141c77e59</Address>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>23</ID>
+      <Description>"----------"</Description>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>24</ID>
+      <Description>"Chrs Begin, End"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>0x141c823a0</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>

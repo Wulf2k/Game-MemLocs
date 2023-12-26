@@ -518,7 +518,7 @@ if ($size -eq 9602848) {
 #-------------------------------------------
 #-------------------------------------------
 	<#
-		Credit to 1rux for the code that fixed the debug draw calls
+		Credit to horkrux for the code that fixed the debug draw calls
 	#>
 	#bla 0x0021F628
 	WUInt32 0x0021E87C 0x4821F62B
