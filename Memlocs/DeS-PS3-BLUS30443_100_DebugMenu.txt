@@ -795,6 +795,7 @@ if ($size -eq 9602848) {
 	CreatepStrU 0x018d72f0 "not riding"
 	CreatepStrU 0x018d72f4 "Are you in the elevator %s"
 	CreatepStrU 0x018d7320 "Ignore Gravity : %d"
+	CreatepStrU 0x018d755c "Locally controlled NPC display %d"
 	CreatepStrU 0x018d755c "All Omission Mode %d"
 	CreatepStrU 0x018d756c "%d people who update reliably"
 	CreatepStrU 0x018d7570 "%d of people who omit more when not visible"
@@ -990,6 +991,8 @@ if ($size -eq 9602848) {
 	CreatepStrU 0x018f6bc8 "QWC - [Northern Limit]"
 	CreatepStrU 0x018f6bcc "QWC - StonePillar"
 	CreatepStrU 0x018fa97c "Type to add: %s"
+	
+	CreatepStrU 0x018fa9c8 "Set Item[BrakeIn][push enter]"
 	CreatepStrU 0x018faa08 "ID to add:【[%d]%d%d%d%d%d】"
 	CreatepStrU 0x018faa0c "ID to add:【%d[%d]%d%d%d%d】"
 	CreatepStrU 0x018faa10 "ID to add:【%d%d[%d]%d%d%d】"
