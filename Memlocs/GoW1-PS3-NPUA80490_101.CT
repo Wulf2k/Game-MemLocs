@@ -948,6 +948,31 @@ registerSymbol("checkpoint", cp)
       <VariableType>Byte</VariableType>
       <Address>checkpoint+0x41e</Address>
     </CheatEntry>
+    <CheatEntry>
+      <ID>134</ID>
+      <Description>"--------"</Description>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>135</ID>
+      <Description>"Folders - Root"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Bytes Big Endian</CustomType>
+      <Address>6e36e4</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>136</ID>
+          <Description>"00000000"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Custom</VariableType>
+          <CustomType>4 Bytes Big Endian</CustomType>
+          <Address>30414940</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols>
     <SymbolEntry>

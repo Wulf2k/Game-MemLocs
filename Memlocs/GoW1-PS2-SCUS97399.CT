@@ -298,6 +298,13 @@ SEWR02:wad
           <Address>0029CC9C</Address>
         </CheatEntry>
         <CheatEntry>
+          <ID>647</ID>
+          <Description>"RestartInEasyMode"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>29e5bc</Address>
+        </CheatEntry>
+        <CheatEntry>
           <ID>346</ID>
           <Description>"Vibration"</Description>
           <VariableType>2 Bytes</VariableType>
@@ -1083,6 +1090,346 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
         </CheatEntry>
         <CheatEntry>
           <ID>458</ID>
+          <Description>"------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>615</ID>
+          <Description>"#5 currHP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*5+178</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>616</ID>
+          <Description>"#5 maxHP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*5+17c</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>617</ID>
+          <Description>"#5 currPetr"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*5+288</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>618</ID>
+          <Description>"#5 name"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>10</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>0</Offset>
+            <Offset>8</Offset>
+            <Offset>360*5 + 320</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>619</ID>
+          <Description>"#5 mass"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>84</Offset>
+            <Offset>8</Offset>
+            <Offset>360*5+ 320</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>620</ID>
+          <Description>"------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>621</ID>
+          <Description>"#6 currHP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*6+178</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>622</ID>
+          <Description>"#6 maxHP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*6+17c</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>623</ID>
+          <Description>"#6 currPetr"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*6+288</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>624</ID>
+          <Description>"#6 name"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>10</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>0</Offset>
+            <Offset>8</Offset>
+            <Offset>360*6 + 320</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>625</ID>
+          <Description>"#6 mass"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>84</Offset>
+            <Offset>8</Offset>
+            <Offset>360*6 + 320</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>626</ID>
+          <Description>"------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>627</ID>
+          <Description>"#7 currHP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*7+178</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>628</ID>
+          <Description>"#7 maxHP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*7+17c</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>629</ID>
+          <Description>"#7 currPetr"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*7+288</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>630</ID>
+          <Description>"#7 name"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>10</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>0</Offset>
+            <Offset>8</Offset>
+            <Offset>360*7 + 320</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>631</ID>
+          <Description>"#7 mass"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>84</Offset>
+            <Offset>8</Offset>
+            <Offset>360*7 + 320</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>632</ID>
+          <Description>"------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>633</ID>
+          <Description>"#8 currHP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*8+178</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>634</ID>
+          <Description>"#8 maxHP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*8+17c</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>635</ID>
+          <Description>"#8 currPetr"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*8+288</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>636</ID>
+          <Description>"#8 name"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>10</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>0</Offset>
+            <Offset>8</Offset>
+            <Offset>360*8 + 320</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>637</ID>
+          <Description>"#8 mass"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>84</Offset>
+            <Offset>8</Offset>
+            <Offset>360*8 + 320</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>638</ID>
+          <Description>"------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>639</ID>
+          <Description>"#9 currHP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*9+178</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>640</ID>
+          <Description>"#9 maxHP"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*9+17c</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>641</ID>
+          <Description>"#9 currPetr"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>360*9+288</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>642</ID>
+          <Description>"#9 name"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>10</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>0</Offset>
+            <Offset>8</Offset>
+            <Offset>360*9 + 320</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>643</ID>
+          <Description>"#9 mass"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>84</Offset>
+            <Offset>8</Offset>
+            <Offset>360*9 + 320</Offset>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>644</ID>
           <Description>"------------"</Description>
           <GroupHeader>1</GroupHeader>
         </CheatEntry>
@@ -3642,6 +3989,21 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
           <Address>0336F53</Address>
         </CheatEntry>
         <CheatEntry>
+          <ID>645</ID>
+          <Description>"numMPEGsSeen"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>2 Bytes</VariableType>
+          <Address>00336eb8 + 0x28a</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>646</ID>
+          <Description>"firstMPEGchecksum"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>00336eb8 + 0x28e</Address>
+        </CheatEntry>
+        <CheatEntry>
           <ID>480</ID>
           <Description>"WorldIdle"</Description>
           <ShowAsSigned>0</ShowAsSigned>
@@ -4485,6 +4847,13 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
         </CheatEntry>
         <CheatEntry>
           <ID>607</ID>
+          <Description>"DeathsBeforeEasyOffer"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>3028e0 + 0x40</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>648</ID>
           <Description>"WiggleMeterDrain"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
