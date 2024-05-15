@@ -1404,8 +1404,7 @@ typedef struct {
 				name = path;
 				break;
 		}
-	} ENTRY <comment=hashConv(hash)>;
-
+	} ENTRY <comment=hashConv ( hash )>;
 
 
 LittleEndian();
