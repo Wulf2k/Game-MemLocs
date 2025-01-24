@@ -1743,6 +1743,95 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
               </Offsets>
             </CheatEntry>
             <CheatEntry>
+              <ID>682</ID>
+              <Description>"0x320 --&gt;"</Description>
+              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>320</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>683</ID>
+                  <Description>"00000000"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>29cd58</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>320</Offset>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>684</ID>
+                  <Description>"0x8 --&gt;"</Description>
+                  <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>29cd58</Address>
+                  <Offsets>
+                    <Offset>8</Offset>
+                    <Offset>320</Offset>
+                    <Offset>0</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>685</ID>
+                      <Description>"00000000"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>String</VariableType>
+                      <Length>10</Length>
+                      <Unicode>0</Unicode>
+                      <CodePage>0</CodePage>
+                      <ZeroTerminate>1</ZeroTerminate>
+                      <Address>29cd58</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>8</Offset>
+                        <Offset>320</Offset>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>738</ID>
+              <Description>"tMoveSystem --&gt;"</Description>
+              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>324</Offset>
+                <Offset>0</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>739</ID>
+                  <Description>"00000000"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>29cd58</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>324</Offset>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
               <ID>608</ID>
               <Description>"Statue -&gt;"</Description>
               <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
@@ -1774,6 +1863,32 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
         </CheatEntry>
         <CheatEntry>
           <ID>610</ID>
+          <Description>"goPlayerControls --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>29cd58</Address>
+          <Offsets>
+            <Offset>8</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>737</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>29cd58</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>736</ID>
           <Description>"WiggleCounter"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
@@ -1819,6 +1934,13 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
           <Address>00302CC0 + 0x48</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>650</ID>
+          <Description>"Playtime"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>00302CC0 + 0x4c</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>504</ID>
@@ -1964,6 +2086,67 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
+      <ID>396</ID>
+      <Description>"GameState -&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>127</ID>
+          <Description>"GameState::curState"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0029E560</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>143</ID>
+          <Description>"GameState::discRemoved"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0029E564</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>426</ID>
+          <Description>"GameState::discWrong"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0029E568</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>425</ID>
+          <Description>"GameState::padRemoved"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0029E56C</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>407</ID>
+          <Description>"GameState::padWrong"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0029E570</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>138</ID>
+          <Description>"GameState::pauseRequested"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0029E590</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>402</ID>
+          <Description>"GameState::waitFrames"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>29e5a0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>395</ID>
+          <Description>"GameState::fadeTime"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>0029E5b8</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
       <ID>34</ID>
       <Description>"flashInterface -&gt;"</Description>
       <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
@@ -2071,6 +2254,27 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
           <Address>29cb94</Address>
           <Offsets>
             <Offset>3c</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>679</ID>
+          <Description>"Commend_Value"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>29cb94</Address>
+          <Offsets>
+            <Offset>40</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>680</ID>
+          <Description>"TestString_Value"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>29cb94</Address>
+          <Offsets>
+            <Offset>44</Offset>
           </Offsets>
         </CheatEntry>
         <CheatEntry>
@@ -3730,7 +3934,416 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
           </Offsets>
         </CheatEntry>
         <CheatEntry>
+          <ID>681</ID>
+          <Description>"StringPtr"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>10</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>29cb94</Address>
+          <Offsets>
+            <Offset>0</Offset>
+            <Offset>2bc</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
           <ID>612</ID>
+          <Description>"0x1510"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>String</VariableType>
+          <Length>10</Length>
+          <Unicode>0</Unicode>
+          <CodePage>0</CodePage>
+          <ZeroTerminate>1</ZeroTerminate>
+          <Address>29cb94</Address>
+          <Offsets>
+            <Offset>0</Offset>
+            <Offset>1510</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>649</ID>
+          <Description>"renFlashClient_1558 --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>29cb94</Address>
+          <Offsets>
+            <Offset>1558</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>652</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>29cb94</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>1558</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>653</ID>
+              <Description>"F_MovieInstance --&gt;"</Description>
+              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>29cb94</Address>
+              <Offsets>
+                <Offset>e0</Offset>
+                <Offset>1558</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>654</ID>
+                  <Description>"00000000"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>29cb94</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>e0</Offset>
+                    <Offset>1558</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>665</ID>
+                  <Description>"0x0c8"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>29cb94</Address>
+                  <Offsets>
+                    <Offset>c8</Offset>
+                    <Offset>e0</Offset>
+                    <Offset>1558</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>669</ID>
+                  <Description>"FLP_cd0 --&gt;"</Description>
+                  <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>29cb94</Address>
+                  <Offsets>
+                    <Offset>cd0</Offset>
+                    <Offset>e0</Offset>
+                    <Offset>1558</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>670</ID>
+                      <Description>"00000000"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>1</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>29cb94</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>cd0</Offset>
+                        <Offset>e0</Offset>
+                        <Offset>1558</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>667</ID>
+                  <Description>"F_SpriteInstance__cd4 --&gt;"</Description>
+                  <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>29cb94</Address>
+                  <Offsets>
+                    <Offset>0xcd4</Offset>
+                    <Offset>e0</Offset>
+                    <Offset>1558</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>668</ID>
+                      <Description>"00000000"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>1</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>29cb94</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>0xcd4</Offset>
+                        <Offset>e0</Offset>
+                        <Offset>1558</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>663</ID>
+                  <Description>"0xcd8 --&gt;"</Description>
+                  <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>29cb94</Address>
+                  <Offsets>
+                    <Offset>cd8</Offset>
+                    <Offset>e0</Offset>
+                    <Offset>1558</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>664</ID>
+                      <Description>"00000000"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>1</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>29cb94</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>cd8</Offset>
+                        <Offset>e0</Offset>
+                        <Offset>1558</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>666</ID>
+                  <Description>"0xcdc --&gt;"</Description>
+                  <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>29cb94</Address>
+                  <Offsets>
+                    <Offset>0xcdc</Offset>
+                    <Offset>e0</Offset>
+                    <Offset>1558</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>672</ID>
+                      <Description>"00000000"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>1</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>29cb94</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>0xcdc</Offset>
+                        <Offset>e0</Offset>
+                        <Offset>1558</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>655</ID>
+                  <Description>"0xce4 --&gt;"</Description>
+                  <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>29cb94</Address>
+                  <Offsets>
+                    <Offset>ce4</Offset>
+                    <Offset>e0</Offset>
+                    <Offset>1558</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>656</ID>
+                      <Description>"00000000"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>1</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>29cb94</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>ce4</Offset>
+                        <Offset>e0</Offset>
+                        <Offset>1558</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>657</ID>
+                      <Description>"0x18 --&gt;"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>1</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>29cb94</Address>
+                      <Offsets>
+                        <Offset>18</Offset>
+                        <Offset>ce4</Offset>
+                        <Offset>e0</Offset>
+                        <Offset>1558</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>658</ID>
+                          <Description>"00000000"</Description>
+                          <ShowAsHex>1</ShowAsHex>
+                          <ShowAsSigned>1</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>29cb94</Address>
+                          <Offsets>
+                            <Offset>0</Offset>
+                            <Offset>18</Offset>
+                            <Offset>ce4</Offset>
+                            <Offset>e0</Offset>
+                            <Offset>1558</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>659</ID>
+                          <Description>"0x1c --&gt;"</Description>
+                          <ShowAsHex>1</ShowAsHex>
+                          <ShowAsSigned>1</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>29cb94</Address>
+                          <Offsets>
+                            <Offset>1c</Offset>
+                            <Offset>18</Offset>
+                            <Offset>ce4</Offset>
+                            <Offset>e0</Offset>
+                            <Offset>1558</Offset>
+                          </Offsets>
+                          <CheatEntries>
+                            <CheatEntry>
+                              <ID>660</ID>
+                              <Description>"00000000"</Description>
+                              <ShowAsHex>1</ShowAsHex>
+                              <ShowAsSigned>1</ShowAsSigned>
+                              <VariableType>4 Bytes</VariableType>
+                              <Address>29cb94</Address>
+                              <Offsets>
+                                <Offset>0</Offset>
+                                <Offset>1c</Offset>
+                                <Offset>18</Offset>
+                                <Offset>ce4</Offset>
+                                <Offset>e0</Offset>
+                                <Offset>1558</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>661</ID>
+                              <Description>"Name"</Description>
+                              <ShowAsSigned>0</ShowAsSigned>
+                              <VariableType>String</VariableType>
+                              <Length>10</Length>
+                              <Unicode>0</Unicode>
+                              <CodePage>0</CodePage>
+                              <ZeroTerminate>1</ZeroTerminate>
+                              <Address>29cb94</Address>
+                              <Offsets>
+                                <Offset>c</Offset>
+                                <Offset>1c</Offset>
+                                <Offset>18</Offset>
+                                <Offset>ce4</Offset>
+                                <Offset>e0</Offset>
+                                <Offset>1558</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                          </CheatEntries>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>671</ID>
+                  <Description>"renView_ce8 --&gt;"</Description>
+                  <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>29cb94</Address>
+                  <Offsets>
+                    <Offset>0xce8</Offset>
+                    <Offset>e0</Offset>
+                    <Offset>1558</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>674</ID>
+                      <Description>"00000000"</Description>
+                      <ShowAsHex>1</ShowAsHex>
+                      <ShowAsSigned>1</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>29cb94</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>0xce8</Offset>
+                        <Offset>e0</Offset>
+                        <Offset>1558</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>673</ID>
+                  <Description>"0xd30"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>29cb94</Address>
+                  <Offsets>
+                    <Offset>0xd30</Offset>
+                    <Offset>e0</Offset>
+                    <Offset>1558</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>651</ID>
+          <Description>"0x1564 --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>29cb94</Address>
+          <Offsets>
+            <Offset>1564</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>678</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>1</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>29cb94</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>1564</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>677</ID>
+          <Description>"0x1568"</Description>
+          <ShowAsSigned>1</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>29cb94</Address>
+          <Offsets>
+            <Offset>1568</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>662</ID>
           <Description>"0x1574"</Description>
           <ShowAsSigned>1</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
@@ -3738,67 +4351,6 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
           <Offsets>
             <Offset>1574</Offset>
           </Offsets>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>396</ID>
-      <Description>"GameState -&gt;"</Description>
-      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-      <GroupHeader>1</GroupHeader>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>127</ID>
-          <Description>"GameState::curState"</Description>
-          <VariableType>4 Bytes</VariableType>
-          <Address>0029E560</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>143</ID>
-          <Description>"GameState::discRemoved"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>0029E564</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>426</ID>
-          <Description>"GameState::discWrong"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>0029E568</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>425</ID>
-          <Description>"GameState::padRemoved"</Description>
-          <VariableType>4 Bytes</VariableType>
-          <Address>0029E56C</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>407</ID>
-          <Description>"GameState::padWrong"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>0029E570</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>138</ID>
-          <Description>"GameState::pauseRequested"</Description>
-          <VariableType>4 Bytes</VariableType>
-          <Address>0029E590</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>402</ID>
-          <Description>"GameState::waitFrames"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>29e5a0</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>395</ID>
-          <Description>"GameState::fadeTime"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>0029E5b8</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
@@ -4072,13 +4624,511 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>421</ID>
-      <Description>"svrRoot -&gt;"</Description>
+      <ID>134</ID>
+      <Description>"svrRoot::m_pRegistered -&gt;"</Description>
       <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-      <GroupHeader>1</GroupHeader>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>0032E848</Address>
       <CheatEntries>
         <CheatEntry>
-          <ID>134</ID>
+          <ID>718</ID>
+          <Description>"svrRoot --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+0</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>719</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+0</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>720</ID>
+          <Description>"goServer --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+4</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>721</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+4</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>722</ID>
+          <Description>"renPrimMaster --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+8</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>723</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+8</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>724</ID>
+          <Description>"anmServer --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+c</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>725</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+c</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>697</ID>
+          <Description>"goScriptServer --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+10</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>701</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+10</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>702</ID>
+          <Description>"svrMaster --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+14</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>703</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+14</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>712</ID>
+          <Description>"renLightServer --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+18</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>713</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+18</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>726</ID>
+          <Description>"renTextureServer --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+1c</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>727</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+1c</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>704</ID>
+          <Description>"renMaterialServer --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+20</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>705</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+20</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>714</ID>
+          <Description>"cameraServer --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+24</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>715</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+24</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>706</ID>
+          <Description>"svrPrologue --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+28</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>707</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+28</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>708</ID>
+          <Description>"svrEpilogue --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+2c</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>709</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+2c</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>716</ID>
+          <Description>"renModelServer --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+3c</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>717</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+3c</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>710</ID>
+          <Description>"collisionServer --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+44</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>711</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+44</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>728</ID>
+          <Description>"renParticleServer --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+4c</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>729</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+4c</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>676</ID>
+          <Description>"evtServer --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+0x54</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>696</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+0x54</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>699</ID>
+              <Description>"PauseAllClients"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+0x54</Address>
+              <Offsets>
+                <Offset>4634</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>695</ID>
+          <Description>"bhvrServer --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>32e848+5c</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>698</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>32e848+5c</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>692</ID>
+          <Description>"soundServer --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+68</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>693</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+68</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>730</ID>
+          <Description>"wadServer --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+6c</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>731</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+6c</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>732</ID>
+          <Description>"renEEPrimServer --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+70</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>733</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+70</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>690</ID>
+          <Description>"renFlashServer --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+0x84</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>691</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+0x84</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>734</ID>
+          <Description>"renShadowServer --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>0032E848+0x9c</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>735</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>0032E848+0x9c</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>700</ID>
           <Description>"svrRoot::m_bPaused"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
@@ -4800,6 +5850,17 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
       <ID>358</ID>
       <Description>"------------"</Description>
       <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>675</ID>
+      <Description>"stdRBTreeNode__NIL"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>0029c4b4</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
     </CheatEntry>
     <CheatEntry>
       <ID>479</ID>
@@ -5534,6 +6595,49 @@ db 27 48 00 a5 ff 50 00 a6 ff 58 00 a7 ff 60 00 a8 ff 68 00 a9
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
       <Address>0032F1F0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>686</ID>
+      <Description>"tmpstr"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>100</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>002FBE28</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>687</ID>
+      <Description>"TestString_Value"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>29cb94</Address>
+      <Offsets>
+        <Offset>44</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>688</ID>
+      <Description>"TestString_Event"</Description>
+      <ShowAsSigned>1</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>29cb94</Address>
+      <Offsets>
+        <Offset>250</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>689</ID>
+      <Description>"No description"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>String</VariableType>
+      <Length>80</Length>
+      <Unicode>0</Unicode>
+      <CodePage>0</CodePage>
+      <ZeroTerminate>1</ZeroTerminate>
+      <Address>006EE6F0</Address>
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>

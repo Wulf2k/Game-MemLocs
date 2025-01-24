@@ -1,0 +1,192 @@
+//------------------------------------------------
+//--- 010 Editor v13.0 Binary Template
+//
+//      File: God of War, *.WAD
+//   Authors: 
+//   Version: 
+//   Purpose: 
+//  Category: 
+// File Mask: 
+//  ID Bytes: 
+//   History: 
+//------------------------------------------------
+
+typedef struct {
+   int16 chunkID <format=hex, hidden=true>;
+   int16 unk1 <hidden=true>;
+   int size <format=hex, hidden=true>;
+   char chunkName[0x18] <hidden=true>;
+   if (size > 0)
+   {
+      char data[size] <hidden=true>;
+   }
+   pad();
+   parse();
+} PUSHHW;
+
+typedef struct {
+   int16 chunkID <format=hex, hidden=true>;
+   int16 unk1 <hidden=true>;
+   int size <format=hex, hidden=true>;
+   char chunkName[0x18] <hidden=true>;
+   pad();   
+} POPHW;
+
+typedef struct {
+   int16 chunkID <format=hex, hidden=true>;
+   int16 unk1 <hidden=true>;
+   int size <format=hex, hidden=true>;
+   char chunkName[0x18] <hidden=true>;
+   if (size > 0)
+   {
+      char data[size] <hidden=true>;
+   }
+   pad();
+   parse();
+} PUSHCONTEXT;
+
+typedef struct {
+   int16 chunkID <format=hex, hidden=true>;
+   int16 unk1 <hidden=true>;
+   int size <format=hex, hidden=true>;
+   char chunkName[0x18] <hidden=true>;
+   pad();   
+} POPCONTEXT;
+
+typedef struct {
+	int16 chunkID <format=hex, hidden=true>;
+	int16 unk1 <hidden=true>;
+	int size <format=hex, hidden=true>;
+	char chunkName[0x18] <hidden=true>;
+	if (size > 0)
+	{
+		switch(ReadShort(FTell()))
+		{
+			case 0x21:
+				uint serverID <format=hex>;
+				
+				break;
+			default:
+				char data[size] <hidden=true>;
+				break;
+		}
+	}
+	pad();
+} CLIENTPARM;
+
+typedef struct {
+   int16 chunkID <format=hex, hidden=true>;
+   int16 unk1 <hidden=true>;
+   int size <format=hex, hidden=true>;
+   char chunkName[0x18] <hidden=true>;
+   pad();   
+   parse();
+} GROUPSTART;
+
+typedef struct {
+   int16 chunkID <format=hex, hidden=true>;
+   int16 unk1 <hidden=true>;
+   int size <format=hex, hidden=true>;
+   char chunkName[0x18] <hidden=true>;
+   pad();   
+} GROUPEND;
+
+typedef struct {
+   int16 chunkID <format=hex, hidden=true>;
+   int16 unk1 <hidden=true>;
+   int val <hidden=true>;
+   char chunkName[0x18] <hidden=true>;
+   pad();
+   Printf("%s = %d\n", chunkName, val);
+} DYNASTRING;
+
+typedef struct {
+   int16 chunkID <format=hex, hidden=true>;
+   int16 unk1 <hidden=true>;
+   int size <format=hex, hidden=true>;
+   char chunkName[0x18] <hidden=true>;
+   if (size > 0)
+   {
+      char data[size] <hidden=true>;
+   }
+   pad();
+} DATABLOCK;
+
+typedef struct {
+   int16 chunkID <format=hex, hidden=true>;
+   int16 unk1 <hidden=true>;
+   int size <format=hex, hidden=true>;
+   char chunkName[0x18] <hidden=true>;
+   if (size > 0)
+   {
+      char unk[size] <hidden=true>;
+   }
+   pad();
+} UNKCHUNK;
+
+
+void parse()
+{
+   local byte deeper = 1;
+   
+   while (deeper == 1)
+   {
+      if (FEof()) {return;}
+      switch(ReadShort(FTell()))
+      {
+        case 0x18:	//IFFProcessDynaString
+            DYNASTRING DynaString <open=false, read=Str("%s = %d", chunkName, val)>;
+            break;
+        case 0x1E:	//IFFProcessClientParm
+            CLIENTPARM ClientParm <open=true, read=chunkName>;
+            break;
+        case 0x28:	//IFFProcessGroupStart
+			GROUPSTART Group <open=true>;
+            break;
+        case 0x32:	//IFFProcessGroupEnd
+            GROUPEND GroupEnd <hidden=true>;
+            return;
+            break;
+		case 0x3c:	//IFFActivate
+			
+			break;
+        case 0x46:	//IFFPushContext
+        case 0x29a:	//IFFPushContext
+            PUSHCONTEXT PushContext <open=true, read=chunkName>;
+            break;
+        case 0x50:	//IFFPopContext
+        case 0x309:	//IFFPopContext
+            POPCONTEXT PopContext <hidden=true>;
+            break;
+        case 0x6f:	//IFFProcessDataBlockAlign16
+            DATABLOCK DataBlock <read=chunkName>;
+            break;
+        case 0x378:	//IFFPushHeapWrapper
+            PUSHHW PushHW <open=true, read=chunkName>;
+            break;
+        case 0x3E7:	//IFFPopHeapWrapper
+            POPHW PopHW <hidden=true>;
+            return;
+            break;
+        default:
+            UNKCHUNK unkChunk <open=true, read=chunkID>;
+            break;
+      }
+   }
+}
+
+void pad()
+{
+   local int pos = FTell();
+   local int pad = 0x10 - (pos % 0x10);
+   if (pad < 0x10)
+   {
+      char padding[pad] <hidden=true>;
+   }
+}
+
+
+LittleEndian();
+struct FILE {
+   parse();
+} file <open=true>;

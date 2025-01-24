@@ -1,0 +1,59 @@
+//------------------------------------------------
+//--- 010 Editor v13.0 Binary Template
+//
+//      File: God of War, *.FLP
+//   Authors: 
+//   Version: 
+//   Purpose: 
+//  Category: 
+// File Mask: 
+//  ID Bytes: 
+//   History: 
+//------------------------------------------------
+
+typedef struct {
+   uint id <format=hex>;
+   uint16 unk0x04 <format=hex>;
+   uint16 unk0x06 <format=hex>;
+   uint16 unk0x08 <format=hex>;
+   uint16 unk0x0a <format=hex>;
+   
+   uint GlobalHandlerCount <format=hex>;	//Size 0x4
+   uint GlobalHandlerPtr_0x10 <format=hex>;	//0x60
+   
+   uint MeshCount <format=hex>; 			//Size 0x4, Size 0x8
+   uint MeshPtr_0x18 <format=hex>;		//0x634
+   
+   uint FontCount <format=hex>;			//Size 0x780?
+   uint FontPtr_0x20 <format=hex>;		//0x8c4
+   
+   uint StaticLabelCount <format=hex>; 			//Size 0xA8?
+   uint StaticLabelPtr_0x28 <format=hex>;		//0x104c
+   
+   uint DynamicLabelCount <format=hex>;			
+   uint DynamicLabelPtr_0x30 <format=hex>;		//0x5a74
+   
+   uint Count6 <format=hex>; 
+   uint unkPtr_0x38 <format=hex>;		//0x5e94
+   
+   uint Count7 <format=hex>;
+   uint unkPtr_0x40 <format=hex>;		//0x98dc
+   uint unkPtr_0x44 <format=hex>;		//0x16470
+   
+   uint16 Count8 <format=hex>;
+   uint16 unk_0x4a <format=hex>;
+   uint unkPtr_0x4c <format=hex>;		//0x2296c
+   
+   uint16 unk0x50 <format=hex>;
+   uint16 unk0x52 <format=hex>;
+   uint unkPtr_0x54 <format=hex>;
+   uint16 StringsSize <format=hex>;
+   uint16 unk0x5a <format=hex>;
+   uint StringsPtr <format=hex>;
+} HDR;
+
+
+LittleEndian();
+struct FILE {
+   HDR header;
+} file <open=true>;

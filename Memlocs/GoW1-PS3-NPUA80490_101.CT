@@ -90,6 +90,23 @@
       <Address>0050E9B4</Address>
     </CheatEntry>
     <CheatEntry>
+      <ID>137</ID>
+      <Description>"numMpegsSeen"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>2 Bytes Big Endian</CustomType>
+      <Address>00547FF8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>138</ID>
+      <Description>"MpegsSeenChecksums"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Bytes Big Endian</CustomType>
+      <Address>00547FFC</Address>
+    </CheatEntry>
+    <CheatEntry>
       <ID>7</ID>
       <Description>"Trigger Save"</Description>
       <ShowAsSigned>0</ShowAsSigned>
@@ -830,14 +847,6 @@ registerSymbol("checkpoint", cp)
       <Address>54c86c</Address>
     </CheatEntry>
     <CheatEntry>
-      <ID>104</ID>
-      <Description>"CheatSuccess"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Custom</VariableType>
-      <CustomType>4 Bytes Big Endian</CustomType>
-      <Address>006E3588</Address>
-    </CheatEntry>
-    <CheatEntry>
       <ID>132</ID>
       <Description>"GameState__Pause"</Description>
       <ShowAsSigned>0</ShowAsSigned>
@@ -954,6 +963,14 @@ registerSymbol("checkpoint", cp)
       <GroupHeader>1</GroupHeader>
     </CheatEntry>
     <CheatEntry>
+      <ID>104</ID>
+      <Description>"CheatSuccess"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Custom</VariableType>
+      <CustomType>4 Bytes Big Endian</CustomType>
+      <Address>006E3588</Address>
+    </CheatEntry>
+    <CheatEntry>
       <ID>135</ID>
       <Description>"Folders - Root"</Description>
       <ShowAsHex>1</ShowAsHex>
@@ -984,16 +1001,16 @@ registerSymbol("checkpoint", cp)
       <Address>31D116A0</Address>
     </SymbolEntry>
     <SymbolEntry>
-      <Name>flashInterface</Name>
-      <Address>30A1EA08</Address>
-    </SymbolEntry>
-    <SymbolEntry>
       <Name>goPlayer</Name>
       <Address>31D0F264</Address>
     </SymbolEntry>
     <SymbolEntry>
       <Name>kratos</Name>
       <Address>30A46C70</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>flashInterface</Name>
+      <Address>30A1EA08</Address>
     </SymbolEntry>
   </UserdefinedSymbols>
 </CheatTable>

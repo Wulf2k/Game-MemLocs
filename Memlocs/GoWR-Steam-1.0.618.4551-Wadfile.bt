@@ -1,0 +1,457 @@
+//------------------------------------------------
+//--- 010 Editor v9.0.1 Binary Template
+//
+//      File: 
+//   Authors: 
+//   Version: 
+//   Purpose: 
+//  Category: 
+// File Mask: 
+//  ID Bytes: 
+//   History: 
+//------------------------------------------------
+
+LittleEndian();
+
+//------------------------------------------------
+
+
+typedef struct {
+	char magic[4];
+	uint version <format=hex>;
+	uint numEntries <format=hex>;
+	uint heapSize <format=hex>;
+	uint parmCount <format=hex>;
+	uint totalMemSizeByType[9] <format=hex>;
+	uchar numExternalFiles;
+	ushort numGameObjects <format=hex>;
+	uchar numGameObjects3rd;
+	uint miscData;	
+	
+	local uint memByType[9];
+	local uint memTot;
+} header <bgcolor=cRed>;
+
+typedef struct {
+	ushort m_ID  <format=hex>;
+	ushort m_Version <format=hex>;
+	uint m_Length <format=hex>;
+	byte m_Guid[0x10];
+	char m_Name[0x38];
+	uint m_DCVersionHash;
+	byte m_AlignPad[0xc];
+	
+	uint debugSize <format=hex>;
+	uint tempSize <format=hex>;
+	uint chunkAlign <format=hex>;
+	uchar clientID <format=hex>;
+	uchar serverID <format=hex>;
+	uchar pad6e <format=hex>;
+	uchar memType <format=hex>;
+	uchar groupStartType;
+	uchar groupEndCount;
+	uchar bits <format=hex>;
+	uchar pad[5] <format=hex>;
+	uint64 memPtr <format=hex>;
+	uint64 debugMemPtr <format=hex>;
+	uint64 tempMemPtr <format=hex>;
+	
+	hdr.memByType[memType] += m_Length;
+	hdr.memTot += m_Length;
+} IFFHeader;
+
+
+
+typedef struct {
+	IFFHeader iffhdr;
+	
+	local int tmp = hdr.memByType[iffhdr.memType];
+	local int place = FTell();
+	FSeek(0x40 + hdr.numEntries * 0x90 +  hdr.memTot - iffhdr.m_Length);
+	byte parmData[iffhdr.m_Length];
+	FSeek(place);
+	
+	
+	local int padding = hdr.memByType[iffhdr.memType] % iffhdr.chunkAlign;
+	padding = iffhdr.chunkAlign - padding;
+	padding = padding % iffhdr.chunkAlign;
+	hdr.memByType[iffhdr.memType] += padding;
+	
+	local int padding2 = hdr.memTot % iffhdr.chunkAlign;
+	padding2 = iffhdr.chunkAlign - padding2;
+	padding2 = padding2 % iffhdr.chunkAlign;
+	hdr.memTot += padding2;
+} CLIENTPARM;						//0x01
+typedef struct {
+	IFFHeader iffhdr;
+	
+	local int place = FTell();
+	FSeek(0x40 + hdr.numEntries * 0x90 +  hdr.memByType[iffhdr.memType] - iffhdr.m_Length);
+	byte parmData[iffhdr.m_Length];
+	FSeek(place);
+	
+	local int padding = hdr.memByType[iffhdr.memType] % iffhdr.chunkAlign;
+	padding = iffhdr.chunkAlign - padding;
+	padding = padding % iffhdr.chunkAlign;
+	hdr.memByType[iffhdr.memType] += padding;
+	
+	local int padding2 = hdr.memTot % iffhdr.chunkAlign;
+	padding2 = iffhdr.chunkAlign - padding2;
+	padding2 = padding2 % iffhdr.chunkAlign;
+	hdr.memTot += padding2;
+} DATABLOCK;						//0x07
+typedef struct {
+	IFFHeader iffhdr;
+	
+	local int place = FTell();
+	FSeek(0x40 + hdr.numEntries * 0x90 +  hdr.memByType[iffhdr.memType] - iffhdr.m_Length);
+	byte parmData[iffhdr.m_Length];
+	FSeek(place);
+	
+	local int padding = hdr.memByType[iffhdr.memType] % iffhdr.chunkAlign;
+	padding = iffhdr.chunkAlign - padding;
+	padding = padding % iffhdr.chunkAlign;
+	hdr.memByType[iffhdr.memType] += padding;
+	
+	local int padding2 = hdr.memTot % iffhdr.chunkAlign;
+	padding2 = iffhdr.chunkAlign - padding2;
+	padding2 = padding2 % iffhdr.chunkAlign;
+	hdr.memTot += padding2;
+} DATABLOCKALIGN16;					//0x09
+typedef struct {
+	IFFHeader iffhdr;
+	
+	local int place = FTell();
+	FSeek(0x40 + hdr.numEntries * 0x90 +  hdr.memByType[iffhdr.memType] - iffhdr.m_Length);
+	byte parmData[iffhdr.m_Length];
+	FSeek(place);
+	
+	local int padding = hdr.memByType[iffhdr.memType] % iffhdr.chunkAlign;
+	padding = iffhdr.chunkAlign - padding;
+	padding = padding % iffhdr.chunkAlign;
+	hdr.memByType[iffhdr.memType] += padding;
+	
+	local int padding2 = hdr.memTot % iffhdr.chunkAlign;
+	padding2 = iffhdr.chunkAlign - padding2;
+	padding2 = padding2 % iffhdr.chunkAlign;
+	hdr.memTot += padding2;
+} ACTIVATEWADCONTEXT;				//0x13
+typedef struct {
+	IFFHeader iffhdr;
+	
+	local int place = FTell();
+	FSeek(0x40 + hdr.numEntries * 0x90 +  hdr.memByType[iffhdr.memType] - iffhdr.m_Length);
+	byte parmData[iffhdr.m_Length];
+	FSeek(place);
+	
+	local int padding = hdr.memByType[iffhdr.memType] % iffhdr.chunkAlign;
+	padding = iffhdr.chunkAlign - padding;
+	padding = padding % iffhdr.chunkAlign;
+	hdr.memByType[iffhdr.memType] += padding;
+	
+	local int padding2 = hdr.memTot % iffhdr.chunkAlign;
+	padding2 = iffhdr.chunkAlign - padding2;
+	padding2 = padding2 % iffhdr.chunkAlign;
+	hdr.memTot += padding2;
+} DCDBGSTRINGTABLE;				//0x10
+typedef struct {
+	IFFHeader iffhdr;
+	
+	local int place = FTell();
+	FSeek(0x40 + hdr.numEntries * 0x90 +  hdr.memByType[iffhdr.memType] - iffhdr.m_Length);
+	byte parmData[iffhdr.m_Length];
+	FSeek(place);
+} PUSHHEAP;							//0x15
+typedef struct {
+	IFFHeader iffhdr;
+	
+	local int place = FTell();
+	FSeek(0x40 + hdr.numEntries * 0x90 +  hdr.memByType[iffhdr.memType] - iffhdr.m_Length);
+	byte parmData[iffhdr.m_Length];
+	FSeek(place);
+	
+	local int padding = hdr.memByType[iffhdr.memType] % iffhdr.chunkAlign;
+	padding = iffhdr.chunkAlign - padding;
+	padding = padding % iffhdr.chunkAlign;
+	hdr.memByType[iffhdr.memType] += padding;
+	
+	local int padding2 = hdr.memTot % iffhdr.chunkAlign;
+	padding2 = iffhdr.chunkAlign - padding2;
+	padding2 = padding2 % iffhdr.chunkAlign;
+	hdr.memTot += padding2;
+} POPHEAP;							//0x16
+typedef struct {
+	IFFHeader iffhdr;
+	
+	local int place = FTell();
+	FSeek(0x40 + hdr.numEntries * 0x90 +  hdr.memByType[iffhdr.memType] - iffhdr.m_Length);
+	byte parmData[iffhdr.m_Length];
+	FSeek(place);
+	
+	local int padding = hdr.memByType[iffhdr.memType] % iffhdr.chunkAlign;
+	padding = iffhdr.chunkAlign - padding;
+	padding = padding % iffhdr.chunkAlign;
+	hdr.memByType[iffhdr.memType] += padding;
+	
+	local int padding2 = hdr.memTot % iffhdr.chunkAlign;
+	padding2 = iffhdr.chunkAlign - padding2;
+	padding2 = padding2 % iffhdr.chunkAlign;
+	hdr.memTot += padding2;
+} PADDING;							//0x19
+typedef struct {
+	IFFHeader iffhdr;
+	
+	local int place = FTell();
+	FSeek(0x40 + hdr.numEntries * 0x90 +  hdr.memByType[iffhdr.memType] - iffhdr.m_Length);
+	byte parmData[iffhdr.m_Length];
+	FSeek(place);
+	
+	local int padding = hdr.memByType[iffhdr.memType] % iffhdr.chunkAlign;
+	padding = iffhdr.chunkAlign - padding;
+	padding = padding % iffhdr.chunkAlign;
+	hdr.memByType[iffhdr.memType] += padding;
+	
+	local int padding2 = hdr.memTot % iffhdr.chunkAlign;
+	padding2 = iffhdr.chunkAlign - padding2;
+	padding2 = padding2 % iffhdr.chunkAlign;
+	hdr.memTot += padding2;
+} GPUCHUNK;							//0x1d
+typedef struct {
+	IFFHeader iffhdr;
+	
+	local int place = FTell();
+	FSeek(0x40 + hdr.numEntries * 0x90 +  hdr.memByType[iffhdr.memType] - iffhdr.m_Length);
+	byte parmData[iffhdr.m_Length];
+	FSeek(place);
+	
+	local int padding = hdr.memByType[iffhdr.memType] % iffhdr.chunkAlign;
+	padding = iffhdr.chunkAlign - padding;
+	padding = padding % iffhdr.chunkAlign;
+	hdr.memByType[iffhdr.memType] += padding;
+	
+	local int padding2 = hdr.memTot % iffhdr.chunkAlign;
+	padding2 = iffhdr.chunkAlign - padding2;
+	padding2 = padding2 % iffhdr.chunkAlign;
+	hdr.memTot += padding2;
+} EXTERNALDCFILEBEGIN;				//0x1f
+typedef struct {
+	IFFHeader iffhdr;
+	
+	local int place = FTell();
+	FSeek(0x40 + hdr.numEntries * 0x90 +  hdr.memByType[iffhdr.memType] - iffhdr.m_Length);
+	byte parmData[iffhdr.m_Length];
+	FSeek(place);
+	
+	local int padding = hdr.memByType[iffhdr.memType] % iffhdr.chunkAlign;
+	padding = iffhdr.chunkAlign - padding;
+	padding = padding % iffhdr.chunkAlign;
+	hdr.memByType[iffhdr.memType] += padding;
+	
+	local int padding2 = hdr.memTot % iffhdr.chunkAlign;
+	padding2 = iffhdr.chunkAlign - padding2;
+	padding2 = padding2 % iffhdr.chunkAlign;
+	hdr.memTot += padding2;
+} EXTERNALSOUNDFILEBEGIN;			//0x20
+typedef struct {
+	IFFHeader iffhdr;
+	
+	local int place = FTell();
+	FSeek(0x40 + hdr.numEntries * 0x90 +  hdr.memByType[iffhdr.memType] - iffhdr.m_Length);
+	byte parmData[iffhdr.m_Length];
+	FSeek(place);
+	
+	local int padding = hdr.memByType[iffhdr.memType] % iffhdr.chunkAlign;
+	padding = iffhdr.chunkAlign - padding;
+	padding = padding % iffhdr.chunkAlign;
+	hdr.memByType[iffhdr.memType] += padding;
+	
+	local int padding2 = hdr.memTot % iffhdr.chunkAlign;
+	padding2 = iffhdr.chunkAlign - padding2;
+	padding2 = padding2 % iffhdr.chunkAlign;
+	hdr.memTot += padding2;
+} EXTERNALFILEEND;					//0x21
+typedef struct {
+	IFFHeader iffhdr;
+	
+	local int tmp = hdr.memByType[iffhdr.memType];
+	local int place = FTell();
+	//FSeek(0x40 + hdr.numEntries * 0x90 +  hdr.memByType[iffhdr.memType] - iffhdr.m_Length);
+	
+	local int memOffset = 0;
+	local int m = 0;
+	if( iffhdr.memType > 0 )
+	{
+		for( m = 0; m < iffhdr.memType; m++ )
+		{
+			memOffset += hdr.memByType[m];
+		}
+	}
+	FSeek(0x40 + hdr.numEntries * 0x90 + memOffset + iffhdr.memPtr);
+	byte parmData[iffhdr.m_Length];
+	FSeek(place);
+	
+	
+	local int padding = hdr.memByType[iffhdr.memType] % iffhdr.chunkAlign;
+	padding = iffhdr.chunkAlign - padding;
+	padding = padding % iffhdr.chunkAlign;
+	hdr.memByType[iffhdr.memType] += padding;
+	
+	local int padding2 = hdr.memTot % iffhdr.chunkAlign;
+	padding2 = iffhdr.chunkAlign - padding2;
+	padding2 = padding2 % iffhdr.chunkAlign;
+	hdr.memTot += padding2;
+} IFFLUAFILE <bgcolor=cBlue>;		//0x24
+typedef struct {
+	IFFHeader iffhdr;
+	
+	local int place = FTell();
+	FSeek(0x40 + hdr.numEntries * 0x90 +  hdr.memByType[iffhdr.memType] - iffhdr.m_Length);
+	byte parmData[iffhdr.m_Length];
+	FSeek(place);
+	
+	local int padding = hdr.memByType[iffhdr.memType] % iffhdr.chunkAlign;
+	padding = iffhdr.chunkAlign - padding;
+	padding = padding % iffhdr.chunkAlign;
+	hdr.memByType[iffhdr.memType] += padding;
+	
+	local int padding2 = hdr.memTot % iffhdr.chunkAlign;
+	padding2 = iffhdr.chunkAlign - padding2;
+	padding2 = padding2 % iffhdr.chunkAlign;
+	hdr.memTot += padding2;
+} IFFALIAS;							//0x2e
+typedef struct {
+	IFFHeader iffhdr;
+	
+	local int place = FTell();
+	FSeek(0x40 + hdr.numEntries * 0x90 +  hdr.memByType[iffhdr.memType] - iffhdr.m_Length);
+	byte parmData[iffhdr.m_Length];
+	FSeek(place);
+	
+	local int padding = hdr.memByType[iffhdr.memType] % iffhdr.chunkAlign;
+	padding = iffhdr.chunkAlign - padding;
+	padding = padding % iffhdr.chunkAlign;
+	hdr.memByType[iffhdr.memType] += padding;
+	
+	local int padding2 = hdr.memTot % iffhdr.chunkAlign;
+	padding2 = iffhdr.chunkAlign - padding2;
+	padding2 = padding2 % iffhdr.chunkAlign;
+	hdr.memTot += padding2;
+} IFFEXTERNALLOCSOUNDFILEBEGIN;		//0x36
+typedef struct {
+	IFFHeader iffhdr;
+	
+	local int place = FTell();
+	FSeek(0x40 + hdr.numEntries * 0x90 +  hdr.memByType[iffhdr.memType] - iffhdr.m_Length);
+	byte parmData[iffhdr.m_Length];
+	FSeek(place);
+	
+	local int padding = hdr.memByType[iffhdr.memType] % iffhdr.chunkAlign;
+	padding = iffhdr.chunkAlign - padding;
+	padding = padding % iffhdr.chunkAlign;
+	hdr.memByType[iffhdr.memType] += padding;
+	
+	local int padding2 = hdr.memTot % iffhdr.chunkAlign;
+	padding2 = iffhdr.chunkAlign - padding2;
+	padding2 = padding2 % iffhdr.chunkAlign;
+	hdr.memTot += padding2;
+} IFFWADRAMBUDGETS;					//0x38
+typedef struct {
+	IFFHeader iffhdr;
+	
+	local int place = FTell();
+	FSeek(0x40 + hdr.numEntries * 0x90 +  hdr.memByType[iffhdr.memType] - iffhdr.m_Length);
+	byte parmData[iffhdr.m_Length];
+	FSeek(place);
+	
+	local int padding = hdr.memByType[iffhdr.memType] % iffhdr.chunkAlign;
+	padding = iffhdr.chunkAlign - padding;
+	padding = padding % iffhdr.chunkAlign;
+	hdr.memByType[iffhdr.memType] += padding;
+	
+	local int padding2 = hdr.memTot % iffhdr.chunkAlign;
+	padding2 = iffhdr.chunkAlign - padding2;
+	padding2 = padding2 % iffhdr.chunkAlign;
+	hdr.memTot += padding2;
+} COMBINEDREFERENCEPARMS;			//0x3c
+
+
+string comm ( uchar &memType, uint &len, uint64 &memPtr, uint memByType )
+{
+	local string s;
+	SPrintf( s, "0x%x, 0x%x, 0x%x, 0x%x", memType, len, memPtr, memByType );
+	return s;
+}
+string comm2 ( int &mem, int len, uint chunkAlign, int padding )
+{
+	local string s;
+	SPrintf( s, "0x%x, 0x%x, 0x%x, 0x%x", mem, len, chunkAlign, padding );
+	return s;
+}
+
+
+header hdr;
+
+
+local int i = 0;
+
+//while (!FEof())
+for (i = 0; i < hdr.numEntries; i++)
+{
+	switch (ReadUShort())
+		{
+			case 0x01:
+				CLIENTPARM parm <read=iffhdr.m_Name,comment=comm ( iffhdr.memType, iffhdr.m_Length, iffhdr.memPtr, tmp )>;
+				//CLIENTPARM parm <read=iffhdr.m_Name,comment=comm2 ( tmp, iffhdr.m_Length, iffhdr.chunkAlign, padding )>;
+				break;
+			case 0x07:
+				DATABLOCK dataBlock <read=iffhdr.m_Name,comment=iffhdr.memType>;
+				break;
+			case 0x09:
+				DATABLOCKALIGN16 dataBlock16 <read=iffhdr.m_Name,comment=iffhdr.memType>;
+				break;
+			case 0x10:
+				DCDBGSTRINGTABLE DcDbgStringTable <read=iffhdr.m_Name,comment=iffhdr.memType>;
+				break;
+			case 0x13:
+				ACTIVATEWADCONTEXT pushWadContext <read=iffhdr.m_Name,comment=iffhdr.memType>;
+				break;
+			case 0x15:
+				PUSHHEAP push <read=iffhdr.m_Name,comment=iffhdr.memType>;
+				break;
+			case 0x16:
+				POPHEAP pop <read=iffhdr.m_Name,comment=iffhdr.memType>;
+				break;
+			case 0x19:
+				PADDING pad <read=iffhdr.m_Name,comment=iffhdr.memType>;
+				break;
+			case 0x1d:
+				GPUCHUNK gpuChunk <read=iffhdr.m_Name,comment=iffhdr.memType>;
+				break;
+			case 0x1f:
+				EXTERNALDCFILEBEGIN ExtDcBegin <read=iffhdr.m_Name,comment=iffhdr.memType>;
+				break;
+			case 0x20:
+				EXTERNALSOUNDFILEBEGIN ExtSoundBegin <read=iffhdr.m_Name,comment=iffhdr.memType>;
+				break;
+			case 0x21:
+				EXTERNALFILEEND ExtFileEnd <read=iffhdr.m_Name,comment=iffhdr.memType>;
+				break;
+			case 0x24:
+				IFFLUAFILE IffLuaFile <read=iffhdr.m_Name,comment=comm ( iffhdr.memType, iffhdr.m_Length, iffhdr.memPtr, tmp )>;
+				break;
+			case 0x2e:
+				IFFALIAS IffAlias <read=iffhdr.m_Name,comment=iffhdr.memType>;
+				break;
+			case 0x36:
+				IFFEXTERNALLOCSOUNDFILEBEGIN IffExtLocSndBegin <read=iffhdr.m_Name,comment=iffhdr.memType>;
+				break;
+			case 0x38:
+				IFFWADRAMBUDGETS IffWadRamBudgets <read=iffhdr.m_Name,comment=iffhdr.memType>;
+				break;
+			case 0x3c:
+				COMBINEDREFERENCEPARMS CombRefParms <read=iffhdr.m_Name,comment=iffhdr.memType>;
+				break;
+			default:
+				uint unk;
+		}
+}

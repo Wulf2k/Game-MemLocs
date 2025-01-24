@@ -3,14 +3,14 @@
   <CheatEntries>
     <CheatEntry>
       <ID>8</ID>
-      <Description>"Difficulty"</Description>
+      <Description>"sm_iLocalDifficulty"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Byte</VariableType>
       <Address>GoWr.exe+2441EC0</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>20</ID>
-      <Description>"Allow Spiders"</Description>
+      <Description>"sm_allowSpiders"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Byte</VariableType>
       <Address>GoWr.exe+2441ed9</Address>
@@ -24,7 +24,7 @@
       <Unicode>0</Unicode>
       <CodePage>0</CodePage>
       <ZeroTerminate>1</ZeroTerminate>
-      <Address>GoWR.exe+24ebef8</Address>
+      <Address>GoWR.exe+24ebf68</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>68</ID>
@@ -33,7 +33,7 @@
       <ShowAsHex>1</ShowAsHex>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>8 Bytes</VariableType>
-      <Address>1424f1ec0</Address>
+      <Address>GoWR.exe+24f1f30</Address>
       <CheatEntries>
         <CheatEntry>
           <ID>69</ID>
@@ -41,7 +41,7 @@
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
-          <Address>[1424f1ec0]</Address>
+          <Address>[GoWR.exe+24f1f30]</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>70</ID>
@@ -49,67 +49,14 @@
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Byte</VariableType>
-          <Address>[1424f1ec0]+8a1</Address>
+          <Address>[GoWR.exe+24f1f30]+8a1</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>71</ID>
           <Description>"Grav value"</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
-          <Address>[1424f1ec0]+8a4</Address>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>7</ID>
-      <Description>"Photo Mode, Show Kratos"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Byte</VariableType>
-      <Address>GoWR.exe+251D5ED</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>82</ID>
-      <Description>"camera::Server --&gt;"</Description>
-      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-      <ShowAsHex>1</ShowAsHex>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>8 Bytes</VariableType>
-      <Address>GoWR.exe+2963550</Address>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>83</ID>
-          <Description>"00000000"</Description>
-          <ShowAsHex>1</ShowAsHex>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>8 Bytes</VariableType>
-          <Address>[GoWR.exe+2963550]</Address>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>94</ID>
-      <Description>"PSNAuth --&gt;"</Description>
-      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-      <ShowAsHex>1</ShowAsHex>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>8 Bytes</VariableType>
-      <Address>1436f5470</Address>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>93</ID>
-          <Description>"00000000"</Description>
-          <ShowAsHex>1</ShowAsHex>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>8 Bytes</VariableType>
-          <Address>[1436f5470]</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>95</ID>
-          <Description>"Authed?  (2)"</Description>
-          <ShowAsHex>1</ShowAsHex>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>[1436f5470]+f8</Address>
+          <Address>[GoWR.exe+24f1f30]+8a4</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
@@ -118,7 +65,477 @@
       <Description>"InGameTime"</Description>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
-      <Address>GoWR.exe+393570c</Address>
+      <Address>GoWR.exe+393578c</Address>
+    </CheatEntry>
+	    <CheatEntry>
+      <ID>2</ID>
+      <Description>"goPlayer --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>GoWR.exe+5d08890</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>12</ID>
+          <Description>"00000000"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>[GoWR.exe+5d08890]</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>3</ID>
+          <Description>"goCreature --&gt;"</Description>
+          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>GoWR.exe+5b07708</Address>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>4</ID>
+              <Description>"00000000"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>[GoWR.exe+5b07708]+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>11</ID>
+              <Description>"goGameObject --&gt;"</Description>
+              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>[GoWR.exe+5b07708]+8</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>13</ID>
+                  <Description>"00000000"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>[[GoWR.exe+5b07708]+8]</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>14</ID>
+                  <Description>"goName"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>String</VariableType>
+                  <Length>32</Length>
+                  <Unicode>0</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[[[GoWR.exe+5b07708]+8]+38]</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9</ID>
+              <Description>"xPos"</Description>
+              <DropDownList DisplayValueAsItem="1">0:On Ground
+1:On Ground
+3:Jumping
+4:Falling
+5:In Air
+</DropDownList>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[GoWR.exe+5b07708]+50</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>19</ID>
+              <Description>"yPos"</Description>
+              <DropDownList DisplayValueAsItem="1">0:On Ground
+1:On Ground
+3:Jumping
+4:Falling
+5:In Air
+</DropDownList>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[GoWR.exe+5b07708]+54</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>18</ID>
+              <Description>"zPos"</Description>
+              <DropDownList DisplayValueAsItem="1">0:On Ground
+1:On Ground
+3:Jumping
+4:Falling
+5:In Air
+</DropDownList>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[GoWR.exe+5b07708]+58</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>91</ID>
+              <Description>"Tweaks --&gt;"</Description>
+              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+              <DropDownList DisplayValueAsItem="1">0:On Ground
+1:On Ground
+3:Jumping
+4:Falling
+5:In Air
+</DropDownList>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>[GoWR.exe+5b07708]+2a98</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>92</ID>
+                  <Description>"00000000"</Description>
+                  <DropDownList DisplayValueAsItem="1">0:On Ground
+1:On Ground
+3:Jumping
+4:Falling
+5:In Air
+</DropDownList>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>[[GoWR.exe+5b07708]+2a98]</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>15</ID>
+              <Description>"LastAttackedHandle"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[GoWR.exe+5b07708]+2b00</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>59</ID>
+              <Description>"SpeedMult"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[GoWR.exe+5b07708]+2b10</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>17</ID>
+              <Description>"Stance"</Description>
+              <DropDownList DisplayValueAsItem="1">0:On Ground
+1:On Ground
+3:Jumping
+4:Falling
+5:In Air
+</DropDownList>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[GoWR.exe+5b07708]+2b50</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>90</ID>
+              <Description>"2b68"</Description>
+              <DropDownList DisplayValueAsItem="1">0:On Ground
+1:On Ground
+3:Jumping
+4:Falling
+5:In Air
+</DropDownList>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>[GoWR.exe+5b07708]+2b68</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>10</ID>
+              <Description>"currHP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[GoWR.exe+5b07708]+2b90</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>5</ID>
+              <Description>"currRage"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[GoWR.exe+5b07708]+2c28</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>77</ID>
+              <Description>"6510 --&gt;"</Description>
+              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>[GoWR.exe+5b07708]+6510</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>78</ID>
+                  <Description>"00000000"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>[[GoWR.exe+5b07708]+6510]</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>80</ID>
+                  <Description>"TargetHandle"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[[GoWR.exe+5b07708]+6510]+98</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>60</ID>
+              <Description>"Weapons --&gt;"</Description>
+              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>[GoWR.exe+5b07708]+6660</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>75</ID>
+                  <Description>"00000000"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>[[GoWR.exe+5b07708]+6660]</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>76</ID>
+                  <Description>"Current Weapon"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Byte</VariableType>
+                  <Address>[[GoWR.exe+5b07708]+6660]+310</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>74</ID>
+              <Description>"WarpX"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[GoWR.exe+5b07708]+6720</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>67</ID>
+              <Description>"WarpY"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[GoWR.exe+5b07708]+6724</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>66</ID>
+              <Description>"WarpZ"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[GoWR.exe+5b07708]+6728</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>65</ID>
+              <Description>"Warp"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>[GoWR.exe+5b07708]+6774</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>62</ID>
+              <Description>"Handle? 67b8"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[GoWR.exe+5b07708]+67b8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>57</ID>
+              <Description>"Handle? 68d0"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[GoWR.exe+5b07708]+68d0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>29</ID>
+              <Description>"Name"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>String</VariableType>
+              <Length>10</Length>
+              <Unicode>0</Unicode>
+              <CodePage>0</CodePage>
+              <ZeroTerminate>1</ZeroTerminate>
+              <Address>[GoWR.exe+5b07708]+7078</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>84</ID>
+              <Description>"70b0"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>[GoWR.exe+5b07708]+70b0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>55</ID>
+              <Description>"LastAttackerHandle"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[GoWR.exe+5b07708]+7500</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>85</ID>
+              <Description>"wadContext_79f8 --&gt;"</Description>
+              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>8 Bytes</VariableType>
+              <Address>[GoWR.exe+5b07708]+79f8</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>86</ID>
+                  <Description>"00000000"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>[[GoWR.exe+5b07708]+79f8]</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>87</ID>
+                  <Description>"RegionName"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>String</VariableType>
+                  <Length>32</Length>
+                  <Unicode>0</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[[GoWR.exe+5b07708]+79f8]+cb8</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>43</ID>
+              <Description>"Strength"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[GoWR.exe+5b07708]+7ca0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>44</ID>
+              <Description>"Defense"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[GoWR.exe+5b07708]+7ca4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>45</ID>
+              <Description>"Runic"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[GoWR.exe+5b07708]+7ca8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>49</ID>
+              <Description>"Resistance (Vitality)"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[GoWR.exe+5b07708]+7cac</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>47</ID>
+              <Description>"Luck"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[GoWR.exe+5b07708]+7cb0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>48</ID>
+              <Description>"Focus (Cooldown)"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[GoWR.exe+5b07708]+7cb4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>50</ID>
+              <Description>"7cb8"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[GoWR.exe+5b07708]+7cb8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>51</ID>
+              <Description>"Level"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[GoWR.exe+5b07708]+7cbc</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>81</ID>
+              <Description>"Handle"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[GoWR.exe+5b07708]+9410</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>79</ID>
+          <Description>"TargetHandle"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[GoWR.exe+5d08890]+200</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>96</ID>
+          <Description>"Damage Mult"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>[GoWR.exe+5d08890]+2a8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>100</ID>
+          <Description>"AI Damage Mult"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>[GoWR.exe+5d08890]+2ac</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>97</ID>
+          <Description>"Plr Damage Mult"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>[GoWR.exe+5d08890]+2b0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>102</ID>
+          <Description>"Max Health Mult"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>[GoWR.exe+5d08890]+2b4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>101</ID>
+          <Description>"Stun Mult"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>[GoWR.exe+5d08890]+2b8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>99</ID>
+          <Description>"Health Orb Mult"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>[GoWR.exe+5d08890]+2bc</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>98</ID>
+          <Description>"Weapon Orb Mult"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>[GoWR.exe+5d08890]+2c0</Address>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
     <CheatEntry>
       <ID>103</ID>
@@ -127,7 +544,7 @@
       <ShowAsHex>1</ShowAsHex>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>8 Bytes</VariableType>
-      <Address>GoWR.exe+3935720</Address>
+      <Address>GoWR.exe+39357a0</Address>
       <CheatEntries>
         <CheatEntry>
           <ID>104</ID>
@@ -135,10 +552,34 @@
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
-          <Address>[GoWR.exe+3935720]</Address>
+          <Address>[GoWR.exe+39357a0]</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
+	<CheatEntry>
+      <ID>188</ID>
+      <Description>"walletData --&gt;"</Description>
+      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>gowr.exe+5e31128</Address>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>189</ID>
+          <Description>"00000000"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>[gowr.exe+5e31128]</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+	
+	
+	
+	
+	
     <CheatEntry>
       <ID>21</ID>
       <Description>"Player Invulnerable"</Description>
@@ -153,7 +594,7 @@
       <ShowAsHex>1</ShowAsHex>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>8 Bytes</VariableType>
-      <Address>GoWR.exe+3a3b5f0</Address>
+      <Address>GoWR.exe+3a3b670</Address>
       <CheatEntries>
         <CheatEntry>
           <ID>89</ID>
@@ -161,7 +602,7 @@
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>4 Bytes</VariableType>
-          <Address>GoWR.exe+3a3b5f0 + 0x10</Address>
+          <Address>GoWR.exe+3a3b670 + 0x10</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
@@ -193,13 +634,6 @@
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>6</ID>
-      <Description>"BW Mode"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Byte</VariableType>
-      <Address>GoWR.exe+3fc9b7c</Address>
-    </CheatEntry>
-    <CheatEntry>
       <ID>27</ID>
       <Description>"Vehicle Type"</Description>
       <DropDownList DisplayValueAsItem="1">1:WolfSled
@@ -226,502 +660,13 @@
       <Address>GoWR.exe+5aa4938</Address>
     </CheatEntry>
     <CheatEntry>
-      <ID>2</ID>
-      <Description>"goPlayer --&gt;"</Description>
-      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-      <ShowAsHex>1</ShowAsHex>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>8 Bytes</VariableType>
-      <Address>GoWR.exe+5b07370</Address>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>12</ID>
-          <Description>"00000000"</Description>
-          <ShowAsHex>1</ShowAsHex>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>8 Bytes</VariableType>
-          <Address>[GoWR.exe+5b07370]</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>3</ID>
-          <Description>"goCreature --&gt;"</Description>
-          <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-          <ShowAsHex>1</ShowAsHex>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>8 Bytes</VariableType>
-          <Address>GoWR.exe+5b07608</Address>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>4</ID>
-              <Description>"00000000"</Description>
-              <ShowAsHex>1</ShowAsHex>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>8 Bytes</VariableType>
-              <Address>[GoWR.exe+5b07608]+0</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>11</ID>
-              <Description>"goGameObject --&gt;"</Description>
-              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-              <ShowAsHex>1</ShowAsHex>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>8 Bytes</VariableType>
-              <Address>[GoWR.exe+5b07608]+8</Address>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>13</ID>
-                  <Description>"00000000"</Description>
-                  <ShowAsHex>1</ShowAsHex>
-                  <ShowAsSigned>0</ShowAsSigned>
-                  <VariableType>8 Bytes</VariableType>
-                  <Address>[[GoWR.exe+5b07608]+8]</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>14</ID>
-                  <Description>"goName"</Description>
-                  <ShowAsSigned>0</ShowAsSigned>
-                  <VariableType>String</VariableType>
-                  <Length>32</Length>
-                  <Unicode>0</Unicode>
-                  <CodePage>0</CodePage>
-                  <ZeroTerminate>1</ZeroTerminate>
-                  <Address>[[[GoWR.exe+5b07608]+8]+38]</Address>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>9</ID>
-              <Description>"xPos"</Description>
-              <DropDownList DisplayValueAsItem="1">0:On Ground
-1:On Ground
-3:Jumping
-4:Falling
-5:In Air
-</DropDownList>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Float</VariableType>
-              <Address>[GoWR.exe+5b07608]+50</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>19</ID>
-              <Description>"yPos"</Description>
-              <DropDownList DisplayValueAsItem="1">0:On Ground
-1:On Ground
-3:Jumping
-4:Falling
-5:In Air
-</DropDownList>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Float</VariableType>
-              <Address>[GoWR.exe+5b07608]+54</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>18</ID>
-              <Description>"zPos"</Description>
-              <DropDownList DisplayValueAsItem="1">0:On Ground
-1:On Ground
-3:Jumping
-4:Falling
-5:In Air
-</DropDownList>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Float</VariableType>
-              <Address>[GoWR.exe+5b07608]+58</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>91</ID>
-              <Description>"Tweaks --&gt;"</Description>
-              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-              <DropDownList DisplayValueAsItem="1">0:On Ground
-1:On Ground
-3:Jumping
-4:Falling
-5:In Air
-</DropDownList>
-              <ShowAsHex>1</ShowAsHex>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>8 Bytes</VariableType>
-              <Address>[GoWR.exe+5b07608]+2a98</Address>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>92</ID>
-                  <Description>"00000000"</Description>
-                  <DropDownList DisplayValueAsItem="1">0:On Ground
-1:On Ground
-3:Jumping
-4:Falling
-5:In Air
-</DropDownList>
-                  <ShowAsHex>1</ShowAsHex>
-                  <ShowAsSigned>0</ShowAsSigned>
-                  <VariableType>8 Bytes</VariableType>
-                  <Address>[[GoWR.exe+5b07608]+2a98]</Address>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>15</ID>
-              <Description>"LastAttackedHandle"</Description>
-              <ShowAsHex>1</ShowAsHex>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5b07608]+2b00</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>59</ID>
-              <Description>"SpeedMult"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Float</VariableType>
-              <Address>[GoWR.exe+5b07608]+2b10</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>17</ID>
-              <Description>"Stance"</Description>
-              <DropDownList DisplayValueAsItem="1">0:On Ground
-1:On Ground
-3:Jumping
-4:Falling
-5:In Air
-</DropDownList>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5b07608]+2b50</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>90</ID>
-              <Description>"2b68"</Description>
-              <DropDownList DisplayValueAsItem="1">0:On Ground
-1:On Ground
-3:Jumping
-4:Falling
-5:In Air
-</DropDownList>
-              <ShowAsHex>1</ShowAsHex>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>8 Bytes</VariableType>
-              <Address>[GoWR.exe+5b07608]+2b68</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>10</ID>
-              <Description>"currHP"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Float</VariableType>
-              <Address>[GoWR.exe+5b07608]+2b90</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>5</ID>
-              <Description>"currRage"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Float</VariableType>
-              <Address>[GoWR.exe+5b07608]+2c28</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>77</ID>
-              <Description>"6510 --&gt;"</Description>
-              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-              <ShowAsHex>1</ShowAsHex>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>8 Bytes</VariableType>
-              <Address>[GoWR.exe+5b07608]+6510</Address>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>78</ID>
-                  <Description>"00000000"</Description>
-                  <ShowAsHex>1</ShowAsHex>
-                  <ShowAsSigned>0</ShowAsSigned>
-                  <VariableType>8 Bytes</VariableType>
-                  <Address>[[GoWR.exe+5b07608]+6510]</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>80</ID>
-                  <Description>"TargetHandle"</Description>
-                  <ShowAsHex>1</ShowAsHex>
-                  <ShowAsSigned>0</ShowAsSigned>
-                  <VariableType>4 Bytes</VariableType>
-                  <Address>[[GoWR.exe+5b07608]+6510]+98</Address>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>60</ID>
-              <Description>"Weapons --&gt;"</Description>
-              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-              <ShowAsHex>1</ShowAsHex>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>8 Bytes</VariableType>
-              <Address>[GoWR.exe+5b07608]+6660</Address>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>75</ID>
-                  <Description>"00000000"</Description>
-                  <ShowAsHex>1</ShowAsHex>
-                  <ShowAsSigned>0</ShowAsSigned>
-                  <VariableType>8 Bytes</VariableType>
-                  <Address>[[GoWR.exe+5b07608]+6660]</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>76</ID>
-                  <Description>"Current Weapon"</Description>
-                  <ShowAsHex>1</ShowAsHex>
-                  <ShowAsSigned>0</ShowAsSigned>
-                  <VariableType>Byte</VariableType>
-                  <Address>[[GoWR.exe+5b07608]+6660]+310</Address>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>74</ID>
-              <Description>"WarpX"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Float</VariableType>
-              <Address>[GoWR.exe+5b07608]+6720</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>67</ID>
-              <Description>"WarpY"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Float</VariableType>
-              <Address>[GoWR.exe+5b07608]+6724</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>66</ID>
-              <Description>"WarpZ"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Float</VariableType>
-              <Address>[GoWR.exe+5b07608]+6728</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>65</ID>
-              <Description>"Warp"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Byte</VariableType>
-              <Address>[GoWR.exe+5b07608]+6774</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>62</ID>
-              <Description>"Handle? 67b8"</Description>
-              <ShowAsHex>1</ShowAsHex>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5b07608]+67b8</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>57</ID>
-              <Description>"Handle? 68d0"</Description>
-              <ShowAsHex>1</ShowAsHex>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5b07608]+68d0</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>29</ID>
-              <Description>"Name"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>String</VariableType>
-              <Length>10</Length>
-              <Unicode>0</Unicode>
-              <CodePage>0</CodePage>
-              <ZeroTerminate>1</ZeroTerminate>
-              <Address>[GoWR.exe+5b07608]+7078</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>84</ID>
-              <Description>"70b0"</Description>
-              <ShowAsHex>1</ShowAsHex>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>8 Bytes</VariableType>
-              <Address>[GoWR.exe+5b07608]+70b0</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>55</ID>
-              <Description>"LastAttackerHandle"</Description>
-              <ShowAsHex>1</ShowAsHex>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5b07608]+7500</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>85</ID>
-              <Description>"wadContext_79f8 --&gt;"</Description>
-              <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-              <ShowAsHex>1</ShowAsHex>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>8 Bytes</VariableType>
-              <Address>[GoWR.exe+5b07608]+79f8</Address>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>86</ID>
-                  <Description>"00000000"</Description>
-                  <ShowAsHex>1</ShowAsHex>
-                  <ShowAsSigned>0</ShowAsSigned>
-                  <VariableType>8 Bytes</VariableType>
-                  <Address>[[GoWR.exe+5b07608]+79f8]</Address>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>87</ID>
-                  <Description>"RegionName"</Description>
-                  <ShowAsSigned>0</ShowAsSigned>
-                  <VariableType>String</VariableType>
-                  <Length>32</Length>
-                  <Unicode>0</Unicode>
-                  <CodePage>0</CodePage>
-                  <ZeroTerminate>1</ZeroTerminate>
-                  <Address>[[GoWR.exe+5b07608]+79f8]+cb8</Address>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>43</ID>
-              <Description>"Strength"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Float</VariableType>
-              <Address>[GoWR.exe+5b07608]+7ca0</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>44</ID>
-              <Description>"Defense"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Float</VariableType>
-              <Address>[GoWR.exe+5b07608]+7ca4</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>45</ID>
-              <Description>"Runic"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Float</VariableType>
-              <Address>[GoWR.exe+5b07608]+7ca8</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>49</ID>
-              <Description>"Resistance (Vitality)"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Float</VariableType>
-              <Address>[GoWR.exe+5b07608]+7cac</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>47</ID>
-              <Description>"Luck"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Float</VariableType>
-              <Address>[GoWR.exe+5b07608]+7cb0</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>48</ID>
-              <Description>"Focus (Cooldown)"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Float</VariableType>
-              <Address>[GoWR.exe+5b07608]+7cb4</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>50</ID>
-              <Description>"7cb8"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Float</VariableType>
-              <Address>[GoWR.exe+5b07608]+7cb8</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>51</ID>
-              <Description>"Level"</Description>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>Float</VariableType>
-              <Address>[GoWR.exe+5b07608]+7cbc</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>81</ID>
-              <Description>"Handle"</Description>
-              <ShowAsHex>1</ShowAsHex>
-              <ShowAsSigned>0</ShowAsSigned>
-              <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5b07608]+9410</Address>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>79</ID>
-          <Description>"TargetHandle"</Description>
-          <ShowAsHex>1</ShowAsHex>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>4 Bytes</VariableType>
-          <Address>[GoWR.exe+5b07370]+200</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>96</ID>
-          <Description>"Damage Mult"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>[GoWR.exe+5b07370]+2a8</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>100</ID>
-          <Description>"AI Damage Mult"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>[GoWR.exe+5b07370]+2ac</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>97</ID>
-          <Description>"Plr Damage Mult"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>[GoWR.exe+5b07370]+2b0</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>102</ID>
-          <Description>"Max Health Mult"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>[GoWR.exe+5b07370]+2b4</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>101</ID>
-          <Description>"Stun Mult"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>[GoWR.exe+5b07370]+2b8</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>99</ID>
-          <Description>"Health Orb Mult"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>[GoWR.exe+5b07370]+2bc</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>98</ID>
-          <Description>"Weapon Orb Mult"</Description>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>Float</VariableType>
-          <Address>[GoWR.exe+5b07370]+2c0</Address>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>188</ID>
-      <Description>"walletData --&gt;"</Description>
-      <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
-      <ShowAsHex>1</ShowAsHex>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>8 Bytes</VariableType>
-      <Address>gowr.exe+5e31028</Address>
-      <CheatEntries>
-        <CheatEntry>
-          <ID>189</ID>
-          <Description>"00000000"</Description>
-          <ShowAsHex>1</ShowAsHex>
-          <ShowAsSigned>0</ShowAsSigned>
-          <VariableType>8 Bytes</VariableType>
-          <Address>[gowr.exe+5e31028]</Address>
-        </CheatEntry>
-      </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
       <ID>52</ID>
       <Description>"SharedResourceData --&gt;"</Description>
       <Options moHideChildren="1" moAllowManualCollapseAndExpand="1"/>
       <ShowAsHex>1</ShowAsHex>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>8 Bytes</VariableType>
-      <Address>GoWR.exe+5e31038</Address>
+      <Address>GoWR.exe+5e31138</Address>
       <CheatEntries>
         <CheatEntry>
           <ID>53</ID>
@@ -729,7 +674,7 @@
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
-          <Address>[GoWR.exe+5e31038]</Address>
+          <Address>[GoWR.exe+5e31138]</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>120</ID>
@@ -738,462 +683,462 @@
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>1</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
-          <Address>[GoWR.exe+5e31038]+0x32b88</Address>
+          <Address>[GoWR.exe+5e31138]+0x32b88</Address>
           <CheatEntries>
             <CheatEntry>
               <ID>122</ID>
               <Description>"EconomyXP"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x332e8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x332e8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>127</ID>
               <Description>"CompanionXP"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x332f8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x332f8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>54</ID>
               <Description>"AtreusXP"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33308+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33308+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>124</ID>
               <Description>"FreyaXP"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33318+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33318+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>121</ID>
               <Description>"Hacksilver"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33328+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33328+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>128</ID>
               <Description>"MuspCurrency"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33338+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33338+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>129</ID>
               <Description>"MuspArmorResource"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33348+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33348+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>130</ID>
               <Description>"MuspShieldResource"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33358+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33358+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>131</ID>
               <Description>"MuspHiltResource"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33368+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33368+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>132</ID>
               <Description>"MuspFlameTracker"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33378+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33378+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>123</ID>
               <Description>"CraftingUpgradeCommon (Forged Iron)"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33388+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33388+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>126</ID>
               <Description>"CraftingUpgradeRare (Dwarven Steel)"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33398+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33398+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>125</ID>
               <Description>"CraftingUpgradeEpic"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x333a8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x333a8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>133</ID>
               <Description>"HiltUpgradeCommon"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x333b8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x333b8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>134</ID>
               <Description>"HiltUpgradeRare"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x333c8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x333c8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>135</ID>
               <Description>"HiltUpgradeEpic"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x333d8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x333d8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>136</ID>
               <Description>"ShieldUpgradeCommon"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x333e8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x333e8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>138</ID>
               <Description>"ShieldUpgradeRare"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x333f8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x333f8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>137</ID>
               <Description>"ShieldUpgradeEpic"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33408+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33408+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>139</ID>
               <Description>"SmallMonsterPart"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33418+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33418+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>140</ID>
               <Description>"LargeMonsterPart"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33428+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33428+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>141</ID>
               <Description>"SmallMonsterKillCounter"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33438+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33438+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>142</ID>
               <Description>"SmallMonsterPartCounter"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33448+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33448+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>143</ID>
               <Description>"LargeMonsterKillCounter"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33458+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33458+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>144</ID>
               <Description>"LargeMonsterPartCounter"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33468+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33468+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>145</ID>
               <Description>"CraterCrystal"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33478+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33478+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>146</ID>
               <Description>"CraterCrystalLarge"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33488+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33488+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>147</ID>
               <Description>"PurifiedCrystal"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33498+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33498+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>148</ID>
               <Description>"HiltUpgradeCrystal"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x334a8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x334a8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>149</ID>
               <Description>"ShieldUpgradeCrystal"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x334b8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x334b8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>150</ID>
               <Description>"ArmorUpgradeCrystal"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x334c8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x334c8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>151</ID>
               <Description>"ArmorCrystalTracker"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x334d8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x334d8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>152</ID>
               <Description>"LargeCrystalTracker"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x334e8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x334e8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>153</ID>
               <Description>"ArmorUpgradeAsgard"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x334f8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x334f8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>154</ID>
               <Description>"ShieldUpgradeAsgard"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33508+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33508+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>155</ID>
               <Description>"HiltUpgradeAsgard"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33518+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33518+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>156</ID>
               <Description>"AsgardContainerCounter"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33528+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33528+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>157</ID>
               <Description>"BoatLoot"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33538+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33538+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>158</ID>
               <Description>"YggdrasilDewCounter"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33548+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33548+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>159</ID>
               <Description>"YggdrasilDewLabor"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33558+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33558+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>160</ID>
               <Description>"StrengthBoatLoot"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33568+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33568+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>161</ID>
               <Description>"RunicBoatLoot"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33578+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33578+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>162</ID>
               <Description>"DefenseBoatLoot"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33588+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33588+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>163</ID>
               <Description>"ResistanceBoatLoot"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33598+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33598+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>164</ID>
               <Description>"FocusBoatLoot"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x335a8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x335a8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>165</ID>
               <Description>"LuckBoatLoot"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x335b8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x335b8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>166</ID>
               <Description>"TributeFood"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x335c8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x335c8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>167</ID>
               <Description>"CookingTributeStrength"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x335d8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x335d8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>168</ID>
               <Description>"CookingTributeRunic"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x335e8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x335e8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>169</ID>
               <Description>"CookingTributeDefense"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x335f8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x335f8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>170</ID>
               <Description>"CookingTributeResistance"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33608+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33608+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>171</ID>
               <Description>"CookingTributeFocus"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33618+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33618+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>172</ID>
               <Description>"CookingTributeLuck"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33628+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33628+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>173</ID>
               <Description>"MiningRigLoot"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33638+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33638+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>174</ID>
               <Description>"DraugrEmpressLoot"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33648+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33648+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>175</ID>
               <Description>"HelEssence"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33658+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33658+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>176</ID>
               <Description>"LindwormScale"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33668+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33668+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>177</ID>
               <Description>"RealmDust"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33678+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33678+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>178</ID>
               <Description>"DragonLoot"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33688+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33688+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>179</ID>
               <Description>"PristineDragonLoot"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x33698+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x33698+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>180</ID>
               <Description>"StoneTrollLoot"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x336a8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x336a8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>181</ID>
               <Description>"Tome_RidillUpgrade_ThorsTooth"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x336b8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x336b8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>182</ID>
               <Description>"Tome_DainsleifUpgrade_Poison"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x336c8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x336c8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>183</ID>
               <Description>"Tome_TyrfingUpgrade_BloodSacrifice"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x336d8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x336d8+8</Address>
             </CheatEntry>
             <CheatEntry>
               <ID>184</ID>
               <Description>"Tome_AngurvadalUpgrade_Light"</Description>
               <ShowAsSigned>1</ShowAsSigned>
               <VariableType>4 Bytes</VariableType>
-              <Address>[GoWR.exe+5e31038]+0x336e8+8</Address>
+              <Address>[GoWR.exe+5e31138]+0x336e8+8</Address>
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
@@ -1203,7 +1148,7 @@
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
-          <Address>[GoWR.exe+5e31038] + 0x32bd0</Address>
+          <Address>[GoWR.exe+5e31138] + 0x32bd0</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>187</ID>
@@ -1211,7 +1156,7 @@
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
-          <Address>[GoWR.exe+5e31038] + 0x32c18</Address>
+          <Address>[GoWR.exe+5e31138] + 0x32c18</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>186</ID>
@@ -1219,17 +1164,13 @@
           <ShowAsHex>1</ShowAsHex>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>8 Bytes</VariableType>
-          <Address>[GoWR.exe+5e31038] + 0x32dc8</Address>
+          <Address>[GoWR.exe+5e31138] + 0x32dc8</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
-    <CheatEntry>
-      <ID>16</ID>
-      <Description>"AllowUseWorldHack"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
-      <VariableType>Byte</VariableType>
-      <Address>GoWR.exe+5fe10e0</Address>
-    </CheatEntry>
+	
+	
+
     <CheatEntry>
       <ID>107</ID>
       <Description>"WADJumpRequested"</Description>

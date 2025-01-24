@@ -1,0 +1,132 @@
+//------------------------------------------------
+//--- 010 Editor v9.0.1 Binary Template
+//
+//      File: 
+//   Authors: 
+//   Version: 
+//   Purpose: 
+//  Category: 
+// File Mask: 
+//  ID Bytes: 
+//   History: 
+//------------------------------------------------
+
+LittleEndian();
+
+//------------------------------------------------
+
+
+typedef struct {
+	char unkData[0x20];
+} firstunk <bgcolor=cRed>;
+
+typedef struct {
+	uint64 modifiedTime <format=hex>;
+	uint version;
+	uint buildChangelist;
+	uint prefsSize <format=hex>;
+	uint saveGameSize <format=hex>;
+	uint totalSize <format=hex>;
+	uint padding;
+	
+} SaveFileHeader;
+
+typedef struct {
+	uint64 modifiedTime <format=hex>;
+	uint version <format=hex>;
+	uint buildChangeList <format=hex>;
+	char title[0x100];
+	char debugString[0x40];
+	uint gamePlayTime <format=hex>;
+	uint saveGameSessionId <format=hex>;
+	uint nHardSaveBytes <format=hex>;
+	uint nSoftSaveBytes <format=hex>;
+	uint nSoftPlayerStateDataBytes <format=hex>;
+	uint requiredPlayGoChunkNameHash <format=hex>;
+	uint realmMsgID;
+	uint regionMsgID;
+	uint questMsgID;
+	uint questDescMsgID;
+	uint imgID;
+	uint serialNumber <format=hex>;
+	byte bitfield;
+	byte puzzleAssistance;
+	byte difficultySimplified;
+	byte difficulty;
+	byte systemVersion[0x3c];
+} SaveGameDataHeader;
+
+typedef struct {
+	ushort mapStateSize <format=hex>;
+	byte mapState[mapStateSize];
+} GameMap;
+
+typedef struct {
+	ushort progressionFactsSoftStateSize;
+	byte progressionFacts[progressionFactsSoftStateSize];
+} ProgressionFactsSoftState;
+
+typedef struct {
+	uint questSoftStateSize <format=hex>;
+	byte questData[questSoftStateSize];
+} questSoftState;
+
+typedef struct {
+	ushort equipmentSaveSize <format=hex>;
+	byte equipmentData[equipmentSaveSize];
+} equipmentStateData;
+
+typedef struct {
+	uint resourcesSoftStateSize <format=hex>;
+	byte resourcesData[resourcesSoftStateSize];
+} resourcesStateData;
+
+typedef struct {
+	ushort lootSaveSize <format=hex>;
+	byte lootData[lootSaveSize];
+} lootManagerStateData;
+
+typedef struct {
+	ushort skillTreeStateSize <format=hex>;
+	byte skillTreeData[skillTreeStateSize];
+} skillTreeStateData;
+
+typedef struct {
+	uint encounterSoftStateSize <format=hex>;
+	byte encounterSoftStateVersion;
+	byte encounterStateData[encounterSoftStateSize];
+} encounterSoftStateData;
+
+typedef struct {
+	byte size <format=hex>;
+	byte data[size];
+} generic8;
+typedef struct {
+	ushort size <format=hex>;
+	byte data[size];
+} generic16;
+typedef struct {
+	uint size <format=hex>;
+	byte data[size];
+} generic32;
+
+
+SaveFileHeader sfh;
+firstunk unkdata;
+SaveGameDataHeader sgdh;
+FSeek(0x440);	GameMap mapState;
+ProgressionFactsSoftState progression;
+questSoftState quest;
+equipmentStateData equipment;
+resourcesStateData resources;
+lootManagerStateData loot;
+skillTreeStateData skillTree;
+
+generic16 partySoftStateSize;
+generic16 compassStateSize;
+encounterSoftStateData encounter;
+generic32 levelScriptingSoftSave;
+generic16 banter;
+
+
+uint end;
