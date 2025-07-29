@@ -1,0 +1,671 @@
+$procname = "StateOfDecay2-Win64-Shipping"
+
+$bigendian = $false
+
+
+
+[console]::CursorVisible = $false
+$Host.UI.RawUI.BackgroundColor = 'Black'
+$Host.UI.RawUI.ForegroundColor = 'Green'
+
+
+
+Function RBytes
+{
+	Param (
+		$addr,
+		$sizetoread
+	)
+	$pos = $addr
+	[Byte[]] $buff = New-Object Byte[]($sizetoread)
+	$read = $rpm::ReadProcessMemory($proc,$pos,$buff,$buff.length,$null);
+	$buff
+}
+Function RAsciiStr
+{   
+	Param (
+        $addr
+    )
+	([System.Text.Encoding]::ASCII.GetString($(RBytes $addr 0x50))).Split([char]0)[0]
+}
+Function RUnicodeStr {
+    Param (
+        $addr
+    )
+    ([System.Text.Encoding]::Unicode.GetString($(RBytes $addr 0x50))).Split([char]0)[0]
+}
+Function ReadAndConvert {
+    Param (
+        [IntPtr]$addr,
+        [int]$byteCount,
+        [string]$convertType
+    )
+    $buff = RBytes $addr $byteCount
+    if ($bigendian -eq $true) {
+        [Array]::Reverse($buff)
+    }
+
+    switch ($convertType) {
+        "Int16"   { return [BitConverter]::ToInt16($buff, 0) }
+        "Int32"   { return [BitConverter]::ToInt32($buff, 0) }
+        "Int64"   { return [BitConverter]::ToInt64($buff, 0) }
+        "UInt8"   { return $buff[0] }
+        "UInt16"  { return [BitConverter]::ToUInt16($buff, 0) }
+        "UInt32"  { return [BitConverter]::ToUInt32($buff, 0) }
+        "UInt64"  { return [BitConverter]::ToUInt64($buff, 0) }
+        "Single"  { return [BitConverter]::ToSingle($buff, 0) }
+        default   { throw "Unknown conversion type $convertType" }
+    }
+}
+Function RInt16   { Param ([IntPtr]$addr) ReadAndConvert $addr 2 "Int16" }
+Function RInt32   { Param ([IntPtr]$addr) ReadAndConvert $addr 4 "Int32" }
+Function RInt64   { Param ([IntPtr]$addr) ReadAndConvert $addr 8 "Int64" }
+Function RUInt8   { Param ([IntPtr]$addr) ReadAndConvert $addr 1 "UInt8" }
+Function RUInt16  { Param ([IntPtr]$addr) ReadAndConvert $addr 2 "UInt16" }
+Function RUInt32  { Param ([IntPtr]$addr) ReadAndConvert $addr 4 "UInt32" }
+Function RUInt64  { Param ([IntPtr]$addr) ReadAndConvert $addr 8 "UInt64" }
+Function RSingle  { Param ([IntPtr]$addr) ReadAndConvert $addr 4 "Single" }
+
+Function GetNameFromNameId {
+	Param (
+		[Int32]$id
+	)
+	[IntPtr]$table = RInt64 ($namesTablePtr)		
+	$name = RAsciiStr ($table + [Int64]$id + 8)
+	$name
+}
+
+
+
+$signature = @"
+[DllImport("kernel32.dll")] public static extern IntPtr OpenProcess(
+    uint h,bool b ,uint p);
+[DllImport("kernel32.dll")] public static extern bool ReadProcessMemory(
+    IntPtr hp,IntPtr Base,[Out]Byte[] buff,int Size,[Out]int bread);
+[DllImport("kernel32.dll")] public static extern bool WriteProcessMemory(
+    IntPtr hp,IntPtr Base,[In]Byte[] buff,int Size,[Out]int bwrite);
+[DllImport("kernel32.dll")] public static extern bool VirtualProtectEx(
+	IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint flNewProtect, out uint lpflOldProtect);
+"@
+$PAGE_EXECUTE_READWRITE = 0x40
+$oldProtection = 0
+
+$rpm = Add-Type -MemberDefinition $signature -Name rpm -PassThru
+$access = 0x001F0FFF
+
+$ba = (get-Process $procname).MainModule.BaseAddress
+$procid = (get-Process $procname).ID
+$proc = $rpm::OpenProcess($access, $false, $procid)
+
+
+
+
+
+
+
+
+$verIdent = RInt32 ($ba + [Int64]0xe8)
+$ver = "Dunno"
+if ($verIdent -eq 0x49274e48) {
+	$ver = "MS"
+	$daytonVehicleVtPtr = $ba + [Int64]0x03418E40
+	$namesTablePtr 		= $ba + [Int64]0x044DB248
+	$worldPtr 			= $ba + [Int64]0x045D7C88
+}
+if ($verIdent -eq 0xd54624b7) {
+	$ver = "Steam"
+	$daytonVehicleVtPtr = $ba + [Int64]0x034E8930
+	$namesTablePtr 		= $ba + [Int64]0x04629DC8
+	$worldPtr 			= $ba + [Int64]0x04726808
+}
+if ($ver -eq "Dunno") {
+	Write-Host "Matching bytes not found, incompatible version of game"
+} else {
+	Add-Type -AssemblyName System.Windows.Forms
+	$ScreenWidth = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds.Width
+	$ScreenHeight = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds.Height
+
+
+
+
+
+
+
+
+
+
+
+
+	$form = New-Object System.Windows.Forms.Form
+	$form.Text = ""
+	$form.Width = 500
+	$form.Height = 200
+	$form.TopMost = $true
+	$form.WindowState = [System.Windows.Forms.FormWindowState]::Maximized
+	$form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::None
+	$form.BackColor = 'Gray'
+	$form.TransparencyKey = 'Gray'
+	$form.GetType().InvokeMember("SetStyle", [Reflection.BindingFlags]::InvokeMethod -bor [Reflection.BindingFlags]::NonPublic -bor [Reflection.BindingFlags]::Instance, $null, $form, @([System.Windows.Forms.ControlStyles]::DoubleBuffer, $true))
+
+	$closeButton = New-Object System.Windows.Forms.Button
+	$closeButton.Text = "X"
+	$closeButton.Width = 30
+	$closeButton.Height = 30
+	$closeButton.Left = $ScreenWidth - 30
+	$closeButton.Top = 0
+	$closeButton.BackColor = [System.Drawing.Color]::FromArgb(100, 200, 200, 200)
+	$closeButton.ForeColor = "Black"
+	$closeButton.FlatStyle = "Flat"
+	$closeButton.Add_Click({ $form.Close() })
+	$form.Controls.Add($closeButton)
+
+	$buttonPanel = New-Object Windows.Forms.Panel
+	$buttonPanel.Left = $ScreenWidth * 0.95
+	$buttonPanel.Top = $ScreenHeight * 0.05
+	$buttonPanel.Width = 110
+	$buttonPanel.Height = 250
+	$buttonPanel.BackColor = [System.Drawing.Color]::FromArgb(60, 30, 30, 30)
+	$form.Controls.Add($buttonPanel)
+	$buttonPanel.Visible = $false
+
+
+
+	###used for character display
+	$bgPanel = New-Object Windows.Forms.Panel
+	$bgPanel.Left = 10
+	$bgPanel.Top = 10
+	$bgPanel.Width = 500
+	$bgPanel.Height = 170
+	#$bgPanel.BackColor = [System.Drawing.Color]::FromArgb(60, 30, 30, 30)  # 60 = 23% opacity
+	$bgPanel.BackColor = [System.Drawing.Color]::Transparent
+	$form.Controls.Add($bgPanel)
+	$bgPanel.Visible = $false
+
+
+
+
+
+	$btnPanelToggleBtn = New-Object System.Windows.Forms.Button
+	$btnPanelToggleBtn.Text = "<<<"
+	$btnPanelToggleBtn.Width = 50
+	$btnPanelToggleBtn.Height = 30
+	$btnPanelToggleBtn.Left = $ScreenWidth - 60
+	$btnPanelToggleBtn.Top = 40
+	$btnPanelToggleBtn.BackColor = [System.Drawing.Color]::FromArgb(100, 180, 180, 180)
+	$btnPanelToggleBtn.ForeColor = "Black"
+	$btnPanelToggleBtn.FlatStyle = "Flat"
+	$btnPanelToggleBtn.Add_Click({
+		$buttonPanel.Visible = -not $buttonPanel.Visible
+		if ($btnPanelToggleBtn.Text -eq "<<<") {
+			$btnPanelToggleBtn.Text = ">>>"
+		} else {
+			$btnPanelToggleBtn.Text = "<<<"
+		}
+	})
+	$form.Controls.Add($btnPanelToggleBtn)
+	
+	$bgPanelToggleBtn = New-Object System.Windows.Forms.Button
+	$bgPanelToggleBtn.Text = "Chars"
+	$bgPanelToggleBtn.Width = 100
+	$bgPanelToggleBtn.Height = 30
+	$bgPanelToggleBtn.Left = 5
+	$bgPanelToggleBtn.Top = 5 + (10 + 30) * 0
+	$bgPanelToggleBtn.BackColor = [System.Drawing.Color]::FromArgb(100, 180, 180, 180)
+	$bgPanelToggleBtn.ForeColor = "Black"
+	$bgPanelToggleBtn.FlatStyle = "Flat"
+	$bgPanelToggleBtn.Add_Click({
+		$bgPanel.Visible = -not $bgPanel.Visible
+		$posLabel.Visible = -not $posLabel.Visible
+	})
+	$buttonPanel.Controls.Add($bgPanelToggleBtn)
+
+	$skillToggleBtn = New-Object System.Windows.Forms.Button
+	$skillToggleBtn.Text = "Skills"
+	$skillToggleBtn.Width = 100
+	$skillToggleBtn.Height = 30
+	$skillToggleBtn.Left = 5
+	$skillToggleBtn.Top = 5 + (10 + 30) * 1
+	$skillToggleBtn.BackColor = [System.Drawing.Color]::FromArgb(100, 180, 180, 180)
+	$skillToggleBtn.ForeColor = "Black"
+	$skillToggleBtn.FlatStyle = "Flat"
+	$skillToggleBtn.Add_Click({
+		$skillLabel.Visible = -not $skillLabel.Visible
+	})
+	$buttonPanel.Controls.Add($skillToggleBtn)
+	
+	$vehicleToggleBtn = New-Object System.Windows.Forms.Button
+	$vehicleToggleBtn.Text = "Vehicle"
+	$vehicleToggleBtn.Width = 100
+	$vehicleToggleBtn.Height = 30
+	$vehicleToggleBtn.Left = 5
+	$vehicleToggleBtn.Top = 5 + (10 + 30) * 2
+	$vehicleToggleBtn.BackColor = [System.Drawing.Color]::FromArgb(100, 180, 180, 180)
+	$vehicleToggleBtn.ForeColor = "Black"
+	$vehicleToggleBtn.FlatStyle = "Flat"
+	$vehicleToggleBtn.Add_Click({
+		$vehicleLabel.Visible = -not $vehicleLabel.Visible
+	})
+	$buttonPanel.Controls.Add($vehicleToggleBtn)
+
+	$phToggleBtn = New-Object System.Windows.Forms.Button
+	$phToggleBtn.Text = "PHearts"
+	$phToggleBtn.Width = 100
+	$phToggleBtn.Height = 30
+	$phToggleBtn.Left = 5
+	$phToggleBtn.Top = 5 + (10 + 30) * 3
+	$phToggleBtn.BackColor = [System.Drawing.Color]::FromArgb(100, 180, 180, 180)
+	$phToggleBtn.ForeColor = "Black"
+	$phToggleBtn.FlatStyle = "Flat"
+	$phToggleBtn.Add_Click({
+		$phLabel.Visible = -not $phLabel.Visible
+	})
+	$buttonPanel.Controls.Add($phToggleBtn)
+
+	$meleeToggleBtn = New-Object System.Windows.Forms.Button
+	$meleeToggleBtn.Text = "Melee"
+	$meleeToggleBtn.Width = 100
+	$meleeToggleBtn.Height = 30
+	$meleeToggleBtn.Left = 5
+	$meleeToggleBtn.Top = 5 + (10 + 30) * 4
+	$meleeToggleBtn.BackColor = [System.Drawing.Color]::FromArgb(100, 180, 180, 180)
+	$meleeToggleBtn.ForeColor = "Black"
+	$meleeToggleBtn.FlatStyle = "Flat"
+	$meleeToggleBtn.Add_Click({
+		$meleeLabel.Visible = -not $meleeLabel.Visible
+	})
+	$buttonPanel.Controls.Add($meleeToggleBtn)
+
+
+	Function CreateLabel ($font, $fontSize, $color) {
+		$label = New-Object System.Windows.Forms.Label
+		$label.AutoSize = $true
+		$label.BackColor = [System.Drawing.Color]::Transparent
+		$label.ForeColor = $color
+		$label.Font = New-Object System.Drawing.Font($font, $fontSize, [System.Drawing.FontStyle]::Bold)
+		$form.Controls.Add($label)
+		return $label
+	}
+
+
+
+
+
+	$mouseLabel = CreateLabel "Consolas" 16 "White"
+
+
+	$hpLabel = CreateLabel "Consolas" 16 "White"
+	$posLabel = CreateLabel "Consolas" 16 "White"
+	$phLabel = CreateLabel "Consolas" 16 "White"
+	$skillLabel = CreateLabel "Consolas" 16 "White"
+	$vehicleLabel = CreateLabel "Consolas" 16 "White"
+	$meleeLabel = CreateLabel "Consolas" 16 "White"
+
+	$posLabel.Visible = $false
+	$phLabel.Visible = $false
+	$skillLabel.Visible = $false
+	$vehicleLabel.Visible = $false
+	$meleeLabel.Visible = $false
+
+	$bgPanel.Controls.Add($hpLabel)
+
+
+	$timer = New-Object System.Windows.Forms.Timer
+	$timer.Interval = 200
+
+	$timer.Add_Tick({
+		$CursorPosition = [System.Windows.Forms.Cursor]::Position
+		$NormalizedX = [Math]::Round($CursorPosition.X / $ScreenWidth, 3)
+		$NormalizedY = [Math]::Round($CursorPosition.Y / $ScreenHeight, 3)
+
+		$cont = $true
+		
+		if ($bgPanel.Visible) {
+			$cptr = RInt64 ($worldPtr)	#world
+			$cptr = RInt64 ($cptr + [Int64]0x140)	#GameInstance
+			$cptr = RInt64 ($cptr + [Int64]0x38)	#localPlayer
+			$cptr = RInt64 ($cptr)
+			$cptr = RInt64 ($cptr + [Int64]0x30)	#playerController
+			$numNearZombies = RInt32 ($cptr + [Int64]0x944)
+			
+			$cptr = RInt64 ($cptr + [Int64]0x368)	#DaytonHumanCharacter
+			if ((RInt64 ($cptr)) -eq [Int64]($daytonVehicleVtPtr)) {	#if in vehicle
+				$cptr = RInt64 ($cptr + [Int64]0x4a0)
+			}
+			$cptr = RInt64 ($cptr + [Int64]0xba0)	#charactercomponent
+			$cptr = RInt64 ($cptr + [Int64]0x190)	#daytonCharacter
+			
+			$newHpLabel = ""
+			$newPhLabel = ""
+			$currid = RInt32 ($cptr + [Int64]0x368)
+			$currhp = RSingle ($cptr + [Int64]0x470)
+			$maxHp = RSingle ($cptr + [Int64]0xb00)
+			$currStam = RSingle ($cptr + [Int64]0x474)
+			$maxStam = RSingle ($cptr + [Int64]0xaf4)
+			$currPlague = RSingle ($cptr + [Int64]0x480)
+			$maxPlague = RSingle ($cptr + [Int64]0xb44)
+			$currFatigue = RSingle ($cptr + [Int64]0x478)
+			$currStanding = RSingle ($cptr + [Int64]0x430)
+			
+			
+			$newHpLabel += "NearZombs: {0,6:N0}`n" -f $numNearZombies
+			$newHpLabel += "Health:    {0,6:N2} / {1,6:N2}`n" -f $currhp, $maxHp
+			$newHpLabel += "Stamina:   {0,6:N2} / {1,6:N2}`n" -f $currStam, $maxStam
+			$newHpLabel += "Plague:    {0,6:N2} / {1,6:N2}`n" -f $currPlague, $maxPlague
+			$newHpLabel += "Fatigue:   {0,6:N2}`n"           -f $currFatigue
+			$newHpLabel += "Standing:  {0,6:N2}`n"           -f $currStanding
+			
+
+			$newHpLabel += "`n"
+			
+			$xpos = RSingle ($cptr + [Int64]0xff0)
+			$ypos = RSingle ($cptr + [Int64]0xff4)
+			$zpos = RSingle ($cptr + [Int64]0xff8)
+
+			$newposLabel  = "x: {0,8:F2}`n" -f $xpos
+			$newposLabel += "y: {0,8:F2}`n" -f $ypos
+			$newposLabel += "z: {0,8:F2}`n" -f $zpos
+			
+			
+			
+			$eptr = RInt64 ($cptr + [Int64]0xe28)		#Enclave
+			
+			$numchars = RInt32 ($eptr + [Int64]0x3a0)
+			$newPanelHeight = 170
+			if ($numchars -gt 0) {
+				$newHpLabel += "  LastName        HP      Ftg    Plg`n"
+				for ($i = 0; $i -le $numchars - 1; $i++) {
+					$newPanelHeight += 32
+					$cptr = RInt64 ($eptr + [Int64]0x398)
+					$cptr = RInt64 ($cptr + [Int64]($i * 8))
+					
+					$id = RInt32 ($cptr + [Int64]0x368)
+					
+					$lastName = ($cptr + [Int64]0x3a0)
+					
+					$lastName = RInt64 ($cptr + [Int64]0x398)
+					$lastName = RInt64 ($lastName + [Int64]0x28)
+					$lastName = RUnicodeStr ($lastName)
+					#$lastName = $lastName.ToString("X")
+					
+					$hp = RSingle ($cptr + [Int64]0x470)
+					$fat = RSingle ($cptr + [Int64]0x478)
+					$bp = RSingle ($cptr + [Int64]0x480)
+					
+					$newHpLabel += "{0,-15} {1,6:F2}, {2,6:F2}, {3,6:F2}"           -f $lastName, $hp, $fat, $bp
+					if ($currId -eq $id) {
+						$newHpLabel += " *"
+					}
+					$newHpLabel +="`n"
+				}
+			}
+			if ($newPanelHeight -ne $oldpanelheight) {
+				$bgPanel.Height = $newPanelHeight
+			}
+			$oldpanelheight = $bgPanel.Height
+		}
+		
+		
+		
+		
+		
+		if ($skillLabel.Visible) {
+			$cptr = RInt64 ($worldPtr)	#world
+			$cptr = RInt64 ($cptr + [Int64]0x140)	#GameInstance
+			$cptr = RInt64 ($cptr + [Int64]0x38)	#localPlayer
+			$cptr = RInt64 ($cptr)
+			$cptr = RInt64 ($cptr + [Int64]0x30)	#playerController
+			$cptr = RInt64 ($cptr + [Int64]0x368)	#DaytonHumanCharacter
+			if ((RInt64 ($cptr)) -eq [Int64]($daytonVehicleVtPtr)) {	#if in vehicle
+				$cptr = RInt64 ($cptr + [Int64]0x4a0)
+			}
+			$cptr = RInt64 ($cptr + [Int64]0xba0)	#charactercomponent
+			$cptr = RInt64 ($cptr + [Int64]0x190)	#daytonCharacter
+			
+			$skillptr = $cptr + [Int64]0x368		#daytonCharacterRecord
+			$numskills = RInt32 ($skillptr + [Int64]0xf0)
+			$skillptr = RInt64 ($skillptr + [Int64]0xe8)
+			if ($numskills -gt 0) {
+				$newSkillLabel = ""
+				for ($i = 0; $i -le $numskills -1; $i++) {
+					$skillnameid = RInt32 $skillptr
+					$skillname = GetNameFromNameId $skillnameid
+					$skillLvl = RBytes ($skillptr + [Int64]0x8) 1
+					$skillXp = RSingle ($skillptr + [Int64]0xc)
+					$skillPtr += [Int64]0x18
+					$newSkillLabel += "{0,6:F2}   {1,1:F0}*  {2,-10}`n" -f $skillXp, $skillLvl, $skillname
+				}
+			}
+		}
+		
+		
+		if ($meleeLabel.Visible) {
+			$cptr = RInt64 ($worldPtr)	#world
+			$cptr = RInt64 ($cptr + [Int64]0x140)	#GameInstance
+			$cptr = RInt64 ($cptr + [Int64]0x38)	#localPlayer
+			$cptr = RInt64 ($cptr)
+			$cptr = RInt64 ($cptr + [Int64]0x30)	#playerController
+			$cptr = RInt64 ($cptr + [Int64]0x368)	#DaytonHumanCharacter
+			if ((RInt64 ($cptr)) -eq [Int64]($daytonVehicleVtPtr)) {		#if in vehicle
+				$cptr = RInt64 ($cptr + [Int64]0x4a0)
+			}
+			$cptr = RInt64 ($cptr + [Int64]0xba0)	#charactercomponent
+			$cptr = RInt64 ($cptr + [Int64]0x190)	#daytonCharacter
+			$cptr = ($cptr + [Int64]0x368)			#DaytonCharacterRecord
+			$cptr = RInt64 ($cptr + [Int64]0xd0)	#Equipment
+			$cptr = RInt64 ($cptr + [Int64]0x38)	#EquipmentSlots
+			$cptr = RInt64 ($cptr + [Int64]0x0)		#EquipmentSlot1, Melee
+			$dura = RSingle ($cptr + [Int64]0x169c)	#Durability
+			
+			$cptr = RInt64 ($cptr + [Int64]0xf8)	#FinalStats
+			$cptr = ($cptr + [Int64]0x28)			#MeleeWeaponResource
+			
+			$dismember = RSingle ($cptr + [Int64]0xc)
+			$dismemberDelta = RSingle ($cptr + [Int64]0x14)
+			$impact = RSingle ($cptr + [Int64]0x1c)
+			$impactDelta = RSingle ($cptr + [Int64]0x24)
+			$knockdown = RSingle ($cptr + [Int64]0x2c)
+			$knockdownDelta = RSingle ($cptr + [Int64]0x34)
+			$lethality = RSingle ($cptr + [Int64]0x3c)
+			$lethalityDelta = RSingle ($cptr + [Int64]0x44)
+			$Weight = RSingle ($cptr + [Int64]0x4c)
+			$loudness = RSingle ($cptr + [Int64]0x54)
+			$Speed = RSingle ($cptr + [Int64]0x5c)
+			$swingCost = RSingle ($cptr + [Int64]0x64)
+			$InfluenceValue = RSingle ($cptr + [Int64]0x6c)
+			$PrestigeValue = RSingle ($cptr + [Int64]0x74)
+			$Durability = RSingle ($cptr + [Int64]0x7c)
+			$DurabilityLossPerHitMin = RSingle ($cptr + [Int64]0x84)
+			$DurabilityLossPerHitMax = RSingle ($cptr + [Int64]0x8c)
+			$DurabilityLossPerFinishMin = RSingle ($cptr + [Int64]0x94)
+			$DurabilityLossPerFinishMax = RSingle ($cptr + [Int64]0x9c)
+			
+			$MeleeType = RInt64 ($cptr + [Int64]0xb0)
+			$MeleeType = RUnicodeStr $MeleeType
+			
+			$weapName = RInt64 ($cptr + [Int64]0xa0)
+			$weapName = RUnicodeStr $weapName
+			
+			$weapName = $weapName -replace '\{\[[^\]]+\][^\}]*\}', ''
+			$weapName = $weapName -replace '{!v}', ''
+			
+			$newmeleeLabel = ""
+			$newmeleeLabel += "$weapName`n"
+			$newmeleeLabel += "$MeleeType`n"
+			$newmeleeLabel += "Impact:          {0,6:F2}`n" -f $impact
+			$newmeleeLabel += "ImpactDelta:     {0,6:F2}`n" -f $impactDelta
+			$newmeleeLabel += "Knockdown:       {0,6:F2}`n" -f $knockdown
+			$newmeleeLabel += "KnockdownDelta:  {0,6:F2}`n" -f $knockdownDelta
+			$newmeleeLabel += "Lethality:       {0,6:F2}`n" -f $lethality
+			$newmeleeLabel += "LethalityDelta:  {0,6:F2}`n" -f $lethalityDelta
+			$newmeleeLabel += "Weight:          {0,6:F2}`n" -f $weight
+			$newmeleeLabel += "Loudness:        {0,6:F2}`n" -f $loudness
+			$newmeleeLabel += "Speed:           {0,6:F2}`n" -f $Speed
+			$newmeleeLabel += "SwingCost:       {0,6:F2}`n" -f $swingCost
+			$newmeleeLabel += "InfluenceValue:  {0,6:F2}`n" -f $InfluenceValue
+			$newmeleeLabel += "PrestigeValue:   {0,6:F2}`n" -f $PrestigeValue
+			$newmeleeLabel += "Dura/Hit Min:    {0,6:F2}`n" -f $DurabilityLossPerHitMin
+			$newmeleeLabel += "Dura/Hit Max:    {0,6:F2}`n" -f $DurabilityLossPerHitMax
+			$newmeleeLabel += "Dura/Finish Min: {0,6:F2}`n" -f $DurabilityLossPerFinishMin
+			$newmeleeLabel += "Dura/Finish Max: {0,6:F2}`n" -f $DurabilityLossPerFinishMax
+			$newmeleeLabel += "Durability:      {0,6:F2} / {1,6:F2}`n" -f $dura, $Durability
+		}
+		
+		
+		if ($vehicleLabel.Visible) {
+			$vptr = RInt64 ($worldPtr)	#world
+			$vptr = RInt64 ($vptr + [Int64]0x140)	#GameInstance
+			$vptr = RInt64 ($vptr + [Int64]0x38)	#localPlayer
+			$vptr = RInt64 ($vptr)
+			$vptr = RInt64 ($vptr + [Int64]0x30)	#playerController
+			$vptr = RInt64 ($vptr + [Int64]0x368)	#DaytonVehicle
+			
+			$newVehicleLabel = ""
+			if ((RInt64 ($vptr)) -eq [Int64]($daytonVehicleVtPtr)) {	#if in vehicle
+				$vdptr = RInt64 ($vptr + [Int64]0x438)	#Damage
+				$vmcptr = RInt64 ($vptr + [Int64]0x3d8)	#movement
+
+				$currFuel = RSingle ($vmcptr + [Int64]0x478)
+				$currFuel *= 100
+				
+				$engineDamage = RSingle ($vdptr + [Int64]0x150)
+				$frameDamage = RSingle ($vdptr + [Int64]0x154)
+				$gasTankDamage = RSingle ($vdptr + [Int64]0x158)
+				
+				
+				$newVehicleLabel += "Fuel:               {0,6:N2}`n"           -f $currFuel
+				$newVehicleLabel += "Engine Damage:      {0,6:N2}`n"           -f $engineDamage
+				$newVehicleLabel += "Frame Damage:       {0,6:N2}`n"           -f $frameDamage
+				$newVehicleLabel += "Gas Tank Damage:    {0,6:N2}`n"           -f $gasTankDamage
+				$newVehicleLabel += "`n"
+				
+				$newVehicleLabel += "Damage Zones:`n"
+				$numZones = RInt32 ($vdptr + [Int64]0x188)
+				$damZones = RInt64 ($vdptr + [Int64]0x180)
+				for ($i = 0; $i -le $numZones - 1; $i++) {
+					$damval = RSingle ($damZones + [Int64]($i * 4))
+					$newVehicleLabel += "{0,6:N2}    " -f $damval
+					if (($i % 3) -eq 2) {
+						$newVehicleLabel += "`n"
+					}
+				}
+			}
+		}
+		
+		
+		
+		#PhDamageMults
+		#[[[<StateOfDecay2-Win64-Ship>+45d7c88]+110]+530]
+		if ($phLabel.Visible) {
+			$cmptr = RInt64 ($worldPtr)
+			$cmptr = RInt64 ($cmptr + [Int64]0x110)		#GameMode
+			$cmptr = RInt64 ($cmptr + [Int64]0x530)		#ChallengeModeComponent
+			
+			$dmgmult = RSingle ($cmptr + [Int64]0x638)
+			$newPhLabel += "Melee:      {0,6:N4}`n"           -f $dmgmult
+			$dmgmult = RSingle ($cmptr + [Int64]0x63c)
+			$newPhLabel += "Ranged:     {0,6:N4}`n"           -f $dmgmult
+			$dmgmult = RSingle ($cmptr + [Int64]0x640)
+			$newPhLabel += "Explosive:  {0,6:N4}`n"           -f $dmgmult
+			$dmgmult = RSingle ($cmptr + [Int64]0x644)
+			$newPhLabel += "Fire:       {0,6:N4}`n"           -f $dmgmult
+			$dmgmult = RSingle ($cmptr + [Int64]0x648)
+			$newPhLabel += "Vehicle:    {0,6:N4}`n"           -f $dmgmult
+			$newPhLabel += "`n"
+			
+			#[[[[<StateOfDecay2-Win64-Ship>+45d7c88]+58]+4a8]+140]
+			$pnmptr = RInt64 ($worldPtr)
+			$pnmptr = RInt64 ($pnmptr + [Int64]0x58)		#GameState
+			$pnmptr = RInt64 ($pnmptr + [Int64]0x4a8)		#PlagueNodeManager
+			$numph = RInt32 ($pnmptr + [Int64]0x148)
+			$pnmptr = RInt64 ($pnmptr + [Int64]0x140)		#PlagueNodes
+			if ($numph -gt 0) {
+				$newPhLabel += "      Num       HP`n"
+				for ($i = 0; $i -le $numph - 1; $i++) {
+					$phptr = RInt64 ($pnmptr + [Int64](0x28 * $i))
+					
+					$id = $i
+					$hp = RSingle ($phptr + [Int64]0x14b8)
+					
+					$newPhLabel += "   {0,4:F0}:  {1,8:F4}"           -f $id, $hp
+					$newPhLabel +="`n"
+				}
+			}
+		}
+
+		
+		
+		if ($hpLabel.Text -ne $newHpLabel) {
+			$hpLabel.Text = $newHpLabel
+			$hpLabel.PerformLayout()
+		}
+		
+		if ($phLabel.Text -ne $newPhLabel) {
+			$phLabel.Text = $newPhLabel
+			$phLabel.PerformLayout()
+		}
+		
+		if ($skillLabel.Text -ne $newSkillLabel) {
+			$skillLabel.Text = $newSkillLabel
+			$skillLabel.PerformLayout()
+		}
+		
+		if ($vehicleLabel.Text -ne $newVehicleLabel) {
+			$vehicleLabel.Text = $newVehicleLabel
+			$vehicleLabel.PerformLayout()
+		}
+		
+		if ($meleeLabel.Text -ne $newmeleeLabel) {
+			$meleeLabel.Text = $newmeleeLabel
+			$meleeLabel.PerformLayout()
+		}
+		
+		if ($posLabel.Text -ne $newposLabel) {
+			$posLabel.Text = $newposLabel
+			$posLabel.PerformLayout()
+		}
+		
+		$mouseLabel.Text = "$NormalizedX, $NormalizedY"
+		#make positive to display mouse position, for label positioning
+		$x = $ScreenWidth * 0.9
+		$y = $ScreenHeight * 0.95
+		$mouseLabel.Location = New-Object System.Drawing.Point($x, $y)
+		
+		
+		$x = $ScreenWidth * 0.025
+		$y = $ScreenHeight * 0.35
+		$bgPanel.Location = New-Object System.Drawing.Point($x, $y)
+		
+		
+		$x = 5
+		$y = 5
+		$hpLabel.Location = New-Object System.Drawing.Point($x, $y)
+		
+		
+		
+		$x = $ScreenWidth * 0.9
+		$y = $ScreenHeight * 0.35
+		$phLabel.Location = New-Object System.Drawing.Point($x, $y)
+		
+		$x = $ScreenWidth * 0.285
+		$y = $ScreenHeight * 0.8
+		$skillLabel.Location = New-Object System.Drawing.Point($x, $y)
+		
+		$x = $ScreenWidth * 0.025
+		$y = $ScreenHeight * 0.29
+		$vehicleLabel.Location = New-Object System.Drawing.Point($x, $y)
+		
+		$x = $ScreenWidth * 0.025
+		$y = $ScreenHeight * 0.29
+		$meleeLabel.Location = New-Object System.Drawing.Point($x, $y)
+		
+		$x = $ScreenWidth * 0.025
+		$y = $ScreenHeight * 0.29
+		$posLabel.Location = New-Object System.Drawing.Point($x, $y)
+	})
+
+	$timer.Start()
+	$form.ShowDialog()
+	$form.Add_FormClosed({
+		$timer.Dispose()
+	})
+}
