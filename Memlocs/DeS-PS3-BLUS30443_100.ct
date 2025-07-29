@@ -1261,7 +1261,7 @@
     <CheatEntry>
       <ID>152</ID>
       <Description>"Right Hand 1, Equipped"</Description>
-      <ShowAsSigned>0</ShowAsSigned>
+      <ShowAsSigned>1</ShowAsSigned>
       <VariableType>Custom</VariableType>
       <CustomType>4 Bytes Big Endian</CustomType>
       <Address>301E81Cc</Address>
