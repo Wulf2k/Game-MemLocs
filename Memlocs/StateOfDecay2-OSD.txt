@@ -1,3 +1,5 @@
+Write-Host "Launching OSD."
+
 $procname = "StateOfDecay2-Win64-Shipping"
 
 $bigendian = $false
@@ -119,7 +121,7 @@ if ($verIdent -eq 0xd54624b7) {
 	$worldPtr 			= $ba + [Int64]0x04726808
 }
 if ($ver -eq "Dunno") {
-	Write-Host "Matching bytes not found, incompatible version of game"
+	Write-Host "Matching bytes not found, incompatible version of game or process not found."
 } else {
 	Add-Type -AssemblyName System.Windows.Forms
 	$ScreenWidth = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds.Width
@@ -316,9 +318,7 @@ if ($ver -eq "Dunno") {
 		$CursorPosition = [System.Windows.Forms.Cursor]::Position
 		$NormalizedX = [Math]::Round($CursorPosition.X / $ScreenWidth, 3)
 		$NormalizedY = [Math]::Round($CursorPosition.Y / $ScreenHeight, 3)
-
-		$cont = $true
-		
+				
 		if ($bgPanel.Visible) {
 			$cptr = RInt64 ($worldPtr)	#world
 			$cptr = RInt64 ($cptr + [Int64]0x140)	#GameInstance
@@ -338,19 +338,16 @@ if ($ver -eq "Dunno") {
 			$newPhLabel = ""
 			$currid = RInt32 ($cptr + [Int64]0x368)
 			$currhp = RSingle ($cptr + [Int64]0x470)
-			$maxHp = RSingle ($cptr + [Int64]0xb00)
 			$currStam = RSingle ($cptr + [Int64]0x474)
-			$maxStam = RSingle ($cptr + [Int64]0xaf4)
 			$currPlague = RSingle ($cptr + [Int64]0x480)
-			$maxPlague = RSingle ($cptr + [Int64]0xb44)
 			$currFatigue = RSingle ($cptr + [Int64]0x478)
 			$currStanding = RSingle ($cptr + [Int64]0x430)
 			
 			
 			$newHpLabel += "NearZombs: {0,6:N0}`n" -f $numNearZombies
-			$newHpLabel += "Health:    {0,6:N2} / {1,6:N2}`n" -f $currhp, $maxHp
-			$newHpLabel += "Stamina:   {0,6:N2} / {1,6:N2}`n" -f $currStam, $maxStam
-			$newHpLabel += "Plague:    {0,6:N2} / {1,6:N2}`n" -f $currPlague, $maxPlague
+			$newHpLabel += "Health:    {0,6:N2}`n" -f $currhp
+			$newHpLabel += "Stamina:   {0,6:N2}`n" -f $currStam
+			$newHpLabel += "Plague:    {0,6:N2}`n" -f $currPlague
 			$newHpLabel += "Fatigue:   {0,6:N2}`n"           -f $currFatigue
 			$newHpLabel += "Standing:  {0,6:N2}`n"           -f $currStanding
 			
@@ -669,3 +666,5 @@ if ($ver -eq "Dunno") {
 		$timer.Dispose()
 	})
 }
+
+pause
