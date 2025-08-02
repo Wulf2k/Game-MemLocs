@@ -1,16 +1,11 @@
 Write-Host "Launching OSD."
 
 $procname = "StateOfDecay2-Win64-Shipping"
-
 $bigendian = $false
-
-
 
 [console]::CursorVisible = $false
 $Host.UI.RawUI.BackgroundColor = 'Black'
 $Host.UI.RawUI.ForegroundColor = 'Green'
-
-
 
 Function RBytes
 {
@@ -68,16 +63,55 @@ Function RUInt32  { Param ([IntPtr]$addr) ReadAndConvert $addr 4 "UInt32" }
 Function RUInt64  { Param ([IntPtr]$addr) ReadAndConvert $addr 8 "UInt64" }
 Function RSingle  { Param ([IntPtr]$addr) ReadAndConvert $addr 4 "Single" }
 
-Function GetNameFromNameId {
-	Param (
-		[Int32]$id
-	)
-	[IntPtr]$table = RInt64 ($namesTablePtr)		
-	$name = RAsciiStr ($table + [Int64]$id + 8)
-	$name
+Function WBytes {
+    Param (
+        [IntPtr]$addr,
+        [Byte[]]$data
+    )
+    $size = $data.Length
+    $written = 0
+    $success = $rpm::WriteProcessMemory($proc, $addr, $data, $size, [ref]$written)
+    if (-not $success -or $written -ne $size) {
+        throw "Failed to write memory at $addr"
+    }
+}
+Function WInt16   { Param ([IntPtr]$addr, [Int16]$val)   WBytes $addr ([BitConverter]::GetBytes($val)) }
+Function WInt32   { Param ([IntPtr]$addr, [Int32]$val)   WBytes $addr ([BitConverter]::GetBytes($val)) }
+Function WInt64   { Param ([IntPtr]$addr, [Int64]$val)   WBytes $addr ([BitConverter]::GetBytes($val)) }
+Function WUInt8   { Param ([IntPtr]$addr, [Byte]$val)    WBytes $addr @($val) }
+Function WUInt16  { Param ([IntPtr]$addr, [UInt16]$val)  WBytes $addr ([BitConverter]::GetBytes($val)) }
+Function WUInt32  { Param ([IntPtr]$addr, [UInt32]$val)  WBytes $addr ([BitConverter]::GetBytes($val)) }
+Function WUInt64  { Param ([IntPtr]$addr, [UInt64]$val)  WBytes $addr ([BitConverter]::GetBytes($val)) }
+Function WSingle  { Param ([IntPtr]$addr, [Single]$val)  WBytes $addr ([BitConverter]::GetBytes($val)) }
+Function WAsciiStr {
+    Param (
+        [IntPtr]$addr,
+        [string]$str,
+        [int]$maxLen = 0x50
+    )
+    $bytes = [System.Text.Encoding]::ASCII.GetBytes($str)
+    if ($bytes.Length -ge $maxLen) {
+        $bytes = $bytes[0..($maxLen-2)]
+    }
+    $padded = New-Object Byte[]($maxLen)
+    [Array]::Copy($bytes, $padded, $bytes.Length)
+    WBytes $addr $padded
 }
 
-
+Function WUnicodeStr {
+    Param (
+        [IntPtr]$addr,
+        [string]$str,
+        [int]$maxLen = 0x50
+    )
+    $bytes = [System.Text.Encoding]::Unicode.GetBytes($str)
+    if ($bytes.Length -ge $maxLen) {
+        $bytes = $bytes[0..($maxLen-2)]
+    }
+    $padded = New-Object Byte[]($maxLen)
+    [Array]::Copy($bytes, $padded, $bytes.Length)
+    WBytes $addr $padded
+}
 
 $signature = @"
 [DllImport("kernel32.dll")] public static extern IntPtr OpenProcess(
@@ -85,7 +119,7 @@ $signature = @"
 [DllImport("kernel32.dll")] public static extern bool ReadProcessMemory(
     IntPtr hp,IntPtr Base,[Out]Byte[] buff,int Size,[Out]int bread);
 [DllImport("kernel32.dll")] public static extern bool WriteProcessMemory(
-    IntPtr hp,IntPtr Base,[In]Byte[] buff,int Size,[Out]int bwrite);
+    IntPtr hp,IntPtr Base,[In]Byte[] buff,int Size,out int bwrite);
 [DllImport("kernel32.dll")] public static extern bool VirtualProtectEx(
 	IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint flNewProtect, out uint lpflOldProtect);
 "@
@@ -101,6 +135,278 @@ $proc = $rpm::OpenProcess($access, $false, $procid)
 
 
 
+Function GetNameFromNameOffset {
+	Param (
+		[Int32]$offset
+	)
+	
+	[IntPtr]$table = RInt64 ($namesTablePtr)		
+	if ($offset -lt 0x1000) {
+		$offset = RInt32 ($ba + [Int64]0x44da8e0 + ($offset * 4))
+		#FIX FOR STEAM
+	}
+	$name = RAsciiStr ($table + [Int64]$offset + 8)
+
+	$name
+}
+Function GetObjFromObjId {
+	Param (
+		[Int32]$id
+	)
+	[IntPtr]$table = RInt64 ($objTablePtr)		
+	$obj = RInt64  ($table + [Int64](0x18 * $id))
+	$obj
+}
+
+#struct UObject {
+    #void* VTable;         // 0x00
+    #int32 FlagsOrIndex;   // 0x08
+    #int32 ObjId;          // 0x0C  → Used in GUObjectArray
+    #void* ClassPtr;       // 0x10
+    #int32 NameOffset;     // 0x18  → Byte offset into name pool
+    #int32 Unknown;        // 0x1C
+    #void* OuterPtr;       // 0x20
+#};
+
+
+
+
+
+
+
+
+
+
+
+class UObject {
+	[IntPtr]$BaseAddress
+	UObject([IntPtr]$addr) {
+		$this.BaseAddress = $addr
+	}
+	[string] Name() {
+		$nameId = RInt32([IntPtr]($this.BaseAddress.ToInt64() + 0x18))
+		return GetNameFromNameOffset $nameId
+	}
+}
+
+class CharacterComponent {
+    [IntPtr]$BaseAddress
+	[UObject]$UObject
+    CharacterComponent([IntPtr]$addr) {
+        $this.BaseAddress = $addr
+		$this.UObject = [UObject]::new($addr)
+    }
+	[DaytonCharacter] DaytonCharacter() {
+		return [DaytonCharacter]::new((RInt64([IntPtr]($this.BaseAddress.ToInt64() + 0x190))))
+    }
+}
+
+class DaytonCharacter {
+    [IntPtr]$BaseAddress
+	[UObject]$UObject
+    DaytonCharacter([IntPtr]$addr) {
+        $this.BaseAddress = $addr
+		$this.UObject = [UObject]::new($addr)
+    }
+	[int] ID() {
+		return RInt32([IntPtr]($this.BaseAddress.ToInt64() + 0x368))
+	}
+	[void] ID([int]$value) {
+		WInt32 ([IntPtr]($this.BaseAddress.ToInt64() + 0x368)) $value
+	}
+    [string] HeroBonus() {
+		$id = RInt32([IntPtr]($this.BaseAddress.ToInt64() + 0x418))
+		return GetNameFromNameOffset $id
+	}
+	[string] LeaderType() {
+		$id = RInt32([IntPtr]($this.BaseAddress.ToInt64() + 0x428))
+		return GetNameFromNameOffset $id
+	}
+	[float] currStanding() {
+        return RSingle([IntPtr]($this.BaseAddress.ToInt64() + 0x430))
+    }
+    [void] currStanding([float]$value) {
+        WSingle ([IntPtr]($this.BaseAddress.ToInt64() + 0x430)) $value
+    }
+	[float] currHealth() {
+        return RSingle([IntPtr]($this.BaseAddress.ToInt64() + 0x470))
+    }
+    [void] currHealth([float]$value) {
+        WSingle ([IntPtr]($this.BaseAddress.ToInt64() + 0x470)) $value
+    }
+    [float] currStam() {
+        return RSingle([IntPtr]($this.BaseAddress.ToInt64() + 0x474))
+    }
+    [void] currStam([float]$value) {
+        WSingle ([IntPtr]($this.BaseAddress.ToInt64() + 0x474)) $value
+    }
+	[float] currFatigue() {
+        return RSingle([IntPtr]($this.BaseAddress.ToInt64() + 0x478))
+    }
+    [void] currFatigue([float]$value) {
+        WSingle ([IntPtr]($this.BaseAddress.ToInt64() + 0x478)) $value
+    }
+	[float] currSick() {
+        return RSingle([IntPtr]($this.BaseAddress.ToInt64() + 0x480))
+    }
+    [void] currSick([float]$value) {
+        WSingle ([IntPtr]($this.BaseAddress.ToInt64() + 0x480)) $value
+    }
+	[float] currPlague() {
+        return RSingle([IntPtr]($this.BaseAddress.ToInt64() + 0x484))
+    }
+    [void] currPlague([float]$value) {
+        WSingle ([IntPtr]($this.BaseAddress.ToInt64() + 0x484)) $value
+    }
+	
+	[float] maxStaminaBase() {
+        return RSingle([IntPtr]($this.BaseAddress.ToInt64() + 0xaf4))
+    }
+	[float] maxHealthBase() {
+        return RSingle([IntPtr]($this.BaseAddress.ToInt64() + 0xb00))
+    }
+	
+	[float] maxSick() {
+        return RSingle([IntPtr]($this.BaseAddress.ToInt64() + 0xb38))
+    }
+    [void] maxSick([float]$value) {
+        WSingle ([IntPtr]($this.BaseAddress.ToInt64() + 0xb38)) $value
+    }
+	[float] maxPlague() {
+        return RSingle([IntPtr]($this.BaseAddress.ToInt64() + 0xb44))
+    }
+    [void] maxPlague([float]$value) {
+        WSingle ([IntPtr]($this.BaseAddress.ToInt64() + 0xb44)) $value
+    }
+	
+	[Enclave] Enclave() {
+		return [Enclave]::new((RInt64($this.BaseAddress.ToInt64() + 0xe28)))
+	}
+	
+	[float] xPos() {
+        return RSingle([IntPtr]($this.BaseAddress.ToInt64() + 0xff0))
+    }
+	[float] yPos() {
+        return RSingle([IntPtr]($this.BaseAddress.ToInt64() + 0xff4))
+    }
+	[float] zPos() {
+        return RSingle([IntPtr]($this.BaseAddress.ToInt64() + 0xff8))
+    }
+}
+
+class DaytonHumanCharacter {
+    [IntPtr]$BaseAddress
+	[UObject]$UObject
+    DaytonHumanCharacter([IntPtr]$addr) {
+        $this.BaseAddress = $addr
+		$this.UObject = [UObject]::new($addr)
+    }
+	[CharacterComponent] CharacterComponent() {
+		return [CharacterComponent]::new((RInt64([IntPtr]($this.BaseAddress.ToInt64() + 0xba0))))
+    }
+}
+
+class Enclave {
+    [IntPtr]$BaseAddress
+	[UObject]$UObject
+    Enclave([IntPtr]$addr) {
+        $this.BaseAddress = $addr
+		$this.UObject = [UObject]::new($addr)
+    }
+}
+
+class FollowerManager {
+    [IntPtr]$BaseAddress
+	[UObject]$UObject
+    FollowerManager([IntPtr]$addr) {
+        $this.BaseAddress = $addr
+		$this.UObject = [UObject]::new($addr)
+    }
+	[DaytonCharacter]Follower() {
+		return [DaytonCharacter]::new((RInt64(RInt64([IntPtr]($this.BaseAddress.ToInt64() + 0xa0)))))
+	}
+	[Int]numFollowers() {
+		return RInt32 ([IntPtr]($this.BaseAddress.ToInt64() + 0xa8))
+	}
+}
+
+class GameInstance {
+    [IntPtr]$BaseAddress
+	[UObject]$UObject
+    GameInstance([IntPtr]$addr) {
+        $this.BaseAddress = $addr
+		$this.UObject = [UObject]::new($addr)
+    }
+	[LocalPlayer] LocalPlayer() {
+		return [LocalPlayer]::new((RInt64(RInt64([IntPtr]($this.BaseAddress.ToInt64() + 0x38)))))
+    }
+}
+
+class LocalPlayer {
+    [IntPtr]$BaseAddress
+	[UObject]$UObject
+    LocalPlayer([IntPtr]$addr) {
+        $this.BaseAddress = $addr
+		$this.UObject = [UObject]::new($addr)
+    }
+	[PlayerController] PlayerController() {
+		return [PlayerController]::new((RInt64([IntPtr]($this.BaseAddress.ToInt64() + 0x30))))
+    }
+}
+
+class PlayerController {
+    [IntPtr]$BaseAddress
+	[UObject]$UObject
+    PlayerController([IntPtr]$addr) {
+        $this.BaseAddress = $addr
+		$this.UObject = [UObject]::new($addr)
+    }
+	[DaytonHumanCharacter] DaytonHumanCharacter() {
+        $ptr = RInt64([IntPtr]($this.BaseAddress.ToInt64() + 0x368))
+		$id = RInt32([IntPtr]($ptr + 0x18))
+		$name = GetNameFromNameOffset $id
+		if ($name -eq "HumanCharacter_C") {
+			return [DaytonHumanCharacter]::new($ptr)
+		} 
+		if ($name -eq "DaytonInteractionProxyPawn_BP_C") {
+			$ptr = RInt64([IntPtr]($ptr + 0x3e0))
+			return [DaytonHumanCharacter]::new($ptr)
+		}
+		$ptr = RInt64([IntPtr]($ptr + 0x4a0))
+		return [DaytonHumanCharacter]::new($ptr)
+    }
+	[FollowerManager]FollowerManager() {
+		$ptr = RInt64([IntPtr]($this.BaseAddress.ToInt64() + 0x7a8))
+		return [FollowerManager]::new($ptr)
+	}	
+	[Int]ProximateZombieCount() {
+		return (RInt32 ($this.BaseAddress.ToInt64() + 0x944))
+	}
+}
+
+class World {
+    [IntPtr]$BaseAddress
+	[UObject]$UObject
+    World([IntPtr]$addr) {
+        $this.BaseAddress = $addr
+		$this.UObject = [UObject]::new($addr)
+    }
+	[GameInstance] GameInstance() {
+		return [GameInstance]::new((RInt64([IntPtr]($this.BaseAddress.ToInt64() + 0x140))))
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -112,12 +418,14 @@ if ($verIdent -eq 0x49274e48) {
 	$ver = "MS"
 	$daytonVehicleVtPtr = $ba + [Int64]0x03418E40
 	$namesTablePtr 		= $ba + [Int64]0x044DB248
+	$objTablePtr 		= $ba + [Int64]0x044E3B30
 	$worldPtr 			= $ba + [Int64]0x045D7C88
 }
 if ($verIdent -eq 0xd54624b7) {
 	$ver = "Steam"
 	$daytonVehicleVtPtr = $ba + [Int64]0x034E8930
 	$namesTablePtr 		= $ba + [Int64]0x04629DC8
+	$objTablePtr		= $ba + [Int64]0x046326b0
 	$worldPtr 			= $ba + [Int64]0x04726808
 }
 if ($ver -eq "Dunno") {
@@ -126,17 +434,6 @@ if ($ver -eq "Dunno") {
 	Add-Type -AssemblyName System.Windows.Forms
 	$ScreenWidth = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds.Width
 	$ScreenHeight = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds.Height
-
-
-
-
-
-
-
-
-
-
-
 
 	$form = New-Object System.Windows.Forms.Form
 	$form.Text = ""
@@ -176,7 +473,7 @@ if ($ver -eq "Dunno") {
 	$bgPanel = New-Object Windows.Forms.Panel
 	$bgPanel.Left = 10
 	$bgPanel.Top = 10
-	$bgPanel.Width = 500
+	$bgPanel.Width = 600
 	$bgPanel.Height = 170
 	#$bgPanel.BackColor = [System.Drawing.Color]::FromArgb(60, 30, 30, 30)  # 60 = 23% opacity
 	$bgPanel.BackColor = [System.Drawing.Color]::Transparent
@@ -221,12 +518,27 @@ if ($ver -eq "Dunno") {
 	})
 	$buttonPanel.Controls.Add($bgPanelToggleBtn)
 
+	$followerToggleBtn = New-Object System.Windows.Forms.Button
+	$followerToggleBtn.Text = "Follower"
+	$followerToggleBtn.Width = 100
+	$followerToggleBtn.Height = 30
+	$followerToggleBtn.Left = 5
+	$followerToggleBtn.Top = 5 + (10 + 30) * 1
+	$followerToggleBtn.BackColor = [System.Drawing.Color]::FromArgb(100, 180, 180, 180)
+	$followerToggleBtn.ForeColor = "Black"
+	$followerToggleBtn.FlatStyle = "Flat"
+	$followerToggleBtn.Add_Click({
+		$followerLabel.Visible = -not $followerLabel.Visible
+	})
+	$buttonPanel.Controls.Add($followerToggleBtn)
+	
+	
 	$skillToggleBtn = New-Object System.Windows.Forms.Button
 	$skillToggleBtn.Text = "Skills"
 	$skillToggleBtn.Width = 100
 	$skillToggleBtn.Height = 30
 	$skillToggleBtn.Left = 5
-	$skillToggleBtn.Top = 5 + (10 + 30) * 1
+	$skillToggleBtn.Top = 5 + (10 + 30) * 2
 	$skillToggleBtn.BackColor = [System.Drawing.Color]::FromArgb(100, 180, 180, 180)
 	$skillToggleBtn.ForeColor = "Black"
 	$skillToggleBtn.FlatStyle = "Flat"
@@ -240,7 +552,7 @@ if ($ver -eq "Dunno") {
 	$vehicleToggleBtn.Width = 100
 	$vehicleToggleBtn.Height = 30
 	$vehicleToggleBtn.Left = 5
-	$vehicleToggleBtn.Top = 5 + (10 + 30) * 2
+	$vehicleToggleBtn.Top = 5 + (10 + 30) * 3
 	$vehicleToggleBtn.BackColor = [System.Drawing.Color]::FromArgb(100, 180, 180, 180)
 	$vehicleToggleBtn.ForeColor = "Black"
 	$vehicleToggleBtn.FlatStyle = "Flat"
@@ -254,7 +566,7 @@ if ($ver -eq "Dunno") {
 	$phToggleBtn.Width = 100
 	$phToggleBtn.Height = 30
 	$phToggleBtn.Left = 5
-	$phToggleBtn.Top = 5 + (10 + 30) * 3
+	$phToggleBtn.Top = 5 + (10 + 30) * 4
 	$phToggleBtn.BackColor = [System.Drawing.Color]::FromArgb(100, 180, 180, 180)
 	$phToggleBtn.ForeColor = "Black"
 	$phToggleBtn.FlatStyle = "Flat"
@@ -268,7 +580,7 @@ if ($ver -eq "Dunno") {
 	$meleeToggleBtn.Width = 100
 	$meleeToggleBtn.Height = 30
 	$meleeToggleBtn.Left = 5
-	$meleeToggleBtn.Top = 5 + (10 + 30) * 4
+	$meleeToggleBtn.Top = 5 + (10 + 30) * 5
 	$meleeToggleBtn.BackColor = [System.Drawing.Color]::FromArgb(100, 180, 180, 180)
 	$meleeToggleBtn.ForeColor = "Black"
 	$meleeToggleBtn.FlatStyle = "Flat"
@@ -295,13 +607,15 @@ if ($ver -eq "Dunno") {
 	$mouseLabel = CreateLabel "Consolas" 16 "White"
 
 
-	$hpLabel = CreateLabel "Consolas" 16 "White"
+	$hpLabel = CreateLabel "Consolas" 14 "White"
 	$posLabel = CreateLabel "Consolas" 16 "White"
 	$phLabel = CreateLabel "Consolas" 16 "White"
 	$skillLabel = CreateLabel "Consolas" 16 "White"
 	$vehicleLabel = CreateLabel "Consolas" 16 "White"
 	$meleeLabel = CreateLabel "Consolas" 16 "White"
+	$followerLabel = CreateLabel "Consolas" 16 "White"
 
+	$followerLabel.Visible = $false
 	$posLabel.Visible = $false
 	$phLabel.Visible = $false
 	$skillLabel.Visible = $false
@@ -320,88 +634,96 @@ if ($ver -eq "Dunno") {
 		$NormalizedY = [Math]::Round($CursorPosition.Y / $ScreenHeight, 3)
 				
 		if ($bgPanel.Visible) {
-			$cptr = RInt64 ($worldPtr)	#world
-			$cptr = RInt64 ($cptr + [Int64]0x140)	#GameInstance
-			$cptr = RInt64 ($cptr + [Int64]0x38)	#localPlayer
-			$cptr = RInt64 ($cptr)
-			$cptr = RInt64 ($cptr + [Int64]0x30)	#playerController
-			$numNearZombies = RInt32 ($cptr + [Int64]0x944)
-			
-			$cptr = RInt64 ($cptr + [Int64]0x368)	#DaytonHumanCharacter
-			if ((RInt64 ($cptr)) -eq [Int64]($daytonVehicleVtPtr)) {	#if in vehicle
-				$cptr = RInt64 ($cptr + [Int64]0x4a0)
-			}
-			$cptr = RInt64 ($cptr + [Int64]0xba0)	#charactercomponent
-			$cptr = RInt64 ($cptr + [Int64]0x190)	#daytonCharacter
-			
+			$World = [World]::new((RInt64 ($worldPtr)))
+			$GameInstance = $World.GameInstance()
+			$LocalPlayer = $GameInstance.LocalPlayer()
+			$PlayerController = $LocalPlayer.PlayerController()
+			$DaytonHumanCharacter = $PlayerController.DaytonHumanCharacter()
+			$CharacterComponent = $DaytonHumanCharacter.CharacterComponent()
+			$DaytonCharacter = $CharacterComponent.DaytonCharacter()
+			$Enclave = $DaytonCharacter.Enclave()
+
+
+
 			$newHpLabel = ""
-			$newPhLabel = ""
-			$currid = RInt32 ($cptr + [Int64]0x368)
-			$currhp = RSingle ($cptr + [Int64]0x470)
-			$currStam = RSingle ($cptr + [Int64]0x474)
-			$currPlague = RSingle ($cptr + [Int64]0x480)
-			$currFatigue = RSingle ($cptr + [Int64]0x478)
-			$currStanding = RSingle ($cptr + [Int64]0x430)
-			
-			
-			$newHpLabel += "NearZombs: {0,6:N0}`n" -f $numNearZombies
-			$newHpLabel += "Health:    {0,6:N2}`n" -f $currhp
-			$newHpLabel += "Stamina:   {0,6:N2}`n" -f $currStam
-			$newHpLabel += "Plague:    {0,6:N2}`n" -f $currPlague
-			$newHpLabel += "Fatigue:   {0,6:N2}`n"           -f $currFatigue
-			$newHpLabel += "Standing:  {0,6:N2}`n"           -f $currStanding
-			
-
-			$newHpLabel += "`n"
-			
-			$xpos = RSingle ($cptr + [Int64]0xff0)
-			$ypos = RSingle ($cptr + [Int64]0xff4)
-			$zpos = RSingle ($cptr + [Int64]0xff8)
-
-			$newposLabel  = "x: {0,8:F2}`n" -f $xpos
-			$newposLabel += "y: {0,8:F2}`n" -f $ypos
-			$newposLabel += "z: {0,8:F2}`n" -f $zpos
-			
-			
-			
-			$eptr = RInt64 ($cptr + [Int64]0xe28)		#Enclave
-			
-			$numchars = RInt32 ($eptr + [Int64]0x3a0)
-			$newPanelHeight = 170
-			if ($numchars -gt 0) {
-				$newHpLabel += "  LastName        HP      Ftg    Plg`n"
-				for ($i = 0; $i -le $numchars - 1; $i++) {
-					$newPanelHeight += 32
-					$cptr = RInt64 ($eptr + [Int64]0x398)
-					$cptr = RInt64 ($cptr + [Int64]($i * 8))
-					
-					$id = RInt32 ($cptr + [Int64]0x368)
-					
-					$lastName = ($cptr + [Int64]0x3a0)
-					
-					$lastName = RInt64 ($cptr + [Int64]0x398)
-					$lastName = RInt64 ($lastName + [Int64]0x28)
-					$lastName = RUnicodeStr ($lastName)
-					#$lastName = $lastName.ToString("X")
-					
-					$hp = RSingle ($cptr + [Int64]0x470)
-					$fat = RSingle ($cptr + [Int64]0x478)
-					$bp = RSingle ($cptr + [Int64]0x480)
-					
-					$newHpLabel += "{0,-15} {1,6:F2}, {2,6:F2}, {3,6:F2}"           -f $lastName, $hp, $fat, $bp
-					if ($currId -eq $id) {
-						$newHpLabel += " *"
+			if ($DaytonCharacter.UObject.Name() -eq "DaytonCharacter") {
+				$newHpLabel += "NearZombs: {0,6:N0}`n" -f $PlayerController.ProximateZombieCount()
+				$newHpLabel += $DaytonCharacter.LeaderType() + "`n"
+				$newHpLabel += $DaytonCharacter.HeroBonus() + "`n"
+				$newHpLabel += "Health:    {0,6:N2} / {1,6:N2}`n" -f $DaytonCharacter.currHealth(), $DaytonCharacter.maxHealthBase()
+				$newHpLabel += "Stamina:   {0,6:N2} / {1,6:N2}`n" -f $DaytonCharacter.currStam(), $DaytonCharacter.maxStaminaBase()
+				$newHpLabel += "Sick:      {0,6:N2} / {1,6:N2}`n" -f $DaytonCharacter.currSick(), $DaytonCharacter.maxSick()
+				$newHpLabel += "Plague:    {0,6:N2} / {1,6:N2}`n" -f $DaytonCharacter.currPlague(), $DaytonCharacter.maxPlague()
+				$newHpLabel += "Fatigue:   {0,6:N2}`n"           -f $DaytonCharacter.currFatigue()
+				$newHpLabel += "Standing:  {0,6:N2}`n"           -f $DaytonCharacter.currStanding()
+				
+				$cptr = $DaytonCharacter.BaseAddress
+				$newHpLabel += "`n"
+				
+				$newposLabel  = "x: {0,8:F2}`n" -f $DaytonCharacter.xPos()
+				$newposLabel += "y: {0,8:F2}`n" -f $DaytonCharacter.yPos()
+				$newposLabel += "z: {0,8:F2}`n" -f $DaytonCharacter.zPos()
+				
+				$currid = $DaytonCharacter.ID()
+				
+				$eptr = $Enclave.BaseAddress		#Enclave
+				
+				$numchars = RInt32 ($eptr + [Int64]0x3a0)
+				$newPanelHeight = 170
+				if ($numchars -gt 0) {
+					$newHpLabel += "  LastName        HP      Ftg    Sck      Plg`n"
+					for ($i = 0; $i -le $numchars - 1; $i++) {
+						$newPanelHeight += 32
+						$cptr = RInt64 ($eptr + [Int64]0x398)
+						$cptr = RInt64 ($cptr + [Int64]($i * 8))
+						
+						$char = [DaytonCharacter]::new($cptr)
+						
+						$id = RInt32 ($cptr + [Int64]0x368)
+						
+						$lastName = ($cptr + [Int64]0x3a0)
+						
+						$lastName = RInt64 ($cptr + [Int64]0x398)
+						$lastName = RInt64 ($lastName + [Int64]0x28)
+						$lastName = RUnicodeStr ($lastName)
+						#$lastName = $lastName.ToString("X")
+						
+						$hp = RSingle ($cptr + [Int64]0x470)
+						$fat = RSingle ($cptr + [Int64]0x478)
+						$bp = RSingle ($cptr + [Int64]0x480)
+						
+						$newHpLabel += "{0,-15} {1,6:F2}, {2,6:F2}, {3,6:F2}, {4,6:F2}"           -f $lastName, $hp, $fat, $bp, $char.currPlague()
+						if ($currId -eq $id) {
+							$newHpLabel += " *"
+						}
+						$newHpLabel +="`n"
 					}
-					$newHpLabel +="`n"
 				}
-			}
-			if ($newPanelHeight -ne $oldpanelheight) {
-				$bgPanel.Height = $newPanelHeight
-			}
-			$oldpanelheight = $bgPanel.Height
+				if ($newPanelHeight -ne $oldpanelheight) {
+					$bgPanel.Height = $newPanelHeight
+				}
+				$oldpanelheight = $bgPanel.Height
+			} 
 		}
 		
-		
+		if ($followerLabel.Visible) {
+			$World = [World]::new((RInt64 ($worldPtr)))
+			$GameInstance = $World.GameInstance()
+			$LocalPlayer = $GameInstance.LocalPlayer()
+			$PlayerController = $LocalPlayer.PlayerController()
+			$FollowerManager = $PlayerController.FollowerManager()
+			$newFollowerLabel = ""
+			If ($FollowerManager.numFollowers() -gt 0) {
+				$Follower = $FollowerManager.Follower()
+				$newFollowerLabel += "FOLLOWER`n"
+				$newFollowerLabel += "Health:    {0,6:N2} / {1,6:N2}`n" -f $Follower.currHealth(), $Follower.maxHealthBase()
+				$newFollowerLabel += "Stamina:   {0,6:N2} / {1,6:N2}`n" -f $Follower.currStam(), $Follower.maxStaminaBase()
+				$newFollowerLabel += "Sick:      {0,6:N2} / {1,6:N2}`n" -f $Follower.currSick(), $Follower.maxSick()
+				$newFollowerLabel += "Plague:    {0,6:N2} / {1,6:N2}`n" -f $Follower.currPlague(), $Follower.maxPlague()
+				$newFollowerLabel += "Fatigue:   {0,6:N2}`n"           -f $Follower.currFatigue()
+				$newFollowerLabel += "Standing:  {0,6:N2}`n"           -f $Follower.currStanding()
+			}
+		}
 		
 		
 		
@@ -425,7 +747,7 @@ if ($ver -eq "Dunno") {
 				$newSkillLabel = ""
 				for ($i = 0; $i -le $numskills -1; $i++) {
 					$skillnameid = RInt32 $skillptr
-					$skillname = GetNameFromNameId $skillnameid
+					$skillname = GetNameFromNameOffset $skillnameid
 					$skillLvl = RBytes ($skillptr + [Int64]0x8) 1
 					$skillXp = RSingle ($skillptr + [Int64]0xc)
 					$skillPtr += [Int64]0x18
@@ -486,25 +808,27 @@ if ($ver -eq "Dunno") {
 			$weapName = $weapName -replace '{!v}', ''
 			
 			$newmeleeLabel = ""
-			$newmeleeLabel += "$weapName`n"
-			$newmeleeLabel += "$MeleeType`n"
-			$newmeleeLabel += "Impact:          {0,6:F2}`n" -f $impact
-			$newmeleeLabel += "ImpactDelta:     {0,6:F2}`n" -f $impactDelta
-			$newmeleeLabel += "Knockdown:       {0,6:F2}`n" -f $knockdown
-			$newmeleeLabel += "KnockdownDelta:  {0,6:F2}`n" -f $knockdownDelta
-			$newmeleeLabel += "Lethality:       {0,6:F2}`n" -f $lethality
-			$newmeleeLabel += "LethalityDelta:  {0,6:F2}`n" -f $lethalityDelta
-			$newmeleeLabel += "Weight:          {0,6:F2}`n" -f $weight
-			$newmeleeLabel += "Loudness:        {0,6:F2}`n" -f $loudness
-			$newmeleeLabel += "Speed:           {0,6:F2}`n" -f $Speed
-			$newmeleeLabel += "SwingCost:       {0,6:F2}`n" -f $swingCost
-			$newmeleeLabel += "InfluenceValue:  {0,6:F2}`n" -f $InfluenceValue
-			$newmeleeLabel += "PrestigeValue:   {0,6:F2}`n" -f $PrestigeValue
-			$newmeleeLabel += "Dura/Hit Min:    {0,6:F2}`n" -f $DurabilityLossPerHitMin
-			$newmeleeLabel += "Dura/Hit Max:    {0,6:F2}`n" -f $DurabilityLossPerHitMax
-			$newmeleeLabel += "Dura/Finish Min: {0,6:F2}`n" -f $DurabilityLossPerFinishMin
-			$newmeleeLabel += "Dura/Finish Max: {0,6:F2}`n" -f $DurabilityLossPerFinishMax
-			$newmeleeLabel += "Durability:      {0,6:F2} / {1,6:F2}`n" -f $dura, $Durability
+			if ($cptr -gt 0) {
+				$newmeleeLabel += "$weapName`n"
+				$newmeleeLabel += "$MeleeType`n"
+				$newmeleeLabel += "Impact:          {0,8:F4}`n" -f $impact
+				$newmeleeLabel += "ImpactDelta:     {0,8:F4}`n" -f $impactDelta
+				$newmeleeLabel += "Knockdown:       {0,8:F4}`n" -f $knockdown
+				$newmeleeLabel += "KnockdownDelta:  {0,8:F4}`n" -f $knockdownDelta
+				$newmeleeLabel += "Lethality:       {0,8:F4}`n" -f $lethality
+				$newmeleeLabel += "LethalityDelta:  {0,8:F4}`n" -f $lethalityDelta
+				$newmeleeLabel += "Weight:          {0,8:F4}`n" -f $weight
+				$newmeleeLabel += "Loudness:        {0,8:F4}`n" -f $loudness
+				$newmeleeLabel += "Speed:           {0,8:F4}`n" -f $Speed
+				$newmeleeLabel += "SwingCost:       {0,8:F4}`n" -f $swingCost
+				$newmeleeLabel += "InfluenceValue:  {0,8:F4}`n" -f $InfluenceValue
+				$newmeleeLabel += "PrestigeValue:   {0,8:F4}`n" -f $PrestigeValue
+				$newmeleeLabel += "Dura/Hit Min:    {0,8:F4}`n" -f $DurabilityLossPerHitMin
+				$newmeleeLabel += "Dura/Hit Max:    {0,8:F4}`n" -f $DurabilityLossPerHitMax
+				$newmeleeLabel += "Dura/Finish Min: {0,8:F4}`n" -f $DurabilityLossPerFinishMin
+				$newmeleeLabel += "Dura/Finish Max: {0,8:F4}`n" -f $DurabilityLossPerFinishMax
+				$newmeleeLabel += "Durability:      {0,8:F4} / {1,6:F2}`n" -f $dura, $Durability
+			}
 		}
 		
 		
@@ -557,6 +881,8 @@ if ($ver -eq "Dunno") {
 			$cmptr = RInt64 ($cmptr + [Int64]0x110)		#GameMode
 			$cmptr = RInt64 ($cmptr + [Int64]0x530)		#ChallengeModeComponent
 			
+			
+			$newPhLabel = ""
 			$dmgmult = RSingle ($cmptr + [Int64]0x638)
 			$newPhLabel += "Melee:      {0,6:N4}`n"           -f $dmgmult
 			$dmgmult = RSingle ($cmptr + [Int64]0x63c)
@@ -594,6 +920,11 @@ if ($ver -eq "Dunno") {
 		if ($hpLabel.Text -ne $newHpLabel) {
 			$hpLabel.Text = $newHpLabel
 			$hpLabel.PerformLayout()
+		}
+		
+		if ($followerLabel.Text -ne $newfollowerLabel) {
+			$followerLabel.Text = $newfollowerLabel
+			$followerLabel.PerformLayout()
 		}
 		
 		if ($phLabel.Text -ne $newPhLabel) {
@@ -637,7 +968,9 @@ if ($ver -eq "Dunno") {
 		$y = 5
 		$hpLabel.Location = New-Object System.Drawing.Point($x, $y)
 		
-		
+		$x = $ScreenWidth * 0.025
+		$y = $ScreenHeight * 0.35
+		$followerLabel.Location = New-Object System.Drawing.Point($x, $y)
 		
 		$x = $ScreenWidth * 0.9
 		$y = $ScreenHeight * 0.35
