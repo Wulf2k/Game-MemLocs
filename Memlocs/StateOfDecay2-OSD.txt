@@ -23,13 +23,13 @@ Function RAsciiStr
 	Param (
         $addr
     )
-	([System.Text.Encoding]::ASCII.GetString($(RBytes $addr 0x50))).Split([char]0)[0]
+	([System.Text.Encoding]::ASCII.GetString($(RBytes $addr 0x200))).Split([char]0)[0]
 }
 Function RUnicodeStr {
     Param (
         $addr
     )
-    ([System.Text.Encoding]::Unicode.GetString($(RBytes $addr 0x50))).Split([char]0)[0]
+    ([System.Text.Encoding]::Unicode.GetString($(RBytes $addr 0x200))).Split([char]0)[0]
 }
 Function ReadAndConvert {
     Param (
@@ -304,6 +304,12 @@ class DaytonHumanCharacter {
 	[CharacterComponent] CharacterComponent() {
 		return [CharacterComponent]::new((RInt64([IntPtr]($this.BaseAddress.ToInt64() + 0xba0))))
     }
+	[Single] CurrentEffectiveMaxHealth() {
+		return (RSingle($this.BaseAddress.ToInt64() + 0xc58))
+	}
+	[Single] CurrentHealth() {
+		return (RSingle($this.BaseAddress.ToInt64() + 0xc5c))
+	}
 }
 
 class Enclave {
@@ -384,6 +390,70 @@ class PlayerController {
 	}
 }
 
+class RangedWeaponResourceStats {
+	[IntPtr]$BaseAddress
+	[UObject]$Uobject
+	RangedWeaponResourceStats([IntPtr]$addr) {
+		$this.BaseAddress = $addr
+		$this.UObject = [UObject]::new($addr)
+	}
+	[string] WeapName() {
+		return (RUnicodeStr(RInt64($this.BaseAddress.ToInt64() + 0x48)))
+	}
+	[string] WeapType() {
+		return (RUnicodeStr(RInt64($this.BaseAddress.ToInt64() + 0x58)))
+	}
+	[string] Description() {
+		return (RUnicodeStr(RInt64($this.BaseAddress.ToInt64() + 0x68)))
+	}
+	[Int]ProjectileCount() {
+		return (RInt32($this.BaseAddress.ToInt64() + 0x15c))
+	}
+	[Int]MagazineSize() {
+		return (RInt32($this.BaseAddress.ToInt64() + 0x164))
+	}
+	[Float]Impact() {
+		return (RSingle($this.BaseAddress.ToInt64() + 0x230))
+	}
+	[Float]ImpactDelta() {
+		return (RSingle($this.BaseAddress.ToInt64() + 0x238))
+	}
+	[Float]Knockdown() {
+		return (RSingle($this.BaseAddress.ToInt64() + 0x240))
+	}
+	[Float]KnockdownDelta() {
+		return (RSingle($this.BaseAddress.ToInt64() + 0x248))
+	}
+	[Float]Dismember() {
+		return (RSingle($this.BaseAddress.ToInt64() + 0x250))
+	}
+	[Float]DismemberDelta() {
+		return (RSingle($this.BaseAddress.ToInt64() + 0x258))
+	}
+	[Float]Penetration() {
+		return (RSingle($this.BaseAddress.ToInt64() + 0x260))
+	}
+	[Float]Range() {
+		return (RSingle($this.BaseAddress.ToInt64() + 0x278))
+	}
+	[Float]Weight() {
+		return (RSingle($this.BaseAddress.ToInt64() + 0x288))
+	}
+	[Float]InfluenceValue() {
+		return (RSingle($this.BaseAddress.ToInt64() + 0x290))
+	}
+	[Float]MaxDurability() {
+		return (RSingle($this.BaseAddress.ToInt64() + 0x2a0))
+	}
+	[Float]PerceptionLoudness() {
+		return (RSingle($this.BaseAddress.ToInt64() + 0x2d8))
+	}
+	[Float]MoveSpeedMultiplier() {
+		return (RSingle($this.BaseAddress.ToInt64() + 0x2e0))
+	}
+}
+	
+
 class World {
     [IntPtr]$BaseAddress
 	[UObject]$UObject
@@ -459,9 +529,9 @@ if ($ver -eq "Dunno") {
 	$form.Controls.Add($closeButton)
 
 	$buttonPanel = New-Object Windows.Forms.Panel
-	$buttonPanel.Left = $ScreenWidth * 0.95
+	$buttonPanel.Left = $ScreenWidth - 250
 	$buttonPanel.Top = $ScreenHeight * 0.05
-	$buttonPanel.Width = 110
+	$buttonPanel.Width = 220
 	$buttonPanel.Height = 250
 	$buttonPanel.BackColor = [System.Drawing.Color]::FromArgb(60, 30, 30, 30)
 	$form.Controls.Add($buttonPanel)
@@ -575,12 +645,16 @@ if ($ver -eq "Dunno") {
 	})
 	$buttonPanel.Controls.Add($phToggleBtn)
 
+
+
+
+
 	$meleeToggleBtn = New-Object System.Windows.Forms.Button
 	$meleeToggleBtn.Text = "Melee"
 	$meleeToggleBtn.Width = 100
 	$meleeToggleBtn.Height = 30
-	$meleeToggleBtn.Left = 5
-	$meleeToggleBtn.Top = 5 + (10 + 30) * 5
+	$meleeToggleBtn.Left = 5 + (10 + 100 ) * 1
+	$meleeToggleBtn.Top = 5 + (10 + 30) * 0
 	$meleeToggleBtn.BackColor = [System.Drawing.Color]::FromArgb(100, 180, 180, 180)
 	$meleeToggleBtn.ForeColor = "Black"
 	$meleeToggleBtn.FlatStyle = "Flat"
@@ -588,6 +662,22 @@ if ($ver -eq "Dunno") {
 		$meleeLabel.Visible = -not $meleeLabel.Visible
 	})
 	$buttonPanel.Controls.Add($meleeToggleBtn)
+
+	$rangedToggleBtn = New-Object System.Windows.Forms.Button
+	$rangedToggleBtn.Text = "Ranged"
+	$rangedToggleBtn.Width = 100
+	$rangedToggleBtn.Height = 30
+	$rangedToggleBtn.Left = 5 + (10 + 100 ) * 1
+	$rangedToggleBtn.Top = 5 + (10 + 30) * 1
+	$rangedToggleBtn.BackColor = [System.Drawing.Color]::FromArgb(100, 180, 180, 180)
+	$rangedToggleBtn.ForeColor = "Black"
+	$rangedToggleBtn.FlatStyle = "Flat"
+	$rangedToggleBtn.Add_Click({
+		$rangedLabel.Visible = -not $rangedLabel.Visible
+	})
+	$buttonPanel.Controls.Add($rangedToggleBtn)
+
+
 
 
 	Function CreateLabel ($font, $fontSize, $color) {
@@ -613,6 +703,7 @@ if ($ver -eq "Dunno") {
 	$skillLabel = CreateLabel "Consolas" 16 "White"
 	$vehicleLabel = CreateLabel "Consolas" 16 "White"
 	$meleeLabel = CreateLabel "Consolas" 16 "White"
+	$rangedLabel = CreateLabel "Consolas" 16 "White"
 	$followerLabel = CreateLabel "Consolas" 16 "White"
 
 	$followerLabel.Visible = $false
@@ -621,6 +712,7 @@ if ($ver -eq "Dunno") {
 	$skillLabel.Visible = $false
 	$vehicleLabel.Visible = $false
 	$meleeLabel.Visible = $false
+	$rangedLabel.Visible = $false
 
 	$bgPanel.Controls.Add($hpLabel)
 
@@ -650,7 +742,7 @@ if ($ver -eq "Dunno") {
 				$newHpLabel += "NearZombs: {0,6:N0}`n" -f $PlayerController.ProximateZombieCount()
 				$newHpLabel += $DaytonCharacter.LeaderType() + "`n"
 				$newHpLabel += $DaytonCharacter.HeroBonus() + "`n"
-				$newHpLabel += "Health:    {0,6:N2} / {1,6:N2}`n" -f $DaytonCharacter.currHealth(), $DaytonCharacter.maxHealthBase()
+				$newHpLabel += "Health:    {0,6:N2} / {1,6:N2}`n" -f $DaytonHumanCharacter.CurrentHealth(), $DaytonHumanCharacter.CurrentEffectiveMaxHealth()
 				$newHpLabel += "Stamina:   {0,6:N2} / {1,6:N2}`n" -f $DaytonCharacter.currStam(), $DaytonCharacter.maxStaminaBase()
 				$newHpLabel += "Sick:      {0,6:N2} / {1,6:N2}`n" -f $DaytonCharacter.currSick(), $DaytonCharacter.maxSick()
 				$newHpLabel += "Plague:    {0,6:N2} / {1,6:N2}`n" -f $DaytonCharacter.currPlague(), $DaytonCharacter.maxPlague()
@@ -678,22 +770,15 @@ if ($ver -eq "Dunno") {
 						$cptr = RInt64 ($cptr + [Int64]($i * 8))
 						
 						$char = [DaytonCharacter]::new($cptr)
-						
-						$id = RInt32 ($cptr + [Int64]0x368)
-						
+
 						$lastName = ($cptr + [Int64]0x3a0)
 						
 						$lastName = RInt64 ($cptr + [Int64]0x398)
 						$lastName = RInt64 ($lastName + [Int64]0x28)
 						$lastName = RUnicodeStr ($lastName)
-						#$lastName = $lastName.ToString("X")
-						
-						$hp = RSingle ($cptr + [Int64]0x470)
-						$fat = RSingle ($cptr + [Int64]0x478)
-						$bp = RSingle ($cptr + [Int64]0x480)
-						
-						$newHpLabel += "{0,-15} {1,6:F2}, {2,6:F2}, {3,6:F2}, {4,6:F2}"           -f $lastName, $hp, $fat, $bp, $char.currPlague()
-						if ($currId -eq $id) {
+
+						$newHpLabel += "{0,-15} {1,6:F2}, {2,6:F2}, {3,6:F2}, {4,6:F2}"           -f $lastName, $char.currHealth(), $char.currFatigue(), $char.currSick(), $char.currPlague()
+						if ($currId -eq $char.ID()) {
 							$newHpLabel += " *"
 						}
 						$newHpLabel +="`n"
@@ -831,6 +916,47 @@ if ($ver -eq "Dunno") {
 			}
 		}
 		
+		if ($rangedLabel.Visible) {
+			$World = [World]::new((RInt64 ($worldPtr)))
+			$GameInstance = $World.GameInstance()
+			$LocalPlayer = $GameInstance.LocalPlayer()
+			$PlayerController = $LocalPlayer.PlayerController()
+			$DaytonHumanCharacter = $PlayerController.DaytonHumanCharacter()
+			$CharacterComponent = $DaytonHumanCharacter.CharacterComponent()
+			$DaytonCharacter = $CharacterComponent.DaytonCharacter()
+			
+			$eqptr = RInt64 ([Int64]$DaytonCharacter.BaseAddress  + 0x368 + 0xd0)
+			$eqptr = RInt64 ([Int64]$eqptr + 0x38)
+			$eqptr = RInt64 ([Int64]$eqptr + 0x8)
+			$dura = RSingle ($eqptr + [Int64]0x60)	#Durability
+			
+			$eqptr = RInt64 ([Int64]$eqptr + 0x70)
+			$eqptr = RInt64 ([Int64]$eqptr + 0x28)
+			
+			$weapstats = [RangedWeaponResourceStats]::new($eqptr)
+			
+			$newrangedLabel = ""
+			if ($eqptr -gt 0) {
+				#$weapName = RUnicodeStr(RInt64([Int64]$eqptr + 0x48))
+				$weapName = $weapstats.WeapName()
+				$weapName = $weapName -replace '\{\[[^\]]+\][^\}]*\}', ''
+				$weapName = $weapName -replace '{!v}', ''
+				
+				
+				$newrangedLabel += $weapName + "`n"
+				$newrangedLabel += $weapStats.WeapType() + "`n"
+				$newrangedLabel += "Impact:          {0,8:F4}`n" -f $weapStats.Impact()
+				$newrangedLabel += "ImpactDelta:     {0,8:F4}`n" -f $weapStats.impactDelta()
+				$newrangedLabel += "Knockdown:       {0,8:F4}`n" -f $weapStats.knockdown()
+				$newrangedLabel += "KnockdownDelta:  {0,8:F4}`n" -f $weapStats.knockdownDelta()
+				$newrangedLabel += "Dismember:       {0,8:F4}`n" -f $weapStats.Dismember()
+				$newrangedLabel += "DismemberDelta:  {0,8:F4}`n" -f $weapStats.DismemberDelta()
+				$newrangedLabel += "Weight:          {0,8:F4}`n" -f $weapStats.weight()
+				$newrangedLabel += "Loudness:        {0,8:F4}`n" -f $weapStats.PerceptionLoudness()
+				$newrangedLabel += "Durability:      {0,8:F4} / {1,6:F2}`n" -f $dura, $weapStats.MaxDurability()
+			}
+		}
+		
 		
 		if ($vehicleLabel.Visible) {
 			$vptr = RInt64 ($worldPtr)	#world
@@ -947,6 +1073,11 @@ if ($ver -eq "Dunno") {
 			$meleeLabel.PerformLayout()
 		}
 		
+		if ($rangedLabel.Text -ne $newrangedLabel) {
+			$rangedLabel.Text = $newrangedLabel
+			$rangedLabel.PerformLayout()
+		}
+		
 		if ($posLabel.Text -ne $newposLabel) {
 			$posLabel.Text = $newposLabel
 			$posLabel.PerformLayout()
@@ -987,6 +1118,10 @@ if ($ver -eq "Dunno") {
 		$x = $ScreenWidth * 0.025
 		$y = $ScreenHeight * 0.29
 		$meleeLabel.Location = New-Object System.Drawing.Point($x, $y)
+		
+		$x = $ScreenWidth * 0.025
+		$y = $ScreenHeight * 0.29
+		$rangedLabel.Location = New-Object System.Drawing.Point($x, $y)
 		
 		$x = $ScreenWidth * 0.025
 		$y = $ScreenHeight * 0.29
