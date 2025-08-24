@@ -1,0 +1,170 @@
+$procname = "StateOfDecay2-Win64-Shipping"
+$bigendian = $false
+
+[console]::CursorVisible = $false
+$Host.UI.RawUI.BackgroundColor = 'Black'
+$Host.UI.RawUI.ForegroundColor = 'Green'
+
+Function RBytes
+{
+	Param (
+		$addr,
+		$sizetoread
+	)
+	$pos = $addr
+	[Byte[]] $buff = New-Object Byte[]($sizetoread)
+	$read = $rpm::ReadProcessMemory($proc,$pos,$buff,$buff.length,$null);
+	$buff
+}
+Function RAsciiStr
+{   
+	Param (
+        $addr
+    )
+	([System.Text.Encoding]::ASCII.GetString($(RBytes $addr 0x50))).Split([char]0)[0]
+}
+Function RUnicodeStr {
+    Param (
+        $addr
+    )
+    ([System.Text.Encoding]::Unicode.GetString($(RBytes $addr 0x50))).Split([char]0)[0]
+}
+Function ReadAndConvert {
+    Param (
+        [IntPtr]$addr,
+        [int]$byteCount,
+        [string]$convertType
+    )
+    $buff = RBytes $addr $byteCount
+    if ($bigendian -eq $true) {
+        [Array]::Reverse($buff)
+    }
+
+    switch ($convertType) {
+        "Int16"   { return [BitConverter]::ToInt16($buff, 0) }
+        "Int32"   { return [BitConverter]::ToInt32($buff, 0) }
+        "Int64"   { return [BitConverter]::ToInt64($buff, 0) }
+        "UInt8"   { return $buff[0] }
+        "UInt16"  { return [BitConverter]::ToUInt16($buff, 0) }
+        "UInt32"  { return [BitConverter]::ToUInt32($buff, 0) }
+        "UInt64"  { return [BitConverter]::ToUInt64($buff, 0) }
+        "Single"  { return [BitConverter]::ToSingle($buff, 0) }
+        default   { throw "Unknown conversion type $convertType" }
+    }
+}
+Function RInt16   { Param ([IntPtr]$addr) ReadAndConvert $addr 2 "Int16" }
+Function RInt32   { Param ([IntPtr]$addr) ReadAndConvert $addr 4 "Int32" }
+Function RInt64   { Param ([IntPtr]$addr) ReadAndConvert $addr 8 "Int64" }
+Function RUInt8   { Param ([IntPtr]$addr) ReadAndConvert $addr 1 "UInt8" }
+Function RUInt16  { Param ([IntPtr]$addr) ReadAndConvert $addr 2 "UInt16" }
+Function RUInt32  { Param ([IntPtr]$addr) ReadAndConvert $addr 4 "UInt32" }
+Function RUInt64  { Param ([IntPtr]$addr) ReadAndConvert $addr 8 "UInt64" }
+Function RSingle  { Param ([IntPtr]$addr) ReadAndConvert $addr 4 "Single" }
+
+Function WBytes {
+    Param (
+        [IntPtr]$addr,
+        [Byte[]]$data
+    )
+    $size = $data.Length
+    $written = 0
+    $success = $rpm::WriteProcessMemory($proc, $addr, $data, $size, [ref]$written)
+    if (-not $success -or $written -ne $size) {
+        throw "Failed to write memory at $addr"
+    }
+}
+Function WInt16   { Param ([IntPtr]$addr, [Int16]$val)   WBytes $addr ([BitConverter]::GetBytes($val)) }
+Function WInt32   { Param ([IntPtr]$addr, [Int32]$val)   WBytes $addr ([BitConverter]::GetBytes($val)) }
+Function WInt64   { Param ([IntPtr]$addr, [Int64]$val)   WBytes $addr ([BitConverter]::GetBytes($val)) }
+Function WUInt8   { Param ([IntPtr]$addr, [Byte]$val)    WBytes $addr @($val) }
+Function WUInt16  { Param ([IntPtr]$addr, [UInt16]$val)  WBytes $addr ([BitConverter]::GetBytes($val)) }
+Function WUInt32  { Param ([IntPtr]$addr, [UInt32]$val)  WBytes $addr ([BitConverter]::GetBytes($val)) }
+Function WUInt64  { Param ([IntPtr]$addr, [UInt64]$val)  WBytes $addr ([BitConverter]::GetBytes($val)) }
+Function WSingle  { Param ([IntPtr]$addr, [Single]$val)  WBytes $addr ([BitConverter]::GetBytes($val)) }
+Function WAsciiStr {
+    Param (
+        [IntPtr]$addr,
+        [string]$str,
+        [int]$maxLen = 0x50
+    )
+    $bytes = [System.Text.Encoding]::ASCII.GetBytes($str)
+    if ($bytes.Length -ge $maxLen) {
+        $bytes = $bytes[0..($maxLen-2)]
+    }
+    $padded = New-Object Byte[]($maxLen)
+    [Array]::Copy($bytes, $padded, $bytes.Length)
+    WBytes $addr $padded
+}
+
+Function WUnicodeStr {
+    Param (
+        [IntPtr]$addr,
+        [string]$str,
+        [int]$maxLen = 0x50
+    )
+    $bytes = [System.Text.Encoding]::Unicode.GetBytes($str)
+    if ($bytes.Length -ge $maxLen) {
+        $bytes = $bytes[0..($maxLen-2)]
+    }
+    $padded = New-Object Byte[]($maxLen)
+    [Array]::Copy($bytes, $padded, $bytes.Length)
+    WBytes $addr $padded
+}
+
+
+$signature = @"
+[DllImport("kernel32.dll")] public static extern IntPtr OpenProcess(
+    uint h,bool b ,uint p);
+[DllImport("kernel32.dll")] public static extern bool ReadProcessMemory(
+    IntPtr hp,IntPtr Base,[Out]Byte[] buff,int Size,[Out]int bread);
+[DllImport("kernel32.dll")] public static extern bool WriteProcessMemory(
+    IntPtr hp,IntPtr Base,[In]Byte[] buff,int Size,out int bwrite);
+[DllImport("kernel32.dll")] public static extern bool VirtualProtectEx(
+	IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint flNewProtect, out uint lpflOldProtect);
+"@
+$PAGE_EXECUTE_READWRITE = 0x40
+$oldProtection = 0
+
+$rpm = Add-Type -MemberDefinition $signature -Name rpm -PassThru
+$access = 0x001F0FFF
+
+$ba = (get-Process $procname).MainModule.BaseAddress
+$procid = (get-Process $procname).ID
+$proc = $rpm::OpenProcess($access, $false, $procid)
+
+
+Function SetDemoMode {
+	Param (
+		[byte]$val
+	)
+
+	WUInt8 $ulIsDemo $val
+	Write-Host "ULIsDemo = " $val
+}
+
+cls
+$verIdent = RInt32 ($ba + [Int64]0xe8)
+$ver = "Dunno"
+if ($verIdent -eq 0x49274e48) {
+	$ver = "MS"
+	$daytonVehicleVtPtr = $ba + [Int64]0x03418E40
+	$namesTablePtr 		= $ba + [Int64]0x044DB248
+	$ulIsDemo			= $ba + [Int64]0x043FB1F0
+	$worldPtr 			= $ba + [Int64]0x045D7C88
+	Write-Host "MS version found."
+}
+if ($verIdent -eq 0xd54624b7) {
+	$ver = "Steam"
+	$daytonVehicleVtPtr = $ba + [Int64]0x034E8930
+	$namesTablePtr 		= $ba + [Int64]0x04629DC8
+	$ulIsDemo			= $ba + [Int64]0x043FB1F0
+	$worldPtr 			= $ba + [Int64]0x04549D70
+	Write-Host "Steam version found."
+}
+if ($ver -eq "Dunno") {
+	Write-Host "Matching bytes not found, incompatible version of game or process not found."
+}
+
+cd \
+Write-Host "SetDemoMode 1"
+SetDemoMode 1

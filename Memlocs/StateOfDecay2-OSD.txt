@@ -440,7 +440,7 @@ class RangedWeaponResourceStats {
 		return (RSingle($this.BaseAddress.ToInt64() + 0x288))
 	}
 	[Float]InfluenceValue() {
-		return (RSingle($this.BaseAddress.ToInt64() + 0x290))
+		return (RInt32($this.BaseAddress.ToInt64() + 0x290))
 	}
 	[Float]MaxDurability() {
 		return (RSingle($this.BaseAddress.ToInt64() + 0x2a0))
@@ -836,7 +836,7 @@ if ($ver -eq "Dunno") {
 					$skillLvl = RBytes ($skillptr + [Int64]0x8) 1
 					$skillXp = RSingle ($skillptr + [Int64]0xc)
 					$skillPtr += [Int64]0x18
-					$newSkillLabel += "{0,6:F2}   {1,1:F0}*  {2,-10}`n" -f $skillXp, $skillLvl, $skillname
+					$newSkillLabel += "{0,8:F2}   {1,1:F0}*  {2,-10}`n" -f $skillXp, $skillLvl, $skillname
 				}
 			}
 		}
@@ -953,6 +953,7 @@ if ($ver -eq "Dunno") {
 				$newrangedLabel += "DismemberDelta:  {0,8:F4}`n" -f $weapStats.DismemberDelta()
 				$newrangedLabel += "Weight:          {0,8:F4}`n" -f $weapStats.weight()
 				$newrangedLabel += "Loudness:        {0,8:F4}`n" -f $weapStats.PerceptionLoudness()
+				$newrangedLabel += "InfluenceValue:  {0,8:F4}`n" -f $weapStats.InfluenceValue()
 				$newrangedLabel += "Durability:      {0,8:F4} / {1,6:F2}`n" -f $dura, $weapStats.MaxDurability()
 			}
 		}
