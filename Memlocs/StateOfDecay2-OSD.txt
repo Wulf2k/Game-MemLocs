@@ -588,6 +588,7 @@ if ($ver -eq "Dunno") {
 	})
 	$buttonPanel.Controls.Add($bgPanelToggleBtn)
 
+	
 	$followerToggleBtn = New-Object System.Windows.Forms.Button
 	$followerToggleBtn.Text = "Follower"
 	$followerToggleBtn.Width = 100
@@ -645,7 +646,19 @@ if ($ver -eq "Dunno") {
 	})
 	$buttonPanel.Controls.Add($phToggleBtn)
 
-
+	$timeToggleBtn = New-Object System.Windows.Forms.Button
+	$timeToggleBtn.Text = "Time"
+	$timeToggleBtn.Width = 100
+	$timeToggleBtn.Height = 30
+	$timeToggleBtn.Left = 5
+	$timeToggleBtn.Top = 5 + (10 + 30) * 5
+	$timeToggleBtn.BackColor = [System.Drawing.Color]::FromArgb(100, 180, 180, 180)
+	$timeToggleBtn.ForeColor = "Black"
+	$timeToggleBtn.FlatStyle = "Flat"
+	$timeToggleBtn.Add_Click({
+		$timeToggleBtn.Visible = -not $timeToggleBtn.Visible
+	})
+	$buttonPanel.Controls.Add($timeToggleBtn)
 
 
 
@@ -705,6 +718,7 @@ if ($ver -eq "Dunno") {
 	$meleeLabel = CreateLabel "Consolas" 16 "White"
 	$rangedLabel = CreateLabel "Consolas" 16 "White"
 	$followerLabel = CreateLabel "Consolas" 16 "White"
+	$timeLabel = CreateLabel "Consolas" 16 "White"
 
 	$followerLabel.Visible = $false
 	$posLabel.Visible = $false
@@ -713,6 +727,7 @@ if ($ver -eq "Dunno") {
 	$vehicleLabel.Visible = $false
 	$meleeLabel.Visible = $false
 	$rangedLabel.Visible = $false
+	$timeLabel.Visible = $true
 
 	$bgPanel.Controls.Add($hpLabel)
 
@@ -789,6 +804,31 @@ if ($ver -eq "Dunno") {
 				}
 				$oldpanelheight = $bgPanel.Height
 			} 
+		}
+		
+		if ($timeLabel.Visible) {
+			$tptr = RInt64 ($worldPtr)
+			$tptr = RInt64 ($tptr + [Int64]0x110)		#GameMode
+			$tptr = RInt64 ($tptr + [Int64]0x4c8)		#Spawner
+			$tod = RSingle ($tptr + [Int64]0x558)
+			
+			$hourPart = [math]::Floor($tod / 100)
+			$fracPart = ($tod % 100) / 100
+			$totalSeconds = [math]::Round(3600 * $fracPart)
+			$minutes = [math]::Floor($totalSeconds / 60)
+			$seconds = $totalSeconds % 60
+			if ($minutes -eq 60) {
+				$minutes = 0
+				$hourPart++
+			}
+			if ($seconds -eq 60) {
+				$seconds = 0
+				$minutes++
+			}
+			$result = ("{0:D2}:{1:D2}:{2:D2}" -f ([int]$hourPart), ([int]$minutes), ([int]$seconds))
+
+
+			$newTimeLabel = $result
 		}
 		
 		if ($followerLabel.Visible) {
@@ -1049,6 +1089,11 @@ if ($ver -eq "Dunno") {
 			$hpLabel.PerformLayout()
 		}
 		
+		if ($timeLabel.Text -ne $newTimeLabel) {
+			$timeLabel.Text = $newTimeLabel
+			$timeLabel.PerformLayout()
+		}
+		
 		if ($followerLabel.Text -ne $newfollowerLabel) {
 			$followerLabel.Text = $newfollowerLabel
 			$followerLabel.PerformLayout()
@@ -1099,6 +1144,10 @@ if ($ver -eq "Dunno") {
 		$x = 5
 		$y = 5
 		$hpLabel.Location = New-Object System.Drawing.Point($x, $y)
+		
+		$x = $ScreenWidth * 0.07
+		$y = $ScreenHeight * 0.93
+		$timeLabel.Location = New-Object System.Drawing.Point($x, $y)
 		
 		$x = $ScreenWidth * 0.025
 		$y = $ScreenHeight * 0.35

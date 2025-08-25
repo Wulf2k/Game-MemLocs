@@ -163,8 +163,8 @@ if ($verIdent -eq 0xd54624b7) {
 }
 if ($ver -eq "Dunno") {
 	Write-Host "Matching bytes not found, incompatible version of game or process not found."
+} else {
+	cd \
+	Write-Host "SetDemoMode 1"
+	SetDemoMode 1
 }
-
-cd \
-Write-Host "SetDemoMode 1"
-SetDemoMode 1
