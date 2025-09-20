@@ -21,13 +21,13 @@ Function RAsciiStr
 	Param (
         $addr
     )
-	([System.Text.Encoding]::ASCII.GetString($(RBytes $addr 0x50))).Split([char]0)[0]
+	([System.Text.Encoding]::ASCII.GetString($(RBytes $addr 0x200))).Split([char]0)[0]
 }
 Function RUnicodeStr {
     Param (
         $addr
     )
-    ([System.Text.Encoding]::Unicode.GetString($(RBytes $addr 0x50))).Split([char]0)[0]
+    ([System.Text.Encoding]::Unicode.GetString($(RBytes $addr 0x200))).Split([char]0)[0]
 }
 Function ReadAndConvert {
     Param (
@@ -111,7 +111,6 @@ Function WUnicodeStr {
     WBytes $addr $padded
 }
 
-
 $signature = @"
 [DllImport("kernel32.dll")] public static extern IntPtr OpenProcess(
     uint h,bool b ,uint p);
@@ -133,38 +132,87 @@ $procid = (get-Process $procname).ID
 $proc = $rpm::OpenProcess($access, $false, $procid)
 
 
-Function SetDemoMode {
-	Param (
-		[byte]$val
-	)
 
-	WUInt8 $ulIsDemo $val
-	Write-Host "ULIsDemo = " $val
+Function GetNameFromNameOffset {
+	Param (
+		[Int32]$offset
+	)
+	
+	[IntPtr]$table = RInt64 ($namesTablePtr)		
+	if ($offset -lt 0x1000) {
+		$offset = RInt32 ($ba + [Int64]0x44da8e0 + ($offset * 4))
+		#FIX FOR STEAM
+	}
+	$name = RAsciiStr ($table + [Int64]$offset + 8)
+
+	$name
+}
+Function GetObjFromObjId {
+	Param (
+		[Int32]$id
+	)
+	[IntPtr]$table = RInt64 ($objTablePtr)		
+	$obj = RInt64  ($table + [Int64](0x18 * $id))
+	$obj
 }
 
-cls
+
+
+
+
+class UObject {
+	[IntPtr]$BaseAddress
+	UObject([IntPtr]$addr) {
+		$this.BaseAddress = $addr
+	}
+	[int] ObjNum() {
+		return RInt32 ($this.BaseAddress.ToInt64() + 0xc)
+	}
+	[string] ObjName() {
+		$ptr = RInt64 ([IntPtr]($this.BaseAddress.ToInt64() + 0x10))
+		$nameId = RInt32($ptr + 0x18)
+		return GetNameFromNameOffset $nameId
+	}
+	[string] Name() {
+		$nameId = RInt32([IntPtr]($this.BaseAddress.ToInt64() + 0x18))
+		return GetNameFromNameOffset $nameId
+	}	
+}
+
+
+
+
+
+
+
+
+
+
 $verIdent = RInt32 ($ba + [Int64]0xe8)
 $ver = "Dunno"
 if ($verIdent -eq 0x49274e48) {
 	$ver = "MS"
 	$daytonVehicleVtPtr = $ba + [Int64]0x03418E40
 	$namesTablePtr 		= $ba + [Int64]0x044DB248
-	$ulIsDemo			= $ba + [Int64]0x043FB1F0
+	$objTablePtr 		= $ba + [Int64]0x044E3B30
 	$worldPtr 			= $ba + [Int64]0x045D7C88
-	Write-Host "MS version found."
 }
 if ($verIdent -eq 0xd54624b7) {
 	$ver = "Steam"
 	$daytonVehicleVtPtr = $ba + [Int64]0x034E8930
 	$namesTablePtr 		= $ba + [Int64]0x04629DC8
-	$ulIsDemo			= $ba + [Int64]0x04549D70
+	$objTablePtr		= $ba + [Int64]0x046326b0
 	$worldPtr 			= $ba + [Int64]0x04726808
-	Write-Host "Steam version found."
 }
-if ($ver -eq "Dunno") {
-	Write-Host "Matching bytes not found, incompatible version of game or process not found."
-} else {
-	cd \
-	Write-Host "SetDemoMode 1"
-	SetDemoMode 1
+$numobj = RInt32 ($objTablePtr - 0x8)
+$ptr    = RInt64 $objTablePtr
+
+
+
+for ($i = 1; $i -le $numobj; $i++) {
+    $ptr = (RInt64 $objTablePtr) + ($i * 0x18)
+    $obj = [UObject]::New((RInt64($ptr)))
+
+    "{0,6}  {1,-18}  {2,-18}  {3,-20}  {4}" -f `
+        $i, ("0x{0:X}" -f $ptr), ("0x{0:X}" -f $obj.BaseAddress), $obj.ObjName(), $obj.Name()
 }
