@@ -226,17 +226,19 @@ if ($verIdent -eq 0xd54624b7) {
 
 ##############################	DUMP OBJECT LIST
 
+function DumpObjs {
+	$numobj = RInt32 ($objTablePtr - 0x8)
+	$ptr    = RInt64 $objTablePtr
 
-$numobj = RInt32 ($objTablePtr - 0x8)
-$ptr    = RInt64 $objTablePtr
+	for ($i = 1; $i -le $numobj; $i++) {
+		$ptr = (RInt64 $objTablePtr) + ($i * 0x18)
+		$obj = [UObject]::New((RInt64($ptr)))
 
-for ($i = 1; $i -le $numobj; $i++) {
-    $ptr = (RInt64 $objTablePtr) + ($i * 0x18)
-    $obj = [UObject]::New((RInt64($ptr)))
-
-    "{0,6}  {1,-18}  {2,-18}  {3,-20}  {4}" -f `
-        $i, ("0x{0:X}" -f $ptr), ("0x{0:X}" -f $obj.BaseAddress), $obj.ObjName(), $obj.Name()
+		"{0,6}  {1,-18}  {2,-18}  {3,-20}  {4}" -f `
+			$i, ("0x{0:X}" -f $ptr), ("0x{0:X}" -f $obj.BaseAddress), $obj.ObjName(), $obj.Name()
+	}
 }
+
 
 
 
@@ -254,55 +256,74 @@ for ($i = 1; $i -le $numobj; $i++) {
 
 
 
-$mainptr  = 0x378431744L
-$ptr  = RInt64 ($mainptr + 0x10L)
-$size = RInt32 ($ptr + 0x40L)
+function GetProps {
+    param(
+        [Parameter(Mandatory = $true)]
+        [Int64] $MainPtr
+    )
 
+    $results = @()
 
+    $ptr  = RInt64 ($MainPtr + 0x10L)
+    $size = RInt32 ($ptr + 0x40L)
 
-$size.ToString("X")
-while ($ptr -ne 0) {
-    $nameId = RInt32 ($ptr + 0x18L)
-    $name   = GetNameFromNameOffset $nameId
-    $bits   = RUInt64 ($ptr + 0x30L)
-	
-	$classptr = RInt64 ($ptr + 0x10L)
-	$classnameId = RInt32 ($classptr + 0x18L)
-	$classname = GetNameFromNameOffset $classnameId
-	$offset = RUInt32 ($ptr + 0x50L)
-	
-	switch ($classname) {
-		"BoolProperty" {
-			$val = RUInt8 ($mainptr + $offset)
-			"{0,8:X}  {1,-30}  {2,15}  {3}" -f $offset, $classname, $val, $name
-		}
-		"IntProperty" {
-			$val = RInt32 ($mainptr + $offset)
-			"{0,8:X}  {1,-30}  {2,15}  {3}" -f $offset, $classname, $val, $name
-		}
-		"FloatProperty" {
-			$val = RSingle ($mainptr + $offset)
-			"{0,8:X}  {1,-30}  {2,15:F4}  {3}" -f $offset, $classname, $val, $name
-		}
-		default {
-			"{0,8:X}  {1,-30}  {2,15}  {3}" -f $offset, $classname, "", $name
-		}
-	}
-    $ptr = RInt64 ($ptr + 0x58L)
+    $results += ("Size: {0:X}" -f $size)
+
+    while ($ptr -ne 0) {
+        $nameId = RInt32 ($ptr + 0x18L)
+        $name   = GetNameFromNameOffset $nameId
+        $bits   = RUInt64 ($ptr + 0x30L)
+        
+        $classptr    = RInt64 ($ptr + 0x10L)
+        $classnameId = RInt32 ($classptr + 0x18L)
+        $classname   = GetNameFromNameOffset $classnameId
+        $offset      = RUInt32 ($ptr + 0x50L)
+        
+        $line = switch ($classname) {
+            "ArrayProperty" {
+                $val = RUInt64 ($MainPtr + $offset)
+                "{0,8:X}  {1,-30}  {2,30}  {3}" -f $offset, $classname, ("0x{0:X16}" -f $val), $name
+            }
+            "BoolProperty" {
+                $val = RUInt8 ($MainPtr + $offset)
+                "{0,8:X}  {1,-30}  {2,30:X}  {3}" -f $offset, $classname, $val, $name
+            }
+            "ByteProperty" {
+                $val = RUInt8 ($MainPtr + $offset)
+                "{0,8:X}  {1,-30}  {2,30:X}  {3}" -f $offset, $classname, $val, $name
+            }
+            "IntProperty" {
+                $val = RInt32 ($MainPtr + $offset)
+                "{0,8:X}  {1,-30}  {2,30}  {3}" -f $offset, $classname, $val, $name
+            }
+            "FloatProperty" {
+                $val = RSingle ($MainPtr + $offset)
+                "{0,8:X}  {1,-30}  {2,30:F4}  {3}" -f $offset, $classname, $val, $name
+            }
+            "NameProperty" {
+                $val = RUInt64 ($MainPtr + $offset)
+                $val = GetNameFromNameOffset $val
+                "{0,8:X}  {1,-30}  {2,30}  {3}" -f $offset, $classname, $val, $name
+            }
+            "ObjectProperty" {
+                $val = RUInt64 ($MainPtr + $offset)
+                "{0,8:X}  {1,-30}  {2,30}  {3}" -f $offset, $classname, ("0x{0:X16}" -f $val), $name
+            }
+            default {
+                "{0,8:X}  {1,-30}  {2,30}  {3}" -f $offset, $classname, "", $name
+            }
+        }
+
+        $results += $line
+        $ptr = RInt64 ($ptr + 0x58L)
+    }
+
+    return $results
 }
 
+$mainptr = 0x0000000058237500L
 
-
-
-
-
-
-
-
-
-
-
-
+#GetProps $mainptr
 
 
 
