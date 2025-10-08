@@ -142,7 +142,7 @@ Function GetNameFromNameOffset {
 	
 	[IntPtr]$table = RInt64 ($namesTablePtr)		
 	if ($offset -lt 0x1000) {
-		$offset = RInt32 ($ba + [Int64]0x44da8e0 + ($offset * 4))
+		$offset = RInt32 ($ba + [Int64]0x44da8e0 + ($offset * [Int64]4))
 		#FIX FOR STEAM
 	}
 	$name = RAsciiStr ($table + [Int64]$offset + 8)
@@ -543,12 +543,12 @@ if ($ver -eq "Dunno") {
 	$bgPanel = New-Object Windows.Forms.Panel
 	$bgPanel.Left = 10
 	$bgPanel.Top = 10
-	$bgPanel.Width = 600
-	$bgPanel.Height = 170
-	#$bgPanel.BackColor = [System.Drawing.Color]::FromArgb(60, 30, 30, 30)  # 60 = 23% opacity
-	$bgPanel.BackColor = [System.Drawing.Color]::Transparent
+	$bgPanel.Width = 550
+	$bgPanel.Height = 865
+	$bgPanel.BackColor = [System.Drawing.Color]::FromArgb(60, 30, 30, 30)  # 60 = 23% opacity
+	#$bgPanel.BackColor = [System.Drawing.Color]::Transparent
 	$form.Controls.Add($bgPanel)
-	$bgPanel.Visible = $false
+	$bgPanel.Visible = $true
 
 
 
@@ -718,8 +718,9 @@ if ($ver -eq "Dunno") {
 	$meleeLabel = CreateLabel "Consolas" 16 "White"
 	$rangedLabel = CreateLabel "Consolas" 16 "White"
 	$followerLabel = CreateLabel "Consolas" 16 "White"
-	$timeLabel = CreateLabel "Consolas" 16 "White"
+	$timeLabel = CreateLabel "Consolas" 14 "White"
 
+	$hpLabel.Visible = $false
 	$followerLabel.Visible = $false
 	$posLabel.Visible = $false
 	$phLabel.Visible = $false
@@ -729,11 +730,15 @@ if ($ver -eq "Dunno") {
 	$rangedLabel.Visible = $false
 	$timeLabel.Visible = $true
 
-	$bgPanel.Controls.Add($hpLabel)
+	$bgPanel.Controls.Add($timeLabel)
 
 
 	$timer = New-Object System.Windows.Forms.Timer
-	$timer.Interval = 200
+	$timer.Interval = 33
+	
+	if (-not (Get-Variable -Name tgtptr -Scope Global -ErrorAction SilentlyContinue)) {
+		$global:tgtptr = 0x0L
+	}
 
 	$timer.Add_Tick({
 		$CursorPosition = [System.Windows.Forms.Cursor]::Position
@@ -800,35 +805,316 @@ if ($ver -eq "Dunno") {
 					}
 				}
 				if ($newPanelHeight -ne $oldpanelheight) {
-					$bgPanel.Height = $newPanelHeight
+					#$bgPanel.Height = $newPanelHeight
 				}
 				$oldpanelheight = $bgPanel.Height
 			} 
 		}
 		
 		if ($timeLabel.Visible) {
-			$tptr = RInt64 ($worldPtr)
-			$tptr = RInt64 ($tptr + [Int64]0x110)		#GameMode
-			$tptr = RInt64 ($tptr + [Int64]0x4c8)		#Spawner
-			$tod = RSingle ($tptr + [Int64]0x558)
+			$dhc = RInt64 ($ba + [Int64]0x45d7c88)
+			$dhc = RInt64 ($dhc + [Int64]0x140)
+			$dhc = RInt64 ($dhc + [Int64]0x38)
+			$dhc = RInt64 ($dhc)
+			$dhc = RInt64 ($dhc + [Int64]0x30)
+			$dhc = RInt64 ($dhc + [Int64]0x368)
 			
-			$hourPart = [math]::Floor($tod / 100)
-			$fracPart = ($tod % 100) / 100
-			$totalSeconds = [math]::Round(3600 * $fracPart)
-			$minutes = [math]::Floor($totalSeconds / 60)
-			$seconds = $totalSeconds % 60
-			if ($minutes -eq 60) {
-				$minutes = 0
-				$hourPart++
+			$meleetarget = RInt64 ($dhc + [Int64]0xe58)
+			if ($meleetarget -ne 0)
+			{
+				$global:tgtptr = $meleetarget
 			}
-			if ($seconds -eq 60) {
-				$seconds = 0
-				$minutes++
+			
+			
+			
+			
+			$tgtname = GetNameFromNameOffset(RInt32($global:tgtptr + [Int64]0x18))
+			$clstgt = RInt64($global:tgtptr + [Int64]0x10)
+			$clstgt = RInt64($clstgt + [Int64]0x30)
+			$clsname = GetNameFromNameOffset(RInt32($clstgt + [Int64]0x18))
+			
+			if ($clsname -eq "None" -or $tgtname -eq "None")
+			{
+				$global:tgtptr = 0
+				$bgPanel.Width = 5
+				$bgPanel.Height = 5
+				$results = ""
 			}
-			$result = ("{0:D2}:{1:D2}:{2:D2}" -f ([int]$hourPart), ([int]$minutes), ([int]$seconds))
+			
+			
+			if ($null -ne $global:tgtptr -and $global:tgtptr -ne 0)
+			{
+				$result = ("{0}`n" -f $global:tgtptr.ToString("X"))
+				$result += ("{0}`n" -f $tgtname)
+				$result += ("{0}`n" -f $clsname)
+				
+				if ($clsname -eq "ZombieCharacter_C")
+				{
+					$bgPanel.Width = 550
+					$bgPanel.Height = 600
+					$actptr = RInt64 ($global:tgtptr + [Int64]0x14b8)
+					
+					$DieChance                            = RSingle ($actptr + 0x468)
+					$DieResistance                        = RSingle ($actptr + 0x46c)
+					$DismemberResistance                  = RSingle ($actptr + 0x470)
+					$DismemberHitCount                    = RInt32  ($actptr + 0x474)
+					$StunChance                           = RSingle ($actptr + 0x478)
+					$StunResistance                       = RSingle ($actptr + 0x47c)
+					$React_Impact                         = RSingle ($actptr + 0x4E8)
+					$React_ImpactDelta                    = RSingle ($actptr + 0x4EC)
+					$React_Knockdown                      = RSingle ($actptr + 0x4F0)
+					$React_KnockdownDelta                 = RSingle ($actptr + 0x4F4)
+					$React_Kill                           = RSingle ($actptr + 0x4F8)
+					$React_KillDelta                      = RSingle ($actptr + 0x4FC)
+					$React_Dismember                      = RSingle ($actptr + 0x500)
+					$React_DismemberDelta                 = RSingle ($actptr + 0x504)
+					$LastHitStunChance                    = RSingle ($actptr + 0x56C)
+					$LastHitKillChance                    = RSingle ($actptr + 0x570)
+					$LastHitDismemberChance               = RSingle ($actptr + 0x574)
+					$RandKillValue                        = RSingle ($actptr + 0x588)
+					$RandDismemberValue                   = RSingle ($actptr + 0x588)
+					$GrappleShoveKDChance                 = RSingle ($actptr + 0x5f4)
+					$LocalInfectionChance                 = RSingle ($actptr + 0x650)
+					$LocalPlagueDamage                    = RSingle ($actptr + 0x654)
+					
+					$result += "=== Combat Stats ===`n"
+					$result += ("ReactInfo.Impact                    : {0,10:F4}`n" -f $React_Impact)
+					$result += ("ReactInfo.ImpactDelta               : {0,10:F4}`n" -f $React_ImpactDelta)
+					$result += ("ReactInfo.Knockdown                 : {0,10:F4}`n" -f $React_Knockdown)
+					$result += ("ReactInfo.KnockdownDelta            : {0,10:F4}`n" -f $React_KnockdownDelta)
+					$result += ("ReactInfo.Kill                      : {0,10:F4}`n" -f $React_Kill)
+					$result += ("ReactInfo.KillDelta                 : {0,10:F4}`n" -f $React_KillDelta)
+					$result += ("ReactInfo.Dismember                 : {0,10:F4}`n" -f $React_Dismember)
+					$result += ("ReactInfo.DismemberDelta            : {0,10:F4}`n" -f $React_DismemberDelta)
+					$result += ("Last Hit Stun Chance                : {0,10:F4}`n" -f $LastHitStunChance)
+					$result += ("Last Hit Kill Chance                : {0,10:F4}`n" -f $LastHitKillChance)
+					$result += ("Last Hit Dismember Chance           : {0,10:F4}`n" -f $LastHitDismemberChance)
+					$result += ("Die Chance                          : {0,10:F4}`n" -f $DieChance)
+					$result += ("Stun Chance                         : {0,10:F4}`n" -f $StunChance)
+					$result += ("Die Resistance                      : {0,10:F4}`n" -f $DieResistance)
+					$result += ("Stun Resistance                     : {0,10:F4}`n" -f $StunResistance)
+					$result += ("Dismember Resistance                : {0,10:F4}`n" -f $DismemberResistance)
+					$result += ("Dismember Hit Count                 : {0,10}`n" -f $DismemberHitCount)
+					$result += ("Random Kill Value                   : {0,10:F4}`n" -f $RandKillValue)
+					$result += ("Random Dismember Value              : {0,10:F4}`n" -f $RandDismemberValue)
+					$result += ("GrappleShove KD Chance              : {0,10:F4}`n" -f $GrappleShoveKDChance)
+					$result += ("Local Infection Chance              : {0,10:F4}`n" -f $LocalInfectionChance)
+					$result += ("Local Plague Damage                 : {0,10:F4}`n" -f $LocalPlagueDamage)
+					
+					
+					
+				}
+				if ($clsname -eq "ScreamerCharacter_C")
+				{
+					$bgPanel.Width = 550
+					$bgPanel.Height = 600
+					$actptr = RInt64 ($global:tgtptr + [Int64]0x14c8)
+					$reactptr = $actptr + [Int64]0x458
+					
+					
+					$DownChance                           = RSingle ($actptr + 0x408)
+					$DownResistance                       = RSingle ($actptr + 0x40c)
+					$StunChance                           = RSingle ($actptr + 0x410)
+					$StunResistance                       = RSingle ($actptr + 0x414)
+					$DieChance                            = RSingle ($actptr + 0x418)
+					$DieResistance                        = RSingle ($actptr + 0x41c)
+					$React_Impact                         = RSingle ($reactptr + 0x38)
+					$React_ImpactDelta                    = RSingle ($reactptr + 0x3c)
+					$React_Knockdown                      = RSingle ($reactptr + 0x40)
+					$React_KnockdownDelta                 = RSingle ($reactptr + 0x44)
+					$React_Kill                           = RSingle ($reactptr + 0x48)
+					$React_KillDelta                      = RSingle ($reactptr + 0x4C)
+					$React_Dismember                      = RSingle ($reactptr + 0x50)
+					$React_DismemberDelta                 = RSingle ($reactptr + 0x54)
+					$LastHitDownChance                    = RSingle ($actptr + 0x508)
+					$LastHitStunChance                    = RSingle ($actptr + 0x50c)
+					$LastHitDieChance                     = RSingle ($actptr + 0x510)
+					$ScreamSpawnZombieCooldown            = RSingle ($actptr + 0x520)
+					$LastScreamSpawnZombieTime            = RSingle ($actptr + 0x524)
+					$MeleeHitsTaken                       = RInt32 ($actptr + 0x52c)
+					$randKillValue                        = RSingle ($actptr + 0x530)
+					$RandKDValue                          = RSingle ($actptr + 0x534)
+					
+					
+					
+
+					$result += "=== Combat Stats ===`n"
+					$result += ("ReactInfo.Impact                    : {0,10:F4}`n" -f $React_Impact)
+					$result += ("ReactInfo.ImpactDelta               : {0,10:F4}`n" -f $React_ImpactDelta)
+					$result += ("ReactInfo.Knockdown                 : {0,10:F4}`n" -f $React_Knockdown)
+					$result += ("ReactInfo.KnockdownDelta            : {0,10:F4}`n" -f $React_KnockdownDelta)
+					$result += ("ReactInfo.Kill                      : {0,10:F4}`n" -f $React_Kill)
+					$result += ("ReactInfo.KillDelta                 : {0,10:F4}`n" -f $React_KillDelta)
+					$result += ("ReactInfo.Dismember                 : {0,10:F4}`n" -f $React_Dismember)
+					$result += ("ReactInfo.DismemberDelta            : {0,10:F4}`n" -f $React_DismemberDelta)
+					$result += ("Last Hit Down Chance                : {0,10:F4}`n" -f $LastHitDownChance)
+					$result += ("Last Hit Stun Chance                : {0,10:F4}`n" -f $LastHitStunChance)
+					$result += ("Last Hit Die Chance                 : {0,10:F4}`n" -f $LastHitDieChance)
+					$result += ("Down Chance                         : {0,10:F4}`n" -f $DownChance)
+					$result += ("Stun Chance                         : {0,10:F4}`n" -f $StunChance)
+					$result += ("Die Chance                          : {0,10:F4}`n" -f $DieChance)
+					$result += ("Down Resistance                     : {0,10:F4}`n" -f $DownResistance)
+					$result += ("Stun Resistance                     : {0,10:F4}`n" -f $StunResistance)
+					$result += ("Die Resistance                      : {0,10:F4}`n" -f $DieResistance)
+					$result += ("Scream Spawn Zombie Cooldown        : {0,10:F4}`n" -f $ScreamSpawnZombieCooldown)
+					$result += ("Last Scream Spawn Zombie Time       : {0,10:F4}`n" -f $LastScreamSpawnZombieTime)
+					$result += ("Melee Hits Taken                    : {0,10}`n" -f $MeleeHitsTaken)
+					$result += ("Rand Kill Value                     : {0,10:F4}`n" -f $randKillValue)
+					$result += ("Rand KD Value                       : {0,10:F4}`n" -f $RandKDValue)
+
+				}
+				if ($clsname -eq "FeralCharacter_C")
+				{
+					$bgPanel.Width = 550
+					$bgPanel.Height = 600
+					$actptr = RInt64 ($global:tgtptr + [Int64]0x14d8)
+					$reactptr = $actptr + [Int64]0x460
+					
+					
+					$DownResistance                       = RSingle ($actptr + 0x3f8)
+					$DownChance                           = RSingle ($actptr + 0x3fc)
+					$DieResistance                        = RSingle ($actptr + 0x400)
+					$DieChance                            = RSingle ($actptr + 0x404)
+				
+					
+					$React_Impact                         = RSingle ($reactptr + 0x38)
+					$React_ImpactDelta                    = RSingle ($reactptr + 0x3c)
+					$React_Knockdown                      = RSingle ($reactptr + 0x40)
+					$React_KnockdownDelta                 = RSingle ($reactptr + 0x44)
+					$React_Kill                           = RSingle ($reactptr + 0x48)
+					$React_KillDelta                      = RSingle ($reactptr + 0x4C)
+					$React_Dismember                      = RSingle ($reactptr + 0x50)
+					$React_DismemberDelta                 = RSingle ($reactptr + 0x54)
+					$FeralMissChance                      = RSingle ($actptr + 0x508)
+					$StunResistance                       = RSingle ($actptr + 0x528)
+					$StunChance                           = RSingle ($actptr + 0x52c)
+					$FeralDieHitCounterThreshold          = RInt32 ($actptr + 0x530)
+					$LastHitDownChance                    = RSingle ($actptr + 0x540)
+					$LastHitDieChance                     = RSingle ($actptr + 0x544)
+					$LastHitStunChance                    = RSingle ($actptr + 0x548)
+					$NumTimesHit                          = RSingle ($actptr + 0x55c)
+					$MeleeHitsTaken                       = RInt32 ($actptr + 0x568)
+					$HeadshotCount                        = RInt32 ($actptr + 0x588)
+					
+					
+					
+					$result += "=== Combat Stats ===`n"
+					$result += ("ReactInfo.Impact                    : {0,10:F4}`n" -f $React_Impact)
+					$result += ("ReactInfo.ImpactDelta               : {0,10:F4}`n" -f $React_ImpactDelta)
+					$result += ("ReactInfo.Knockdown                 : {0,10:F4}`n" -f $React_Knockdown)
+					$result += ("ReactInfo.KnockdownDelta            : {0,10:F4}`n" -f $React_KnockdownDelta)
+					$result += ("ReactInfo.Kill                      : {0,10:F4}`n" -f $React_Kill)
+					$result += ("ReactInfo.KillDelta                 : {0,10:F4}`n" -f $React_KillDelta)
+					$result += ("ReactInfo.Dismember                 : {0,10:F4}`n" -f $React_Dismember)
+					$result += ("ReactInfo.DismemberDelta            : {0,10:F4}`n" -f $React_DismemberDelta)
+					$result += ("Feral Miss Chance                   : {0,10:F4}`n" -f $FeralMissChance)
+					$result += ("Stun Resistance                     : {0,10:F4}`n" -f $StunResistance)
+					$result += ("Stun Chance                         : {0,10:F4}`n" -f $StunChance)
+					$result += ("Feral Die Hit Counter Threshold     : {0,10}`n" -f $FeralDieHitCounterThreshold)
+					$result += ("Last Hit Down Chance                : {0,10:F4}`n" -f $LastHitDownChance)
+					$result += ("Last Hit Die Chance                 : {0,10:F4}`n" -f $LastHitDieChance)
+					$result += ("Last Hit Stun Chance                : {0,10:F4}`n" -f $LastHitStunChance)
+					$result += ("Down Chance                         : {0,10:F4}`n" -f $DownChance)
+					$result += ("Die Chance                          : {0,10:F4}`n" -f $DieChance)
+					$result += ("Down Resistance                     : {0,10:F4}`n" -f $DownResistance)
+					$result += ("Die Resistance                      : {0,10:F4}`n" -f $DieResistance)
+					$result += ("Num Times Hit                       : {0,10:F4}`n" -f $NumTimesHit)
+					$result += ("Melee Hits Taken                    : {0,10}`n" -f $MeleeHitsTaken)
+					$result += ("Headshot Count                      : {0,10}`n" -f $HeadshotCount)
+					
+					
+				}
+				
+				if ($clsname -eq "JuggernautCharacter_C")
+				{
+					$bgPanel.Width = 550
+					$bgPanel.Height = 900
+					$actptr = RInt64 ($global:tgtptr + [Int64]0x1530)
+					$KillResistance                       = RSingle ($actptr + 0x3f8)
+					$StunResistanceBaseline                = RSingle ($actptr + 0x3fc)
+					$React_Impact                         = RSingle ($actptr + 0x488)
+					$React_ImpactDelta                    = RSingle ($actptr + 0x48C)
+					$React_Knockdown                      = RSingle ($actptr + 0x490)
+					$React_KnockdownDelta                 = RSingle ($actptr + 0x494)
+					$React_Kill                           = RSingle ($actptr + 0x498)
+					$React_KillDelta                      = RSingle ($actptr + 0x49C)
+					$React_Dismember                      = RSingle ($actptr + 0x4A0)
+					$React_DismemberDelta                 = RSingle ($actptr + 0x4A4)
+					$HeadshotCount                        = RInt32  ($actptr + 0x4F8)
+					$Stun_Chance                          = RSingle ($actptr + 0x518)
+					$Kill_Chance                          = RSingle ($actptr + 0x520)
+					$StunToleranceCount                   = RSingle ($actptr + 0x52C)
+					$HitCountForStunned                   = RSingle ($actptr + 0x530)
+					$MinHeadshots                         = RInt32  ($actptr + 0x558)
+					$VulnerableTimer                      = RSingle ($actptr + 0x5A4)
+					$StunCount                            = RSingle ($actptr + 0x5A8)
+					$LastHitStunChance                    = RSingle ($actptr + 0x5AC)
+					$LastHitKillChance                    = RSingle ($actptr + 0x5B0)
+					$NumTimesHit                          = RSingle  ($actptr + 0x5C0)
+					$GameTimeLastStunned                  = RSingle ($actptr + 0x5D0)
+					$JuggStunCooldown                     = RSingle ($actptr + 0x5D4)
+					$HeadDamageLevel                      = RInt32  ($actptr + 0x5D8)
+					$ExplosivesHitCount                   = RInt32  ($actptr + 0x5DC)
+					$MeleeHitsTaken                       = RInt32  ($actptr + 0x5E0)
+					$VulnerableMeleeHitsTaken             = RInt32  ($actptr + 0x5E4)
+					$AttackDamage                         = RSingle ($actptr + 0x5E8)
+					$VulnerableHeadshotHealth             = RSingle ($actptr + 0x5EC)
+					$GuaranteedStunThreshold              = RSingle ($actptr + 0x5F8)
+					$Initial_Stun_Chance_Multiplier       = RSingle ($actptr + 0x5FC)
+					$TotalHitsOnThisJuggernaut            = RSingle ($actptr + 0x600)
+					$ImpactDeltaBalanceMultiplier         = RSingle ($actptr + 0x608)
+					$CloseCombatWeaponImpactDeltaFactor   = RSingle ($actptr + 0x60C)
+					$CloseCombatWeaponImpactFactor        = RSingle ($actptr + 0x610)
+					$ImpactBalanceMultiplier              = RSingle ($actptr + 0x614)
+					$AllHitsTaken                         = RInt32  ($actptr + 0x618)
 
 
-			$newTimeLabel = $result
+					$result += "=== Combat Stats ===`n"
+					$result += ("ReactInfo.Impact                    : {0,10:F3}`n" -f $React_Impact)
+					$result += ("ReactInfo.ImpactDelta               : {0,10:F3}`n" -f $React_ImpactDelta)
+					$result += ("ReactInfo.Knockdown                 : {0,10:F3}`n" -f $React_Knockdown)
+					$result += ("ReactInfo.KnockdownDelta            : {0,10:F3}`n" -f $React_KnockdownDelta)
+					$result += ("ReactInfo.Kill                      : {0,10:F3}`n" -f $React_Kill)
+					$result += ("ReactInfo.KillDelta                 : {0,10:F3}`n" -f $React_KillDelta)
+					$result += ("ReactInfo.Dismember                 : {0,10:F3}`n" -f $React_Dismember)
+					$result += ("ReactInfo.DismemberDelta            : {0,10:F3}`n" -f $React_DismemberDelta)
+					$result += ("Headshot Count                      : {0,10}`n"   -f $HeadshotCount)
+					$result += ("Stun Count                          : {0,10:F3}`n" -f $StunCount)
+					$result += ("Explosives Hit Count                : {0,10}`n"   -f $ExplosivesHitCount)
+					$result += ("Last Hit Stun Chance                : {0,10:F3}`n" -f $LastHitStunChance)
+					$result += ("Last Hit Kill Chance                : {0,10:F3}`n" -f $LastHitKillChance)
+					$result += ("Stun Chance                         : {0,10:F3}`n" -f $Stun_Chance)
+					$result += ("Kill Chance                         : {0,10:F3}`n" -f $Kill_Chance)
+					$result += ("Stun Resistance Baseline            : {0,10:F3}`n" -f $StunResistanceBaseline)
+					$result += ("Kill Resistance                     : {0,10:F3}`n" -f $KillResistance)
+					$result += ("Stun Tolerance Count                : {0,10:F3}`n" -f $StunToleranceCount)
+					$result += ("Hit Count for Stunned               : {0,10:F3}`n" -f $HitCountForStunned)
+					$result += ("Min Headshots                       : {0,10}`n"   -f $MinHeadshots)
+					$result += ("Vulnerable Timer                    : {0,10:F3}`n" -f $VulnerableTimer)
+					$result += ("Num Times Hit                       : {0,10}`n"   -f $NumTimesHit)
+					$result += ("Game Time Last Stunned              : {0,10:F3}`n" -f $GameTimeLastStunned)
+					$result += ("Jugg Stun Cooldown                  : {0,10:F3}`n" -f $JuggStunCooldown)
+					$result += ("Head Damage Level                   : {0,10}`n"   -f $HeadDamageLevel)
+					$result += ("Melee Hits Taken                    : {0,10}`n"   -f $MeleeHitsTaken)
+					$result += ("Vulnerable Melee Hits Taken         : {0,10}`n"   -f $VulnerableMeleeHitsTaken)
+					$result += ("Attack Damage                       : {0,10:F3}`n" -f $AttackDamage)
+					$result += ("Vulnerable Headshot Health          : {0,10:F3}`n" -f $VulnerableHeadshotHealth)
+					$result += ("Guaranteed Stun Threshold           : {0,10:F3}`n" -f $GuaranteedStunThreshold)
+					$result += ("Initial Stun Chance Multiplier      : {0,10:F3}`n" -f $Initial_Stun_Chance_Multiplier)
+					$result += ("Total Hits On This Juggernaut       : {0,10:F3}`n" -f $TotalHitsOnThisJuggernaut)
+					$result += ("Close Combat Impact Factor          : {0,10:F3}`n" -f $CloseCombatWeaponImpactFactor)
+					$result += ("Close Combat Impact Delta Factor    : {0,10:F3}`n" -f $CloseCombatWeaponImpactDeltaFactor)
+					$result += ("Impact Balance Multiplier           : {0,10:F3}`n" -f $ImpactBalanceMultiplier)
+					$result += ("Impact Delta Balance Multiplier     : {0,10:F3}`n" -f $ImpactDeltaBalanceMultiplier)
+					$result += ("All Hits Taken                      : {0,10}`n"   -f $AllHitsTaken)
+				}
+				
+				
+				
+				$newTimeLabel = $result
+			} else {
+				$newTimeLabel = $timeLabel.Text
+			}
 		}
 		
 		if ($followerLabel.Visible) {
@@ -1007,16 +1293,10 @@ if ($ver -eq "Dunno") {
 			$vptr = RInt64 ($vptr + [Int64]0x30)	#playerController
 			$vptr = RInt64 ($vptr + [Int64]0x368)	#DaytonVehicle
 			
-
-			
-			
 			$newVehicleLabel = ""
 			if ((RInt64 ($vptr)) -eq [Int64]($daytonVehicleVtPtr)) {	#if in vehicle
 				$vdptr = RInt64 ($vptr + [Int64]0x438)	#Damage
 				$vmcptr = RInt64 ($vptr + [Int64]0x3d8)	#movement
-				
-				$defptr = RInt64 ($vptr + [Int64]0x478)
-				$defptr = RInt64 ($defptr + [Int64]0x100)
 
 				$currFuel = RSingle ($vmcptr + [Int64]0x478)
 				$currFuel *= 100
@@ -1025,27 +1305,7 @@ if ($ver -eq "Dunno") {
 				$frameDamage = RSingle ($vdptr + [Int64]0x154)
 				$gasTankDamage = RSingle ($vdptr + [Int64]0x158)
 				
-				$carname = RInt64 ($defptr + 0xa8)
-				$carname = RInt64 ($carname + 0x8)
-				$carname = RInt64 ($carname)
-				$carname = RUnicodeStr ($carname)
 				
-				$cartype = RInt64 ($defptr + 0xc0)
-				$cartype = RInt64 ($cartype + 0x8)
-				$cartype = RInt64 ($cartype)
-				$cartype = RUnicodeStr ($cartype)
-				
-				$fueldefptr = RInt64 ($defptr + 0x40)
-				$fueldefptr = RInt64 ($fueldefptr + 0x100)
-				$fuelcapacity = RSingle ($fueldefptr + 0x28)
-				$idlecon = RSingle ($fueldefptr + 0x2c)
-				$conpm = RSingle ($fueldefptr + 0x30)
-				
-				$newVehicleLabel += $carname + "`n"
-				$newVehicleLabel += $cartype + "`n"
-				$newVehicleLabel += "Fuel Capacity:      {0,6:F2}`n"           -f $fuelcapacity
-				$newVehicleLabel += "Fuel Idle Cons:     {0,6:F2}`n"           -f $idlecon
-				$newVehicleLabel += "Fuel 7500rpm Cons:  {0,6:F2}`n"           -f $conpm
 				$newVehicleLabel += "Fuel:               {0,6:N2}`n"           -f $currFuel
 				$newVehicleLabel += "Engine Damage:      {0,6:N2}`n"           -f $engineDamage
 				$newVehicleLabel += "Frame Damage:       {0,6:N2}`n"           -f $frameDamage
@@ -1162,8 +1422,8 @@ if ($ver -eq "Dunno") {
 		$mouseLabel.Location = New-Object System.Drawing.Point($x, $y)
 		
 		
-		$x = $ScreenWidth * 0.025
-		$y = $ScreenHeight * 0.35
+		$x = $ScreenWidth * 0.002
+		$y = $ScreenHeight * 0.002
 		$bgPanel.Location = New-Object System.Drawing.Point($x, $y)
 		
 		
@@ -1171,8 +1431,8 @@ if ($ver -eq "Dunno") {
 		$y = 5
 		$hpLabel.Location = New-Object System.Drawing.Point($x, $y)
 		
-		$x = $ScreenWidth * 0.07
-		$y = $ScreenHeight * 0.93
+		$x = $ScreenWidth * 0.0
+		$y = $ScreenHeight * 0.0
 		$timeLabel.Location = New-Object System.Drawing.Point($x, $y)
 		
 		$x = $ScreenWidth * 0.025

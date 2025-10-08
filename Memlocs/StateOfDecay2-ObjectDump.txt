@@ -315,15 +315,15 @@ function GetProps {
         }
 
         $results += $line
-        $ptr = RInt64 ($ptr + 0x58L)
+		$ptr = RInt64 ($ptr + 0x58L)
     }
 
     return $results
 }
 
-$mainptr = 0x0000000058237500L
+$mainptr = 0x0002D3817C0L
 
-#GetProps $mainptr
+GetProps $mainptr
 
 
 
