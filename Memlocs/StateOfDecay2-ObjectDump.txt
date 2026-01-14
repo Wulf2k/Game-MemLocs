@@ -321,9 +321,9 @@ function GetProps {
     return $results
 }
 
-$mainptr = 0x0002D3817C0L
+#$mainptr = 0x0002D3817C0L
 
-GetProps $mainptr
+#GetProps $mainptr
 
 
 
