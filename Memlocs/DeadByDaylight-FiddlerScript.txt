@@ -1,4 +1,6 @@
 import System;
+import System.IO;
+import System.Text;
 import System.Windows.Forms;
 import Fiddler;
 import System.Diagnostics;
@@ -6,6 +8,11 @@ import System.Diagnostics;
 
 class Handlers
 {    
+    static var logtofile = true;
+	static var folder = "C:/DBD-DumpData";
+	public static var sb = new StringBuilder();
+	
+            
     public static RulesOption("Hide 304s")
     BindPref("fiddlerscript.rules.Hide304s")
     var m_Hide304s: boolean = false;
@@ -78,21 +85,35 @@ class Handlers
         UI.actUpdateInspector(true,true);
     }
 
-
 	
-    static function LogNumericField(body, displayName, varName) {
+	
+    static function LogNumericField(body, displayName, varName) : String {
         var re = new RegExp("\"" + varName + "\"\\s*:\\s*(-?[0-9]+(?:\\.[0-9]+)?)");
         var matchResult = body.match(re);
+
         if (matchResult && matchResult.length > 1) {
             Debug.WriteLine("  {0}: {1}", displayName, matchResult[1]);
+			if (logtofile) {
+				sb.AppendLine(displayName + "," + matchResult[1]);
+			}
+            return matchResult[1];
         }
+        return "";
     }
-    static function LogStringField(body, displayName, varName) {
+
+    static function LogStringField(body, displayName, varName) : String {
         var re = new RegExp("\"" + varName + "\"\\s*:\\s*\"((?:\\\\.|[^\"])*)\"");
         var matchResult = body.match(re);
+
         if (matchResult && matchResult.length > 1) {
             Debug.WriteLine("  {0}: {1}", displayName, matchResult[1]);
+			if (logtofile) {
+				sb.AppendLine(displayName + "," + matchResult[1]);
+			}
+            return matchResult[1];
         }
+
+        return "";
     }
 
 
@@ -164,162 +185,184 @@ class Handlers
         
 		
         if (!String.IsNullOrEmpty(body)) {
-			if (oSession.PathAndQuery.Equals("/api/v1/gameDataAnalytics/v2/batch") && body.Contains("postgame_killer"))
-            {
-				Debug.WriteLine("---------------- GameLog - Killer Postgame ----------------");
-				LogStringField(body, "Timestamp", "timestamp");
-				LogStringField(body, "Character Name", "character_name");
-				LogStringField(body, "Game Mode", "game_mode");
-				LogStringField(body, "Match End Reason", "match_end_reason");
-				LogNumericField(body, "Used Surrender Option", "used_surrender_option");
-				LogNumericField(body, "Game Duration", "game_duration");
-				LogNumericField(body, "Escapees Count", "escapees_count");
-				LogNumericField(body, "Sacrificed Count", "sacrificed_count");
-				LogNumericField(body, "Killed Count", "killed_count");
-				LogNumericField(body, "Disconnect Count", "disconnect_count");
-				LogNumericField(body, "Bot Count", "bot_count");
-				LogNumericField(body, "Bloodweb Points", "bloodweb_points");
-				LogNumericField(body, "Brutality", "brutality");
-				LogNumericField(body, "Deviousness", "deviousness");
-				LogNumericField(body, "Hunter", "hunter");
-				LogNumericField(body, "Sacrifice", "sacrifice");
-				LogNumericField(body, "Brutality Bonus", "brutality_bonus");
-				LogNumericField(body, "Deviousness Bonus", "deviousness_bonus");
-				LogNumericField(body, "Hunter Bonus", "hunter_bonus");
-				LogNumericField(body, "Sacrifice Bonus", "sacrifice_bonus");
-				LogNumericField(body, "Time Open Gate", "time_open_gate");
-				LogStringField(body, "Survivor Spawning Position", "survivor_spawning_position");
-				LogNumericField(body, "Generators Done", "generators_done");
-				LogNumericField(body, "Generator Repair Timestamp1", "generator_repair_timestamp1");
-				LogNumericField(body, "Generator Repair Timestamp2", "generator_repair_timestamp2");
-				LogNumericField(body, "Generator Repair Timestamp3", "generator_repair_timestamp3");
-				LogNumericField(body, "Generator Repair Timestamp4", "generator_repair_timestamp4");
-				LogNumericField(body, "Generator Repair Timestamp5", "generator_repair_timestamp5");
-				LogNumericField(body, "Generators Max Regression Count", "generators_max_regression_count");
-				LogNumericField(body, "Generator Kicks Count", "generator_kicks_count");
-				LogStringField(body, "EGS Starter", "egs_starter");
-				LogNumericField(body, "EGS Time", "egs_time");
-				LogNumericField(body, "EGS Duration", "egs_duration");
-				LogNumericField(body, "EGS Sacrifice", "egs_sacrifice");
-				LogNumericField(body, "EGS Reach End", "egs_reach_end");
-				LogNumericField(body, "Used Controller", "used_controller");
-				LogNumericField(body, "Used Keyboard", "used_keyboard");
-				LogNumericField(body, "Used Haptics Vibration", "used_haptics_vibration");
-				//LogStringField(body, "Match ID", "match_id");
-				//LogStringField(body, "Kraken Match ID", "kraken_match_id");
-				LogNumericField(body, "Bonus Event", "bonus_event");
-				LogNumericField(body, "Special Event Points", "special_event_points");
-				LogNumericField(body, "Special Event Points Bonus", "special_event_points_bonus");
-				LogNumericField(body, "Misc Points", "misc_points");
-				LogNumericField(body, "Match Incentive", "match_incentive");
-				LogNumericField(body, "GO Next System Bonus", "go_next_system_bonus");
-				LogNumericField(body, "GO Next System Multiplier", "go_next_system_multiplier");
-				LogNumericField(body, "Anti-Tunneling Bonus", "anti_tunneling_bonus");
-				LogNumericField(body, "LTE Incentive", "lte_incentive");
-				LogNumericField(body, "Matchmaking Incentive Percentage", "matchmaking_incentive_percentage");
-				LogNumericField(body, "Base Incentive Percentage", "base_incentive_percentage");
-				LogNumericField(body, "Hidden Base Incentive Percentage", "hidden_base_incentive_percentage");
-				LogNumericField(body, "Matchmaking Incentive Ratio", "matchmaking_incentive_ratio");
-				LogNumericField(body, "Is ABot", "is_abot");
-				LogNumericField(body, "Rank", "rank");
-				LogNumericField(body, "Pips Gained or Lost", "pips_gained_or_lost");
-				LogNumericField(body, "Is Tutorial Bot Match", "is_tutorial_bot_match");
-				//LogStringField(body, "Onboarding Mode ID", "onboarding_mode_id");
-				LogNumericField(body, "Onboarding Enabled", "onboarding_enabled");
-				LogNumericField(body, "Onboarding ABTesting Enabled", "onboarding_abtesting_enabled");
-				LogNumericField(body, "Onboarding Number Active Modes", "onboarding_number_active_modes");
-				LogNumericField(body, "Onboarding New Assigned Mode", "onboarding_new_assigned_mode");
-				LogNumericField(body, "Exact Ping", "exact_ping");
-				//LogStringField(body, "Server Session ID", "server_session_id");
-				LogStringField(body, "Server Region", "server_region");
-				LogNumericField(body, "Is PWYW", "is_pwyw");
-				LogNumericField(body, "Is Priority Matchmaking Match", "is_priority_matchmaking_match");
-				//LogStringField(body, "Version", "version");
-				//LogStringField(body, "Branch", "branch");
-				//LogStringField(body, "Changelist", "changelist");
-				//LogStringField(body, "Configuration", "configuration");
-				//LogStringField(body, "Mirrors ID", "mirrors_id");
-				//LogStringField(body, "Client ID", "client_id");
-				//LogStringField(body, "Platform", "platform");
-				//LogStringField(body, "Backend Env", "backend_env");
-				//LogStringField(body, "Data Content Version", "data_content_version");
-				//LogStringField(body, "Session GUID", "session_guid");
-				Debug.WriteLine("---------------- End GameLog - Killer Postgame ----------------");
+			var cname = "";
+			if (logtofile) {
+				if (!Directory.Exists(folder)) {
+					Directory.CreateDirectory(folder);
+				}
 			}
+		
+            if (oSession.PathAndQuery.Equals("/api/v1/gameDataAnalytics/v2/batch") && body.Contains("postgame_killer"))
+            {
+                Debug.WriteLine("---------------- GameLog - Killer Postgame ----------------");
+				sb = new StringBuilder();
+                LogStringField(body, "Timestamp", "timestamp");
+				LogStringField(body, "Match ID", "match_id");
+                cname = LogStringField(body, "Character Name", "character_name");
+                LogStringField(body, "Game Mode", "game_mode");
+                LogStringField(body, "Match End Reason", "match_end_reason");
+                LogNumericField(body, "Used Surrender Option", "used_surrender_option");
+                LogNumericField(body, "Game Duration", "game_duration");
+                LogNumericField(body, "Escapees Count", "escapees_count");
+                LogNumericField(body, "Sacrificed Count", "sacrificed_count");
+                LogNumericField(body, "Killed Count", "killed_count");
+                LogNumericField(body, "Disconnect Count", "disconnect_count");
+                LogNumericField(body, "Bot Count", "bot_count");
+                LogNumericField(body, "Bloodweb Points", "bloodweb_points");
+                LogNumericField(body, "Brutality", "brutality");
+                LogNumericField(body, "Deviousness", "deviousness");
+                LogNumericField(body, "Hunter", "hunter");
+                LogNumericField(body, "Sacrifice", "sacrifice");
+                LogNumericField(body, "Brutality Bonus", "brutality_bonus");
+                LogNumericField(body, "Deviousness Bonus", "deviousness_bonus");
+                LogNumericField(body, "Hunter Bonus", "hunter_bonus");
+                LogNumericField(body, "Sacrifice Bonus", "sacrifice_bonus");
+                LogNumericField(body, "Time Open Gate", "time_open_gate");
+                LogStringField(body, "Survivor Spawning Position", "survivor_spawning_position");
+                LogNumericField(body, "Generators Done", "generators_done");
+                LogNumericField(body, "Generator Repair Timestamp1", "generator_repair_timestamp1");
+                LogNumericField(body, "Generator Repair Timestamp2", "generator_repair_timestamp2");
+                LogNumericField(body, "Generator Repair Timestamp3", "generator_repair_timestamp3");
+                LogNumericField(body, "Generator Repair Timestamp4", "generator_repair_timestamp4");
+                LogNumericField(body, "Generator Repair Timestamp5", "generator_repair_timestamp5");
+                LogNumericField(body, "Generators Max Regression Count", "generators_max_regression_count");
+                LogNumericField(body, "Generator Kicks Count", "generator_kicks_count");
+                LogStringField(body, "EGS Starter", "egs_starter");
+                LogNumericField(body, "EGS Time", "egs_time");
+                LogNumericField(body, "EGS Duration", "egs_duration");
+                LogNumericField(body, "EGS Sacrifice", "egs_sacrifice");
+                LogNumericField(body, "EGS Reach End", "egs_reach_end");
+                LogNumericField(body, "Used Controller", "used_controller");
+                LogNumericField(body, "Used Keyboard", "used_keyboard");
+                LogNumericField(body, "Used Haptics Vibration", "used_haptics_vibration");
+                //LogStringField(body, "Kraken Match ID", "kraken_match_id");
+                LogNumericField(body, "Bonus Event", "bonus_event");
+                LogNumericField(body, "Special Event Points", "special_event_points");
+                LogNumericField(body, "Special Event Points Bonus", "special_event_points_bonus");
+                LogNumericField(body, "Misc Points", "misc_points");
+                LogNumericField(body, "Match Incentive", "match_incentive");
+                LogNumericField(body, "GO Next System Bonus", "go_next_system_bonus");
+                LogNumericField(body, "GO Next System Multiplier", "go_next_system_multiplier");
+                LogNumericField(body, "Anti-Tunneling Bonus", "anti_tunneling_bonus");
+                LogNumericField(body, "LTE Incentive", "lte_incentive");
+                LogNumericField(body, "Matchmaking Incentive Percentage", "matchmaking_incentive_percentage");
+                LogNumericField(body, "Base Incentive Percentage", "base_incentive_percentage");
+                LogNumericField(body, "Hidden Base Incentive Percentage", "hidden_base_incentive_percentage");
+                LogNumericField(body, "Matchmaking Incentive Ratio", "matchmaking_incentive_ratio");
+                LogNumericField(body, "Is ABot", "is_abot");
+                LogNumericField(body, "Rank", "rank");
+                LogNumericField(body, "Pips Gained or Lost", "pips_gained_or_lost");
+                LogNumericField(body, "Is Tutorial Bot Match", "is_tutorial_bot_match");
+                //LogStringField(body, "Onboarding Mode ID", "onboarding_mode_id");
+                LogNumericField(body, "Onboarding Enabled", "onboarding_enabled");
+                LogNumericField(body, "Onboarding ABTesting Enabled", "onboarding_abtesting_enabled");
+                LogNumericField(body, "Onboarding Number Active Modes", "onboarding_number_active_modes");
+                LogNumericField(body, "Onboarding New Assigned Mode", "onboarding_new_assigned_mode");
+                LogNumericField(body, "Exact Ping", "exact_ping");
+                //LogStringField(body, "Server Session ID", "server_session_id");
+                LogStringField(body, "Server Region", "server_region");
+                LogNumericField(body, "Is PWYW", "is_pwyw");
+                LogNumericField(body, "Is Priority Matchmaking Match", "is_priority_matchmaking_match");
+                //LogStringField(body, "Version", "version");
+                //LogStringField(body, "Branch", "branch");
+                //LogStringField(body, "Changelist", "changelist");
+                //LogStringField(body, "Configuration", "configuration");
+                //LogStringField(body, "Mirrors ID", "mirrors_id");
+                //LogStringField(body, "Client ID", "client_id");
+                //LogStringField(body, "Platform", "platform");
+                //LogStringField(body, "Backend Env", "backend_env");
+                //LogStringField(body, "Data Content Version", "data_content_version");
+                //LogStringField(body, "Session GUID", "session_guid");
+				if (logtofile) {
+					var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
+					var path = Path.Combine(folder, "PostGame-Killer-" + cname + "-" + timestamp + ".txt");
+					File.AppendAllText(path, sb.ToString());
+				}
+                Debug.WriteLine("---------------- End GameLog - Killer Postgame ----------------");
+            }
 
             if (oSession.PathAndQuery.Equals("/api/v1/gameDataAnalytics/v2/batch") && body.Contains("gameplay_killer"))
             {
                 Debug.WriteLine("---------------- Analytics - Gameplay Killer ----------------");
+				sb = new StringBuilder();
                 LogStringField(body, "Timestamp", "timestamp");
-				//LogStringField(body, "Match ID", "match_id");
-				LogStringField(body, "Game Mode", "game_mode");
-				LogNumericField(body, "Hook Count", "hook_count");
-				LogNumericField(body, "Murder Count", "murder_count");
-				LogNumericField(body, "Escapees Hatch Count", "escapees_hatch_count");
-				LogNumericField(body, "Speed", "speed");
-				LogNumericField(body, "Bloodlust Tier1 Count", "bloodlust_tier1_count");
-				LogNumericField(body, "Bloodlust Tier2 Count", "bloodlust_tier2_count");
-				LogNumericField(body, "Bloodlust Tier3 Count", "bloodlust_tier3_count");
-				LogNumericField(body, "Bloodlust Tier1 Duration", "bloodlust_tier1_duration");
-				LogNumericField(body, "Bloodlust Tier2 Duration", "bloodlust_tier2_duration");
-				LogNumericField(body, "Bloodlust Tier3 Duration", "bloodlust_tier3_duration");
-				LogNumericField(body, "Bloodlust Speed", "bloodlust_speed");
-				LogNumericField(body, "Chase Count", "chase_count");
-				LogNumericField(body, "Chase Count Fail", "chase_count_fail");
-				LogNumericField(body, "Chase Count Success", "chase_count_success");
-				LogNumericField(body, "Chase Count Tier1 Fail", "chase_count_tier1_fail");
-				LogNumericField(body, "Chase Count Tier1 Success", "chase_count_tier1_success");
-				LogNumericField(body, "Chase Count Tier2 Fail", "chase_count_tier2_fail");
-				LogNumericField(body, "Chase Count Tier2 Success", "chase_count_tier2_success");
-				LogNumericField(body, "Chase Count Tier3 Fail", "chase_count_tier3_fail");
-				LogNumericField(body, "Chase Count Tier3 Success", "chase_count_tier3_success");
-				LogNumericField(body, "Pallet Spawned", "pallet_spawned");
-				LogNumericField(body, "Pallet Procedural", "pallet_procedural");
-				LogNumericField(body, "Pallet Procedural Set Count", "pallet_procedural_set_count");
-				//LogNumericField(body, "Pallet Generation ID", "pallet_generation_id");
-				LogNumericField(body, "Pallet Generic", "pallet_generic");
-				LogNumericField(body, "Pallet Destroyed", "pallet_destroyed");
-				LogNumericField(body, "Breakable Wall Spawned", "breakable_wall_spawned");
-				LogNumericField(body, "Breakable Wall Destroyed", "breakable_wall_destroyed");
-				LogNumericField(body, "Drop Count", "drop_count");
-				LogNumericField(body, "Hit Close Count", "hit_close_count");
-				LogNumericField(body, "Hit Close Count Success", "hit_close_count_success");
-				LogNumericField(body, "Hit Far Count", "hit_far_count");
-				LogNumericField(body, "Hit Far Count Success", "hit_far_count_success");
-				LogNumericField(body, "Hit Special Count", "hit_special_count");
-				LogNumericField(body, "Hit Special Count Success", "hit_special_count_success");
-				LogNumericField(body, "Closet Open", "closet_open");
-				LogNumericField(body, "Closet Open Success", "closet_open_success");
-				LogNumericField(body, "Seconds At Least One Survivor Hooked", "secondes_at_least_one_survivor_hooked");
-				LogNumericField(body, "Amount Tiles Visited", "amount_tiles_visited");
-				LogNumericField(body, "Start X", "start_x");
-				LogNumericField(body, "Start Y", "start_y");
-				LogNumericField(body, "Start Z", "start_z");
-				//LogStringField(body, "Version", "version");
-				//LogStringField(body, "Branch", "branch");
-				//LogStringField(body, "Changelist", "changelist");
-				//LogStringField(body, "Configuration", "configuration");
-				//LogStringField(body, "Mirrors ID", "mirrors_id");
-				//LogStringField(body, "Client ID", "client_id");
-				//LogStringField(body, "Platform", "platform");
-				//LogStringField(body, "Backend Env", "backend_env");
-				//LogStringField(body, "Data Content Version", "data_content_version");
-				//LogStringField(body, "Session GUID", "session_guid");
+                LogStringField(body, "Match ID", "match_id");
+                LogStringField(body, "Game Mode", "game_mode");
+                LogNumericField(body, "Hook Count", "hook_count");
+                LogNumericField(body, "Murder Count", "murder_count");
+                LogNumericField(body, "Escapees Hatch Count", "escapees_hatch_count");
+                LogNumericField(body, "Speed", "speed");
+                LogNumericField(body, "Bloodlust Tier1 Count", "bloodlust_tier1_count");
+                LogNumericField(body, "Bloodlust Tier2 Count", "bloodlust_tier2_count");
+                LogNumericField(body, "Bloodlust Tier3 Count", "bloodlust_tier3_count");
+                LogNumericField(body, "Bloodlust Tier1 Duration", "bloodlust_tier1_duration");
+                LogNumericField(body, "Bloodlust Tier2 Duration", "bloodlust_tier2_duration");
+                LogNumericField(body, "Bloodlust Tier3 Duration", "bloodlust_tier3_duration");
+                LogNumericField(body, "Bloodlust Speed", "bloodlust_speed");
+                LogNumericField(body, "Chase Count", "chase_count");
+                LogNumericField(body, "Chase Count Fail", "chase_count_fail");
+                LogNumericField(body, "Chase Count Success", "chase_count_success");
+                LogNumericField(body, "Chase Count Tier1 Fail", "chase_count_tier1_fail");
+                LogNumericField(body, "Chase Count Tier1 Success", "chase_count_tier1_success");
+                LogNumericField(body, "Chase Count Tier2 Fail", "chase_count_tier2_fail");
+                LogNumericField(body, "Chase Count Tier2 Success", "chase_count_tier2_success");
+                LogNumericField(body, "Chase Count Tier3 Fail", "chase_count_tier3_fail");
+                LogNumericField(body, "Chase Count Tier3 Success", "chase_count_tier3_success");
+                LogNumericField(body, "Pallet Spawned", "pallet_spawned");
+                LogNumericField(body, "Pallet Procedural", "pallet_procedural");
+                LogNumericField(body, "Pallet Procedural Set Count", "pallet_procedural_set_count");
+                //LogNumericField(body, "Pallet Generation ID", "pallet_generation_id");
+                LogNumericField(body, "Pallet Generic", "pallet_generic");
+                LogNumericField(body, "Pallet Destroyed", "pallet_destroyed");
+                LogNumericField(body, "Breakable Wall Spawned", "breakable_wall_spawned");
+                LogNumericField(body, "Breakable Wall Destroyed", "breakable_wall_destroyed");
+                LogNumericField(body, "Drop Count", "drop_count");
+                LogNumericField(body, "Hit Close Count", "hit_close_count");
+                LogNumericField(body, "Hit Close Count Success", "hit_close_count_success");
+                LogNumericField(body, "Hit Far Count", "hit_far_count");
+                LogNumericField(body, "Hit Far Count Success", "hit_far_count_success");
+                LogNumericField(body, "Hit Special Count", "hit_special_count");
+                LogNumericField(body, "Hit Special Count Success", "hit_special_count_success");
+                LogNumericField(body, "Closet Open", "closet_open");
+                LogNumericField(body, "Closet Open Success", "closet_open_success");
+                LogNumericField(body, "Seconds At Least One Survivor Hooked", "secondes_at_least_one_survivor_hooked");
+                LogNumericField(body, "Amount Tiles Visited", "amount_tiles_visited");
+                LogNumericField(body, "Start X", "start_x");
+                LogNumericField(body, "Start Y", "start_y");
+                LogNumericField(body, "Start Z", "start_z");
+                //LogStringField(body, "Version", "version");
+                //LogStringField(body, "Branch", "branch");
+                //LogStringField(body, "Changelist", "changelist");
+                //LogStringField(body, "Configuration", "configuration");
+                //LogStringField(body, "Mirrors ID", "mirrors_id");
+                //LogStringField(body, "Client ID", "client_id");
+                //LogStringField(body, "Platform", "platform");
+                //LogStringField(body, "Backend Env", "backend_env");
+                //LogStringField(body, "Data Content Version", "data_content_version");
+                //LogStringField(body, "Session GUID", "session_guid");
+				
+				if (logtofile) {
+					var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
+					var path = Path.Combine(folder, "Gameplay-Killer-" + timestamp + ".txt");
+					File.AppendAllText(path, sb.ToString());
+				}
                 Debug.WriteLine("---------------- End Analytics - Gameplay Killer ----------------");
             }
 			
             if (oSession.PathAndQuery.Equals("/api/v1/gameDataAnalytics/v2/batch") && body.Contains("postgame_survivor"))
             {
                 Debug.WriteLine("---------------- GameLog - Survivor Postgame ----------------");
+				sb = new StringBuilder();
                 LogStringField(body, "Timestamp", "timestamp");
-				LogStringField(body, "Game Mode", "game_mode");
-				LogStringField(body, "Character", "character_name");
+				LogStringField(body, "Match ID", "match_id");
+                LogStringField(body, "Game Mode", "game_mode");
+                cname = LogStringField(body, "Character", "character_name");
                 LogStringField(body, "Outcome", "outcome");
-				LogStringField(body, "Match End Reason", "match_end_reason");
-				LogStringField(body, "Damage State", "damage_state");
+                LogStringField(body, "Match End Reason", "match_end_reason");
+                LogStringField(body, "Damage State", "damage_state");
                 LogNumericField(body, "Game Duration", "game_duration");
-				LogNumericField(body, "Hooked Count", "hooked_count");
-				LogNumericField(body, "Used Surrender Option", "used_surrender_option");
+                LogNumericField(body, "Hooked Count", "hooked_count");
+                LogNumericField(body, "Used Surrender Option", "used_surrender_option");
                 LogNumericField(body, "Bloodpoints Earned", "bloodweb_points");
                 LogNumericField(body, "Objectives Points", "objectives");
                 LogNumericField(body, "Survival Points", "survival");
@@ -350,9 +393,8 @@ class Handlers
                 LogNumericField(body, "Rank", "rank");
                 LogNumericField(body, "Pips Gained Or Lost", "pips_gained_or_lost");
                 LogNumericField(body, "Is Tutorial Bot Match", "is_tutorial_bot_match");
-				LogStringField(body, "Server Region", "server_region");
+                LogStringField(body, "Server Region", "server_region");
                 LogNumericField(body, "Exact Ping", "exact_ping");
-				//LogStringField(body, "Match ID", "match_id");
                 //LogStringField(body, "Kraken Match ID", "kraken_match_id");                
                 //LogStringField(body, "Onboarding Mode ID", "onboarding_mode_id");
                 //LogStringField(body, "Server Session ID", "server_session_id");
@@ -366,6 +408,14 @@ class Handlers
                 //LogStringField(body, "Backend Environment", "backend_env");
                 //LogStringField(body, "Data Content Version", "data_content_version");
                 //LogStringField(body, "Session GUID", "session_guid");
+				
+				if (logtofile) {
+					var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
+					var path = Path.Combine(folder, "PostGame-Survivor-" + cname + "-" + timestamp + ".txt");
+					File.AppendAllText(path, sb.ToString());
+				}
+				
+				
                 Debug.WriteLine("---------------- End GameLog - Survivor Postgame ----------------");
             }
 			
@@ -380,8 +430,10 @@ class Handlers
             if (oSession.PathAndQuery.Equals("/api/v1/gameDataAnalytics/v2/batch") && body.Contains("gameplay_survivor"))
             {
                 Debug.WriteLine("---------------- Analytics - Gameplay Survivor ----------------");
+				sb = new StringBuilder();
+				
                 LogStringField(body, "Timestamp", "timestamp");
-                //LogStringField(body, "Match ID", "match_id");
+                LogStringField(body, "Match ID", "match_id");
                 LogStringField(body, "Game Mode", "game_mode");
                 //LogStringField(body, "Version", "version");
                 //LogStringField(body, "Branch", "branch");
@@ -393,7 +445,7 @@ class Handlers
                 //LogStringField(body, "Backend Environment", "backend_env");
                 //LogStringField(body, "Data Content Version", "data_content_version");
                 //LogStringField(body, "Session GUID", "session_guid");
-				LogNumericField(body, "Hatch", "hatch");
+                LogNumericField(body, "Hatch", "hatch");
                 LogNumericField(body, "Speed", "speed");
                 LogNumericField(body, "Injured Speed", "injured_speed");
                 LogNumericField(body, "Injured Duration", "injured_duration");
@@ -429,6 +481,13 @@ class Handlers
                 LogNumericField(body, "Crouching Duration", "crouching_duration");
                 LogNumericField(body, "Crouching Count", "crouching_count");
                 LogNumericField(body, "Crawling Duration", "crawling_duration");
+				
+				if (logtofile) {
+					var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
+					var path = Path.Combine(folder, "Gameplay-Survivor-" + timestamp + ".txt");
+					File.AppendAllText(path, sb.ToString());
+				}
+				
                 Debug.WriteLine("---------------- End Analytics - Gameplay Survivor ----------------");
             }
             
@@ -436,61 +495,70 @@ class Handlers
             //Match Info
             if (oSession.PathAndQuery.Equals("/api/v1/gameDataAnalytics/v2/batch") && body.Contains("matchinfo")) {
                 Debug.WriteLine("---------------- Match Info ----------------");
-				LogStringField(body, "Timestamp", "timestamp");
-				LogStringField(body, "Game Mode", "game_mode");
-				LogStringField(body, "Character", "character_name");
-				LogStringField(body, "Map", "map_name");
+				sb = new StringBuilder();
+
+                LogStringField(body, "Timestamp", "timestamp");
+				LogStringField(body, "Match ID", "match_id");
+                LogStringField(body, "Game Mode", "game_mode");
+                LogStringField(body, "Character", "character_name");
+                LogStringField(body, "Map", "map_name");
 				
-				LogStringField(body, "Role", "role");
-				LogNumericField(body, "Is ABot", "is_abot");
-				LogStringField(body, "Bot Difficulty Level", "bot_difficulty_level");
-				LogNumericField(body, "Party Size", "party_size");
-				LogStringField(body, "Character Ownership", "character_ownership");
-				LogNumericField(body, "Rank", "rank");
-				LogNumericField(body, "Level", "level");
-				LogNumericField(body, "Prestige", "prestige");
-				LogNumericField(body, "Pips", "pips");
-				LogNumericField(body, "Pips Total", "pips_total");
-				//LogNumericField(body, "Map Seed", "map_seed");
-				//LogStringField(body, "Party Host Mirrors ID", "party_host_mirrors_id");
-				//LogStringField(body, "Lobby ID", "lobby_id");
-				//LogStringField(body, "Match ID", "match_id");
-				//LogStringField(body, "Kraken Match ID", "kraken_match_id");
-				//LogStringField(body, "Player Name", "player_name");
-				LogStringField(body, "Selected Country", "selected_country");
-				LogNumericField(body, "First Time Playing", "first_time_playing");
-				LogNumericField(body, "Cumulative Matches", "cumulative_matches");
-				LogNumericField(body, "Cumulative Matches As Survivor", "cumulative_matches_as_survivor");
-				LogNumericField(body, "Cumulative Matches As Killer", "cumulative_matches_as_killer");
-				//LogStringField(body, "Last Match Timestamp", "last_match_timestamp");
-				LogNumericField(body, "Exact Ping", "exact_ping");
-				LogNumericField(body, "Has An Active Archive Quest", "has_an_active_archive_quest");
-				LogNumericField(body, "Is Using Keyboard", "is_using_keyboard");
-				LogStringField(body, "Controller Type", "controller_type");
-				LogNumericField(body, "Invert Y", "invert_y");
-				LogStringField(body, "Colorblind Mode", "colorblind_mode");
-				LogNumericField(body, "Colorblind Intensity", "colorblind_intensity");
-				LogNumericField(body, "Terror Radius Visual Support", "terror_radius_visual_support");
-				LogNumericField(body, "Is Tutorial Bot Match", "is_tutorial_bot_match");
-				LogStringField(body, "Onboarding Mode ID", "onboarding_mode_id");
-				LogNumericField(body, "Onboarding Enabled", "onboarding_enabled");
-				LogNumericField(body, "Onboarding ABTesting Enabled", "onboarding_abtesting_enabled");
-				LogNumericField(body, "Onboarding Number Active Modes", "onboarding_number_active_modes");
-				LogNumericField(body, "Onboarding New Assigned Mode", "onboarding_new_assigned_mode");
-				//LogStringField(body, "Server Session ID", "server_session_id");
-				//LogStringField(body, "Server Region", "server_region");
-				LogNumericField(body, "Is PWYW", "is_pwyw");
-				LogNumericField(body, "Is Priority Matchmaking Match", "is_priority_matchmaking_match");
-				//LogStringField(body, "Version", "version");
-				//LogStringField(body, "Branch", "branch");
-				//LogStringField(body, "Changelist", "changelist");
-				//LogStringField(body, "Configuration", "configuration");
-				//LogStringField(body, "Mirrors ID", "mirrors_id");
-				//LogStringField(body, "Client ID", "client_id");
-				//LogStringField(body, "Platform", "platform");
-				//LogStringField(body, "Backend Env", "backend_env");
-				//LogStringField(body, "Data Content Version", "data_content_version");
-				//LogStringField(body, "Session GUID", "session_guid");
+                LogStringField(body, "Role", "role");
+                LogNumericField(body, "Is ABot", "is_abot");
+                LogStringField(body, "Bot Difficulty Level", "bot_difficulty_level");
+                LogNumericField(body, "Party Size", "party_size");
+                LogStringField(body, "Character Ownership", "character_ownership");
+                LogNumericField(body, "Rank", "rank");
+                LogNumericField(body, "Level", "level");
+                LogNumericField(body, "Prestige", "prestige");
+                LogNumericField(body, "Pips", "pips");
+                LogNumericField(body, "Pips Total", "pips_total");
+                //LogNumericField(body, "Map Seed", "map_seed");
+                //LogStringField(body, "Party Host Mirrors ID", "party_host_mirrors_id");
+                //LogStringField(body, "Lobby ID", "lobby_id");
+                
+                //LogStringField(body, "Kraken Match ID", "kraken_match_id");
+                //LogStringField(body, "Player Name", "player_name");
+                LogStringField(body, "Selected Country", "selected_country");
+                LogNumericField(body, "First Time Playing", "first_time_playing");
+                LogNumericField(body, "Cumulative Matches", "cumulative_matches");
+                LogNumericField(body, "Cumulative Matches As Survivor", "cumulative_matches_as_survivor");
+                LogNumericField(body, "Cumulative Matches As Killer", "cumulative_matches_as_killer");
+                //LogStringField(body, "Last Match Timestamp", "last_match_timestamp");
+                LogNumericField(body, "Exact Ping", "exact_ping");
+                LogNumericField(body, "Has An Active Archive Quest", "has_an_active_archive_quest");
+                LogNumericField(body, "Is Using Keyboard", "is_using_keyboard");
+                LogStringField(body, "Controller Type", "controller_type");
+                LogNumericField(body, "Invert Y", "invert_y");
+                LogStringField(body, "Colorblind Mode", "colorblind_mode");
+                LogNumericField(body, "Colorblind Intensity", "colorblind_intensity");
+                LogNumericField(body, "Terror Radius Visual Support", "terror_radius_visual_support");
+                LogNumericField(body, "Is Tutorial Bot Match", "is_tutorial_bot_match");
+                LogStringField(body, "Onboarding Mode ID", "onboarding_mode_id");
+                LogNumericField(body, "Onboarding Enabled", "onboarding_enabled");
+                LogNumericField(body, "Onboarding ABTesting Enabled", "onboarding_abtesting_enabled");
+                LogNumericField(body, "Onboarding Number Active Modes", "onboarding_number_active_modes");
+                LogNumericField(body, "Onboarding New Assigned Mode", "onboarding_new_assigned_mode");
+                //LogStringField(body, "Server Session ID", "server_session_id");
+                //LogStringField(body, "Server Region", "server_region");
+                LogNumericField(body, "Is PWYW", "is_pwyw");
+                LogNumericField(body, "Is Priority Matchmaking Match", "is_priority_matchmaking_match");
+                //LogStringField(body, "Version", "version");
+                //LogStringField(body, "Branch", "branch");
+                //LogStringField(body, "Changelist", "changelist");
+                //LogStringField(body, "Configuration", "configuration");
+                //LogStringField(body, "Mirrors ID", "mirrors_id");
+                //LogStringField(body, "Client ID", "client_id");
+                //LogStringField(body, "Platform", "platform");
+                //LogStringField(body, "Backend Env", "backend_env");
+                //LogStringField(body, "Data Content Version", "data_content_version");
+                //LogStringField(body, "Session GUID", "session_guid");
+				
+				if (logtofile) {
+					var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
+					var path = Path.Combine(folder, "MatchInfo-" + timestamp + ".txt");
+					File.AppendAllText(path, sb.ToString());
+				}
                 Debug.WriteLine("---------------- End Match Info ----------------");
             }            
         }  
@@ -538,17 +606,10 @@ class Handlers
             
             
             if (!String.IsNullOrEmpty(body)) {
-				
-                var matchResult = "";
-                if (oSession.PathAndQuery.Equals("/api/v1/queue") && body.Contains("realRating"))
+                if (oSession.PathAndQuery.Equals("/api/v1/queue") && body.Contains("queueSize"))
                 {
                     Debug.WriteLine("---------------- Queue request ----------------");
                     LogStringField(body, "Character", "characterName");
-                    LogNumericField(body, "Streak", "streak");
-                    LogNumericField(body, "Matching", "matching");
-                    LogNumericField(body, "Rating", "rating");
-                    LogNumericField(body, "realRating", "realRating");
-                    LogNumericField(body, "RD", "RD");
                     LogNumericField(body, "Queue Size", "queueSize");
                     LogNumericField(body, "Queue Pos", "position");
                     Debug.WriteLine("---------------- End queue request ----------------");
@@ -558,15 +619,21 @@ class Handlers
                 //DisconnectPenaltyPoints
                 if (oSession.PathAndQuery.Equals("/api/v1/players/ban/decayAndGetDisconnectionPenaltyPoints")) {
                     Debug.WriteLine("---------------- Get Disconnection Penalty Points request ----------------");
-                    LogNumericField(body, "DC Penalty Points", "penaltyPoints");
+                    var penalty = LogNumericField(body, "DC Penalty Points", "penaltyPoints");
                     Debug.WriteLine("---------------- End Disconnection Penalty Points request ----------------");
+                    
+					if (logtofile) {
+						var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
+						var path = Path.Combine(folder, "DCPenalty" + "-" + timestamp + "-" + penalty + ".txt");
+						File.AppendAllText(path, penalty);
+					}
                 }
 				
 
                 //LocalizedCurrencies
                 if (oSession.PathAndQuery.Equals("/api/v1/wallet/currencies") || oSession.PathAndQuery.Equals("/api/v1/extensions/wallet/getLocalizedCurrenciesAfterLogin")) {
                     Debug.WriteLine("---------------- Currencies ----------------");
-
+                    sb = new StringBuilder();
                     var regex = /"currency"\s*:\s*"([^"]+)"\s*,\s*"balance"\s*:\s*([0-9]+(?:\.[0-9]+)?)|"balance"\s*:\s*([0-9]+(?:\.[0-9]+)?)\s*,\s*"currency"\s*:\s*"([^"]+)"/g;
                     var match;
                     while ((match = regex.exec(body)) !== null)
@@ -575,7 +642,15 @@ class Handlers
                         var balance  = match[2] || match[3];
 
                         Debug.WriteLine("  {0}: {1}", currency, balance);
+                        sb.AppendLine(currency + "," + balance);
                     }
+					
+					
+					if (logtofile) {
+						var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
+						var path = Path.Combine(folder, "Currencies-" + timestamp + ".txt");
+						File.AppendAllText(path, sb.ToString());
+					}
                     Debug.WriteLine("---------------- End Currencies ----------------");
                 }
             }
