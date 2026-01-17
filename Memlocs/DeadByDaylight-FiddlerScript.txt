@@ -206,7 +206,7 @@ class Handlers
                 LogStringField(body, "Match End Reason", "match_end_reason");
                 LogNumericField(body, "Used Surrender Option", "used_surrender_option");
                 LogNumericField(body, "Game Duration", "game_duration");
-                LogNumericField(body, "Escapees Count", "escapees_count");
+                var numEsc = LogNumericField(body, "Escapees Count", "escapees_count");
                 LogNumericField(body, "Sacrificed Count", "sacrificed_count");
                 LogNumericField(body, "Killed Count", "killed_count");
                 LogNumericField(body, "Disconnect Count", "disconnect_count");
@@ -278,7 +278,7 @@ class Handlers
                 //LogStringField(body, "Session GUID", "session_guid");
 				if (logtofile) {
 					var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
-					var path = Path.Combine(folder, "PostGame-Killer-" + cname + "-" + timestamp + ".txt");
+					var path = Path.Combine(folder, "PostGame-Killer-" + cname + "-" + numEsc + "E-" + timestamp + ".txt");
 					File.AppendAllText(path, sb.ToString());
 				}
                 Debug.WriteLine("---------------- End GameLog - Killer Postgame ----------------");
