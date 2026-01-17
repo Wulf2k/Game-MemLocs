@@ -9,6 +9,9 @@ import System.Diagnostics;
 class Handlers
 {    
     static var logtofile = true;
+	static var logBloodwebTofile = true;
+	static var logCurrencyTofile = true;
+	static var logDCPenaltyTofile = true;
 	static var folder = "C:/DBD-DumpData";
 	public static var sb = new StringBuilder();
 	
@@ -357,7 +360,7 @@ class Handlers
 				LogStringField(body, "Match ID", "match_id");
                 LogStringField(body, "Game Mode", "game_mode");
                 cname = LogStringField(body, "Character", "character_name");
-                LogStringField(body, "Outcome", "outcome");
+                var outcome = LogStringField(body, "Outcome", "outcome");
                 LogStringField(body, "Match End Reason", "match_end_reason");
                 LogStringField(body, "Damage State", "damage_state");
                 LogNumericField(body, "Game Duration", "game_duration");
@@ -411,7 +414,7 @@ class Handlers
 				
 				if (logtofile) {
 					var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
-					var path = Path.Combine(folder, "PostGame-Survivor-" + cname + "-" + timestamp + ".txt");
+					var path = Path.Combine(folder, "PostGame-Survivor-" + cname + "-" + outcome + "-" + timestamp + ".txt");
 					File.AppendAllText(path, sb.ToString());
 				}
 				
@@ -622,10 +625,10 @@ class Handlers
                     var penalty = LogNumericField(body, "DC Penalty Points", "penaltyPoints");
                     Debug.WriteLine("---------------- End Disconnection Penalty Points request ----------------");
                     
-					if (logtofile) {
+					if (logDCPenaltyTofile) {
 						var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
-						var path = Path.Combine(folder, "DCPenalty" + "-" + timestamp + "-" + penalty + ".txt");
-						File.AppendAllText(path, penalty);
+						var path = Path.Combine(folder, "DCPenalty.txt");
+						File.AppendAllText(path, penalty + "-" + timestamp);
 					}
                 }
 				
@@ -646,13 +649,49 @@ class Handlers
                     }
 					
 					
-					if (logtofile) {
-						var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
-						var path = Path.Combine(folder, "Currencies-" + timestamp + ".txt");
+					if (logCurrencyTofile) {
+						//var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
+						var path = Path.Combine(folder, "Currencies.txt");
 						File.AppendAllText(path, sb.ToString());
 					}
                     Debug.WriteLine("---------------- End Currencies ----------------");
                 }
+				
+				
+				if (oSession.PathAndQuery.Equals("/api/v1/dbd-character-data/bloodweb")) {
+
+					Debug.WriteLine("---------------- Bloodweb ----------------");
+					var cname = LogStringField(body, "Character", "characterName");
+					var pLevel = LogNumericField(body, "Prestige Level", "prestigeLevel");
+					var bLevel = LogNumericField(body, "Bloodweb Level", "bloodWebLevel");
+
+					var sb = new StringBuilder();
+					var regex = /"contentId"\s*:\s*"([^"]+)"\s*,\s*"nodeId"\s*:\s*"([^"]+)"|"nodeId"\s*:\s*"([^"]+)"\s*,\s*"contentId"\s*:\s*"([^"]+)"/g;
+
+					var match;
+					while ((match = regex.exec(body)) !== null) {
+
+						var contentId = match[1] || match[4];
+						var nodeId    = match[2] || match[3];
+
+						Debug.WriteLine("  {0} : {1}", contentId, nodeId);
+						sb.AppendLine(contentId + "," + nodeId);
+					}
+
+					if (logBloodwebTofile) {
+						var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
+						var path = Path.Combine(folder, "Bloodweb");
+						path = Path.Combine(path, cname);
+						if (!Directory.Exists(path)) {
+							Directory.CreateDirectory(path);
+						}
+						path = Path.Combine(path, "Bloodweb-" + cname + "-P" + pLevel + "-L" + bLevel + ".txt");
+						File.WriteAllText(path, sb.ToString());
+					}
+
+					Debug.WriteLine("---------------- End Bloodweb ----------------");
+				}
+
             }
         }
 
