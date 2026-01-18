@@ -628,7 +628,7 @@ class Handlers
 					if (logDCPenaltyTofile) {
 						var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
 						var path = Path.Combine(folder, "DCPenalty.txt");
-						File.AppendAllText(path, penalty + "-" + timestamp);
+						File.WriteAllText(path, penalty + "-" + timestamp);
 					}
                 }
 				
