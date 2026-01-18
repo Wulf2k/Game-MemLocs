@@ -652,7 +652,7 @@ class Handlers
 					if (logCurrencyTofile) {
 						//var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
 						var path = Path.Combine(folder, "Currencies.txt");
-						File.AppendAllText(path, sb.ToString());
+						File.WriteAllText(path, sb.ToString());
 					}
                     Debug.WriteLine("---------------- End Currencies ----------------");
                 }
