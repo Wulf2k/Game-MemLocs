@@ -503,7 +503,7 @@ class Handlers
                 LogStringField(body, "Timestamp", "timestamp");
 				LogStringField(body, "Match ID", "match_id");
                 LogStringField(body, "Game Mode", "game_mode");
-                LogStringField(body, "Character", "character_name");
+                var cname = LogStringField(body, "Character", "character_name");
                 LogStringField(body, "Map", "map_name");
 				
                 LogStringField(body, "Role", "role");
@@ -559,7 +559,7 @@ class Handlers
 				
 				if (logtofile) {
 					var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
-					var path = Path.Combine(folder, "MatchInfo-" + timestamp + ".txt");
+					var path = Path.Combine(folder, "MatchInfo-" + cname + "-" + timestamp + ".txt");
 					File.AppendAllText(path, sb.ToString());
 				}
                 Debug.WriteLine("---------------- End Match Info ----------------");
@@ -685,7 +685,15 @@ class Handlers
 						if (!Directory.Exists(path)) {
 							Directory.CreateDirectory(path);
 						}
-						path = Path.Combine(path, "Bloodweb-" + cname + "-P" + pLevel + "-L" + bLevel + ".txt");
+
+						var pStr = String.Format("{0:D3}", int(pLevel));
+						var lStr = String.Format("{0:D2}", int(bLevel));
+
+						path = Path.Combine(
+							path,
+							"Bloodweb-" + cname + "-P" + pStr + "-L" + lStr + ".txt"
+						);
+
 						File.WriteAllText(path, sb.ToString());
 					}
 
