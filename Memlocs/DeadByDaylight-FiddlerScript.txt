@@ -506,6 +506,14 @@ class Handlers
                 var cname = LogStringField(body, "Character", "character_name");
                 LogStringField(body, "Map", "map_name");
 				
+				LogStringField(body, "Loadout Item", "loadout_item");
+				LogStringField(body, "Loadout Item Addon 1", "loadout_item_add_on1");
+				LogStringField(body, "Loadout Item Addon 2", "loadout_item_add_on2");
+				LogStringField(body, "Loadout Offering", "loadout_offering");
+				LogStringField(body, "Loadout Perk 1", "loadout_perk1");
+				LogStringField(body, "Loadout Perk 2", "loadout_perk2");
+				LogStringField(body, "Loadout Perk 3", "loadout_perk3");
+				LogStringField(body, "Loadout Perk 4", "loadout_perk4");
                 LogStringField(body, "Role", "role");
                 LogNumericField(body, "Is ABot", "is_abot");
                 LogStringField(body, "Bot Difficulty Level", "bot_difficulty_level");
