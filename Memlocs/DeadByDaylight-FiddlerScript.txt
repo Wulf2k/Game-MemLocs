@@ -289,6 +289,7 @@ class Handlers
                 Debug.WriteLine("---------------- Analytics - Gameplay Killer ----------------");
 				sb = new StringBuilder();
                 LogStringField(body, "Timestamp", "timestamp");
+				cname = LogStringField(body, "Character", "character_name");
                 LogStringField(body, "Match ID", "match_id");
                 LogStringField(body, "Game Mode", "game_mode");
                 LogNumericField(body, "Hook Count", "hook_count");
@@ -346,7 +347,7 @@ class Handlers
 				
 				if (logtofile) {
 					var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
-					var path = Path.Combine(folder, "Gameplay-Killer-" + timestamp + ".txt");
+					var path = Path.Combine(folder, "Gameplay-Killer-" + cname + "-" + timestamp + ".txt");
 					File.AppendAllText(path, sb.ToString());
 				}
                 Debug.WriteLine("---------------- End Analytics - Gameplay Killer ----------------");
@@ -438,6 +439,7 @@ class Handlers
                 LogStringField(body, "Timestamp", "timestamp");
                 LogStringField(body, "Match ID", "match_id");
                 LogStringField(body, "Game Mode", "game_mode");
+				cname = LogStringField(body, "Character", "character_name");
                 //LogStringField(body, "Version", "version");
                 //LogStringField(body, "Branch", "branch");
                 //LogStringField(body, "Changelist", "changelist");
@@ -487,7 +489,7 @@ class Handlers
 				
 				if (logtofile) {
 					var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
-					var path = Path.Combine(folder, "Gameplay-Survivor-" + timestamp + ".txt");
+					var path = Path.Combine(folder, "Gameplay-Survivor-" + cname + "-" + timestamp + ".txt");
 					File.AppendAllText(path, sb.ToString());
 				}
 				
