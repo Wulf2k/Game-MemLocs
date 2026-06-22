@@ -3,7 +3,10 @@ import System.IO;
 import System.Text;
 import System.Windows.Forms;
 import Fiddler;
+import System.Collections;
+import System.Collections.Generic;
 import System.Diagnostics;
+import System.Web.Script.Serialization;
 
 
 class Handlers
@@ -18,7 +21,7 @@ class Handlers
     static var postgameKillerCsvPath = Path.Combine(folder, "PostGame-Killer.csv");
     static var gameplayKillerCsvPath = Path.Combine(folder, "Gameplay-Killer.csv");
     static var killerMatchInfoCsvPath = Path.Combine(folder, "MatchInfo-Killer.csv");
-	static var survivorMatchInfoCsvPath = Path.Combine(folder, "MatchInfo-Survivor.csv");
+    static var survivorMatchInfoCsvPath = Path.Combine(folder, "MatchInfo-Survivor.csv");
     static var survivorPostgameCsvPath = Path.Combine(folder, "PostGame-Survivor.csv");
     static var gameplaySurvivorCsvPath = Path.Combine(folder, "Gameplay-Survivor.csv");
 	
@@ -34,6 +37,93 @@ class Handlers
 	
     static var gameplaySurvivorHeaders = ["Timestamp","Content Version", "Match ID","Game Mode","Character","Hatch","Speed","Injured Speed","Injured Duration","Healthy Duration","KO Duration","Pallet Spawned","Pallet Procedural","Pallet Procedural Set Count","Pallet Generic","Pallet Drop","Pallet Stun","Unhook Count","Heal Count","Heal Count Success","Closet Enter","Skill Check Count","Good Skill Checks","Great Skill Checks","Chase Duration","Number of Chases","Hit By Slasher Count","Unhook Deep Wound Count","KO With Deep Wound Count","All Deep Wound Count","Killer Inflict Deep Wound With Power Count","Tiles Visited","Start X","Start Y","Start Z","Emote Point","Emote Come","Crouching Duration","Crouching Count","Crawling Duration"];
 	
+        
+    static function ParseEvents(jsonString: String): ArrayList
+    {
+        var result = new ArrayList();
+
+        if (!jsonString)
+            return result;
+
+        var start = jsonString.IndexOf("\"events\":[");
+        if (start == -1)
+            return result;
+
+        // Move to start of array content
+        start += 10;
+
+        var depth = 0;
+        var inString = false;
+        var escape = false;
+        var current = "";
+
+        for (var i = start; i < jsonString.Length; i++)
+        {
+            var c = jsonString[i];
+
+            // Handle string escaping
+            if (escape)
+            {
+                escape = false;
+                current += c;
+                continue;
+            }
+
+            if (c == '\\')
+            {
+                escape = true;
+                current += c;
+                continue;
+            }
+
+            if (c == '"')
+            {
+                inString = !inString;
+                current += c;
+                continue;
+            }
+
+            if (!inString)
+            {
+                if (c == '{')
+                {
+                    depth++;
+                }
+
+                if (c == '}')
+                {
+                    depth--;
+                }
+
+                // End of one event object
+                if (depth == 0 && current.Length > 0)
+                {
+                    current += c;
+                    result.Add(current);
+                    current = "";
+                    continue;
+                }
+
+                // End of array
+                if (c == ']' && depth == 0)
+                {
+                    break;
+                }
+            }
+
+            if (depth > 0 || (depth == 0 && c == '{'))
+            {
+                current += c;
+            }
+        }
+
+        return result;
+    }
+                
+                    
+                        
+                            
+                                
             
     public static RulesOption("Hide 304s")
     BindPref("fiddlerscript.rules.Hide304s")
@@ -205,6 +295,28 @@ class Handlers
         
 		
         if (!String.IsNullOrEmpty(body)) {
+            
+            if (oSession.PathAndQuery.Equals("/api/v1/gameDataAnalytics/v2/batch")) {
+                Debug.WriteLine("batch found");
+                var events = ParseEvents(body);
+
+                for (var i = 0; i < events.Count; i++) {
+
+                    var evtJson = events[i];
+                    FiddlerApplication.Log.LogString("Event JSON: " + evtJson);
+					
+					var et = LogStringField2(evtJson, "Event Type", "eventType");
+					
+					if (et == "score") {
+						LogStringField2(evtJson, "Score Type ID", "score_type_id");
+						LogNumericField2(evtJson, "Score Count", "score_count");
+						LogNumericField2(evtJson, "Score Points", "score_bloodweb_points");
+					}
+                }
+            }
+            
+            
+            
             var cname = "";
             if (logtofile) {
                 if (!Directory.Exists(folder)) {
@@ -218,7 +330,7 @@ class Handlers
 
                 values.push(LogStringField2(body, "Timestamp", "timestamp"));
                 values.push(LogStringField2(body, "Content Version", "data_content_version"));
-				values.push(LogStringField2(body, "Match ID", "match_id"));
+                values.push(LogStringField2(body, "Match ID", "match_id"));
                 values.push(LogStringField2(body, "Character Name", "character_name"));
                 values.push(LogStringField2(body, "Game Mode", "game_mode"));
                 values.push(LogStringField2(body, "Match End Reason", "match_end_reason"));
@@ -297,7 +409,7 @@ class Handlers
                     var values = new Array();
 
                     values.push(LogStringField2(body, "Timestamp", "timestamp"));
-					values.push(LogStringField2(body, "Content Version", "data_content_version"));
+                    values.push(LogStringField2(body, "Content Version", "data_content_version"));
                     //values.push(LogStringField2(body, "Character", "character_name"));  //not actually in this data unless batched
                     values.push(LogStringField2(body, "Match ID", "match_id"));
                     values.push(LogStringField2(body, "Game Mode", "game_mode"));
@@ -372,7 +484,7 @@ class Handlers
                     var values = new Array();
 
                     values.push(LogStringField2(body, "Timestamp", "timestamp"));
-					values.push(LogStringField2(body, "Content Version", "data_content_version"));
+                    values.push(LogStringField2(body, "Content Version", "data_content_version"));
                     values.push(LogStringField2(body, "Match ID", "match_id"));
                     values.push(LogStringField2(body, "Game Mode", "game_mode"));
                     values.push(LogStringField2(body, "Character", "character_name"));
@@ -444,7 +556,7 @@ class Handlers
                     var values = new Array();
 
                     values.push(LogStringField2(body, "Timestamp", "timestamp"));
-					values.push(LogStringField2(body, "Content Version", "data_content_version"));
+                    values.push(LogStringField2(body, "Content Version", "data_content_version"));
                     values.push(LogStringField2(body, "Match ID", "match_id"));
                     values.push(LogStringField2(body, "Game Mode", "game_mode"));
                     values.push(LogStringField2(body, "Character", "character_name"));
@@ -485,7 +597,7 @@ class Handlers
                     values.push(LogNumericField2(body, "Crawling Duration", "crawling_duration").ToString());
                     if (!File.Exists(gameplaySurvivorCsvPath)) {
                         //File.AppendAllText(gameplaySurvivorCsvPath, values.join(",") + "\r\n");
-						File.AppendAllText(gameplaySurvivorCsvPath, gameplaySurvivorHeaders.join(",") + "\r\n");
+                        File.AppendAllText(gameplaySurvivorCsvPath, gameplaySurvivorHeaders.join(",") + "\r\n");
                     }
                     File.AppendAllText(gameplaySurvivorCsvPath, values.join(",") + "\r\n");
                     Debug.WriteLine("---------------- End Analytics - Gameplay Survivor ----------------");
@@ -502,7 +614,7 @@ class Handlers
                     var values = new Array();
 
                     values.push(LogStringField2(body, "Timestamp", "timestamp"));
-					values.push(LogStringField2(body, "Content Version", "data_content_version"));
+                    values.push(LogStringField2(body, "Content Version", "data_content_version"));
                     values.push(LogStringField2(body, "Match ID", "match_id"));
                     values.push(LogStringField2(body, "Game Mode", "game_mode"));
                     values.push(LogStringField2(body, "Character", "character_name"));
@@ -518,8 +630,8 @@ class Handlers
                     values.push(LogStringField2(body, "Loadout Perk 3", "loadout_perk3"));
                     values.push(LogStringField2(body, "Loadout Perk 4", "loadout_perk4"));
                     
-					var role = LogStringField2(body, "Role", "role");
-					values.push(role);
+                    var role = LogStringField2(body, "Role", "role");
+                    values.push(role);
 					
                     values.push(LogNumericField2(body, "Is ABot", "is_abot"));
                     values.push(LogStringField2(body, "Bot Difficulty Level", "bot_difficulty_level"));
@@ -555,16 +667,16 @@ class Handlers
                     values.push(LogNumericField2(body, "Is PWYW", "is_pwyw"));
                     values.push(LogNumericField2(body, "Is Priority Matchmaking Match", "is_priority_matchmaking_match"));
 					
-					var matchInfoCsvPath = "";
-					if (role == "VE_Slasher") {
-						matchInfoCsvPath = killerMatchInfoCsvPath;
-					} else {
-						matchInfoCsvPath = survivorMatchInfoCsvPath;
-					}
+                    var matchInfoCsvPath = "";
+                    if (role == "VE_Slasher") {
+                        matchInfoCsvPath = killerMatchInfoCsvPath;
+                    } else {
+                        matchInfoCsvPath = survivorMatchInfoCsvPath;
+                    }
 					
                     if (!File.Exists(matchInfoCsvPath)) {
                         File.AppendAllText(matchInfoCsvPath, matchInfoHeaders.join(",") + "\r\n");
-					}
+                    }
                     File.AppendAllText(
                         matchInfoCsvPath,
                         values.join(",") + "\r\n"
